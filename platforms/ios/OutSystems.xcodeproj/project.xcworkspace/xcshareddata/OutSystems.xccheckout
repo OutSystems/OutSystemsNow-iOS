@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A9026329-7354-423B-8FF4-EA78BCF547B9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>OutSystems</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>ED3010F5-B4A1-4D7A-A1C4-6395DDA9F717</key>
+		<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MobileApp/OutSystems/platforms/ios/OutSystems.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>ED3010F5-B4A1-4D7A-A1C4-6395DDA9F717</key>
+		<string>../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>ED3010F5-B4A1-4D7A-A1C4-6395DDA9F717</key>
+		<string>https://srvptsvn/svn/docs</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects/MobileApp/OutSystems/platforms/ios/OutSystems.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>ED3010F5-B4A1-4D7A-A1C4-6395DDA9F717</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
+			<string>branches</string>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
+			<string>tags</string>
+			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
+			<string>trunk</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ED3010F5-B4A1-4D7A-A1C4-6395DDA9F717</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Projects</string>
+		</dict>
+	</array>
+</dict>
+</plist>

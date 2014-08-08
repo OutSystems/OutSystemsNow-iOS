@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Application" representedClassName="Application" syncable="YES">
+        <attribute name="appDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Infrastructure" representedClassName="Infrastructure" syncable="YES">
+        <attribute name="hostname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isJavaServer" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="lastUsed" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" valueTransformerName="SecurePasswordStore" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Application" positionX="-45" positionY="27" width="128" height="105"/>
+        <element name="Infrastructure" positionX="-63" positionY="-18" width="128" height="135"/>
+    </elements>
+</model>
