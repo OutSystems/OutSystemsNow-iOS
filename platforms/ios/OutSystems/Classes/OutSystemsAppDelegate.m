@@ -8,7 +8,6 @@
 
 #import "OutSystemsAppDelegate.h"
 
-#import <Pushwoosh/PushNotificationManager.h>
 
 @implementation OutSystemsAppDelegate
 
