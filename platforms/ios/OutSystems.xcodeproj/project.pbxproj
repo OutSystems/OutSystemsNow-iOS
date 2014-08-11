@@ -1,4 +1,4 @@
-// !$*UTF8*$!
+// 
 {
 	archiveVersion = 1;
 	classes = {
@@ -37,7 +37,6 @@
 		592FA96619001EBF00458A51 /* icon-chevron-forth.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA96419001EBF00458A51 /* icon-chevron-forth.png */; };
 		592FA9691900209B00458A51 /* icon-apps.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9671900209B00458A51 /* icon-apps.png */; };
 		592FA96A1900209B00458A51 /* icon-cog.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9681900209B00458A51 /* icon-cog.png */; };
-		594C6B7A195B35FE004129C8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594C6B79195B35FE004129C8 /* Crashlytics.framework */; };
 		595646D8190FBE4C00C1D583 /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
 		595646D9190FBE4C00C1D583 /* splash_768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D5190FBE4C00C1D583 /* splash_768x1024.png */; };
 		595646DA190FBE4C00C1D583 /* splash_1024x768.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D6190FBE4C00C1D583 /* splash_1024x768.png */; };
@@ -120,7 +119,6 @@
 		597A5250195C9A6400F15480 /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		597A5251195C9A6400F15480 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		597A5252195C9A6400F15480 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
-		597A5253195C9A6400F15480 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594C6B79195B35FE004129C8 /* Crashlytics.framework */; };
 		597A5254195C9A6400F15480 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEE5B34173C68D80009041E /* CoreLocation.framework */; };
 		597A5255195C9A6400F15480 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC16D9FA9BC14839B3149739 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		597A5256195C9A6400F15480 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBCEBEFC56E4793AFAB486C /* AddressBookUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -215,7 +213,6 @@
 		59E53F951986C1760003BC6B /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		59E53F961986C1760003BC6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		59E53F971986C1760003BC6B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */; };
-		59E53F981986C1760003BC6B /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594C6B79195B35FE004129C8 /* Crashlytics.framework */; };
 		59E53F991986C1760003BC6B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEE5B34173C68D80009041E /* CoreLocation.framework */; };
 		59E53F9A1986C1760003BC6B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC16D9FA9BC14839B3149739 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		59E53F9B1986C1760003BC6B /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBCEBEFC56E4793AFAB486C /* AddressBookUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -336,7 +333,6 @@
 		592FA96419001EBF00458A51 /* icon-chevron-forth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-chevron-forth.png"; sourceTree = "<group>"; };
 		592FA9671900209B00458A51 /* icon-apps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-apps.png"; sourceTree = "<group>"; };
 		592FA9681900209B00458A51 /* icon-cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cog.png"; sourceTree = "<group>"; };
-		594C6B79195B35FE004129C8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_1024x768_@2x.png"; sourceTree = "<group>"; };
 		595646D5190FBE4C00C1D583 /* splash_768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_768x1024.png; sourceTree = "<group>"; };
 		595646D6190FBE4C00C1D583 /* splash_1024x768.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_1024x768.png; sourceTree = "<group>"; };
@@ -441,7 +437,6 @@
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
-				594C6B7A195B35FE004129C8 /* Crashlytics.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
 				4BA82E6B0F784F78BA94489E /* AddressBook.framework in Frameworks */,
 				291BD490949648F48F81A283 /* AddressBookUI.framework in Frameworks */,
@@ -466,7 +461,6 @@
 				597A5250195C9A6400F15480 /* libCordova.a in Frameworks */,
 				597A5251195C9A6400F15480 /* CoreGraphics.framework in Frameworks */,
 				597A5252195C9A6400F15480 /* MobileCoreServices.framework in Frameworks */,
-				597A5253195C9A6400F15480 /* Crashlytics.framework in Frameworks */,
 				597A5254195C9A6400F15480 /* CoreLocation.framework in Frameworks */,
 				597A5255195C9A6400F15480 /* AddressBook.framework in Frameworks */,
 				597A5256195C9A6400F15480 /* AddressBookUI.framework in Frameworks */,
@@ -491,7 +485,6 @@
 				59E53F951986C1760003BC6B /* libCordova.a in Frameworks */,
 				59E53F961986C1760003BC6B /* CoreGraphics.framework in Frameworks */,
 				59E53F971986C1760003BC6B /* MobileCoreServices.framework in Frameworks */,
-				59E53F981986C1760003BC6B /* Crashlytics.framework in Frameworks */,
 				59E53F991986C1760003BC6B /* CoreLocation.framework in Frameworks */,
 				59E53F9A1986C1760003BC6B /* AddressBook.framework in Frameworks */,
 				59E53F9B1986C1760003BC6B /* AddressBookUI.framework in Frameworks */,
@@ -617,7 +610,6 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				594C6B79195B35FE004129C8 /* Crashlytics.framework */,
 				59BA8DB819506FF0005019A0 /* EventKit.framework */,
 				CFFC2FE31917F96600264950 /* Security.framework */,
 				CFFC2FE11917F5D300264950 /* Pushwoosh.framework */,
@@ -1066,7 +1058,6 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "./Crashlytics.framework/run 11c9a3fd4b8f4cc2bf2168f52dc782ec2038b337 67e5e870cf4353d69cc6affcd033facec749cae067a05ae18a500e436365e080";
 			shellScript = "";
 		};
 		597A51DC195C9A6400F15480 /* Copy www directory */ = {
@@ -1094,7 +1085,6 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "./Crashlytics.framework/run 11c9a3fd4b8f4cc2bf2168f52dc782ec2038b337 67e5e870cf4353d69cc6affcd033facec749cae067a05ae18a500e436365e080";
 			shellScript = "";
 		};
 		59E53F4A1986C1760003BC6B /* Copy www directory */ = {
@@ -1122,7 +1112,6 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "./Crashlytics.framework/run 11c9a3fd4b8f4cc2bf2168f52dc782ec2038b337 67e5e870cf4353d69cc6affcd033facec749cae067a05ae18a500e436365e080";
 			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */

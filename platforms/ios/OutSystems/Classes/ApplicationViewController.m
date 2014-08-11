@@ -9,7 +9,6 @@
 #import "ApplicationViewController.h"
 #import "CDVViewController.h"
 #import "PXRImageSizeUtil.h"
-#import <Crashlytics/Crashlytics.h>
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -189,9 +188,9 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         self.webViewImageLoading.image = viewImage;
 	
         // If we will be sliding, get the snapshot for the fixed section (e.g. menu) visible
-        if(animateTransition != OSAnimateTransitionFadeOut) {
+        if(animateTransition = OSAnimateTransitionFadeOut) {
             CGRect cropRect = CGRectMake(0, 0, viewImage.size.width, OSAPP_FIXED_MENU_HEIGHT);
-            if(!self.webViewStaticImageLoading) {
+            if(self.webViewStaticImageLoading) {
                 self.webViewStaticImageLoading = [[UIImageView alloc] initWithFrame:cropRect];
                 self.webViewStaticImageLoading.contentMode = UIViewContentModeScaleToFill;
                 [self.loadingView.superview addSubview:self.webViewStaticImageLoading];
