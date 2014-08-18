@@ -190,7 +190,9 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    _errorMessageLabel.text = [error localizedDescription];
+    
+    _errorMessageLabel.text = error.localizedDescription;
+    
     [_loginActivityIndicator stopAnimating];
     [_errorMessageLabel setHidden:NO];
     [_loginButton setHidden:NO];
@@ -213,7 +215,7 @@
         }
     }
     
-    if( success) {
+    if(success) {
         // get list of applications
         self.applicationList = [response valueForKey:@"applications"];
         
@@ -241,7 +243,7 @@
             _errorMessageLabel.text = [response objectForKey:@"errorMessage"];
         }
         else {
-            _errorMessageLabel.text = @"Error trying to connect to your network";
+            _errorMessageLabel.text = @"Error trying to connect to your environment";
         }
         
         // shake on error

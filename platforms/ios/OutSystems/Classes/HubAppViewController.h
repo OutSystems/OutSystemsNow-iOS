@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTTAttributedLabel.h"
 
-@interface HubAppViewController : UIViewController
+@interface HubAppViewController : UIViewController <TTTAttributedLabelDelegate>
 
 @end

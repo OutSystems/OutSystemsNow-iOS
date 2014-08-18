@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="clc-Af-Km2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="clc-Af-Km2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -72,7 +72,7 @@
                                             <constraint firstAttribute="height" constant="30" id="L8m-c0-E6F"/>
                                             <constraint firstAttribute="width" constant="130" id="w8D-nG-Arn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="14"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="TRY OUR DEMO">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,12 +164,12 @@
                                             <constraint firstAttribute="height" constant="45" id="tlP-nm-pd5"/>
                                         </constraints>
                                     </imageView>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host not found" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="271" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-PN-Pep">
-                                        <rect key="frame" x="25" y="271" width="271" height="56"/>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Host not found" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="271" translatesAutoresizingMaskIntoConstraints="NO" id="lNb-PN-Pep" customClass="TTTAttributedLabel">
+                                        <rect key="frame" x="25" y="271" width="271" height="73"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="271" id="5Nf-fo-LZv"/>
                                             <constraint firstAttribute="width" constant="271" id="AuA-Xf-MWh"/>
-                                            <constraint firstAttribute="height" constant="56" id="hv1-5c-tx6"/>
+                                            <constraint firstAttribute="height" constant="73" id="hv1-5c-tx6"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="uZr-xe-A9J"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -301,7 +301,7 @@
                                             <constraint firstAttribute="width" constant="20" id="YyX-j9-av4"/>
                                         </constraints>
                                     </activityIndicatorView>
-                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid login, please try again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="271" translatesAutoresizingMaskIntoConstraints="NO" id="3Kj-vk-VI9">
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid login, please try again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="271" translatesAutoresizingMaskIntoConstraints="NO" id="3Kj-vk-VI9" customClass="TTTAttributedLabel">
                                         <rect key="frame" x="25" y="309" width="271" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="271" id="B2d-6P-Gek"/>
@@ -652,6 +652,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="6zx-D3-JMY"/>
-        <segue reference="SJN-eU-vuU"/>
+        <segue reference="oPM-kh-zcB"/>
     </inferredMetricsTieBreakers>
 </document>

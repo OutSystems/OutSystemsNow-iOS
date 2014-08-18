@@ -16,7 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *connectionActivityIndicator;
 
-@property (weak, nonatomic) IBOutlet UILabel *errorMessageLabel;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *errorMessageLabel;
 @property (weak, nonatomic) IBOutlet UIButton *goButton;
 @property (weak, nonatomic) IBOutlet UIButton *tryDemoButton;
 @property (weak, nonatomic) IBOutlet UIButton *explainURLButton;
@@ -81,7 +81,6 @@
 }
 
 - (void)viewDidLoad {
-    
     self.accessYourAppLabel.font = [UIFont fontWithName:@"OpenSans" size:self.accessYourAppLabel.font.pointSize];
     self.explainURLLabel.font = [UIFont fontWithName:@"OpenSans" size:self.explainURLLabel.font.pointSize];
     self.howItWorksLabel.font = [UIFont fontWithName:@"OpenSans" size:self.howItWorksLabel.font.pointSize];
@@ -107,7 +106,15 @@
     self.helpURLHeightContraint.constant = 0;
     
     self.trustedHosts = [[NSArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
-    self.tryAnotherStack = NO;
+    
+    UIColor *color = [UIColor whiteColor];
+    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName,(id)kCTUnderlineStyleAttributeName
+                     , nil];
+    NSArray *objects = [[NSArray alloc] initWithObjects:color, [NSNumber numberWithInt:kCTUnderlineStyleSingle], nil];
+    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
+    
+    self.errorMessageLabel.linkAttributes = linkAttributes;
+    self.errorMessageLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
 }
 
 - (IBAction)onHelpTouch:(id)sender {
@@ -161,6 +168,9 @@
     [self.errorMessageLabel setHidden:YES];
     [self.goButton setHidden:YES];
     [self.tryDemoButton setEnabled:NO];
+    
+    //reset the flag
+    self.tryAnotherStack = NO;
     
     
     if(self.environmentHostname.text.length > 0) {
@@ -265,7 +275,8 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    self.errorMessageLabel.text = @"Error trying to connect to the provided network, please make sure you have an internet connection";
+    
+    self.errorMessageLabel.text = error.localizedDescription;
     
     [_connectionActivityIndicator stopAnimating];
     [_errorMessageLabel setHidden:NO];
@@ -328,11 +339,18 @@
             self.infrastructure.isJavaServer = !self.infrastructure.isJavaServer;
             [self connectToInfrastructure:self.infrastructure];
             
-            return; // retry the java version and end this try here (don't shake on this error)
+            return; // retry the new server type (.net/java) and don't give an error yet
             
         } else if(self.tryAnotherStack) {
             // no service found!
-            self.errorMessageLabel.text = @"OutSystems Application service was not found on the provided network, please contact your system administrator";
+            self.errorMessageLabel.text = @"The required OutSystems Now service was not detected. If the location entered above is accurate, please check here for instructions on preparing your installation.";
+            
+            // add custom link
+            NSRange r = [self.errorMessageLabel.text rangeOfString:@"check here"];
+            [self.errorMessageLabel addLinkToURL:[NSURL URLWithString:@"https://labs.outsystems.net/Native"] withRange:r];
+            [self.errorMessageLabel setUserInteractionEnabled:YES];
+            self.errorMessageLabel.delegate = self;
+            
             [_errorMessageLabel setHidden:NO];
         }
         
@@ -350,6 +368,10 @@
         
         [self.view.layer addAnimation:anim forKey:nil ] ;
     }
+}
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 - (IBAction)gotoOutSystems:(id)sender {
