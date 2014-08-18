@@ -142,6 +142,12 @@
 		599C2DD01988082200BFF05D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B29FB11B6548E085F073A0 /* ImageIO.framework */; };
 		59BA8DB51938EEFC005019A0 /* NoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */; };
 		59BA8DB919506FF0005019A0 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BA8DB819506FF0005019A0 /* EventKit.framework */; };
+		59BC4908199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */; };
+		59BC4909199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */; };
+		59BC490A199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */; };
+		59BC490C199CB5F200EA87AA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BC490B199CB5F100EA87AA /* CoreText.framework */; };
+		59BC490D199CB60800EA87AA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BC490B199CB5F100EA87AA /* CoreText.framework */; };
+		59BC490E199CB60D00EA87AA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BC490B199CB5F100EA87AA /* CoreText.framework */; };
 		59CAF109192DF98A0051E8CD /* NoAppImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 59CAF108192DF98A0051E8CD /* NoAppImage.png */; };
 		59E25D3119094E3F000F9DE4 /* CDVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E25D3019094E3F000F9DE4 /* CDVLoader.m */; };
 		59E53F4C1986C1760003BC6B /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
@@ -344,6 +350,9 @@
 		59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
 		59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
 		59BA8DB819506FF0005019A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		59BC4906199CB56D00EA87AA /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		59BC490B199CB5F100EA87AA /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		59CAF108192DF98A0051E8CD /* NoAppImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoAppImage.png; sourceTree = "<group>"; };
 		59E25D2F19094E3F000F9DE4 /* CDVLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVLoader.h; sourceTree = "<group>"; };
 		59E25D3019094E3F000F9DE4 /* CDVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLoader.m; sourceTree = "<group>"; };
@@ -423,6 +432,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59BC490E199CB60D00EA87AA /* CoreText.framework in Frameworks */,
 				599C2DCE1988080B00BFF05D /* ImageIO.framework in Frameworks */,
 				59BA8DB919506FF0005019A0 /* EventKit.framework in Frameworks */,
 				CFFC2FE41917F96600264950 /* Security.framework in Frameworks */,
@@ -446,6 +456,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59BC490D199CB60800EA87AA /* CoreText.framework in Frameworks */,
 				599C2DCF1988081200BFF05D /* ImageIO.framework in Frameworks */,
 				597A5249195C9A6400F15480 /* EventKit.framework in Frameworks */,
 				597A524A195C9A6400F15480 /* Security.framework in Frameworks */,
@@ -469,6 +480,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59BC490C199CB5F200EA87AA /* CoreText.framework in Frameworks */,
 				599C2DD01988082200BFF05D /* ImageIO.framework in Frameworks */,
 				59E53F8E1986C1760003BC6B /* EventKit.framework in Frameworks */,
 				59E53F8F1986C1760003BC6B /* Security.framework in Frameworks */,
@@ -516,6 +528,8 @@
 				59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */,
 				59F17EE31976C24B00E22193 /* SecurePasswordStore.h */,
 				59F17EE41976C24B00E22193 /* SecurePasswordStore.m */,
+				59BC4906199CB56D00EA87AA /* TTTAttributedLabel.h */,
+				59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */,
 			);
 			name = Classes;
 			path = OutSystems/Classes;
@@ -603,6 +617,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59BC490B199CB5F100EA87AA /* CoreText.framework */,
 				59BA8DB819506FF0005019A0 /* EventKit.framework */,
 				CFFC2FE31917F96600264950 /* Security.framework */,
 				CF9C2DFD18F5BB16000C5E68 /* CoreData.framework */,
@@ -1105,6 +1120,7 @@
 				65D76EC6AEF642E999FA96D4 /* zxing-all-in-one.cpp in Sources */,
 				59BA8DB51938EEFC005019A0 /* NoAnimationSegue.m in Sources */,
 				112806CB074B4EA8BB54F95A /* Calendar.m in Sources */,
+				59BC4908199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1115,6 +1131,7 @@
 				597A5228195C9A6400F15480 /* Application.m in Sources */,
 				597A5229195C9A6400F15480 /* ApplicationTileCell.m in Sources */,
 				597A522A195C9A6400F15480 /* ApplicationViewController.m in Sources */,
+				59BC4909199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */,
 				597A522B195C9A6400F15480 /* PXRImageSizeUtil.m in Sources */,
 				597A522C195C9A6400F15480 /* HubAppViewController.m in Sources */,
 				597A522D195C9A6400F15480 /* ApplicationTileListController.m in Sources */,
@@ -1180,6 +1197,7 @@
 				59E53F8A1986C1760003BC6B /* zxing-all-in-one.cpp in Sources */,
 				59E53F8B1986C1760003BC6B /* NoAnimationSegue.m in Sources */,
 				59E53F8C1986C1760003BC6B /* Calendar.m in Sources */,
+				59BC490A199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
