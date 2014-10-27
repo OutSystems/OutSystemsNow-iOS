@@ -37,6 +37,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *navSettings;
 
 @property BOOL viewFinishedLoad;
+@property (weak, nonatomic) IBOutlet UIView *loadingProgressView;
 
 @end
 
@@ -103,6 +104,14 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self.applicationBrowser setStartPage:_application.path];
     
     self.lastContentOffset = 0;
+    
+    self.loadingView.hidden = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    if(self.viewFinishedLoad == YES && self.loadingView.hidden==NO){
+        self.loadingView.hidden= YES;
+    }
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -137,6 +146,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     // Dispose of any resources that can be recreated.
 }
 
+-(void) loadingTimer{
+    self.loadingProgressView.hidden = NO;
+}
+
 
 // This is not working as CDVWebViewDelegate is receiving this events
 -(void)webViewDidStartLoad:(NSNotification *) notification {
@@ -146,10 +159,16 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         self.applicationBrowser.view.hidden = YES;
     }
     
-    [self transitionPrepareAnimation:self.selectedTransition == OSAnimateTransitionDefault ? OSAnimateTransitionFadeOut : self.selectedTransition];
-    
     self.viewFinishedLoad = NO;
+    
+    OSAnimateTransition animateTransition = self.selectedTransition == OSAnimateTransitionDefault ? OSAnimateTransitionFadeOut : self.selectedTransition;
+    [self transitionPrepareAnimation: animateTransition];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(loadingTimer) userInfo:nil repeats:NO];
+    
 }
+
+
 
 // This is not working as CDVWebViewDelegate is receiving this events
 -(void)webViewDidFinishLoad:(NSNotification *) notification {
@@ -172,10 +191,13 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self transitionToNewPage];
     
     self.viewFinishedLoad = YES;
+    
 }
 
 -(void)transitionPrepareAnimation:(OSAnimateTransition) animateTransition {
 	
+    self.loadingProgressView.hidden = YES;
+    
     if(self.firstLoad == NO) {
         // Capture the current page in an image and render it on the view
         // that will sit over the webview

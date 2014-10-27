@@ -25,10 +25,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Battery\"><param name=\"ios-package\" value=\"CDVBattery\" /></feature>",
                             "count": 1
                         },
@@ -50,6 +46,14 @@
                         },
                         {
                             "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -142,6 +146,16 @@
                         }
                     ]
                 }
+            },
+            "*-Info.plist": {
+                "parents": {
+                    "NSLocationWhenInUseUsageDescription": [
+                        {
+                            "xml": "<string />",
+                            "count": 1
+                        }
+                    ]
+                }
             }
         }
     },
@@ -156,9 +170,6 @@
             "PACKAGE_NAME": "com.outsystems.outsystems"
         },
         "org.apache.cordova.dialogs": {
-            "PACKAGE_NAME": "com.outsystems.outsystems"
-        },
-        "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "com.outsystems.outsystems"
         },
         "org.apache.cordova.battery-status": {
@@ -177,6 +188,9 @@
             "PACKAGE_NAME": "com.outsystems.osapp"
         },
         "org.apache.cordova.camera": {
+            "PACKAGE_NAME": "com.outsystems.osapp"
+        },
+        "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "com.outsystems.osapp"
         }
     },

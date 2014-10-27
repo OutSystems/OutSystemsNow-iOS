@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "TTTAttributedLabel.h"
+#import "DeepLinkController.h"
+#import "Infrastructure.h"
 
 @interface HubAppViewController : UIViewController <TTTAttributedLabelDelegate>
+
+@property (strong, nonatomic) DeepLinkController* deepLinkController;
+
+-(void)setUserCredentioals:(NSString*)user password: (NSString*)pass;
+-(void)resetCredentials;
+-(Infrastructure*)getInfrastructure;
+-(void)validateHostname;
 
 @end

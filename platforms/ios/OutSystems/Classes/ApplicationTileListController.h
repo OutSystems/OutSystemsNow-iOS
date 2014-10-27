@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Infrastructure.h"
+#import "DeepLinkController.h"
 
 @interface ApplicationTileListController : UIViewController
 
@@ -15,5 +16,7 @@
 @property (nonatomic, assign) BOOL isDemoEnvironment;
 @property (nonatomic, strong) NSCache *imageCache;
 @property (strong, nonatomic) NSMutableArray *applicationList;
+
+@property (strong, nonatomic) DeepLinkController* deepLinkController;
 
 @end

@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "Infrastructure.h"
+#import "DeepLinkController.h"
 
 @interface LoginScreenController : UIViewController
 
 @property (strong, nonatomic) Infrastructure* infrastructure;
+@property BOOL loginReadonly;
+@property BOOL infrastructureReadonly;
+
+@property (strong, nonatomic) DeepLinkController* deepLinkController;
+
+-(void)setUserCredentials:(NSString*)user password: (NSString*)pass;
 
 @end

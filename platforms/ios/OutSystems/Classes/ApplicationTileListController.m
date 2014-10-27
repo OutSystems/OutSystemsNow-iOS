@@ -11,9 +11,11 @@
 #import "Application.h"
 #import "ApplicationViewController.h"
 #import "DemoInfrastructure.h"
+#import "TTTAttributedLabel.h"
 
 @interface ApplicationTileListController ()
 
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *noApplicationsAvailable;
 @property (strong, nonatomic) NSMutableData *responseBuffer;
 @property (strong, nonatomic) NSURL *applicationListURL;
 @property (weak, nonatomic) IBOutlet UICollectionView *applicationsTileList;
@@ -60,11 +62,31 @@
     
     self.applicationListURL = [NSURL URLWithString:applicationListService];
     
-    NSURLRequest *myRequest = [NSURLRequest requestWithURL:self.applicationListURL
+    
+    // get the device dimensions
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    
+    NSString *deviceUDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
+    NSString *post = [NSString stringWithFormat:@"devicetype=%@&screenWidth=%d&screenHeight=%d&deviceHwId=%@",
+                      @"ios",
+                      (int)screenBounds.size.width,
+                      (int)screenBounds.size.height,
+                      deviceUDID]; // hardware unique idenfifier
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+    
+    NSMutableURLRequest *myRequest = [NSMutableURLRequest requestWithURL:self.applicationListURL
                                // cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                                cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
                                            timeoutInterval:timeoutInSeconds];
-  
+ 
+    [myRequest setHTTPMethod:@"POST"];
+    [myRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [myRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [myRequest setHTTPBody:postData];    
+    
     [NSURLConnection connectionWithRequest:myRequest delegate:self];
 }
 
@@ -107,14 +129,15 @@
         // clear previous applications
         [self.applicationList removeAllObjects];
         
-        self.applicationList = [[NSMutableArray alloc] initWithCapacity:response.count];
+        [self.applicationList addObjectsFromArray:response];
         
-        for (NSDictionary *app in response) {
-            //NSLog(@"Application received: %@", [app objectForKey:@"name"]);
-            [self.applicationList addObject:app];
+        if([self.applicationList count] == 0) {
+            self.noApplicationsAvailable.hidden = NO;
+            self.applicationsTileList.hidden = YES;
+        } else {
+            self.applicationsTileList.hidden = NO;
+            self.noApplicationsAvailable.hidden = YES;
         }
-        
-        self.applicationsTileList.hidden = NO;
     }
     
     [self.applicationsTileList reloadData];
@@ -131,16 +154,29 @@
 - (void) viewWillAppear:(BOOL)animated {
     self.navigationController.navigationBar.hidden = NO;
     self.navigationController.toolbar.hidden = YES;
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     if(self.isDemoEnvironment && self.applicationList.count == 0) {
         [self reloadApplicationList];
     } else {
-        self.applicationsTileList.hidden = NO;
+        if([self.applicationList count] == 0) {
+            self.noApplicationsAvailable.hidden = NO;
+            self.applicationsTileList.hidden = YES;
+        } else {
+            self.applicationsTileList.hidden = NO;
+            self.noApplicationsAvailable.hidden = YES;
+        }
     }
     
     self.imageCache = [[NSCache alloc] init];
+    
+    // check if deep link is valid
+    if(self.deepLinkController && [self.deepLinkController hasValidSettings]){
+        // proceed according to the deep link operation
+        [self.deepLinkController resolveOperation:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -301,11 +337,15 @@
         appViewController.isSingleApplication = NO;
         
         NSArray *myIndexPath = [self.applicationsTileList indexPathsForSelectedItems];
-
+            
         long row = [myIndexPath[0] row];
-        
+            
         appViewController.application = [Application initWithJSON:[self.applicationList objectAtIndex:row] forHost:applicationHostname];
     }
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{    
+    [self performSegueWithIdentifier:@"OpenApplicationSegue" sender:self];
 }
 
 @end

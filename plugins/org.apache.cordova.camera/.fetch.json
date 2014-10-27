@@ -1,1 +1,1 @@
-{"source":{"type":"local","path":"/Users/engineering/.plugman/cache/org.apache.cordova.camera/0.2.8/package"}}
+{"source":{"type":"git","url":"https://github.com/apache/cordova-plugin-camera.git","subdir":"."}}

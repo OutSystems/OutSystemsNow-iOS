@@ -35,9 +35,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-    }
     return self;
 }
 
@@ -68,20 +65,39 @@
     self.loginButton.layer.cornerRadius = 5;
     
     self.trustedHosts = [[NSArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
-
+    
+    // login is readonly when the credentials are set on the application settings (bundle)
+    if(self.loginReadonly) {
+        self.usernameInput.enabled = NO;
+        self.passwordInput.enabled = NO;
+        
+        self.usernameInput.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
+        self.passwordInput.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBar.hidden = NO;
+    // infrastructure is readonly when the credentials are set on the application settings (bundle)
+    if(self.infrastructureReadonly) {
+        self.navigationController.navigationBar.hidden = YES;
+    } else {
+        self.navigationController.navigationBar.hidden = NO;
+    }
+    
+    
+    // check if deep link is valid
+    if(self.deepLinkController && [self.deepLinkController hasValidSettings]){
+        // proceed according to the deep link operation
+        [self.deepLinkController resolveOperation:self];
+    }
+    
+    
     self.navigationController.toolbar.hidden = YES;
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     if([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0 && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
-        
-        // set the url to register the device push notifications token (in case it is received later)
-        [OutSystemsAppDelegate setAutoLoginPerformed:[NSString stringWithFormat:@"%@?device=", [_infrastructure getHostnameForService:@"registertoken"]]];
         
         [self.loginButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
@@ -117,6 +133,9 @@
     _infrastructure.username = _usernameInput.text;
     _infrastructure.password = _passwordInput.text;
     
+    // get the device dimensions
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    
     NSError *error = nil;
     // Save the object to persistent store
     
@@ -130,13 +149,18 @@
 
     _loginResponseData = nil;
     
-    NSString *post = [NSString stringWithFormat:@"username=%@&password=%@&device=%@",
+    NSString *deviceUDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
+    NSString *post = [NSString stringWithFormat:@"username=%@&password=%@&devicetype=%@&screenWidth=%d&screenHeight=%d&deviceHwId=%@",
                       [_usernameInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
                       [_passwordInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                      [OutSystemsAppDelegate GetDeviceId]];
+                      @"ios",
+                      (int)screenBounds.size.width,
+                      (int)screenBounds.size.height,
+                      deviceUDID]; // hardware unique idenfifier
     
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     
     NSMutableURLRequest *myRequest = [NSMutableURLRequest requestWithURL:myURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:timeoutInSeconds];
     
@@ -149,8 +173,15 @@
     
     [NSURLConnection connectionWithRequest:myRequest delegate:self];
     
+    NSString *UDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
+    [OutSystemsAppDelegate setAutoLoginPerformed]; // setting the flag to true, even if it's a normal login so the app won't try to auto login the user again (in this app session)
+    
     // set the url to register the device push notifications token (in case it is received later)
-    [OutSystemsAppDelegate setAutoLoginPerformed:[NSString stringWithFormat:@"%@?device=", [_infrastructure getHostnameForService:@"registertoken"]]];
+    [OutSystemsAppDelegate setURLForPushNotificationTokenRegistration:[NSString stringWithFormat:@"%@?&deviceHwId=%@&device=",
+                                                  [_infrastructure getHostnameForService:@"registertoken"],
+                                                  UDID]];
+
 }
 
 
@@ -206,27 +237,40 @@
     NSError *e = nil;
     NSDictionary *response = nil;
     BOOL success = NO;
+    NSString *moduleVersion;
     
     if(self.loginResponseData != nil) {
         response = [NSJSONSerialization JSONObjectWithData:_loginResponseData options:NSJSONReadingMutableContainers error:&e];
-        
+        NSLog(@"obj: %@ ; error: %@", response,e);
         if([[response objectForKey:@"success"] isKindOfClass:[NSNumber class]]) {
             success = [[response objectForKey:@"success"] boolValue];
         }
     }
     
+    // check OutSystemsNowService compatibility
+    if([[response objectForKey:@"version"] isKindOfClass:[NSString class]]) {
+        moduleVersion = [response objectForKey:@"version"];
+    }
+    
+    if(moduleVersion == nil || [moduleVersion rangeOfString:OutSystemsNowRequiredVersion].location != 0) {
+        success = NO;
+        [response setValue:@"Incompatible module version in your installation, please contact your system administrator to update the OutSystems Now modules" forKey:@"errorMessage"];
+    }
+    
     if(success) {
-        // get list of applications
-        self.applicationList = [response valueForKey:@"applications"];
-        
         [_loginActivityIndicator stopAnimating];
         [_loginButton setHidden:NO];
         [_errorMessageLabel setHidden:YES];
-       
+            
+        [OutSystemsAppDelegate registerPushToken]; // send the push token to the server
+        
+        // get list of applications
+        self.applicationList = [response valueForKey:@"applications"];
+        
         //check if the view is still active - user could have pressed back
         if(self.view.window != nil) {
             // check if only one app
-            if([self.applicationList count] == 1) {
+            if([self.applicationList count] == 1){
                 [self performSegueWithIdentifier:@"GoToSingleApplicationSegue" sender:self];
             }
             else {
@@ -263,16 +307,13 @@
         ApplicationTileListController *viewController = [segue destinationViewController];
         viewController.infrastructure = self.infrastructure;
         viewController.isDemoEnvironment = NO;
+        viewController.deepLinkController = self.deepLinkController;
         
         // clear previous applications
         [viewController.applicationList removeAllObjects];
-        viewController.applicationList = [[NSMutableArray alloc] initWithCapacity:self.applicationList.count];
-        
+       
         // create new list of applications
-        for (NSDictionary *app in self.applicationList) {
-            //NSLog(@"Application received: %@", [app objectForKey:@"name"]);
-            [viewController.applicationList addObject:app];
-        }
+        [viewController.applicationList addObjectsFromArray:self.applicationList];
         
     } else {
         // GoToSingleApplicationSegue
@@ -281,9 +322,22 @@
         
         appViewController.isSingleApplication = YES;
         
-        appViewController.application = [Application initWithJSON: self.applicationList[0] forHost:self.infrastructure.hostname];
-
+        if ([self.deepLinkController hasValidSettings] && [self.deepLinkController hasApplication]) {
+            appViewController.application = self.deepLinkController.destinationApp;
+            
+            [self.deepLinkController.deepLinkSettings invalidate];
+            
+        }else{
+            appViewController.application = [Application initWithJSON: self.applicationList[0] forHost:self.infrastructure.hostname];
+        }
     }
+}
+
+-(void)setUserCredentials:(NSString*)user password: (NSString*)pass{
+    self.infrastructure.username = user;
+    self.infrastructure.password = pass;
+    self.usernameInput.text = user;
+    self.passwordInput.text = pass;
 }
 
 @end

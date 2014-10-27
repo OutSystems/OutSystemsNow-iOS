@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--SelectEnvironment Controller-->
         <scene sceneID="hOc-pf-Ga7">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="SE1-l9-FYw" userLabel="SelectEnvironment Controller" customClass="HubAppViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HubScreen" automaticallyAdjustsScrollViewInsets="NO" id="SE1-l9-FYw" userLabel="SelectEnvironment Controller" customClass="HubAppViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ckH-Wc-YO6"/>
                         <viewControllerLayoutGuide type="bottom" id="kuV-h1-kyC"/>
@@ -100,7 +100,7 @@
                                 <rect key="frame" x="113" y="531" width="540" height="85"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pb2-Lg-6EZ">
-                                        <rect key="frame" x="263" y="21" width="230" height="44"/>
+                                        <rect key="frame" x="262" y="21" width="230" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="230" id="Cq4-Na-Mvv"/>
@@ -116,7 +116,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to see it in action?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z60-Vi-vKF">
-                                        <rect key="frame" x="28" y="30" width="222" height="26"/>
+                                        <rect key="frame" x="28" y="30" width="221" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -356,6 +356,7 @@
                         <outlet property="passwordInput" destination="s85-kN-bd1" id="XHx-h4-B2p"/>
                         <outlet property="usernameInput" destination="b51-62-2i5" id="ioQ-Zk-vNC"/>
                         <segue destination="VcQ-Do-IM9" kind="push" identifier="GoToAppListSegue" id="IGa-Ec-gYf"/>
+                        <segue destination="H6M-OB-jxb" kind="push" identifier="GoToSingleApplicationSegue" id="826-bw-TDv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9at-ij-hwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -365,7 +366,7 @@
         <!--Application Tile List Controller-->
         <scene sceneID="fJC-8V-EZD">
             <objects>
-                <viewController id="VcQ-Do-IM9" customClass="ApplicationTileListController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplicationTileList" id="VcQ-Do-IM9" customClass="ApplicationTileListController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uzM-aK-o8s"/>
                         <viewControllerLayoutGuide type="bottom" id="b1F-m0-iG6"/>
@@ -391,7 +392,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="346" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_152.png" translatesAutoresizingMaskIntoConstraints="NO" id="KIq-qc-5cm">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoAppImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="KIq-qc-5cm">
                                                     <rect key="frame" x="20" y="21" width="80" height="80"/>
                                                     <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -433,7 +434,6 @@
                                             <outlet property="applicationDescription" destination="6YV-4l-W8T" id="9bR-cO-VAq"/>
                                             <outlet property="applicationImage" destination="KIq-qc-5cm" id="XjE-K9-7Li"/>
                                             <outlet property="applicationName" destination="P2g-uU-FEr" id="Njj-hI-afd"/>
-                                            <segue destination="H6M-OB-jxb" kind="push" identifier="OpenApplicationSegue" id="7Vc-Ad-VIQ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -446,6 +446,12 @@
                                 <rect key="frame" x="366" y="494" width="37" height="37"/>
                                 <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No applications found, please verify your application permissions or contact your system administrator." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="639" translatesAutoresizingMaskIntoConstraints="NO" id="hb0-4U-AvT" customClass="TTTAttributedLabel">
+                                <rect key="frame" x="61" y="483" width="639" height="58"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -455,17 +461,21 @@
                             <constraint firstAttribute="centerX" secondItem="hzi-Zi-hrc" secondAttribute="centerX" id="W0W-D2-B2m"/>
                             <constraint firstItem="miW-nC-vcv" firstAttribute="top" secondItem="dQ6-UJ-2pY" secondAttribute="top" constant="20" id="WfA-lZ-FZD"/>
                             <constraint firstAttribute="centerY" secondItem="hzi-Zi-hrc" secondAttribute="centerY" id="ZFT-0B-ZH4"/>
+                            <constraint firstAttribute="centerX" secondItem="hzi-Zi-hrc" secondAttribute="centerX" id="hTP-B3-NlX"/>
+                            <constraint firstAttribute="centerY" secondItem="hzi-Zi-hrc" secondAttribute="centerY" id="o7p-c1-SC0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RQe-bJ-UR4"/>
                     <connections>
                         <outlet property="applicationsTileList" destination="miW-nC-vcv" id="zqj-OG-3JU"/>
                         <outlet property="loadingIndicator" destination="hzi-Zi-hrc" id="n7c-F3-NzT"/>
+                        <outlet property="noApplicationsAvailable" destination="hb0-4U-AvT" id="7RT-wP-hWr"/>
+                        <segue destination="H6M-OB-jxb" kind="push" identifier="OpenApplicationSegue" id="oGr-Dq-WlH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVQ-xp-2Kf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2713" y="-554"/>
+            <point key="canvasLocation" x="2681" y="-554"/>
         </scene>
         <!--Application View Controller-->
         <scene sceneID="hLx-nT-zPK">
@@ -476,7 +486,7 @@
                         <viewControllerLayoutGuide type="bottom" id="AVt-r2-tJW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZLX-7u-1G8">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                        <rect key="frame" x="0.0" y="44" width="768" height="980"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ">
@@ -567,6 +577,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationListButton" destination="tN4-Sy-Oof" id="S7g-dL-mUS"/>
+                        <outlet property="loadingProgressView" destination="BsK-MR-qhr" id="zY1-kQ-WnZ"/>
                         <outlet property="loadingView" destination="dUP-l7-ati" id="9z8-Gm-CD6"/>
                         <outlet property="navAppList" destination="tN4-Sy-Oof" id="JTM-G7-s34"/>
                         <outlet property="navBack" destination="JdK-ad-F0w" id="rbo-wH-khw"/>
@@ -577,7 +588,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srv-0h-Oyh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3653" y="-554"/>
+            <point key="canvasLocation" x="862" y="618"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FBi-mu-mMy">
@@ -600,7 +611,7 @@
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </toolbar>
                     <connections>
-                        <segue destination="SE1-l9-FYw" kind="relationship" relationship="rootViewController" id="bhe-Zu-caf"/>
+                        <segue destination="SE1-l9-FYw" kind="relationship" relationship="rootViewController" id="jie-St-QKm"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqb-2d-GUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -609,7 +620,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon_152.png" width="152" height="152"/>
+        <image name="NoAppImage.png" width="64" height="64"/>
         <image name="icon-apps.png" width="22" height="22"/>
         <image name="icon-chevron-back.png" width="22" height="22"/>
         <image name="icon-chevron-forth.png" width="22" height="22"/>
@@ -622,6 +633,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TJB-Dg-c3t"/>
+        <segue reference="IGa-Ec-gYf"/>
+        <segue reference="oGr-Dq-WlH"/>
     </inferredMetricsTieBreakers>
 </document>

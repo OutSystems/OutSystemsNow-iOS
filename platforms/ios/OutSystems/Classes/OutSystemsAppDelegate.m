@@ -8,6 +8,7 @@
 
 #import "OutSystemsAppDelegate.h"
 
+#import "HubAppViewController.h"
 
 @implementation OutSystemsAppDelegate
 
@@ -18,16 +19,36 @@
 static BOOL performedAutoLogin = NO;
 static NSData *deviceId;
 static NSString *urlRegisterForNotifications;
-
+static DeepLink *deepLinkSettings;
 
 + (BOOL) hasAutoLoginPerformed {
     return performedAutoLogin;
 }
 
-+ (void) setAutoLoginPerformed:(NSString *)registerDeviceTokenUrl {
-    urlRegisterForNotifications = registerDeviceTokenUrl;
++ (void) setAutoLoginPerformed {
     performedAutoLogin = YES;
 }
+
++ (void) unsetAutoLoginPerformed{
+    performedAutoLogin = NO;
+}
+
++ (void) setURLForPushNotificationTokenRegistration:(NSString *)registerDeviceTokenUrl {
+    urlRegisterForNotifications = registerDeviceTokenUrl; // save the url for setting the application token async.
+}
+
++(void) registerPushToken {
+    
+    if([deviceId length] > 0 && [urlRegisterForNotifications length] > 0) {
+        NSString *url = [urlRegisterForNotifications stringByAppendingString:[OutSystemsAppDelegate GetDeviceId]];
+        NSURL *myURL = [NSURL URLWithString:url];
+        
+        NSURLRequest *myRequest = [NSURLRequest requestWithURL:myURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30];
+        
+        [NSURLConnection connectionWithRequest:myRequest delegate:self];
+    }
+}
+
 
 - (void) application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     @try {
@@ -46,7 +67,20 @@ static NSString *urlRegisterForNotifications;
     [application setStatusBarHidden:NO];
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    //-- Set Notification
+    if ([[UIApplication sharedApplication]respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
+    {
+        // iOS 8 Notifications
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        // iOS < 8 Notifications
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
     
     // Override point for customization after application launch.
     return YES;
@@ -67,6 +101,14 @@ static NSString *urlRegisterForNotifications;
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    // Bring login screen back to view and perform auto login agains
+    //UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
+    
+    //if([navigationController.viewControllers count] > 2) { // pop back to the login screen
+    //    performedAutoLogin = NO; // force the auto login
+    //    [navigationController popToViewController:[navigationController.viewControllers objectAtIndex:1] animated:YES];
+    //}
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -82,14 +124,10 @@ static NSString *urlRegisterForNotifications;
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     deviceId = deviceToken;
-    NSLog(@"My token is: %@", deviceToken);
-        
-    NSString *url = [urlRegisterForNotifications stringByAppendingString:[OutSystemsAppDelegate GetDeviceId]];
-    NSURL *myURL = [NSURL URLWithString:url];
-        
-    NSURLRequest *myRequest = [NSURLRequest requestWithURL:myURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30];
     
-    [NSURLConnection connectionWithRequest:myRequest delegate:self];
+    NSLog(@"My token is: %@", deviceToken);
+    
+    [OutSystemsAppDelegate registerPushToken]; // send the push token to the OutSystems server, if set
 }
 
 +(NSString *)GetDeviceId {
@@ -119,6 +157,33 @@ static NSString *urlRegisterForNotifications;
             abort();
         }
     }
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    performedAutoLogin = NO;
+    
+    // Get the settings from the URL
+    if(!self.deepLinkController){
+        self.deepLinkController = [[DeepLinkController alloc] init];
+    }
+
+    [self.deepLinkController createSettingsFromURL:url];
+    
+    // Get navigation controller
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    UIStoryboard *storyboard = navigationController.storyboard;
+    
+    // Passing the Deep Link settings
+    HubAppViewController *hubAppViewControler = [storyboard instantiateViewControllerWithIdentifier:@"HubScreen"];
+    hubAppViewControler.deepLinkController = self.deepLinkController;
+    
+    // Get back to the first VC
+
+    [navigationController pushViewController:hubAppViewControler animated:NO];
+    
+    return YES;
 }
 
 #pragma mark - Core Data stack

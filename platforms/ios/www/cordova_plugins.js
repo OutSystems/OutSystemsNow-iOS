@@ -78,6 +78,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.contacts/www/ContactFieldType.js",
+        "id": "org.apache.cordova.contacts.ContactFieldType",
+        "merges": [
+            ""
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.contacts/www/ios/contacts.js",
         "id": "org.apache.cordova.contacts.contacts-ios",
         "merges": [
@@ -96,34 +103,6 @@ module.exports = [
         "id": "org.apache.cordova.dialogs.notification",
         "merges": [
             "navigator.notification"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.geolocation/www/Coordinates.js",
-        "id": "org.apache.cordova.geolocation.Coordinates",
-        "clobbers": [
-            "Coordinates"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.geolocation/www/PositionError.js",
-        "id": "org.apache.cordova.geolocation.PositionError",
-        "clobbers": [
-            "PositionError"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.geolocation/www/Position.js",
-        "id": "org.apache.cordova.geolocation.Position",
-        "clobbers": [
-            "Position"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.geolocation/www/geolocation.js",
-        "id": "org.apache.cordova.geolocation.geolocation",
-        "clobbers": [
-            "navigator.geolocation"
         ]
     },
     {
@@ -307,6 +286,34 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.geolocation/www/Coordinates.js",
+        "id": "org.apache.cordova.geolocation.Coordinates",
+        "clobbers": [
+            "Coordinates"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.geolocation/www/PositionError.js",
+        "id": "org.apache.cordova.geolocation.PositionError",
+        "clobbers": [
+            "PositionError"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.geolocation/www/Position.js",
+        "id": "org.apache.cordova.geolocation.Position",
+        "clobbers": [
+            "Position"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.geolocation/www/geolocation.js",
+        "id": "org.apache.cordova.geolocation.geolocation",
+        "clobbers": [
+            "navigator.geolocation"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -314,15 +321,15 @@ module.exports.metadata =
 {
     "org.apache.cordova.device": "0.2.8",
     "org.apache.cordova.console": "0.2.7",
-    "org.apache.cordova.contacts": "0.2.9",
+    "org.apache.cordova.contacts": "0.2.13",
     "org.apache.cordova.dialogs": "0.2.6",
-    "org.apache.cordova.geolocation": "0.3.6",
     "org.apache.cordova.battery-status": "0.2.7",
-    "com.phonegap.plugins.barcodescanner": "1.0.1",
+    "com.phonegap.plugins.barcodescanner": "2.0.0",
     "com.outsystems.loader": "1.0.0",
     "nl.x-services.plugins.calendar": "4.2.5",
     "org.apache.cordova.file": "1.1.0",
-    "org.apache.cordova.camera": "0.2.8"
+    "org.apache.cordova.camera": "0.3.4-dev",
+    "org.apache.cordova.geolocation": "0.3.10"
 }
 // BOTTOM OF METADATA
 });
