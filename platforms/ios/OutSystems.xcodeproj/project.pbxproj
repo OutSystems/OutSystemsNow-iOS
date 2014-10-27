@@ -345,7 +345,7 @@
 		590EA4BA18F8283200EB317D /* splash_640x1136_iphone5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_640x1136_iphone5.png; sourceTree = "<group>"; };
 		590EA4CD18FC32DC00EB317D /* DemoInfrastructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoInfrastructure.h; path = OutSystems/Classes/DemoInfrastructure.h; sourceTree = "<group>"; };
 		590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoInfrastructure.m; path = OutSystems/Classes/DemoInfrastructure.m; sourceTree = "<group>"; };
-		590FA156198007BF00312C51 /* OutSystems copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems copy2-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/platforms/ios/OutSystems copy2-Info.plist"; sourceTree = "<absolute>"; };
+		590FA156198007BF00312C51 /* OutSystems copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OutSystems copy2-Info.plist"; sourceTree = SOURCE_ROOT; };
 		592FA94B190014D900458A51 /* icon-apps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-apps@2x.png"; sourceTree = "<group>"; };
 		592FA94D190014D900458A51 /* icon-chevron-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-chevron-back@2x.png"; sourceTree = "<group>"; };
 		592FA951190014D900458A51 /* icon-chevron-forth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-chevron-forth@2x.png"; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 		597902E619ED53C800440628 /* DeepLinkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLinkController.h; sourceTree = "<group>"; };
 		597902E719ED54B400440628 /* DeepLinkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepLinkController.m; sourceTree = "<group>"; };
 		597A525F195C9A6400F15480 /* OutSystems Push Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutSystems Push Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		597A5260195C9A6500F15480 /* OutSystems copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems copy-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/platforms/ios/OutSystems copy-Info.plist"; sourceTree = "<absolute>"; };
+		597A5260195C9A6500F15480 /* OutSystems copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OutSystems copy-Info.plist"; sourceTree = SOURCE_ROOT; };
 		59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
 		59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
 		59BA8DB819506FF0005019A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -382,11 +382,11 @@
 		59E25D3019094E3F000F9DE4 /* CDVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLoader.m; sourceTree = "<group>"; };
 		59E34EDB1923E119003458AF /* OutAppData (isJavaServer).xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData (isJavaServer).xcdatamodel"; sourceTree = "<group>"; };
 		59E53FA41986C1760003BC6B /* OutSystems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutSystems.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		59E53FA51986C1780003BC6B /* OutSystems copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems copy3-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/platforms/ios/OutSystems copy3-Info.plist"; sourceTree = "<absolute>"; };
+		59E53FA51986C1780003BC6B /* OutSystems copy3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OutSystems copy3-Info.plist"; sourceTree = SOURCE_ROOT; };
 		59F17EE31976C24B00E22193 /* SecurePasswordStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurePasswordStore.h; sourceTree = "<group>"; };
 		59F17EE41976C24B00E22193 /* SecurePasswordStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurePasswordStore.m; sourceTree = "<group>"; };
 		59F17EE61976C75000E22193 /* OutAppData - secure passwords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData - secure passwords.xcdatamodel"; sourceTree = "<group>"; };
-		59F2582E19E444120040A685 /* OutSystems Enterprise copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems Enterprise copy-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/platforms/ios/OutSystems Enterprise copy-Info.plist"; sourceTree = "<absolute>"; };
+		59F2582E19E444120040A685 /* OutSystems Enterprise copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OutSystems Enterprise copy-Info.plist"; sourceTree = SOURCE_ROOT; };
 		59F2583119E6F7460040A685 /* MigrateSecurePass.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = MigrateSecurePass.xcmappingmodel; sourceTree = "<group>"; };
 		5AEE5B34173C68D80009041E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
