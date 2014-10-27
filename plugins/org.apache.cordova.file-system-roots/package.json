@@ -1,0 +1,11 @@
+{
+    "version": "0.2.0-dev",
+    "name": "org.apache.cordova.file-system-roots",
+    "cordova_name": "File Extras",
+    "engines": [
+        {
+            "name": "cordova",
+            "version": ">=3.0.0"
+        }
+    ]
+}
