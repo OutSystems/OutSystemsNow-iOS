@@ -137,6 +137,9 @@
 		597A5258195C9A6400F15480 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA70336A54B47999194F902 /* libiconv.dylib */; };
 		597A5259195C9A6400F15480 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4F4906E8FA483AB2FCD8D3 /* AVFoundation.framework */; };
 		597A525A195C9A6400F15480 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9211FE76DF784E3B89283E55 /* CoreVideo.framework */; };
+		59981B1819FEB656004C8935 /* ect_ballon.png in Resources */ = {isa = PBXBuildFile; fileRef = 59981B1719FEB656004C8935 /* ect_ballon.png */; };
+		59981B1919FEB656004C8935 /* ect_ballon.png in Resources */ = {isa = PBXBuildFile; fileRef = 59981B1719FEB656004C8935 /* ect_ballon.png */; };
+		59981B1A19FEB656004C8935 /* ect_ballon.png in Resources */ = {isa = PBXBuildFile; fileRef = 59981B1719FEB656004C8935 /* ect_ballon.png */; };
 		599C2DC01988067600BFF05D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DAEC16FF9B48E285E821C8 /* CDVFile.m */; };
 		599C2DC11988067700BFF05D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DAEC16FF9B48E285E821C8 /* CDVFile.m */; };
 		599C2DC21988067700BFF05D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DAEC16FF9B48E285E821C8 /* CDVFile.m */; };
@@ -371,6 +374,7 @@
 		597902E719ED54B400440628 /* DeepLinkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepLinkController.m; sourceTree = "<group>"; };
 		597A525F195C9A6400F15480 /* OutSystems Push Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutSystems Push Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597A5260195C9A6500F15480 /* OutSystems copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems copy-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/branches/ECT/platforms/ios/OutSystems copy-Info.plist"; sourceTree = "<absolute>"; };
+		59981B1719FEB656004C8935 /* ect_ballon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ect_ballon.png; sourceTree = "<group>"; };
 		59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
 		59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
 		59BA8DB819506FF0005019A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -782,6 +786,7 @@
 		CF9C2E0318F5C577000C5E68 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				59981B1719FEB656004C8935 /* ect_ballon.png */,
 				59CAF108192DF98A0051E8CD /* NoAppImage.png */,
 				595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */,
 				595646D5190FBE4C00C1D583 /* splash_768x1024.png */,
@@ -983,6 +988,7 @@
 				592FA96519001EBF00458A51 /* icon-chevron-back.png in Resources */,
 				592FA957190014D900458A51 /* icon-chevron-back@2x.png in Resources */,
 				30A0434814DC770100060A13 /* Localizable.strings in Resources */,
+				59981B1819FEB656004C8935 /* ect_ballon.png in Resources */,
 				592FA95E190014D900458A51 /* icon-settings_2x.png in Resources */,
 				CF9C2E4B18F69882000C5E68 /* icon-white-help.png in Resources */,
 				590EA4C618F8283200EB317D /* splash_640x1136_iphone5.png in Resources */,
@@ -1025,6 +1031,7 @@
 				597A5200195C9A6400F15480 /* icon-chevron-back.png in Resources */,
 				597A5202195C9A6400F15480 /* icon-chevron-back@2x.png in Resources */,
 				597A5206195C9A6400F15480 /* Localizable.strings in Resources */,
+				59981B1919FEB656004C8935 /* ect_ballon.png in Resources */,
 				597A5209195C9A6400F15480 /* icon-settings_2x.png in Resources */,
 				597A520F195C9A6400F15480 /* icon-white-help.png in Resources */,
 				597A5211195C9A6400F15480 /* splash_640x1136_iphone5.png in Resources */,
@@ -1067,6 +1074,7 @@
 				59E53F601986C1760003BC6B /* icon-chevron-back.png in Resources */,
 				59E53F611986C1760003BC6B /* icon-chevron-back@2x.png in Resources */,
 				59E53F631986C1760003BC6B /* Localizable.strings in Resources */,
+				59981B1A19FEB656004C8935 /* ect_ballon.png in Resources */,
 				59E53F641986C1760003BC6B /* icon-settings_2x.png in Resources */,
 				59E53F651986C1760003BC6B /* icon-white-help.png in Resources */,
 				59E53F661986C1760003BC6B /* splash_640x1136_iphone5.png in Resources */,

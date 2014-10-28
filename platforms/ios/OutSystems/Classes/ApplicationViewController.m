@@ -39,6 +39,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
 @property BOOL viewFinishedLoad;
 @property (weak, nonatomic) IBOutlet UIView *loadingProgressView;
+@property (weak, nonatomic) IBOutlet UIView *mobileECTView;
+@property (weak, nonatomic) IBOutlet UIView *ectHelperView;
+@property (weak, nonatomic) IBOutlet UIView *ectToolbarView;
+@property (weak, nonatomic) IBOutlet UIImageView *ectHelperImage;
+@property (weak, nonatomic) IBOutlet UITextView *ectTextView;
 
 @end
 
@@ -94,6 +99,29 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // remove bounce effect
     self.applicationBrowser.webView.scrollView.bounces = NO;
+    
+    
+    // Mobile ECT
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShown:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+  
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ectHelperTaped:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    [self.ectHelperImage addGestureRecognizer:singleTap];
+    [self.ectHelperImage setUserInteractionEnabled:YES];
+    
+    self.ectTextView.delegate = self;
+
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -107,6 +135,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.lastContentOffset = 0;
     
     self.loadingView.hidden = YES;
+    
+    self.mobileECTView.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -271,5 +301,87 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 	self.selectedTransition = OSAnimateTransitionDefault;
 	
 }
+- (IBAction)openECT:(id)sender {
+    [self.navigationController setToolbarHidden:YES animated:NO];
+    self.mobileECTView.hidden = NO;
+    
+    if (self.ectHelperView.hidden == YES)
+        self.ectHelperView.hidden = NO;
+}
+
+- (IBAction)hideECTHelper:(id)sender {
+    self.ectHelperView.hidden = YES;
+}
+
+- (IBAction)closeECT:(id)sender {
+    [self closeECTView];
+}
+- (IBAction)sendECT:(id)sender {
+    [self closeECTView];
+}
+
+-(void)closeECTView{
+    [self.view endEditing:YES];
+    [self.navigationController setToolbarHidden:NO animated:NO];
+    self.mobileECTView.hidden = YES;
+}
+
+
+- (void)moveTextViewForKeyboard:(NSNotification*)aNotification up:(BOOL)up {
+    NSDictionary* userInfo = [aNotification userInfo];
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    CGRect keyboardEndFrame;
+    
+    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
+    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
+    [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:animationCurve];
+    
+    CGRect newFrame = self.ectToolbarView.frame;
+    CGRect keyboardFrame = [self.view convertRect:keyboardEndFrame toView:nil];
+    
+    newFrame.origin.y -= keyboardFrame.size.height * (up?1:-1);;
+    self.ectToolbarView.frame = newFrame;
+    
+
+    
+    [UIView commitAnimations];
+}
+
+- (void)keyboardWillShown:(NSNotification*)aNotification
+{
+    [self moveTextViewForKeyboard:aNotification up:YES];
+}
+
+- (void)keyboardWillHide:(NSNotification*)aNotification
+{
+ 
+    [self moveTextViewForKeyboard:aNotification up:NO];
+}
+
+
+- (void)ectHelperTaped:(UIGestureRecognizer *)gestureRecognizer {
+    self.ectHelperView.hidden = YES;
+}
+
+- (void)textViewDidChange:(UITextView *)textView{
+    NSLog(@"ContentSize: %f FrameSize: %f",textView.contentSize.height,textView.frame.size.height);
+    
+    CGRect frame = textView.frame;
+    
+    frame.size.height = textView.contentSize.height;
+    textView.frame = frame;
+    
+    if([textView.attributedText length] == 0){
+        frame.size.height = 33;
+        textView.frame = frame;
+    }
+        
+}
+
 
 @end
