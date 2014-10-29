@@ -629,13 +629,8 @@
                                                     <action selector="closeECT:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="0xl-dL-sSu"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DIF-Bh-P0Q">
-                                                <rect key="frame" x="55" y="8" width="210" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7h-U6-6Ri">
-                                                <rect key="frame" x="273" y="6" width="40" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7h-U6-6Ri">
+                                                <rect key="frame" x="274" y="6" width="40" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="40" id="nny-qx-l0P"/>
                                                 </constraints>
@@ -646,17 +641,26 @@
                                                     <action selector="sendECT:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="5ES-Ja-fAm"/>
                                                 </connections>
                                             </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwf-yC-iFa">
+                                                <rect key="frame" x="55" y="8" width="210" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="DIF-Bh-P0Q" firstAttribute="top" secondItem="GML-8C-3hd" secondAttribute="top" constant="8" id="0T1-Az-gvx"/>
-                                            <constraint firstAttribute="trailing" secondItem="DIF-Bh-P0Q" secondAttribute="trailing" constant="55" id="JMx-sn-LMa"/>
+                                            <constraint firstAttribute="bottom" secondItem="iwf-yC-iFa" secondAttribute="bottom" constant="6" id="1aQ-XR-l3l"/>
                                             <constraint firstAttribute="trailing" secondItem="v7h-U6-6Ri" secondAttribute="trailing" constant="6" id="Jvl-ni-Ncx"/>
-                                            <constraint firstItem="DIF-Bh-P0Q" firstAttribute="leading" secondItem="GML-8C-3hd" secondAttribute="leading" constant="55" id="ZmT-RZ-uE9"/>
+                                            <constraint firstItem="iwf-yC-iFa" firstAttribute="top" secondItem="GML-8C-3hd" secondAttribute="top" constant="8" id="L0J-GY-ecY"/>
                                             <constraint firstItem="UVW-fp-Ged" firstAttribute="leading" secondItem="GML-8C-3hd" secondAttribute="leading" id="aKD-2V-hiB"/>
                                             <constraint firstAttribute="bottom" secondItem="UVW-fp-Ged" secondAttribute="bottom" constant="8" id="nDs-oX-AdX"/>
-                                            <constraint firstAttribute="centerX" secondItem="DIF-Bh-P0Q" secondAttribute="centerX" id="v5L-gf-DRB"/>
+                                            <constraint firstItem="iwf-yC-iFa" firstAttribute="leading" secondItem="GML-8C-3hd" secondAttribute="leading" constant="55" id="qWO-k2-JFg"/>
+                                            <constraint firstAttribute="trailing" secondItem="iwf-yC-iFa" secondAttribute="trailing" constant="55" id="qrp-O4-Icr"/>
+                                            <constraint firstAttribute="height" constant="44" id="rtZ-Bj-XkO"/>
+                                            <constraint firstAttribute="centerX" secondItem="iwf-yC-iFa" secondAttribute="centerX" id="urX-YE-nS0"/>
                                             <constraint firstAttribute="bottom" secondItem="v7h-U6-6Ri" secondAttribute="bottom" constant="8" id="z5m-3q-ltI"/>
                                         </constraints>
                                     </view>
@@ -664,13 +668,12 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="GML-8C-3hd" secondAttribute="bottom" id="3iz-N1-rk9"/>
-                                    <constraint firstItem="GML-8C-3hd" firstAttribute="width" secondItem="Pf0-tu-dJN" secondAttribute="width" id="DHH-wX-AaN"/>
+                                    <constraint firstItem="GML-8C-3hd" firstAttribute="width" secondItem="Pf0-tu-dJN" secondAttribute="width" id="CtV-E8-Sf2"/>
+                                    <constraint firstItem="GML-8C-3hd" firstAttribute="leading" secondItem="Pf0-tu-dJN" secondAttribute="leading" id="NHb-M1-w2T"/>
                                     <constraint firstItem="oSb-ae-9fu" firstAttribute="top" secondItem="Pf0-tu-dJN" secondAttribute="top" id="PGP-hr-kf1"/>
-                                    <constraint firstItem="GML-8C-3hd" firstAttribute="top" secondItem="oSb-ae-9fu" secondAttribute="bottom" id="SZg-5I-8Xz"/>
-                                    <constraint firstItem="GML-8C-3hd" firstAttribute="centerX" secondItem="oSb-ae-9fu" secondAttribute="centerX" id="Tvc-pd-Zyk"/>
                                     <constraint firstAttribute="width" secondItem="oSb-ae-9fu" secondAttribute="width" id="WH9-zZ-UZu"/>
                                     <constraint firstAttribute="height" secondItem="oSb-ae-9fu" secondAttribute="height" constant="44" id="gfn-YH-LBe"/>
+                                    <constraint firstAttribute="bottom" secondItem="GML-8C-3hd" secondAttribute="bottom" id="j5A-b7-l3a"/>
                                     <constraint firstItem="oSb-ae-9fu" firstAttribute="leading" secondItem="Pf0-tu-dJN" secondAttribute="leading" id="oVq-Hm-ppS"/>
                                 </constraints>
                             </view>
@@ -728,6 +731,9 @@
                         <outlet property="applicationListButton" destination="hic-f4-Uc4" id="e8o-dn-i8t"/>
                         <outlet property="ectHelperImage" destination="YdZ-Qz-Roc" id="a3N-ac-tns"/>
                         <outlet property="ectHelperView" destination="oSb-ae-9fu" id="slP-2s-HLk"/>
+                        <outlet property="ectTextView" destination="iwf-yC-iFa" id="wDw-Df-Q3W"/>
+                        <outlet property="ectToolbarBottomConstraint" destination="j5A-b7-l3a" id="2X6-57-4BE"/>
+                        <outlet property="ectToolbarHeightConstraint" destination="rtZ-Bj-XkO" id="D3q-Il-XkT"/>
                         <outlet property="ectToolbarView" destination="GML-8C-3hd" id="zgN-J1-vzW"/>
                         <outlet property="loadingLabel" destination="Jbn-o9-gsR" id="G17-U6-kwv"/>
                         <outlet property="loadingProgressView" destination="Qze-JK-ulQ" id="uaI-ET-Irf"/>
@@ -779,6 +785,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="ITW-ug-7u2"/>
-        <segue reference="oPM-kh-zcB"/>
+        <segue reference="Wmc-Al-Qfe"/>
     </inferredMetricsTieBreakers>
 </document>

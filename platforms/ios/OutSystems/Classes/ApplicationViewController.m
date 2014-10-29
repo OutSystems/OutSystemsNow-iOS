@@ -121,6 +121,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self.ectHelperImage setUserInteractionEnabled:YES];
     
     self.ectTextView.delegate = self;
+    
+    [self.ectTextView.layer setCornerRadius:5];
 
     
 }
@@ -386,8 +388,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
                     [textView setContentOffset:offset];
                 }];
             }
-        
-
+    
     }
 
     
