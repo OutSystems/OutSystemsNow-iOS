@@ -42,10 +42,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 @property (weak, nonatomic) IBOutlet UIView *mobileECTView;
 @property (weak, nonatomic) IBOutlet UIView *ectHelperView;
 @property (weak, nonatomic) IBOutlet UIView *ectToolbarView;
-@property (weak, nonatomic) IBOutlet UIImageView *ectHelperImage;
+@property (weak, nonatomic) IBOutlet UIImageView *ectHelperImageView;
 @property (weak, nonatomic) IBOutlet UITextView *ectTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ectToolbarHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ectToolbarBottomConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *ectScreenCaptureView;
 
 @end
 
@@ -103,7 +104,12 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.applicationBrowser.webView.scrollView.bounces = NO;
     
     
-    // Mobile ECT
+    // Mobile ECT Configurations
+    
+    self.ectTextView.delegate = self;
+    
+    [[self.ectTextView layer] setCornerRadius:5];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShown:)
                                                  name:UIKeyboardWillShowNotification
@@ -117,12 +123,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ectHelperTaped:)];
     singleTap.numberOfTapsRequired = 1;
     singleTap.numberOfTouchesRequired = 1;
-    [self.ectHelperImage addGestureRecognizer:singleTap];
-    [self.ectHelperImage setUserInteractionEnabled:YES];
     
-    self.ectTextView.delegate = self;
+    [self.ectHelperImageView addGestureRecognizer:singleTap];
+    [self.ectHelperImageView setUserInteractionEnabled:YES];
     
-    [[self.ectTextView layer] setCornerRadius:5];
+    self.ectScreenCaptureView.hidden = YES;
     
 }
 
@@ -232,14 +237,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.loadingProgressView.hidden = YES;
     
     if(self.firstLoad == NO) {
-        // Capture the current page in an image and render it on the view
-        // that will sit over the webview
-        UIGraphicsBeginImageContextWithOptions(self.applicationBrowser.view.bounds.size,
-                                               self.applicationBrowser.view.opaque,
-                                               0.0);
-        [self.applicationBrowser.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        UIImage *viewImage = [self captureCurrentWebPage];
         self.webViewImageLoading.image = viewImage;
 	
         // If we will be sliding, get the snapshot for the fixed section (e.g. menu) visible
@@ -303,12 +301,25 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 	self.selectedTransition = OSAnimateTransitionDefault;
 	
 }
+
+
+-(UIImage*)captureCurrentWebPage{
+    // Capture the current page in an image and render it on the view
+    // that will sit over the webview
+    UIGraphicsBeginImageContextWithOptions(self.applicationBrowser.view.bounds.size,
+                                           self.applicationBrowser.view.opaque,
+                                           0.0);
+    [self.applicationBrowser.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return viewImage;
+}
+
+
+// Mobile ECT Implementation
 - (IBAction)openECT:(id)sender {
-    [self.navigationController setToolbarHidden:YES animated:NO];
-    self.mobileECTView.hidden = NO;
-    
-    if (self.ectHelperView.hidden == YES)
-        self.ectHelperView.hidden = NO;
+    [self openECTView];
 }
 
 - (IBAction)hideECTHelper:(id)sender {
@@ -322,12 +333,46 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self closeECTView];
 }
 
--(void)closeECTView{
-    [self.view endEditing:YES];
-    [self.navigationController setToolbarHidden:NO animated:NO];
-    self.mobileECTView.hidden = YES;
+-(void)openECTView{
+    // Capture the current web page
+    UIImage *viewImage = [self captureCurrentWebPage];
+    self.ectScreenCaptureView.image = viewImage;
+    self.ectScreenCaptureView.hidden = NO;
+    
+    // Hide web view
+    self.webViewFullScreen.hidden = YES;
+    
+    // Hide navigation toolbar
+    [self.navigationController setToolbarHidden:YES animated:NO];
+
+    // Display ECT View
+    self.mobileECTView.hidden = NO;
+    
+    // Show helper if it's the first time
+    // TODO
+    if (self.ectHelperView.hidden == YES)
+        self.ectHelperView.hidden = NO;
 }
 
+-(void)closeECTView{
+    // Close keyboard
+    [self.view endEditing:YES];
+    
+    // Show navigation toolbar
+    [self.navigationController setToolbarHidden:NO animated:NO];
+    
+    // Hide ECT View
+    self.mobileECTView.hidden = YES;
+    
+    // Reset ECT contents
+    // TODO
+    self.ectScreenCaptureView.image = nil;
+    self.ectTextView.text = @"";
+    
+    // Show web view
+    self.webViewFullScreen.hidden = NO;
+    
+}
 
 
 - (void)keyboardWillShown:(NSNotification*)aNotification

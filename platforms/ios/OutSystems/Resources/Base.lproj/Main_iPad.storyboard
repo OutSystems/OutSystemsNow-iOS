@@ -541,6 +541,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eRV-Ym-1U9" userLabel="ScreenCapture">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n82-lM-s1n" userLabel="HelperView">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="979"/>
                                         <subviews>
@@ -611,12 +614,16 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="n82-lM-s1n" firstAttribute="top" secondItem="jzQ-QF-CNx" secondAttribute="top" id="074-6B-AD7"/>
+                                    <constraint firstItem="eRV-Ym-1U9" firstAttribute="leading" secondItem="jzQ-QF-CNx" secondAttribute="leading" id="3ds-SH-CHj"/>
                                     <constraint firstItem="n82-lM-s1n" firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="6pu-XY-697"/>
+                                    <constraint firstItem="eRV-Ym-1U9" firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" id="7Hd-Lm-C90"/>
                                     <constraint firstItem="n82-lM-s1n" firstAttribute="leading" secondItem="jzQ-QF-CNx" secondAttribute="leading" id="Lak-4Q-0Cv"/>
                                     <constraint firstItem="jOU-TJ-2yq" firstAttribute="centerX" secondItem="n82-lM-s1n" secondAttribute="centerX" id="Mmx-E8-yry"/>
                                     <constraint firstItem="jOU-TJ-2yq" firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="RoR-ak-h2h"/>
+                                    <constraint firstItem="eRV-Ym-1U9" firstAttribute="top" secondItem="jzQ-QF-CNx" secondAttribute="top" id="Tnt-28-hbB"/>
                                     <constraint firstItem="n82-lM-s1n" firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" constant="-45" id="ing-Ee-ZpH"/>
                                     <constraint firstAttribute="bottom" secondItem="jOU-TJ-2yq" secondAttribute="bottom" id="mp8-tv-jA5"/>
+                                    <constraint firstItem="eRV-Ym-1U9" firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="uLb-7a-c1W"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -671,8 +678,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationListButton" destination="tN4-Sy-Oof" id="S7g-dL-mUS"/>
-                        <outlet property="ectHelperImage" destination="PuU-Yt-kka" id="5cu-ZO-61j"/>
+                        <outlet property="ectHelperImageView" destination="PuU-Yt-kka" id="egn-G5-ddg"/>
                         <outlet property="ectHelperView" destination="n82-lM-s1n" id="lfG-GR-fXy"/>
+                        <outlet property="ectScreenCaptureView" destination="eRV-Ym-1U9" id="E2g-JK-mnT"/>
                         <outlet property="ectTextView" destination="dOp-K5-DFw" id="Cvv-Co-XQK"/>
                         <outlet property="ectToolbarBottomConstraint" destination="mp8-tv-jA5" id="6hW-Mh-XZP"/>
                         <outlet property="ectToolbarHeightConstraint" destination="VXM-qQ-9Vo" id="iN8-f7-So0"/>

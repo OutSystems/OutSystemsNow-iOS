@@ -547,7 +547,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-je-XgP">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eS-Qi-mAm" userLabel="LoadingView">
@@ -598,6 +598,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pf0-tu-dJN" userLabel="ECTView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kJM-Ch-bln" userLabel="ScreenCapture">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSb-ae-9fu" userLabel="HelperView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="523"/>
                                         <subviews>
@@ -673,9 +676,13 @@
                                     <constraint firstItem="GML-8C-3hd" firstAttribute="leading" secondItem="Pf0-tu-dJN" secondAttribute="leading" id="NHb-M1-w2T"/>
                                     <constraint firstItem="oSb-ae-9fu" firstAttribute="top" secondItem="Pf0-tu-dJN" secondAttribute="top" id="PGP-hr-kf1"/>
                                     <constraint firstAttribute="width" secondItem="oSb-ae-9fu" secondAttribute="width" id="WH9-zZ-UZu"/>
+                                    <constraint firstItem="kJM-Ch-bln" firstAttribute="leading" secondItem="Pf0-tu-dJN" secondAttribute="leading" id="aL5-WC-B3X"/>
+                                    <constraint firstAttribute="height" secondItem="kJM-Ch-bln" secondAttribute="height" id="gcc-9Y-R4J"/>
                                     <constraint firstAttribute="height" secondItem="oSb-ae-9fu" secondAttribute="height" constant="45" id="gfn-YH-LBe"/>
                                     <constraint firstAttribute="bottom" secondItem="GML-8C-3hd" secondAttribute="bottom" id="j5A-b7-l3a"/>
+                                    <constraint firstItem="kJM-Ch-bln" firstAttribute="top" secondItem="Pf0-tu-dJN" secondAttribute="top" id="ln2-9g-Myj"/>
                                     <constraint firstItem="oSb-ae-9fu" firstAttribute="leading" secondItem="Pf0-tu-dJN" secondAttribute="leading" id="oVq-Hm-ppS"/>
+                                    <constraint firstAttribute="width" secondItem="kJM-Ch-bln" secondAttribute="width" id="u42-Vw-gbw"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -684,7 +691,7 @@
                             <constraint firstItem="Pf0-tu-dJN" firstAttribute="height" secondItem="693-7L-PAB" secondAttribute="height" id="4EB-Sn-PmX"/>
                             <constraint firstItem="kbZ-je-XgP" firstAttribute="top" secondItem="Ed7-84-VzA" secondAttribute="bottom" id="CjC-6i-pfS"/>
                             <constraint firstItem="Pf0-tu-dJN" firstAttribute="top" secondItem="Ed7-84-VzA" secondAttribute="top" id="FdD-d7-1TK"/>
-                            <constraint firstItem="PMA-9D-CyI" firstAttribute="top" secondItem="kbZ-je-XgP" secondAttribute="bottom" constant="44" id="HSP-5D-o08"/>
+                            <constraint firstAttribute="height" secondItem="kbZ-je-XgP" secondAttribute="height" id="PZe-mo-RWk"/>
                             <constraint firstItem="PMA-9D-CyI" firstAttribute="top" secondItem="8eS-Qi-mAm" secondAttribute="bottom" id="Rfe-aA-Ahf"/>
                             <constraint firstAttribute="centerX" secondItem="Pf0-tu-dJN" secondAttribute="centerX" id="Srh-ym-cbv"/>
                             <constraint firstItem="8eS-Qi-mAm" firstAttribute="leading" secondItem="693-7L-PAB" secondAttribute="leading" id="Wxd-q0-IPs"/>
@@ -730,8 +737,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationListButton" destination="hic-f4-Uc4" id="e8o-dn-i8t"/>
-                        <outlet property="ectHelperImage" destination="YdZ-Qz-Roc" id="a3N-ac-tns"/>
+                        <outlet property="ectHelperImageView" destination="YdZ-Qz-Roc" id="DYA-7z-X70"/>
                         <outlet property="ectHelperView" destination="oSb-ae-9fu" id="slP-2s-HLk"/>
+                        <outlet property="ectScreenCaptureView" destination="kJM-Ch-bln" id="xHT-j6-fps"/>
                         <outlet property="ectTextView" destination="iwf-yC-iFa" id="wDw-Df-Q3W"/>
                         <outlet property="ectToolbarBottomConstraint" destination="j5A-b7-l3a" id="2X6-57-4BE"/>
                         <outlet property="ectToolbarHeightConstraint" destination="rtZ-Bj-XkO" id="D3q-Il-XkT"/>
