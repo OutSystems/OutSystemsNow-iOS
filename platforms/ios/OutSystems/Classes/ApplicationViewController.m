@@ -44,6 +44,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 @property (weak, nonatomic) IBOutlet UIView *ectToolbarView;
 @property (weak, nonatomic) IBOutlet UIImageView *ectHelperImage;
 @property (weak, nonatomic) IBOutlet UITextView *ectTextView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ectToolbarHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ectToolbarBottomConstraint;
 
 @end
 
@@ -111,7 +113,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    
   
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ectHelperTaped:)];
     singleTap.numberOfTapsRequired = 1;
@@ -327,40 +328,21 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 }
 
 
-- (void)moveTextViewForKeyboard:(NSNotification*)aNotification up:(BOOL)up {
-    NSDictionary* userInfo = [aNotification userInfo];
-    NSTimeInterval animationDuration;
-    UIViewAnimationCurve animationCurve;
-    CGRect keyboardEndFrame;
-    
-    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
-    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
-    [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    [UIView setAnimationCurve:animationCurve];
-    
-    CGRect newFrame = self.ectToolbarView.frame;
-    CGRect keyboardFrame = [self.view convertRect:keyboardEndFrame toView:nil];
-    
-    newFrame.origin.y -= keyboardFrame.size.height * (up?1:-1);;
-    self.ectToolbarView.frame = newFrame;
-    
-
-    
-    [UIView commitAnimations];
-}
 
 - (void)keyboardWillShown:(NSNotification*)aNotification
 {
-    [self moveTextViewForKeyboard:aNotification up:YES];
+    CGRect frame = [aNotification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect newFrame = [self.view convertRect:frame fromView:[[UIApplication sharedApplication] delegate].window];
+    float dY = CGRectGetHeight(self.view.frame)-newFrame.origin.y;
+    
+    self.ectToolbarBottomConstraint.constant = dY;
+    [self.view layoutIfNeeded];
 }
 
 - (void)keyboardWillHide:(NSNotification*)aNotification
 {
- 
-    [self moveTextViewForKeyboard:aNotification up:NO];
+    self.ectToolbarBottomConstraint.constant = 0;
+    [self.view layoutIfNeeded];
 }
 
 
@@ -369,18 +351,46 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
-    NSLog(@"ContentSize: %f FrameSize: %f",textView.contentSize.height,textView.frame.size.height);
-    
+
     CGRect frame = textView.frame;
+    CGSize sizeThatFitsTextView = [textView sizeThatFits:CGSizeMake(textView.frame.size.width, MAXFLOAT)];
     
-    frame.size.height = textView.contentSize.height;
-    textView.frame = frame;
+    float dY = sizeThatFitsTextView.height - frame.size.height;
     
-    if([textView.attributedText length] == 0){
-        frame.size.height = 33;
-        textView.frame = frame;
-    }
+    
+    if(sizeThatFitsTextView.height >= 33 && sizeThatFitsTextView.height <= 200){
         
+        self.ectToolbarHeightConstraint.constant += dY;
+        
+        [UIView animateWithDuration:0.2 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+        
+        
+    }
+    else{
+        // Scroll to the cursor current position
+            CGRect line = [textView caretRectForPosition:textView.selectedTextRange.start];
+        
+            CGFloat overflow = line.origin.y + line.size.height -
+                               ( textView.contentOffset.y + textView.bounds.size.height
+                                 - textView.contentInset.bottom - textView.contentInset.top );
+        
+            if ( overflow > 0 ) {
+                // We are at the bottom of the visible text and introduced a line feed, scroll down (iOS 7 does not do it)
+                // Scroll caret to visible area
+                CGPoint offset = textView.contentOffset;
+                offset.y += overflow + 7; // leave 7 pixels margin
+                // Cannot animate with setContentOffset:animated: or caret will not appear
+                [UIView animateWithDuration:.2 animations:^{
+                    [textView setContentOffset:offset];
+                }];
+            }
+        
+
+    }
+
+    
 }
 
 

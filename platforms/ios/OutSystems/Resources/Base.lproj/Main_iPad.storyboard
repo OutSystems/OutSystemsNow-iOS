@@ -558,7 +558,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOU-TJ-2yq" userLabel="ECTToolbarView">
                                         <rect key="frame" x="0.0" y="980" width="768" height="44"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="interactive" text="Sample Text" translatesAutoresizingMaskIntoConstraints="NO" id="dOp-K5-DFw">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="interactive" text="Sample Text" translatesAutoresizingMaskIntoConstraints="NO" id="dOp-K5-DFw">
                                                 <rect key="frame" x="55" y="8" width="658" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -597,6 +597,7 @@
                                             <constraint firstAttribute="bottom" secondItem="clH-Sr-mJL" secondAttribute="bottom" constant="6" id="Nt4-Wh-Dwj"/>
                                             <constraint firstItem="dOp-K5-DFw" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" constant="55" id="Olk-pR-hDn"/>
                                             <constraint firstAttribute="trailing" secondItem="clH-Sr-mJL" secondAttribute="trailing" constant="8" id="TTc-hO-fjo"/>
+                                            <constraint firstAttribute="height" constant="44" id="VXM-qQ-9Vo"/>
                                             <constraint firstAttribute="centerX" secondItem="dOp-K5-DFw" secondAttribute="centerX" id="dEL-IJ-ly8"/>
                                             <constraint firstAttribute="bottom" secondItem="dOp-K5-DFw" secondAttribute="bottom" constant="6" id="eIJ-IJ-OfW"/>
                                             <constraint firstItem="M30-gB-ZDn" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" id="kmz-Rr-pmm"/>
@@ -614,7 +615,6 @@
                                     <constraint firstItem="jOU-TJ-2yq" firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="RoR-ak-h2h"/>
                                     <constraint firstItem="n82-lM-s1n" firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" constant="-44" id="ing-Ee-ZpH"/>
                                     <constraint firstAttribute="bottom" secondItem="jOU-TJ-2yq" secondAttribute="bottom" id="mp8-tv-jA5"/>
-                                    <constraint firstItem="jOU-TJ-2yq" firstAttribute="top" secondItem="jzQ-QF-CNx" secondAttribute="top" constant="980" id="tfV-y7-G52"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -672,6 +672,8 @@
                         <outlet property="ectHelperImage" destination="PuU-Yt-kka" id="5cu-ZO-61j"/>
                         <outlet property="ectHelperView" destination="n82-lM-s1n" id="lfG-GR-fXy"/>
                         <outlet property="ectTextView" destination="dOp-K5-DFw" id="Cvv-Co-XQK"/>
+                        <outlet property="ectToolbarBottomConstraint" destination="mp8-tv-jA5" id="6hW-Mh-XZP"/>
+                        <outlet property="ectToolbarHeightConstraint" destination="VXM-qQ-9Vo" id="iN8-f7-So0"/>
                         <outlet property="ectToolbarView" destination="jOU-TJ-2yq" id="bHb-IW-Fvh"/>
                         <outlet property="loadingProgressView" destination="BsK-MR-qhr" id="zY1-kQ-WnZ"/>
                         <outlet property="loadingView" destination="dUP-l7-ati" id="9z8-Gm-CD6"/>
