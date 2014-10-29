@@ -122,8 +122,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     self.ectTextView.delegate = self;
     
-    [self.ectTextView.layer setCornerRadius:5];
-
+    [[self.ectTextView layer] setCornerRadius:5];
     
 }
 
@@ -372,7 +371,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     }
     else{
         // Scroll to the cursor current position
-            CGRect line = [textView caretRectForPosition:textView.selectedTextRange.start];
+   /*         CGRect line = [textView caretRectForPosition:textView.selectedTextRange.start];
         
             CGFloat overflow = line.origin.y + line.size.height -
                                ( textView.contentOffset.y + textView.bounds.size.height
@@ -388,7 +387,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
                     [textView setContentOffset:offset];
                 }];
             }
-    
+    */
     }
 
     
