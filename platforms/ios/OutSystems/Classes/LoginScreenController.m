@@ -173,14 +173,13 @@
     
     [NSURLConnection connectionWithRequest:myRequest delegate:self];
     
-    NSString *UDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
     
     [OutSystemsAppDelegate setAutoLoginPerformed]; // setting the flag to true, even if it's a normal login so the app won't try to auto login the user again (in this app session)
     
     // set the url to register the device push notifications token (in case it is received later)
     [OutSystemsAppDelegate setURLForPushNotificationTokenRegistration:[NSString stringWithFormat:@"%@?&deviceHwId=%@&device=",
                                                   [_infrastructure getHostnameForService:@"registertoken"],
-                                                  UDID]];
+                                                  deviceUDID]];
 
 }
 

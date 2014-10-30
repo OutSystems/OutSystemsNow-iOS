@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Application.h"
+#import "Infrastructure.h"
 
 typedef enum {
 	OSAnimateTransitionDefault,
@@ -19,6 +20,8 @@ typedef enum {
 @interface ApplicationViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) Application* application;
+@property (strong, nonatomic) Infrastructure* infrastructure;
+
 @property BOOL isSingleApplication;
 
 - (IBAction)navBack:(id)sender;

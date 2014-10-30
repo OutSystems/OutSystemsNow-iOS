@@ -10,6 +10,7 @@
 #import "CDVViewController.h"
 #import "PXRImageSizeUtil.h"
 #import <Crashlytics/Crashlytics.h>
+#import "MobileECT.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -40,6 +41,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 @property BOOL viewFinishedLoad;
 @property (weak, nonatomic) IBOutlet UIView *loadingProgressView;
 @property (weak, nonatomic) IBOutlet UIView *mobileECTView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *openMobileECTButton;
 @property (weak, nonatomic) IBOutlet UIView *ectHelperView;
 @property (weak, nonatomic) IBOutlet UIView *ectToolbarView;
 @property (weak, nonatomic) IBOutlet UIImageView *ectHelperImageView;
@@ -103,9 +105,15 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     // remove bounce effect
     self.applicationBrowser.webView.scrollView.bounces = NO;
     
+    // Remove Mobile ECT toolbar button if feedback its now allowed for the application
+    if(!_application.feedbackActive){
+        NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
+        
+        [toolbarButtons removeObject:self.openMobileECTButton];
+        [self setToolbarItems:toolbarButtons animated:YES];
+    }
     
     // Mobile ECT Configurations
-    
     self.ectTextView.delegate = self;
     
     [[self.ectTextView layer] setCornerRadius:5];
@@ -120,7 +128,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
   
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ectHelperTaped:)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onECTHelperTaped:)];
     singleTap.numberOfTapsRequired = 1;
     singleTap.numberOfTouchesRequired = 1;
     
@@ -128,7 +136,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self.ectHelperImageView setUserInteractionEnabled:YES];
     
     self.ectScreenCaptureView.hidden = YES;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -312,68 +319,15 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self.applicationBrowser.view.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-
+    
+    NSLog(@"applicationBrowser: %f",self.applicationBrowser.view.frame.size.height);
+    NSLog(@"webViewFullScreen: %f",self.webViewFullScreen.frame.size.height);
+    NSLog(@"loadingView: %f",self.loadingView.frame.size.height);
+    
     return viewImage;
 }
 
-
-// Mobile ECT Implementation
-- (IBAction)openECT:(id)sender {
-    [self openECTView];
-}
-
-- (IBAction)hideECTHelper:(id)sender {
-    self.ectHelperView.hidden = YES;
-}
-
-- (IBAction)closeECT:(id)sender {
-    [self closeECTView];
-}
-- (IBAction)sendECT:(id)sender {
-    [self closeECTView];
-}
-
--(void)openECTView{
-    // Capture the current web page
-    UIImage *viewImage = [self captureCurrentWebPage];
-    self.ectScreenCaptureView.image = viewImage;
-    self.ectScreenCaptureView.hidden = NO;
-    
-    // Hide web view
-    self.webViewFullScreen.hidden = YES;
-    
-    // Hide navigation toolbar
-    [self.navigationController setToolbarHidden:YES animated:NO];
-
-    // Display ECT View
-    self.mobileECTView.hidden = NO;
-    
-    // Show helper if it's the first time
-    // TODO
-    if (self.ectHelperView.hidden == YES)
-        self.ectHelperView.hidden = NO;
-}
-
--(void)closeECTView{
-    // Close keyboard
-    [self.view endEditing:YES];
-    
-    // Show navigation toolbar
-    [self.navigationController setToolbarHidden:NO animated:NO];
-    
-    // Hide ECT View
-    self.mobileECTView.hidden = YES;
-    
-    // Reset ECT contents
-    // TODO
-    self.ectScreenCaptureView.image = nil;
-    self.ectTextView.text = @"";
-    
-    // Show web view
-    self.webViewFullScreen.hidden = NO;
-    
-}
-
+# pragma mark - ECT Feedback Text
 
 - (void)keyboardWillShown:(NSNotification*)aNotification
 {
@@ -391,11 +345,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self.view layoutIfNeeded];
 }
 
-
-- (void)ectHelperTaped:(UIGestureRecognizer *)gestureRecognizer {
-    self.ectHelperView.hidden = YES;
-}
-
 - (void)textViewDidChange:(UITextView *)textView{
 
     CGRect frame = textView.frame;
@@ -403,8 +352,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     float dY = sizeThatFitsTextView.height - frame.size.height;
     
+    if(dY == 0)
+        return;
     
-    if(sizeThatFitsTextView.height >= 33 && sizeThatFitsTextView.height <= 200){
+    if(dY != 0 && sizeThatFitsTextView.height >= 33 && sizeThatFitsTextView.height <= 200){
         
         self.ectToolbarHeightConstraint.constant += dY;
         
@@ -414,28 +365,253 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         
         
     }
+
+}
+
+#pragma mark - Mobile ECT Features
+
+- (IBAction)onOpenECT:(id)sender {
+    [self openECTView];
+}
+
+- (IBAction)onCloseECT:(id)sender {
+    [self closeECTView];
+}
+- (IBAction)onSendECT:(id)sender {
+    [self sendECTFeedback];
+    [self closeECTView];
+}
+
+- (void)onECTHelperTaped:(UIGestureRecognizer *)gestureRecognizer {
+    self.ectHelperView.hidden = YES;
+    MobileECT *mobileECTInfo = [self getOrCreateMobileECTInfo];
+    mobileECTInfo.isFirstLoad = NO;
+}
+
+
+-(void)openECTView{
+    // Hide navigation toolbar
+    [self.navigationController setToolbarHidden:YES animated:NO];
+    
+    // Capture the current web page
+    UIImage *viewImage = [self captureCurrentWebPage];
+    self.ectScreenCaptureView.image = viewImage;
+    self.ectScreenCaptureView.hidden = NO;
+    
+    // Hide web view
+    self.webViewFullScreen.hidden = YES;
+    
+    // Display ECT View
+    self.mobileECTView.hidden = NO;
+    
+    // Show helper if it's the first time
+    MobileECT* mobileECTInfo = [self getOrCreateMobileECTInfo];
+    
+    if(mobileECTInfo.isFirstLoad){
+        self.ectHelperView.hidden = NO;
+    }
     else{
-        // Scroll to the cursor current position
-   /*         CGRect line = [textView caretRectForPosition:textView.selectedTextRange.start];
+        self.ectHelperView.hidden = YES;
+    }
+    
+    
+}
+
+-(void)closeECTView{
+    // Close keyboard
+    [self.view endEditing:YES];
+    
+    // Show navigation toolbar
+    [self.navigationController setToolbarHidden:NO animated:NO];
+    
+    // Hide ECT View
+    self.mobileECTView.hidden = YES;
+    
+    // Reset ECT contents
+    //TODO
+    self.ectScreenCaptureView.image = nil;
+    self.ectTextView.text = @"";
+    self.ectToolbarBottomConstraint.constant = 0;
+    self.ectToolbarHeightConstraint.constant = 45;
+    [self.view layoutIfNeeded];
+    
+    // Show web view
+    self.webViewFullScreen.hidden = NO;
+    
+}
+
+# pragma mark - ECT Feedback Submission
+
+-(NSMutableDictionary*) getECTFeedbackDictonary{
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+
+    // Device info
+    NSMutableDictionary *device = [[NSMutableDictionary alloc] init];
+    
+    NSString* userAgent =[[NSUserDefaults standardUserDefaults] objectForKey:@"UserAgent"];
+    
+    if([userAgent length] == 0)
+        userAgent = @"ios";
+    
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    NSNumber *screenWidth = [NSNumber numberWithDouble:screenBounds.size.width];
+    NSNumber *screenHeight = [NSNumber numberWithDouble:screenBounds.size.height];
+    
+    [device setObject:userAgent forKey:@"type"];
+    [device setObject:screenWidth forKey:@"width"];
+    [device setObject:screenHeight forKey:@"height"];
+    
+    // Image info
+    NSMutableDictionary *image = [[NSMutableDictionary alloc] init];
+    UIImage *ectImage = self.ectScreenCaptureView.image;
+    NSString *imageString = @"";
+    
+    if(ectImage){
+        NSData * imageData = UIImagePNGRepresentation(ectImage);
         
-            CGFloat overflow = line.origin.y + line.size.height -
-                               ( textView.contentOffset.y + textView.bounds.size.height
-                                 - textView.contentInset.bottom - textView.contentInset.top );
-        
-            if ( overflow > 0 ) {
-                // We are at the bottom of the visible text and introduced a line feed, scroll down (iOS 7 does not do it)
-                // Scroll caret to visible area
-                CGPoint offset = textView.contentOffset;
-                offset.y += overflow + 7; // leave 7 pixels margin
-                // Cannot animate with setContentOffset:animated: or caret will not appear
-                [UIView animateWithDuration:.2 animations:^{
-                    [textView setContentOffset:offset];
-                }];
+        if(imageData){
+            if ([imageData respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
+                imageString = [imageData base64EncodedStringWithOptions:kNilOptions];  // iOS 7+
+            } else {
+                imageString = [imageData base64Encoding];                              // pre iOS7
             }
-    */
+        }
+    }
+    
+    
+    [image setObject:imageString forKey:@"content"];
+    [image setObject:@"PNG" forKey:@"type"];
+    
+    // Sound info
+    // TODO
+    NSMutableDictionary *sound = [[NSMutableDictionary alloc] init];
+    [sound setObject:@"" forKey:@"content"];
+    [sound setObject:@"" forKey:@"type"];
+    
+    // Text info
+    NSMutableDictionary *text = [[NSMutableDictionary alloc] init];
+
+    [text setObject:self.ectTextView.text forKey:@"value"];
+    [text setObject:[NSNumber numberWithUnsignedInteger:[self.ectTextView.text length]] forKey:@"length"];
+
+    // ECT Feedback
+    [result setObject:device forKey:@"device"];
+    [result setObject:image forKey:@"image"];
+    [result setObject:sound forKey:@"sound"];
+    [result setObject:text forKey:@"text"];
+    [result setObject:self.infrastructure.username forKey:@"username"];
+    
+    
+    return result;
+}
+
+-(NSString*) getECTFeedbackJSON{
+    
+    // Create the dictionary for JSON
+    NSMutableDictionary *ectFeedback = [self getECTFeedbackDictonary];
+    
+    // Generate JSON
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ectFeedback
+                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
+                                                         error:&error];
+    
+    if (! jsonData) {
+        NSLog(@"Got an error: %@", error);
+        return nil;
+    } else {
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"Result: %@",jsonString);
+        return jsonString;
     }
 
+}
+
+-(void)sendECTFeedback{
+    self.loadingProgressView.hidden = NO;
     
+    int timeoutInSeconds = 30;
+    
+    MobileECT *mobileECT = [self getOrCreateMobileECTInfo];
+    
+    
+    NSURL *serviceURL = [NSURL URLWithString:[mobileECT getServiceForInfrastructure:self.infrastructure]];
+    
+    NSString *post = [NSString stringWithFormat:@"feedback=%@", [self getECTFeedbackJSON]];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+    
+    NSMutableURLRequest *serviceRequest = [NSMutableURLRequest requestWithURL:serviceURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:timeoutInSeconds];
+    
+    [serviceRequest setHTTPMethod:@"POST"];
+    [serviceRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [serviceRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [serviceRequest setHTTPBody:postData];
+    
+    NSLog(@"Logging in: %@", serviceURL);
+    
+    [NSURLConnection connectionWithRequest:serviceRequest delegate:self];
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*) response;
+    NSInteger errorCode = httpResponse.statusCode;
+    NSString *fileMIMEType = [[httpResponse MIMEType] lowercaseString];
+    NSLog(@"response is %ld, %@", (long)errorCode, fileMIMEType);
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // inform the user
+    NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"connection finished");
+    self.loadingProgressView.hidden = YES;
+}
+
+
+
+#pragma mark - Core Data for ECT
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+
+
+- (MobileECT*) getOrCreateMobileECTInfo {
+    MobileECT *mobileECT;
+    
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"MobileECT"];
+    NSMutableArray *results = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    
+    if([results count] > 0) {
+        mobileECT = [results objectAtIndex:0];
+        
+    } else {
+        mobileECT = [NSEntityDescription insertNewObjectForEntityForName:@"MobileECT" inManagedObjectContext:[self managedObjectContext]];
+        mobileECT.isFirstLoad = YES;
+    }
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    if (![[self managedObjectContext] save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    
+    return mobileECT;
 }
 
 

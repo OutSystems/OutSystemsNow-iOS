@@ -341,6 +341,7 @@
         long row = [myIndexPath[0] row];
             
         appViewController.application = [Application initWithJSON:[self.applicationList objectAtIndex:row] forHost:applicationHostname];
+        appViewController.infrastructure = self.infrastructure;
     }
 }
 
