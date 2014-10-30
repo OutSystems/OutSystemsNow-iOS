@@ -140,6 +140,9 @@
 		59981B1819FEB656004C8935 /* ect_ballon.png in Resources */ = {isa = PBXBuildFile; fileRef = 59981B1719FEB656004C8935 /* ect_ballon.png */; };
 		59981B1919FEB656004C8935 /* ect_ballon.png in Resources */ = {isa = PBXBuildFile; fileRef = 59981B1719FEB656004C8935 /* ect_ballon.png */; };
 		59981B1A19FEB656004C8935 /* ect_ballon.png in Resources */ = {isa = PBXBuildFile; fileRef = 59981B1719FEB656004C8935 /* ect_ballon.png */; };
+		599927511A0277580068B246 /* MobileECT.m in Sources */ = {isa = PBXBuildFile; fileRef = 599927501A0277580068B246 /* MobileECT.m */; };
+		599927521A0277580068B246 /* MobileECT.m in Sources */ = {isa = PBXBuildFile; fileRef = 599927501A0277580068B246 /* MobileECT.m */; };
+		599927531A0277580068B246 /* MobileECT.m in Sources */ = {isa = PBXBuildFile; fileRef = 599927501A0277580068B246 /* MobileECT.m */; };
 		599C2DC01988067600BFF05D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DAEC16FF9B48E285E821C8 /* CDVFile.m */; };
 		599C2DC11988067700BFF05D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DAEC16FF9B48E285E821C8 /* CDVFile.m */; };
 		599C2DC21988067700BFF05D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DAEC16FF9B48E285E821C8 /* CDVFile.m */; };
@@ -375,6 +378,8 @@
 		597A525F195C9A6400F15480 /* OutSystems Push Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutSystems Push Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597A5260195C9A6500F15480 /* OutSystems copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems copy-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/branches/ECT/platforms/ios/OutSystems copy-Info.plist"; sourceTree = "<absolute>"; };
 		59981B1719FEB656004C8935 /* ect_ballon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ect_ballon.png; sourceTree = "<group>"; };
+		5999274F1A0277580068B246 /* MobileECT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileECT.h; path = OutSystems/Classes/MobileECT.h; sourceTree = "<group>"; };
+		599927501A0277580068B246 /* MobileECT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileECT.m; path = OutSystems/Classes/MobileECT.m; sourceTree = "<group>"; };
 		59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
 		59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
 		59BA8DB819506FF0005019A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
@@ -779,6 +784,8 @@
 				590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */,
 				597902E019EC1DCF00440628 /* DeepLink.h */,
 				597902E119EC200D00440628 /* DeepLink.m */,
+				5999274F1A0277580068B246 /* MobileECT.h */,
+				599927501A0277580068B246 /* MobileECT.m */,
 			);
 			name = Datamodel;
 			sourceTree = "<group>";
@@ -1196,6 +1203,7 @@
 				CF9C2E0218F5BE72000C5E68 /* OutAppData.xcdatamodeld in Sources */,
 				CF9C2DEF18F5869A000C5E68 /* main.m in Sources */,
 				767DCF5D20714090A2682D21 /* CDVDevice.m in Sources */,
+				599927511A0277580068B246 /* MobileECT.m in Sources */,
 				599C2DC51988067D00BFF05D /* CDVLocalFilesystem.m in Sources */,
 				CF9C2DF118F5869A000C5E68 /* UIInsetTextField.m in Sources */,
 				CF9C2DED18F5869A000C5E68 /* Infrastructure.m in Sources */,
@@ -1239,6 +1247,7 @@
 				597A5230195C9A6400F15480 /* OutAppData.xcdatamodeld in Sources */,
 				597A5231195C9A6400F15480 /* main.m in Sources */,
 				59EC8A2F19E3FCCC00944672 /* CDVCamera.m in Sources */,
+				599927521A0277580068B246 /* MobileECT.m in Sources */,
 				599C2DCA1988068500BFF05D /* CDVAssetLibraryFilesystem.m in Sources */,
 				597A5232195C9A6400F15480 /* CDVDevice.m in Sources */,
 				597A5233195C9A6400F15480 /* UIInsetTextField.m in Sources */,
@@ -1282,6 +1291,7 @@
 				59E53F781986C1760003BC6B /* OutAppData.xcdatamodeld in Sources */,
 				59E53F791986C1760003BC6B /* main.m in Sources */,
 				59E53F7A1986C1760003BC6B /* CDVDevice.m in Sources */,
+				599927531A0277580068B246 /* MobileECT.m in Sources */,
 				599C2DC61988067E00BFF05D /* CDVLocalFilesystem.m in Sources */,
 				59E53F7B1986C1760003BC6B /* UIInsetTextField.m in Sources */,
 				59E53F7C1986C1760003BC6B /* Infrastructure.m in Sources */,
