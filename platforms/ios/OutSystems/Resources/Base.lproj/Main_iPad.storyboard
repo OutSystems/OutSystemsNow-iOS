@@ -486,21 +486,21 @@
                         <viewControllerLayoutGuide type="top" id="YM9-Ld-fga"/>
                         <viewControllerLayoutGuide type="bottom" id="AVt-r2-tJW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZLX-7u-1G8">
+                    <view key="view" contentMode="scaleToFill" id="ZLX-7u-1G8" userLabel="ApplicationView">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ" userLabel="WebView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                                     </imageView>
-                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
+                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
                                         <rect key="frame" x="329" y="434" width="110" height="112"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-Xz-TGQ">
@@ -595,16 +595,79 @@
                                                     <action selector="onSendECT:" destination="H6M-OB-jxb" eventType="touchUpInside" id="hUJ-RL-7B3"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4x-N9-QQo" userLabel="StatusView">
+                                                <rect key="frame" x="0.0" y="0.0" width="768" height="45"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEc-41-gBM" userLabel="CancelButton">
+                                                        <rect key="frame" x="11" y="6" width="33" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="33" id="Hpg-8i-N9E"/>
+                                                            <constraint firstAttribute="height" constant="33" id="rUI-pW-rR5"/>
+                                                        </constraints>
+                                                        <state key="normal" backgroundImage="icon-white-close.png">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onCancelRetry:" destination="H6M-OB-jxb" eventType="touchUpInside" id="5bv-MY-PkR"/>
+                                                        </connections>
+                                                    </button>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="7U2-zz-C2w" userLabel="ActivityIndicator">
+                                                        <rect key="frame" x="234" y="6" width="33" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="33" id="01b-6f-4BS"/>
+                                                            <constraint firstAttribute="height" constant="33" id="dPJ-3p-AbY"/>
+                                                        </constraints>
+                                                    </activityIndicatorView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Failed to send your feedback." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDS-JE-207" userLabel="StatusMessage">
+                                                        <rect key="frame" x="259" y="6" width="250" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="250" id="Rqk-pW-aZk"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sr-CT-utB" userLabel="RetryButton">
+                                                        <rect key="frame" x="720" y="9" width="40" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="hlx-r7-7Vu"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <state key="normal" title="Retry">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onSendECT:" destination="H6M-OB-jxb" eventType="touchUpInside" id="aNr-px-IT1"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerX" secondItem="dDS-JE-207" secondAttribute="centerX" id="3zS-eK-Wzf"/>
+                                                    <constraint firstAttribute="bottom" secondItem="7U2-zz-C2w" secondAttribute="bottom" constant="6" id="DZx-RG-B3Y"/>
+                                                    <constraint firstItem="dDS-JE-207" firstAttribute="top" secondItem="k4x-N9-QQo" secondAttribute="top" constant="6" id="bvY-rG-0Qb"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8Sr-CT-utB" secondAttribute="bottom" constant="6" id="fUv-J4-ug9"/>
+                                                    <constraint firstAttribute="bottom" secondItem="dDS-JE-207" secondAttribute="bottom" constant="6" id="fzO-ld-GvV"/>
+                                                    <constraint firstItem="7U2-zz-C2w" firstAttribute="leading" secondItem="dDS-JE-207" secondAttribute="leading" constant="-25" id="pFF-hL-EOx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hEc-41-gBM" secondAttribute="bottom" constant="6" id="pd6-pE-UWU"/>
+                                                    <constraint firstItem="hEc-41-gBM" firstAttribute="leading" secondItem="k4x-N9-QQo" secondAttribute="leading" constant="11" id="xF4-ta-nJ9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8Sr-CT-utB" secondAttribute="trailing" constant="8" id="ysi-af-A8b"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" secondItem="k4x-N9-QQo" secondAttribute="width" id="9aF-bf-h0R"/>
                                             <constraint firstItem="M30-gB-ZDn" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" constant="11" id="ADz-dN-YkF"/>
                                             <constraint firstAttribute="trailing" secondItem="dOp-K5-DFw" secondAttribute="trailing" constant="55" id="Cr9-WA-e2k"/>
                                             <constraint firstAttribute="bottom" secondItem="M30-gB-ZDn" secondAttribute="bottom" constant="6" id="MnD-Jz-ZYs"/>
                                             <constraint firstAttribute="bottom" secondItem="clH-Sr-mJL" secondAttribute="bottom" constant="6" id="Nt4-Wh-Dwj"/>
                                             <constraint firstItem="dOp-K5-DFw" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" constant="55" id="Olk-pR-hDn"/>
+                                            <constraint firstAttribute="height" secondItem="k4x-N9-QQo" secondAttribute="height" id="Pqu-tM-3Op"/>
                                             <constraint firstAttribute="trailing" secondItem="clH-Sr-mJL" secondAttribute="trailing" constant="8" id="TTc-hO-fjo"/>
+                                            <constraint firstItem="k4x-N9-QQo" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" id="UxV-k3-Re3"/>
                                             <constraint firstAttribute="height" constant="45" id="VXM-qQ-9Vo"/>
+                                            <constraint firstItem="k4x-N9-QQo" firstAttribute="top" secondItem="jOU-TJ-2yq" secondAttribute="top" id="cW7-zU-Zw2"/>
                                             <constraint firstAttribute="centerX" secondItem="dOp-K5-DFw" secondAttribute="centerX" id="dEL-IJ-ly8"/>
                                             <constraint firstAttribute="bottom" secondItem="dOp-K5-DFw" secondAttribute="bottom" constant="6" id="eIJ-IJ-OfW"/>
                                             <constraint firstItem="dOp-K5-DFw" firstAttribute="top" secondItem="jOU-TJ-2yq" secondAttribute="top" constant="6" id="pPe-fV-AoF"/>
@@ -675,12 +738,17 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="lhF-Z7-GgZ"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationListButton" destination="tN4-Sy-Oof" id="S7g-dL-mUS"/>
+                        <outlet property="ectActivityIndicator" destination="7U2-zz-C2w" id="aGS-UG-nOQ"/>
+                        <outlet property="ectCancelRetryButton" destination="hEc-41-gBM" id="sBk-K3-BYw"/>
                         <outlet property="ectHelperImageView" destination="PuU-Yt-kka" id="egn-G5-ddg"/>
                         <outlet property="ectHelperView" destination="n82-lM-s1n" id="lfG-GR-fXy"/>
+                        <outlet property="ectRetryButton" destination="8Sr-CT-utB" id="kxm-ds-90u"/>
                         <outlet property="ectScreenCaptureView" destination="eRV-Ym-1U9" id="E2g-JK-mnT"/>
+                        <outlet property="ectStatusMessage" destination="dDS-JE-207" id="REB-hS-lgP"/>
+                        <outlet property="ectStatusView" destination="k4x-N9-QQo" id="Iiz-N6-juG"/>
                         <outlet property="ectTextView" destination="dOp-K5-DFw" id="Cvv-Co-XQK"/>
                         <outlet property="ectToolbarBottomConstraint" destination="mp8-tv-jA5" id="6hW-Mh-XZP"/>
                         <outlet property="ectToolbarHeightConstraint" destination="VXM-qQ-9Vo" id="iN8-f7-So0"/>
@@ -727,6 +795,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqb-2d-GUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-156" y="-584"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fo2-T5-O16">
+            <objects>
+                <viewController id="p2l-G8-Fyg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9G9-0L-cIS"/>
+                        <viewControllerLayoutGuide type="bottom" id="5F8-Kj-51r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ge5-22-L3X">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TWQ-3B-9JH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

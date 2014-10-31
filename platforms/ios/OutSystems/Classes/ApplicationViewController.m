@@ -49,6 +49,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ectToolbarHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ectToolbarBottomConstraint;
 @property (weak, nonatomic) IBOutlet UIImageView *ectScreenCaptureView;
+@property (weak, nonatomic) IBOutlet UIView *ectStatusView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *ectActivityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *ectStatusMessage;
+@property (weak, nonatomic) IBOutlet UIButton *ectRetryButton;
+@property (weak, nonatomic) IBOutlet UIButton *ectCancelRetryButton;
 
 @end
 
@@ -135,6 +140,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self.ectHelperImageView setUserInteractionEnabled:YES];
     
     self.ectScreenCaptureView.hidden = YES;
+    self.ectStatusView.hidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -319,10 +325,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    NSLog(@"applicationBrowser: %f",self.applicationBrowser.view.frame.size.height);
-    NSLog(@"webViewFullScreen: %f",self.webViewFullScreen.frame.size.height);
-    NSLog(@"loadingView: %f",self.loadingView.frame.size.height);
-    
     return viewImage;
 }
 
@@ -377,14 +379,24 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self closeECTView];
 }
 - (IBAction)onSendECT:(id)sender {
-    [self sendECTFeedback];
-    [self closeECTView];
+    
+    self.ectActivityIndicator.hidden = NO;
+    self.ectStatusMessage.text = @"Sending your feedback...";
+    self.ectRetryButton.hidden = YES;
+    self.ectCancelRetryButton.hidden = YES;
+    self.ectStatusView.hidden = NO;
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(sendECTFeedback) userInfo:nil repeats:NO];
+    
 }
 
 - (void)onECTHelperTaped:(UIGestureRecognizer *)gestureRecognizer {
     self.ectHelperView.hidden = YES;
     MobileECT *mobileECTInfo = [self getOrCreateMobileECTInfo];
     mobileECTInfo.isFirstLoad = NO;
+}
+- (IBAction)onCancelRetry:(id)sender {
+    self.ectStatusView.hidden = YES;
 }
 
 
@@ -527,7 +539,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 }
 
 -(void)sendECTFeedback{
-    self.loadingProgressView.hidden = NO;
     
     int timeoutInSeconds = 30;
     
@@ -564,13 +575,31 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    
+    self.ectStatusView.hidden = NO;
+    self.ectActivityIndicator.hidden = YES;
+    self.ectRetryButton.hidden = NO;
+    self.ectCancelRetryButton.hidden = NO;
+    self.ectStatusMessage.text = @"Failed to send your feedback.";
+    
+    // Check if the device is not an iPad
+    if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad )
+    {
+        self.ectStatusMessage.adjustsFontSizeToFitWidth=YES;
+        self.ectStatusMessage.minimumScaleFactor=0.5;
+    }
+
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     // do something with the data
     // receivedData is declared as a method instance elsewhere
     NSLog(@"connection finished");
-    self.loadingProgressView.hidden = YES;
+
+    
+    self.ectStatusView.hidden = YES;
+    
+    [self closeECTView];
 }
 
 

@@ -542,7 +542,7 @@
                         <viewControllerLayoutGuide type="top" id="Ed7-84-VzA"/>
                         <viewControllerLayoutGuide type="bottom" id="PMA-9D-CyI"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="693-7L-PAB">
+                    <view key="view" contentMode="scaleToFill" id="693-7L-PAB" userLabel="ApplicationView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -652,13 +652,77 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rit-pS-uDO" userLabel="StatusView">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjz-Na-LKD" userLabel="CancelButton">
+                                                        <rect key="frame" x="11" y="6" width="33" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="3sO-n6-Esc"/>
+                                                            <constraint firstAttribute="width" constant="33" id="vBx-30-SxE"/>
+                                                        </constraints>
+                                                        <state key="normal" backgroundImage="icon-white-close.png">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onCancelRetry:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="DXE-JS-rqm"/>
+                                                        </connections>
+                                                    </button>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="U3p-af-Btt" userLabel="ActivityIndicator">
+                                                        <rect key="frame" x="45" y="6" width="33" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="33" id="46E-Yt-gDX"/>
+                                                            <constraint firstAttribute="width" constant="33" id="fqp-54-q2d"/>
+                                                        </constraints>
+                                                    </activityIndicatorView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sending your feedback..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov0-ca-haH" userLabel="StatusMessage">
+                                                        <rect key="frame" x="60" y="6" width="200" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="200" id="11c-Bn-jUn"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RP0-Vs-CXq" userLabel="RetryButton">
+                                                        <rect key="frame" x="272" y="6" width="40" height="33"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="jQF-NB-x2v"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Retry">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="onSendECT:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="DkQ-od-wOb"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerX" secondItem="ov0-ca-haH" secondAttribute="centerX" id="Bba-EM-V36"/>
+                                                    <constraint firstItem="Pjz-Na-LKD" firstAttribute="leading" secondItem="rit-pS-uDO" secondAttribute="leading" constant="11" id="CDY-XQ-nk6"/>
+                                                    <constraint firstAttribute="bottom" secondItem="U3p-af-Btt" secondAttribute="bottom" constant="6" id="FGU-ud-Ted"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ov0-ca-haH" secondAttribute="bottom" constant="6" id="XuB-lE-e8H"/>
+                                                    <constraint firstItem="ov0-ca-haH" firstAttribute="top" secondItem="rit-pS-uDO" secondAttribute="top" constant="6" id="dhB-Vf-Exf"/>
+                                                    <constraint firstItem="U3p-af-Btt" firstAttribute="top" secondItem="rit-pS-uDO" secondAttribute="top" constant="6" id="eDY-fo-OUm"/>
+                                                    <constraint firstAttribute="trailing" secondItem="RP0-Vs-CXq" secondAttribute="trailing" constant="8" id="eSJ-On-YZq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="RP0-Vs-CXq" secondAttribute="bottom" constant="6" id="ejv-OZ-uX6"/>
+                                                    <constraint firstItem="U3p-af-Btt" firstAttribute="leading" secondItem="ov0-ca-haH" secondAttribute="leading" constant="-15" id="jOy-5v-jOu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Pjz-Na-LKD" secondAttribute="bottom" constant="6" id="pKd-lF-GBZ"/>
+                                                    <constraint firstItem="RP0-Vs-CXq" firstAttribute="top" secondItem="rit-pS-uDO" secondAttribute="top" constant="6" id="vX4-TZ-RYE"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="iwf-yC-iFa" secondAttribute="bottom" constant="6" id="1aQ-XR-l3l"/>
+                                            <constraint firstItem="rit-pS-uDO" firstAttribute="top" secondItem="GML-8C-3hd" secondAttribute="top" id="8Wg-Ni-h2z"/>
+                                            <constraint firstItem="rit-pS-uDO" firstAttribute="leading" secondItem="GML-8C-3hd" secondAttribute="leading" id="AXS-uk-uKZ"/>
                                             <constraint firstAttribute="trailing" secondItem="v7h-U6-6Ri" secondAttribute="trailing" constant="8" id="Jvl-ni-Ncx"/>
                                             <constraint firstItem="iwf-yC-iFa" firstAttribute="top" secondItem="GML-8C-3hd" secondAttribute="top" constant="6" id="L0J-GY-ecY"/>
+                                            <constraint firstAttribute="height" secondItem="rit-pS-uDO" secondAttribute="height" id="NbI-Pe-XIz"/>
+                                            <constraint firstAttribute="width" secondItem="rit-pS-uDO" secondAttribute="width" id="YJx-fE-zPN"/>
                                             <constraint firstAttribute="bottom" secondItem="UVW-fp-Ged" secondAttribute="bottom" constant="6" id="buE-zC-QCK"/>
                                             <constraint firstItem="UVW-fp-Ged" firstAttribute="leading" secondItem="GML-8C-3hd" secondAttribute="leading" constant="11" id="nsO-O4-IcJ"/>
                                             <constraint firstItem="iwf-yC-iFa" firstAttribute="leading" secondItem="GML-8C-3hd" secondAttribute="leading" constant="55" id="qWO-k2-JFg"/>
@@ -737,9 +801,14 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationListButton" destination="hic-f4-Uc4" id="e8o-dn-i8t"/>
+                        <outlet property="ectActivityIndicator" destination="U3p-af-Btt" id="WPY-by-pqz"/>
+                        <outlet property="ectCancelRetryButton" destination="Pjz-Na-LKD" id="pkg-f6-gEZ"/>
                         <outlet property="ectHelperImageView" destination="YdZ-Qz-Roc" id="DYA-7z-X70"/>
                         <outlet property="ectHelperView" destination="oSb-ae-9fu" id="slP-2s-HLk"/>
+                        <outlet property="ectRetryButton" destination="RP0-Vs-CXq" id="GgW-KP-dCG"/>
                         <outlet property="ectScreenCaptureView" destination="kJM-Ch-bln" id="xHT-j6-fps"/>
+                        <outlet property="ectStatusMessage" destination="ov0-ca-haH" id="Nxi-oM-bqB"/>
+                        <outlet property="ectStatusView" destination="rit-pS-uDO" id="RmM-QG-uSm"/>
                         <outlet property="ectTextView" destination="iwf-yC-iFa" id="wDw-Df-Q3W"/>
                         <outlet property="ectToolbarBottomConstraint" destination="j5A-b7-l3a" id="2X6-57-4BE"/>
                         <outlet property="ectToolbarHeightConstraint" destination="rtZ-Bj-XkO" id="D3q-Il-XkT"/>
