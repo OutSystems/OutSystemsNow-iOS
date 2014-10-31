@@ -490,17 +490,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ" userLabel="WebView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ" userLabel="WebView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                                     </imageView>
-                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
+                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
                                         <rect key="frame" x="329" y="434" width="110" height="112"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-Xz-TGQ">
@@ -694,15 +694,15 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="3Rw-uj-eUe"/>
                             <constraint firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" id="5op-MR-n2u"/>
+                            <constraint firstItem="S2A-bT-JVZ" firstAttribute="height" secondItem="ZLX-7u-1G8" secondAttribute="height" id="Hzo-ej-TKz"/>
                             <constraint firstItem="AVt-r2-tJW" firstAttribute="top" secondItem="dUP-l7-ati" secondAttribute="bottom" id="R7S-1g-s1Y"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="top" secondItem="ZLX-7u-1G8" secondAttribute="top" id="aHx-6Y-hBD"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="leading" secondItem="ZLX-7u-1G8" secondAttribute="leading" id="cgl-fn-wqZ"/>
-                            <constraint firstItem="AVt-r2-tJW" firstAttribute="top" secondItem="S2A-bT-JVZ" secondAttribute="bottom" id="gPW-HY-t2s"/>
-                            <constraint firstAttribute="trailing" secondItem="S2A-bT-JVZ" secondAttribute="trailing" id="gcR-wW-C8y"/>
                             <constraint firstAttribute="centerX" secondItem="jzQ-QF-CNx" secondAttribute="centerX" id="l2Y-ng-kN9"/>
                             <constraint firstAttribute="trailing" secondItem="dUP-l7-ati" secondAttribute="trailing" id="q3A-nd-iLs"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="top" secondItem="YM9-Ld-fga" secondAttribute="bottom" id="rku-7J-gVw"/>
                             <constraint firstAttribute="centerY" secondItem="jzQ-QF-CNx" secondAttribute="centerY" id="ufx-zi-eoP"/>
+                            <constraint firstItem="S2A-bT-JVZ" firstAttribute="width" secondItem="ZLX-7u-1G8" secondAttribute="width" id="vsV-58-Mb6"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="leading" secondItem="ZLX-7u-1G8" secondAttribute="leading" id="wWB-0h-U2G"/>
                         </constraints>
                     </view>
@@ -738,7 +738,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="lhF-Z7-GgZ"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationListButton" destination="tN4-Sy-Oof" id="S7g-dL-mUS"/>
                         <outlet property="ectActivityIndicator" destination="7U2-zz-C2w" id="aGS-UG-nOQ"/>

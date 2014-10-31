@@ -103,6 +103,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     self.firstLoad = YES;
     
+    self.applicationBrowser.view.frame = self.webViewFullScreen.frame;
+    
     [self addChildViewController:self.applicationBrowser];
     [self.webViewFullScreen addSubview:self.applicationBrowser.view];
     
@@ -592,11 +594,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
     NSLog(@"connection finished");
 
-    
     self.ectStatusView.hidden = YES;
     
     [self closeECTView];
