@@ -28,6 +28,7 @@
 		590EA4C518F8283200EB317D /* splash_640x960_iphone4.png in Resources */ = {isa = PBXBuildFile; fileRef = 590EA4B918F8283200EB317D /* splash_640x960_iphone4.png */; };
 		590EA4C618F8283200EB317D /* splash_640x1136_iphone5.png in Resources */ = {isa = PBXBuildFile; fileRef = 590EA4BA18F8283200EB317D /* splash_640x1136_iphone5.png */; };
 		590EA4CF18FC32DC00EB317D /* DemoInfrastructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */; };
+		5919DC4A1A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5919DC491A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel */; };
 		592FA955190014D900458A51 /* icon-apps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA94B190014D900458A51 /* icon-apps@2x.png */; };
 		592FA957190014D900458A51 /* icon-chevron-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA94D190014D900458A51 /* icon-chevron-back@2x.png */; };
 		592FA95B190014D900458A51 /* icon-chevron-forth@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA951190014D900458A51 /* icon-chevron-forth@2x.png */; };
@@ -247,9 +248,6 @@
 		59EC8A3C19E3FF4400944672 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 856D17EA78A94D56BC87C382 /* CDVLocation.m */; };
 		59EC8A3D19E3FF4500944672 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 856D17EA78A94D56BC87C382 /* CDVLocation.m */; };
 		59F17EE51976C24C00E22193 /* SecurePasswordStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F17EE41976C24B00E22193 /* SecurePasswordStore.m */; };
-		59F2583219E6F7460040A685 /* MigrateSecurePass.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 59F2583119E6F7460040A685 /* MigrateSecurePass.xcmappingmodel */; };
-		59F2583319E6F7460040A685 /* MigrateSecurePass.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 59F2583119E6F7460040A685 /* MigrateSecurePass.xcmappingmodel */; };
-		59F2583419E6F7460040A685 /* MigrateSecurePass.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 59F2583119E6F7460040A685 /* MigrateSecurePass.xcmappingmodel */; };
 		5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AEE5B34173C68D80009041E /* CoreLocation.framework */; };
 		5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		65D76EC6AEF642E999FA96D4 /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7C39574EB8E4B13BC286E6E /* zxing-all-in-one.cpp */; };
@@ -352,6 +350,8 @@
 		590EA4CD18FC32DC00EB317D /* DemoInfrastructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoInfrastructure.h; path = OutSystems/Classes/DemoInfrastructure.h; sourceTree = "<group>"; };
 		590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoInfrastructure.m; path = OutSystems/Classes/DemoInfrastructure.m; sourceTree = "<group>"; };
 		590FA156198007BF00312C51 /* OutSystems copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems copy2-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/branches/ECT/platforms/ios/OutSystems copy2-Info.plist"; sourceTree = "<absolute>"; };
+		5919DC491A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = MigrateSecurePass.xcmappingmodel; sourceTree = "<group>"; };
+		5919DC4B1A02B34F00D47B72 /* OutAppData - Mobile ECT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData - Mobile ECT.xcdatamodel"; sourceTree = "<group>"; };
 		592FA94B190014D900458A51 /* icon-apps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-apps@2x.png"; sourceTree = "<group>"; };
 		592FA94D190014D900458A51 /* icon-chevron-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-chevron-back@2x.png"; sourceTree = "<group>"; };
 		592FA951190014D900458A51 /* icon-chevron-forth@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-chevron-forth@2x.png"; sourceTree = "<group>"; };
@@ -396,7 +396,6 @@
 		59F17EE41976C24B00E22193 /* SecurePasswordStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurePasswordStore.m; sourceTree = "<group>"; };
 		59F17EE61976C75000E22193 /* OutAppData - secure passwords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData - secure passwords.xcdatamodel"; sourceTree = "<group>"; };
 		59F2582E19E444120040A685 /* OutSystems Enterprise copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems Enterprise copy-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/branches/ECT/platforms/ios/OutSystems Enterprise copy-Info.plist"; sourceTree = "<absolute>"; };
-		59F2583119E6F7460040A685 /* MigrateSecurePass.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; path = MigrateSecurePass.xcmappingmodel; sourceTree = "<group>"; };
 		5AEE5B34173C68D80009041E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7B3A817BEA614C68984019DA /* CDVContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVContacts.m; path = org.apache.cordova.contacts/CDVContacts.m; sourceTree = "<group>"; };
@@ -775,7 +774,6 @@
 			isa = PBXGroup;
 			children = (
 				CF9C2E0018F5BE72000C5E68 /* OutAppData.xcdatamodeld */,
-				59F2583119E6F7460040A685 /* MigrateSecurePass.xcmappingmodel */,
 				CF9C2DC918F5869A000C5E68 /* Application.h */,
 				CF9C2DCA18F5869A000C5E68 /* Application.m */,
 				CF9C2DDB18F5869A000C5E68 /* Infrastructure.h */,
@@ -786,6 +784,7 @@
 				597902E119EC200D00440628 /* DeepLink.m */,
 				5999274F1A0277580068B246 /* MobileECT.h */,
 				599927501A0277580068B246 /* MobileECT.m */,
+				5919DC491A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel */,
 			);
 			name = Datamodel;
 			sourceTree = "<group>";
@@ -1198,7 +1197,6 @@
 				599C2DC01988067600BFF05D /* CDVFile.m in Sources */,
 				CF9C2DE918F5869A000C5E68 /* ApplicationTileListController.m in Sources */,
 				CF9C2DEE18F5869A000C5E68 /* LoginScreenController.m in Sources */,
-				59F2583219E6F7460040A685 /* MigrateSecurePass.xcmappingmodel in Sources */,
 				CF9C2DEB18F5869A000C5E68 /* OutSystemsAppDelegate.m in Sources */,
 				CF9C2E0218F5BE72000C5E68 /* OutAppData.xcdatamodeld in Sources */,
 				CF9C2DEF18F5869A000C5E68 /* main.m in Sources */,
@@ -1225,6 +1223,7 @@
 				59E25D3119094E3F000F9DE4 /* CDVLoader.m in Sources */,
 				65D76EC6AEF642E999FA96D4 /* zxing-all-in-one.cpp in Sources */,
 				59BA8DB51938EEFC005019A0 /* NoAnimationSegue.m in Sources */,
+				5919DC4A1A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel in Sources */,
 				112806CB074B4EA8BB54F95A /* Calendar.m in Sources */,
 				59BC4908199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */,
 			);
@@ -1252,7 +1251,6 @@
 				597A5232195C9A6400F15480 /* CDVDevice.m in Sources */,
 				597A5233195C9A6400F15480 /* UIInsetTextField.m in Sources */,
 				599C2DC11988067700BFF05D /* CDVFile.m in Sources */,
-				59F2583319E6F7460040A685 /* MigrateSecurePass.xcmappingmodel in Sources */,
 				597A5234195C9A6400F15480 /* Infrastructure.m in Sources */,
 				597902E419EC2C1700440628 /* DeepLink.m in Sources */,
 				597A5235195C9A6400F15480 /* CDVLogger.m in Sources */,
@@ -1286,7 +1284,6 @@
 				599C2DC21988067700BFF05D /* CDVFile.m in Sources */,
 				59E53F751986C1760003BC6B /* ApplicationTileListController.m in Sources */,
 				59E53F761986C1760003BC6B /* LoginScreenController.m in Sources */,
-				59F2583419E6F7460040A685 /* MigrateSecurePass.xcmappingmodel in Sources */,
 				59E53F771986C1760003BC6B /* OutSystemsAppDelegate.m in Sources */,
 				59E53F781986C1760003BC6B /* OutAppData.xcdatamodeld in Sources */,
 				59E53F791986C1760003BC6B /* main.m in Sources */,
@@ -1832,11 +1829,12 @@
 		CF9C2E0018F5BE72000C5E68 /* OutAppData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				5919DC4B1A02B34F00D47B72 /* OutAppData - Mobile ECT.xcdatamodel */,
 				59E34EDB1923E119003458AF /* OutAppData (isJavaServer).xcdatamodel */,
 				59F17EE61976C75000E22193 /* OutAppData - secure passwords.xcdatamodel */,
 				CF9C2E0118F5BE72000C5E68 /* OutAppData.xcdatamodel */,
 			);
-			currentVersion = 59F17EE61976C75000E22193 /* OutAppData - secure passwords.xcdatamodel */;
+			currentVersion = 5919DC4B1A02B34F00D47B72 /* OutAppData - Mobile ECT.xcdatamodel */;
 			name = OutAppData.xcdatamodeld;
 			path = OutSystems/OutAppData.xcdatamodeld;
 			sourceTree = "<group>";

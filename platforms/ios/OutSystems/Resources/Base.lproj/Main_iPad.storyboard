@@ -490,18 +490,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                                     </imageView>
-                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
-                                        <rect key="frame" x="329" y="456" width="110" height="112"/>
+                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
+                                        <rect key="frame" x="329" y="434" width="110" height="112"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-Xz-TGQ">
                                                 <rect key="frame" x="16" y="71" width="77" height="21"/>

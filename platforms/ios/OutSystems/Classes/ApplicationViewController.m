@@ -97,7 +97,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
                                                object:nil];
     
     self.firstLoad = YES;
-    self.applicationBrowser.view.frame = self.webViewFullScreen.frame;
     
     [self addChildViewController:self.applicationBrowser];
     [self.webViewFullScreen addSubview:self.applicationBrowser.view];
