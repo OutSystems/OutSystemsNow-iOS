@@ -276,6 +276,9 @@
 		59DA67D91A0A5FF100612F33 /* icon_chevron-right_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67991A0A5FF100612F33 /* icon_chevron-right_red@2x.png */; };
 		59DA67DA1A0A5FF100612F33 /* icon_chevron-right_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67991A0A5FF100612F33 /* icon_chevron-right_red@2x.png */; };
 		59DA67DB1A0A5FF100612F33 /* icon_chevron-right_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67991A0A5FF100612F33 /* icon_chevron-right_red@2x.png */; };
+		59DA67DD1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */; };
+		59DA67DE1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */; };
+		59DA67DF1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */; };
 		59E25D3119094E3F000F9DE4 /* CDVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E25D3019094E3F000F9DE4 /* CDVLoader.m */; };
 		59E53F4C1986C1760003BC6B /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
 		59E53F4D1986C1760003BC6B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF9C2DF318F586F0000C5E68 /* Main_iPad.storyboard */; };
@@ -541,6 +544,7 @@
 		59DA67971A0A5FF100612F33 /* icon_app-list_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_app-list_red@2x.png"; sourceTree = "<group>"; };
 		59DA67981A0A5FF100612F33 /* icon_cross_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cross_red@2x.png"; sourceTree = "<group>"; };
 		59DA67991A0A5FF100612F33 /* icon_chevron-right_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chevron-right_red@2x.png"; sourceTree = "<group>"; };
+		59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chevron-left_red@3x.png"; sourceTree = "<group>"; };
 		59E25D2F19094E3F000F9DE4 /* CDVLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVLoader.h; sourceTree = "<group>"; };
 		59E25D3019094E3F000F9DE4 /* CDVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLoader.m; sourceTree = "<group>"; };
 		59E34EDB1923E119003458AF /* OutAppData (isJavaServer).xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData (isJavaServer).xcdatamodel"; sourceTree = "<group>"; };
@@ -954,6 +958,7 @@
 		CF9C2E0318F5C577000C5E68 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */,
 				59DA67841A0A5FF100612F33 /* icon_speech-bubble_red.png */,
 				59DA67851A0A5FF100612F33 /* icon_microphone_red.png */,
 				59DA67861A0A5FF100612F33 /* icon_chevron-right-inactive.png */,
@@ -1232,6 +1237,7 @@
 				59CAF109192DF98A0051E8CD /* NoAppImage.png in Resources */,
 				CF9C2E4618F697FC000C5E68 /* OShub_bg-red.jpg in Resources */,
 				59665FDB1A0A45C70049F8CD /* icon_microphone_white@3x.png in Resources */,
+				59DA67DD1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */,
 				59DA67D01A0A5FF100612F33 /* icon_app-list.png in Resources */,
 				595646D9190FBE4C00C1D583 /* splash_768x1024.png in Resources */,
 				590EA49318F6FF6500EB317D /* ipad_bg-red_@2x.jpg in Resources */,
@@ -1310,6 +1316,7 @@
 				597A521B195C9A6400F15480 /* OShub_bg-red.jpg in Resources */,
 				59665F641A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png in Resources */,
 				597A521D195C9A6400F15480 /* splash_768x1024.png in Resources */,
+				59DA67DE1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */,
 				59DA67D11A0A5FF100612F33 /* icon_app-list.png in Resources */,
 				59665F671A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png in Resources */,
 				597A521E195C9A6400F15480 /* ipad_bg-red_@2x.jpg in Resources */,
@@ -1388,6 +1395,7 @@
 				59E53F6A1986C1760003BC6B /* OShub_bg-red.jpg in Resources */,
 				59665F651A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png in Resources */,
 				59E53F6B1986C1760003BC6B /* splash_768x1024.png in Resources */,
+				59DA67DF1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */,
 				59DA67D21A0A5FF100612F33 /* icon_app-list.png in Resources */,
 				59665F681A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png in Resources */,
 				59E53F6C1986C1760003BC6B /* ipad_bg-red_@2x.jpg in Resources */,
