@@ -32,7 +32,7 @@
 -(NSUInteger)supportedInterfaceOrientations
 {
     if(self.autorotationEnable)
-        return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
+        return UIInterfaceOrientationMaskAll;
     else
         return self.lockedInterfaceOrientation;
 }

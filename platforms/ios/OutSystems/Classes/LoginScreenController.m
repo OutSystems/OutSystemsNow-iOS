@@ -97,10 +97,12 @@
     
     
     self.navigationController.toolbar.hidden = YES;
+    
+    // Lock screen to Portrait orientation
+    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
 
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
-    
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -108,6 +110,7 @@
         
         [self.loginButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
