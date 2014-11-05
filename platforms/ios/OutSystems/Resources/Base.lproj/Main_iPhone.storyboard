@@ -646,6 +646,9 @@
                                                 <state key="normal" image="icon_microphone_white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="onRecordComment:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="Mtr-Hn-nNA"/>
+                                                </connections>
                                             </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwf-yC-iFa" userLabel="FeedbackText">
                                                 <rect key="frame" x="55" y="6" width="210" height="33"/>
@@ -867,7 +870,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="6zx-D3-JMY"/>
         <segue reference="oPM-kh-zcB"/>
-        <segue reference="ITW-ug-7u2"/>
     </inferredMetricsTieBreakers>
 </document>

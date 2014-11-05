@@ -391,6 +391,19 @@ float const IPAD_HEIGHT = 768;
 }
 
 
+-(void)textViewDidBeginEditing:(UITextView *)textView{
+    
+    if(self.ectHelperView.hidden == NO)
+        [self onECTHelperTaped:nil];
+    
+    if(textView.textColor==[UIColor grayColor]){
+        textView.textColor=[UIColor blackColor];
+        textView.text=@"";
+    }
+
+    
+}
+
 - (void)textViewDidChange:(UITextView *)textView{
 
     CGRect frame = textView.frame;
@@ -435,7 +448,10 @@ float const IPAD_HEIGHT = 768;
 }
 
 - (IBAction)onCloseECT:(id)sender {
-    [self closeECTView];
+    if(self.ectHelperView.hidden == NO)
+        [self onECTHelperTaped:nil];
+    else
+        [self closeECTView];
 }
 - (IBAction)onSendECT:(id)sender {
     
@@ -465,6 +481,13 @@ float const IPAD_HEIGHT = 768;
     }];
 }
 
+- (IBAction)onRecordComment:(id)sender {
+    if(self.ectHelperView.hidden == NO)
+        [self onECTHelperTaped:nil];
+    
+    // TODO
+}
+
 
 -(void)openECTView{
     // Hide navigation toolbar
@@ -492,6 +515,10 @@ float const IPAD_HEIGHT = 768;
     // Show microphone button
     self.ectMicrophoneButton.hidden = NO;
     self.ectSendFeedbackButton.hidden= YES;
+    
+    // Reset feedback textview
+    self.ectTextView.textColor = [UIColor grayColor];
+    self.ectTextView.text = @"Type your message here...";
     
 }
 
@@ -743,13 +770,25 @@ float const IPAD_HEIGHT = 768;
         else{
             UIVisualEffect *blurEffect;
             blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-            
             UIVisualEffectView *visualEffectView;
-            visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+            
+            // Check if VisualEffectView already exists
+            NSArray* subViews =[self.ectHelperView subviews];
+            for(int i=0; i < [subViews count]; i++){
+                if([subViews[i] isKindOfClass: [UIVisualEffectView class]]){
+                    visualEffectView = subViews[i];
+                    break;
+                }
+            }
+            
+            if(!visualEffectView)
+                visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
             
             visualEffectView.frame = self.ectHelperView.bounds;
+            
             [self.ectHelperView addSubview:visualEffectView];
             [self.ectHelperView sendSubviewToBack:visualEffectView];
+            [self.view layoutIfNeeded];
         }
         
         [self.mobileECTView sendSubviewToBack:self.ectScreenCaptureView];
@@ -823,6 +862,7 @@ float const IPAD_HEIGHT = 768;
     
     
 }
+
 
 
 @end
