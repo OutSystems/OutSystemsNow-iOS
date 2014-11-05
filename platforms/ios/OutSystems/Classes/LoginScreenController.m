@@ -11,6 +11,7 @@
 #import "UIInsetTextField.h"
 #import "OutSystemsAppDelegate.h"
 #import "ApplicationViewController.h"
+#import "OSNavigationController.h"
 
 @interface LoginScreenController ()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginActivityIndicator;
@@ -74,6 +75,8 @@
         self.usernameInput.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
         self.passwordInput.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
     }
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -94,6 +97,10 @@
     
     
     self.navigationController.toolbar.hidden = YES;
+
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    
 }
 
 - (void) viewDidAppear:(BOOL)animated {

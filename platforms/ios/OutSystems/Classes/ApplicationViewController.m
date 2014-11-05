@@ -11,9 +11,17 @@
 #import "PXRImageSizeUtil.h"
 #import <Crashlytics/Crashlytics.h>
 #import "MobileECT.h"
+#import "CanvasView.h"
+#import "OSNavigationController.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
+float const ECT_TOOLBAR_HEIGHT = 45;
+
+float const IPHONE5_HEIGHT = 568;
+float const IPHONE6_HEIGHT = 667;
+
+float const IPAD_HEIGHT = 768;
 
 @interface ApplicationViewController ()
 @property (strong, nonatomic) CDVViewController *applicationBrowser;
@@ -40,6 +48,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
 @property BOOL viewFinishedLoad;
 @property (weak, nonatomic) IBOutlet UIView *loadingProgressView;
+
+// Mobile ECT
 @property (weak, nonatomic) IBOutlet UIView *mobileECTView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *openMobileECTButton;
 @property (weak, nonatomic) IBOutlet UIView *ectHelperView;
@@ -48,14 +58,21 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 @property (weak, nonatomic) IBOutlet UITextView *ectTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ectToolbarHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *ectToolbarBottomConstraint;
-@property (weak, nonatomic) IBOutlet UIImageView *ectScreenCaptureView;
+@property (weak, nonatomic) IBOutlet CanvasView *ectScreenCaptureView;
 @property (weak, nonatomic) IBOutlet UIView *ectStatusView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *ectActivityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *ectStatusMessage;
 @property (weak, nonatomic) IBOutlet UIButton *ectRetryButton;
 @property (weak, nonatomic) IBOutlet UIButton *ectCancelRetryButton;
+@property (weak, nonatomic) IBOutlet UIButton *ectSendFeedbackButton;
+@property (weak, nonatomic) IBOutlet UIButton *ectMicrophoneButton;
+
+
+@property (strong,nonatomic) NSNumber* previousECTToolbarHeight;
+@property (retain,nonatomic) NSMutableArray* originalToolbarItems;
 
 @end
+
 
 @implementation ApplicationViewController
 
@@ -111,6 +128,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     // remove bounce effect
     self.applicationBrowser.webView.scrollView.bounces = NO;
     
+    /*
     // Remove Mobile ECT toolbar button if feedback its now allowed for the application
     if(!_application.feedbackActive){
         NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
@@ -118,6 +136,13 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         [toolbarButtons removeObject:self.openMobileECTButton];
         [self setToolbarItems:toolbarButtons animated:YES];
     }
+    
+    */
+    // Hide Mobile ECT button
+    self.originalToolbarItems = [self.toolbarItems mutableCopy];
+    NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
+    [toolbarButtons removeObject:self.openMobileECTButton];
+    [self setToolbarItems:toolbarButtons animated:YES];
     
     // Mobile ECT Configurations
     self.ectTextView.delegate = self;
@@ -143,6 +168,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     self.ectScreenCaptureView.hidden = YES;
     self.ectStatusView.hidden = YES;
+    
+    self.previousECTToolbarHeight = [NSNumber numberWithFloat:self.ectToolbarHeightConstraint.constant];
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -158,6 +187,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.loadingView.hidden = YES;
     
     self.mobileECTView.hidden = YES;
+    
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -243,6 +276,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self transitionToNewPage];
     
     self.viewFinishedLoad = YES;
+    
+    // Check if Mobile ECT is enable for the app
+    //TODO
+    [self setToolbarItems:self.originalToolbarItems animated:YES];
     
 }
 
@@ -348,6 +385,12 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self.view layoutIfNeeded];
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    // ECT message limit
+    return [[textView text] length] - range.length + text.length < 500;
+}
+
+
 - (void)textViewDidChange:(UITextView *)textView{
 
     CGRect frame = textView.frame;
@@ -355,14 +398,28 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     float dY = sizeThatFitsTextView.height - frame.size.height;
     
-    if(dY == 0)
-        return;
+    if([textView.text length] > 0){
+        // Hide microphone button
+        self.ectMicrophoneButton.hidden = YES;
+        self.ectSendFeedbackButton.hidden= NO;
+    }
+    else{
+        // Show microphone button
+        self.ectMicrophoneButton.hidden = NO;
+        self.ectSendFeedbackButton.hidden= YES;
+    }
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+    
     
     if(dY != 0 && sizeThatFitsTextView.height >= 33 && sizeThatFitsTextView.height <= 200){
         
-        self.ectToolbarHeightConstraint.constant += dY;
+
         
         [UIView animateWithDuration:0.2 animations:^{
+        self.ectToolbarHeightConstraint.constant += dY;
             [self.view layoutIfNeeded];
         }];
         
@@ -388,17 +445,24 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.ectCancelRetryButton.hidden = YES;
     self.ectStatusView.hidden = NO;
     
+    self.previousECTToolbarHeight = [NSNumber numberWithFloat:self.ectToolbarHeightConstraint.constant];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.ectToolbarHeightConstraint.constant = ECT_TOOLBAR_HEIGHT;
+        [self.view layoutIfNeeded];
+    }];
+    
     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(sendECTFeedback) userInfo:nil repeats:NO];
     
 }
 
-- (void)onECTHelperTaped:(UIGestureRecognizer *)gestureRecognizer {
-    self.ectHelperView.hidden = YES;
-    MobileECT *mobileECTInfo = [self getOrCreateMobileECTInfo];
-    mobileECTInfo.isFirstLoad = NO;
-}
 - (IBAction)onCancelRetry:(id)sender {
     self.ectStatusView.hidden = YES;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.ectToolbarHeightConstraint.constant = [self.previousECTToolbarHeight floatValue];
+        [self.view layoutIfNeeded];
+    }];
 }
 
 
@@ -408,7 +472,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // Capture the current web page
     UIImage *viewImage = [self captureCurrentWebPage];
-    self.ectScreenCaptureView.image = viewImage;
+    [self.ectScreenCaptureView setBackgroundImage:viewImage];
     self.ectScreenCaptureView.hidden = NO;
     
     // Hide web view
@@ -417,16 +481,17 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     // Display ECT View
     self.mobileECTView.hidden = NO;
     
-    // Show helper if it's the first time
-    MobileECT* mobileECTInfo = [self getOrCreateMobileECTInfo];
+    // Show ECT Helper
+    [self openECTHelper];
     
-    if(mobileECTInfo.isFirstLoad){
-        self.ectHelperView.hidden = NO;
-    }
-    else{
-        self.ectHelperView.hidden = YES;
-    }
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
     
+    self.ectHelperView.hidden = NO;    // REMOVE
+    
+    // Show microphone button
+    self.ectMicrophoneButton.hidden = NO;
+    self.ectSendFeedbackButton.hidden= YES;
     
 }
 
@@ -442,14 +507,17 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // Reset ECT contents
     //TODO
-    self.ectScreenCaptureView.image = nil;
+    [self.ectScreenCaptureView clearCanvas];
     self.ectTextView.text = @"";
     self.ectToolbarBottomConstraint.constant = 0;
-    self.ectToolbarHeightConstraint.constant = 45;
+    self.ectToolbarHeightConstraint.constant = ECT_TOOLBAR_HEIGHT;
     [self.view layoutIfNeeded];
     
     // Show web view
     self.webViewFullScreen.hidden = NO;
+    
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
     
 }
 
@@ -476,7 +544,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // Image info
     NSMutableDictionary *image = [[NSMutableDictionary alloc] init];
-    UIImage *ectImage = self.ectScreenCaptureView.image;
+    UIImage *ectImage = [self.ectScreenCaptureView getCanvasImage];
     NSString *imageString = @"";
     
     if(ectImage){
@@ -490,7 +558,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
             }
         }
     }
-    
     
     [image setObject:imageString forKey:@"content"];
     [image setObject:@"PNG" forKey:@"type"];
@@ -534,6 +601,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         return nil;
     } else {
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
         NSLog(@"Result: %@",jsonString);
         return jsonString;
     }
@@ -551,7 +619,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     NSString *post = [NSString stringWithFormat:@"feedback=%@", [self getECTFeedbackJSON]];
     
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
     
     NSMutableURLRequest *serviceRequest = [NSMutableURLRequest requestWithURL:serviceURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:timeoutInSeconds];
@@ -639,6 +707,121 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     }
     
     return mobileECT;
+}
+
+# pragma mark - ECT Helper
+
+-(void) openECTHelper{
+    
+    // Show helper if it's the first time
+    MobileECT* mobileECTInfo = [self getOrCreateMobileECTInfo];
+    
+    mobileECTInfo.isFirstLoad = YES ; // REMOVE
+    
+    if(mobileECTInfo.isFirstLoad){
+
+        // Get iOS Version
+        float iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+        
+        // Get ECT Helper Image
+        UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+        [self calculateECTHelperImage:currentOrientation];
+        
+        // Create blurred view effect
+        if(iOSVersion < 8){
+            self.ectHelperView.alpha = 1;
+            
+            CAGradientLayer *gradient = [CAGradientLayer layer];
+            gradient.frame = self.ectHelperView.bounds;
+            gradient.colors = [NSArray arrayWithObjects:
+                               (id)[[UIColor colorWithRed:0.537 green:0.549 blue:0.565 alpha:1] /*#898c90*/ CGColor],
+                               (id)[[UIColor colorWithRed:0.843 green:0.843 blue:0.843 alpha:1] /*#d7d7d7*/ CGColor],
+                               (id)[[UIColor colorWithRed:0.969 green:0.969 blue:0.969 alpha:1] /*#f7f7f7*/ CGColor], nil];
+            [self.ectHelperView.layer insertSublayer:gradient atIndex:0];
+            
+        }
+        else{
+            UIVisualEffect *blurEffect;
+            blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+            
+            UIVisualEffectView *visualEffectView;
+            visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+            
+            visualEffectView.frame = self.ectHelperView.bounds;
+            [self.ectHelperView addSubview:visualEffectView];
+            [self.ectHelperView sendSubviewToBack:visualEffectView];
+        }
+        
+        [self.mobileECTView sendSubviewToBack:self.ectScreenCaptureView];
+        self.ectHelperView.hidden = NO;
+        self.ectHelperImageView.hidden = NO;
+    }
+    else{
+        self.ectHelperImageView.hidden = YES;
+        self.ectHelperView.hidden = YES;
+    }
+
+}
+
+- (void)onECTHelperTaped:(UIGestureRecognizer *)gestureRecognizer {
+    self.ectHelperView.hidden = YES;
+    MobileECT *mobileECTInfo = [self getOrCreateMobileECTInfo];
+    mobileECTInfo.isFirstLoad = NO;
+}
+
+-(void) calculateECTHelperImage:(UIInterfaceOrientation)toInterfaceOrientation{
+    
+    bool portraitOrientation = toInterfaceOrientation == UIInterfaceOrientationPortrait ||
+                                 toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown;
+    
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    
+    if(iPhoneDevice){
+        if(screenBounds.size.height < IPHONE5_HEIGHT){
+            // iPhone 4, 4s
+            if(portraitOrientation)
+                self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_4-4S_portrait.png"];
+            else
+                self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_4-4S_landscape.png"];
+        }
+        else{
+            if(screenBounds.size.height == IPHONE5_HEIGHT){
+                    // iPhone 5
+                if(portraitOrientation)
+                    self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_5_portrait.png"];
+                else
+                    self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_5_landscape.png"];
+            }
+            else {
+                if(screenBounds.size.height == IPHONE6_HEIGHT){
+                    // iPhone 6
+                    if(portraitOrientation)
+                        self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_6_portrait.png"];
+                    else
+                        self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_6_landscape.png"];
+                }
+                else{
+                    // iPhone 6+
+                    if(portraitOrientation)
+                        self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_6+_portrait.png"];
+                    else
+                        self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_6+_landscape.png"];
+                }
+            }
+        }
+        
+        
+    }
+    else{
+        if(portraitOrientation)
+            self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_6+_portrait.png"];
+        else
+            self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_6+_landscape.png"];
+    }
+    
+    
 }
 
 

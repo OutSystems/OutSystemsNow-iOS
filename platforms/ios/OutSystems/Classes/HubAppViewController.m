@@ -11,6 +11,7 @@
 #import "UIInsetTextField.h"
 #import "ApplicationTileListController.h"
 #import "OutSystemsAppDelegate.h"
+#import "OSNavigationController.h"
 
 @interface HubAppViewController ()
 
@@ -96,6 +97,10 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
             }
         }
     }
+    
+    
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
     
 }
 

@@ -541,17 +541,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eRV-Ym-1U9" userLabel="ScreenCapture">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAe-Ya-uSv" userLabel="ScreenCaptureView" customClass="CanvasView">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                    </imageView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n82-lM-s1n" userLabel="HelperView">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="979"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OShub_bg-red.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PuU-Yt-kka">
-                                                <rect key="frame" x="0.0" y="0.0" width="768" height="979"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ECTSketch_iPhone_6+_portrait.png" translatesAutoresizingMaskIntoConstraints="NO" id="PuU-Yt-kka">
+                                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="centerY" secondItem="PuU-Yt-kka" secondAttribute="centerY" id="6uG-en-VRj"/>
                                             <constraint firstItem="PuU-Yt-kka" firstAttribute="height" secondItem="n82-lM-s1n" secondAttribute="height" id="k1J-No-YBN"/>
@@ -569,12 +570,8 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M30-gB-ZDn" userLabel="CloseButton">
-                                                <rect key="frame" x="11" y="6" width="33" height="33"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="33" id="ZP5-CD-5d2"/>
-                                                    <constraint firstAttribute="height" constant="33" id="qU3-Kn-4bU"/>
-                                                </constraints>
-                                                <state key="normal" backgroundImage="icon-white-close.png">
+                                                <rect key="frame" x="15" y="11" width="22" height="23"/>
+                                                <state key="normal" image="icon_cross_white.png">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -582,11 +579,12 @@
                                                     <action selector="onCloseECT:" destination="H6M-OB-jxb" eventType="touchUpInside" id="lT9-2W-byE"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clH-Sr-mJL">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clH-Sr-mJL" userLabel="SendButton">
                                                 <rect key="frame" x="720" y="9" width="40" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="hdw-LG-4OH"/>
+                                                    <constraint firstAttribute="width" constant="40" id="BKl-co-5GF"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="Send">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -595,16 +593,19 @@
                                                     <action selector="onSendECT:" destination="H6M-OB-jxb" eventType="touchUpInside" id="hUJ-RL-7B3"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4x-N9-QQo" userLabel="StatusView">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9y-bR-aff" userLabel="MicrophoneButton">
+                                                <rect key="frame" x="728" y="10" width="25" height="26"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <state key="normal" image="icon_microphone_white.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4x-N9-QQo" userLabel="StatusView">
                                                 <rect key="frame" x="0.0" y="0.0" width="768" height="45"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEc-41-gBM" userLabel="CancelButton">
-                                                        <rect key="frame" x="11" y="6" width="33" height="33"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="33" id="Hpg-8i-N9E"/>
-                                                            <constraint firstAttribute="height" constant="33" id="rUI-pW-rR5"/>
-                                                        </constraints>
-                                                        <state key="normal" backgroundImage="icon-white-close.png">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEc-41-gBM" userLabel="CancelButton">
+                                                        <rect key="frame" x="15" y="11" width="22" height="23"/>
+                                                        <state key="normal" image="icon_cross_white.png">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
@@ -649,19 +650,21 @@
                                                     <constraint firstAttribute="bottom" secondItem="8Sr-CT-utB" secondAttribute="bottom" constant="6" id="fUv-J4-ug9"/>
                                                     <constraint firstAttribute="bottom" secondItem="dDS-JE-207" secondAttribute="bottom" constant="6" id="fzO-ld-GvV"/>
                                                     <constraint firstItem="7U2-zz-C2w" firstAttribute="leading" secondItem="dDS-JE-207" secondAttribute="leading" constant="-25" id="pFF-hL-EOx"/>
-                                                    <constraint firstAttribute="bottom" secondItem="hEc-41-gBM" secondAttribute="bottom" constant="6" id="pd6-pE-UWU"/>
-                                                    <constraint firstItem="hEc-41-gBM" firstAttribute="leading" secondItem="k4x-N9-QQo" secondAttribute="leading" constant="11" id="xF4-ta-nJ9"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hEc-41-gBM" secondAttribute="bottom" constant="11" id="pd6-pE-UWU"/>
+                                                    <constraint firstItem="hEc-41-gBM" firstAttribute="leading" secondItem="k4x-N9-QQo" secondAttribute="leading" constant="15" id="xF4-ta-nJ9"/>
                                                     <constraint firstAttribute="trailing" secondItem="8Sr-CT-utB" secondAttribute="trailing" constant="8" id="ysi-af-A8b"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="h9y-bR-aff" secondAttribute="trailing" constant="15" id="93h-EZ-Com"/>
                                             <constraint firstAttribute="width" secondItem="k4x-N9-QQo" secondAttribute="width" id="9aF-bf-h0R"/>
-                                            <constraint firstItem="M30-gB-ZDn" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" constant="11" id="ADz-dN-YkF"/>
+                                            <constraint firstItem="M30-gB-ZDn" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" constant="15" id="ADz-dN-YkF"/>
                                             <constraint firstAttribute="trailing" secondItem="dOp-K5-DFw" secondAttribute="trailing" constant="55" id="Cr9-WA-e2k"/>
-                                            <constraint firstAttribute="bottom" secondItem="M30-gB-ZDn" secondAttribute="bottom" constant="6" id="MnD-Jz-ZYs"/>
+                                            <constraint firstAttribute="bottom" secondItem="M30-gB-ZDn" secondAttribute="bottom" constant="11" id="MnD-Jz-ZYs"/>
                                             <constraint firstAttribute="bottom" secondItem="clH-Sr-mJL" secondAttribute="bottom" constant="6" id="Nt4-Wh-Dwj"/>
+                                            <constraint firstAttribute="bottom" secondItem="h9y-bR-aff" secondAttribute="bottom" constant="9" id="OSd-kH-DcE"/>
                                             <constraint firstItem="dOp-K5-DFw" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" constant="55" id="Olk-pR-hDn"/>
                                             <constraint firstAttribute="height" secondItem="k4x-N9-QQo" secondAttribute="height" id="Pqu-tM-3Op"/>
                                             <constraint firstAttribute="trailing" secondItem="clH-Sr-mJL" secondAttribute="trailing" constant="8" id="TTc-hO-fjo"/>
@@ -677,16 +680,16 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="n82-lM-s1n" firstAttribute="top" secondItem="jzQ-QF-CNx" secondAttribute="top" id="074-6B-AD7"/>
-                                    <constraint firstItem="eRV-Ym-1U9" firstAttribute="leading" secondItem="jzQ-QF-CNx" secondAttribute="leading" id="3ds-SH-CHj"/>
                                     <constraint firstItem="n82-lM-s1n" firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="6pu-XY-697"/>
-                                    <constraint firstItem="eRV-Ym-1U9" firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" id="7Hd-Lm-C90"/>
                                     <constraint firstItem="n82-lM-s1n" firstAttribute="leading" secondItem="jzQ-QF-CNx" secondAttribute="leading" id="Lak-4Q-0Cv"/>
                                     <constraint firstItem="jOU-TJ-2yq" firstAttribute="centerX" secondItem="n82-lM-s1n" secondAttribute="centerX" id="Mmx-E8-yry"/>
                                     <constraint firstItem="jOU-TJ-2yq" firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="RoR-ak-h2h"/>
-                                    <constraint firstItem="eRV-Ym-1U9" firstAttribute="top" secondItem="jzQ-QF-CNx" secondAttribute="top" id="Tnt-28-hbB"/>
-                                    <constraint firstItem="n82-lM-s1n" firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" constant="-45" id="ing-Ee-ZpH"/>
+                                    <constraint firstItem="zAe-Ya-uSv" firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="SJ9-0o-gIt"/>
+                                    <constraint firstItem="zAe-Ya-uSv" firstAttribute="leading" secondItem="jzQ-QF-CNx" secondAttribute="leading" id="ZT4-zt-o7h"/>
+                                    <constraint firstItem="n82-lM-s1n" firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" id="ing-Ee-ZpH"/>
                                     <constraint firstAttribute="bottom" secondItem="jOU-TJ-2yq" secondAttribute="bottom" id="mp8-tv-jA5"/>
-                                    <constraint firstItem="eRV-Ym-1U9" firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="uLb-7a-c1W"/>
+                                    <constraint firstItem="zAe-Ya-uSv" firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" id="oPY-ai-7hK"/>
+                                    <constraint firstItem="zAe-Ya-uSv" firstAttribute="top" secondItem="jzQ-QF-CNx" secondAttribute="top" id="pOa-U4-Hcm"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -708,28 +711,28 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems>
-                        <barButtonItem image="icon-chevron-back.png" style="plain" id="JdK-ad-F0w">
+                        <barButtonItem image="icon_chevron-left_red.png" style="plain" id="JdK-ad-F0w">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="navBack:" destination="H6M-OB-jxb" id="7Da-gC-UvN"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="xKl-oi-jrd"/>
-                        <barButtonItem image="icon-chevron-forth.png" style="plain" id="irt-mN-HoB">
+                        <barButtonItem image="icon_chevron-right_red.png" style="plain" id="irt-mN-HoB">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="navForward:" destination="H6M-OB-jxb" id="YGN-vS-pcD"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="DWA-80-MRE"/>
-                        <barButtonItem image="ect_ballon.png" style="plain" id="cYP-G3-9f5">
+                        <barButtonItem image="icon_speech-bubble_red.png" style="plain" id="cYP-G3-9f5">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="onOpenECT:" destination="H6M-OB-jxb" id="oc7-ai-PI1"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="cdc-o0-5bH"/>
-                        <barButtonItem image="icon-apps.png" style="plain" id="tN4-Sy-Oof">
+                        <barButtonItem image="icon_app-list_red.png" style="plain" id="tN4-Sy-Oof">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="navAppList:" destination="H6M-OB-jxb" id="b2F-Bn-1p5"/>
@@ -745,8 +748,10 @@
                         <outlet property="ectCancelRetryButton" destination="hEc-41-gBM" id="sBk-K3-BYw"/>
                         <outlet property="ectHelperImageView" destination="PuU-Yt-kka" id="egn-G5-ddg"/>
                         <outlet property="ectHelperView" destination="n82-lM-s1n" id="lfG-GR-fXy"/>
+                        <outlet property="ectMicrophoneButton" destination="h9y-bR-aff" id="kSo-59-vL1"/>
                         <outlet property="ectRetryButton" destination="8Sr-CT-utB" id="kxm-ds-90u"/>
-                        <outlet property="ectScreenCaptureView" destination="eRV-Ym-1U9" id="E2g-JK-mnT"/>
+                        <outlet property="ectScreenCaptureView" destination="zAe-Ya-uSv" id="RGE-l9-3jD"/>
+                        <outlet property="ectSendFeedbackButton" destination="clH-Sr-mJL" id="eJI-3k-YUc"/>
                         <outlet property="ectStatusMessage" destination="dDS-JE-207" id="REB-hS-lgP"/>
                         <outlet property="ectStatusView" destination="k4x-N9-QQo" id="Iiz-N6-juG"/>
                         <outlet property="ectTextView" destination="dOp-K5-DFw" id="Cvv-Co-XQK"/>
@@ -771,7 +776,7 @@
         <!--Navigation Controller-->
         <scene sceneID="FBi-mu-mMy">
             <objects>
-                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" toolbarHidden="NO" id="1fS-mO-TBd" sceneMemberID="viewController">
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" toolbarHidden="NO" id="1fS-mO-TBd" customClass="OSNavigationController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -815,14 +820,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ECTSketch_iPhone_6+_portrait.png" width="1243" height="2208"/>
         <image name="NoAppImage.png" width="64" height="64"/>
-        <image name="OShub_bg-red.jpg" width="640" height="1136"/>
-        <image name="ect_ballon.png" width="22" height="18"/>
-        <image name="icon-apps.png" width="22" height="22"/>
-        <image name="icon-chevron-back.png" width="22" height="22"/>
-        <image name="icon-chevron-forth.png" width="22" height="22"/>
-        <image name="icon-white-close.png" width="45" height="45"/>
         <image name="icon-white-help.png" width="45" height="45"/>
+        <image name="icon_app-list_red.png" width="23" height="24"/>
+        <image name="icon_chevron-left_red.png" width="22" height="23"/>
+        <image name="icon_chevron-right_red.png" width="22" height="23"/>
+        <image name="icon_cross_white.png" width="22" height="23"/>
+        <image name="icon_microphone_white.png" width="25" height="26"/>
+        <image name="icon_speech-bubble_red.png" width="27" height="26"/>
         <image name="logo_iphone5.png" width="530" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

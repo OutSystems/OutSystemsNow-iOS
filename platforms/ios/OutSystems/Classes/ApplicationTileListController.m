@@ -12,6 +12,7 @@
 #import "ApplicationViewController.h"
 #import "DemoInfrastructure.h"
 #import "TTTAttributedLabel.h"
+#import "OSNavigationController.h"
 
 @interface ApplicationTileListController ()
 
@@ -155,6 +156,8 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationController.toolbar.hidden = YES;
     
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
