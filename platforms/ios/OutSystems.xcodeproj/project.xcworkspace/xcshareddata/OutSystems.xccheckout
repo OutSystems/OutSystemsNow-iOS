@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A9026329-7354-423B-8FF4-EA78BCF547B9</string>
+	<string>002AB272-1581-4510-8F62-FD9C4ABA7CD8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>OutSystems</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,11 +14,11 @@
 		<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MobileApp/OutSystems/platforms/ios/OutSystems.xcodeproj/project.xcworkspace</string>
+	<string>MobileApp/OutSystems/trunk/platforms/ios/OutSystems.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>17138862-0172-114e-a870-43eb0320d916++6215</key>
-		<string>../../../../../..</string>
+		<string>../../../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
@@ -26,7 +26,7 @@
 		<string>https://srvptsvn/svn/docs</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects/MobileApp/OutSystems/platforms/ios/OutSystems.xcodeproj/project.xcworkspace</string>
+	<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects/MobileApp/OutSystems/trunk/platforms/ios/OutSystems.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,14 +34,8 @@
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
-			<key>IDESourceControlRepositoryBranchesRelativeLocationKey</key>
-			<string>branches</string>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>
-			<key>IDESourceControlRepositoryTagsRelativeLocationKey</key>
-			<string>tags</string>
-			<key>IDESourceControlRepositoryTrunkRelativeLocationKey</key>
-			<string>trunk</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>17138862-0172-114e-a870-43eb0320d916++6215</string>
 			<key>IDESourceControlWCCName</key>
