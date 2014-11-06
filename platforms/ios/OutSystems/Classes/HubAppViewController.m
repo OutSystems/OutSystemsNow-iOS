@@ -98,10 +98,12 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
         }
     }
     
-    
-    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
-    
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+
+    if(iPhoneDevice){
+        OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+        [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    }
 }
 
 - (void)getInfrastructureSettings{
