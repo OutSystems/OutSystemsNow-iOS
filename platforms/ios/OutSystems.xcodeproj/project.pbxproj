@@ -821,7 +821,6 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				594C6B78195B3593004129C8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -841,7 +840,6 @@
 				597A51DD195C9A6400F15480 /* Resources */,
 				597A5227195C9A6400F15480 /* Sources */,
 				597A5248195C9A6400F15480 /* Frameworks */,
-				597A525B195C9A6400F15480 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -861,7 +859,6 @@
 				59E53F4B1986C1760003BC6B /* Resources */,
 				59E53F6F1986C1760003BC6B /* Sources */,
 				59E53F8D1986C1760003BC6B /* Frameworks */,
-				59E53FA01986C1760003BC6B /* ShellScript */,
 			);
 			buildRules = (
 			);
