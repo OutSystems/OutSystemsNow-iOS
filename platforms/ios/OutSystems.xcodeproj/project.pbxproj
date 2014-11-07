@@ -279,6 +279,12 @@
 		59DA67DD1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */; };
 		59DA67DE1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */; };
 		59DA67DF1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */; };
+		59DA68081A0BBA2F00612F33 /* OSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59DA68071A0BBA2F00612F33 /* OSAlertView.m */; };
+		59DA68091A0BBA2F00612F33 /* OSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59DA68071A0BBA2F00612F33 /* OSAlertView.m */; };
+		59DA680A1A0BBA2F00612F33 /* OSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59DA68071A0BBA2F00612F33 /* OSAlertView.m */; };
+		59DA68121A0BD2F500612F33 /* AudioRecorderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59DA68111A0BD2F500612F33 /* AudioRecorderAlertView.m */; };
+		59DA68131A0BD2F500612F33 /* AudioRecorderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59DA68111A0BD2F500612F33 /* AudioRecorderAlertView.m */; };
+		59DA68141A0BD2F500612F33 /* AudioRecorderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59DA68111A0BD2F500612F33 /* AudioRecorderAlertView.m */; };
 		59E25D3119094E3F000F9DE4 /* CDVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E25D3019094E3F000F9DE4 /* CDVLoader.m */; };
 		59E53F4C1986C1760003BC6B /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
 		59E53F4D1986C1760003BC6B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF9C2DF318F586F0000C5E68 /* Main_iPad.storyboard */; };
@@ -545,6 +551,10 @@
 		59DA67981A0A5FF100612F33 /* icon_cross_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cross_red@2x.png"; sourceTree = "<group>"; };
 		59DA67991A0A5FF100612F33 /* icon_chevron-right_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chevron-right_red@2x.png"; sourceTree = "<group>"; };
 		59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chevron-left_red@3x.png"; sourceTree = "<group>"; };
+		59DA68061A0BB9F700612F33 /* OSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSAlertView.h; sourceTree = "<group>"; };
+		59DA68071A0BBA2F00612F33 /* OSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSAlertView.m; sourceTree = "<group>"; };
+		59DA68101A0BD2DF00612F33 /* AudioRecorderAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorderAlertView.h; sourceTree = "<group>"; };
+		59DA68111A0BD2F500612F33 /* AudioRecorderAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecorderAlertView.m; sourceTree = "<group>"; };
 		59E25D2F19094E3F000F9DE4 /* CDVLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVLoader.h; sourceTree = "<group>"; };
 		59E25D3019094E3F000F9DE4 /* CDVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLoader.m; sourceTree = "<group>"; };
 		59E34EDB1923E119003458AF /* OutAppData (isJavaServer).xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData (isJavaServer).xcdatamodel"; sourceTree = "<group>"; };
@@ -738,6 +748,10 @@
 				59665FCC1A0937D00049F8CD /* OSNavigationController.m */,
 				59665FD01A0A33350049F8CD /* CanvasView.h */,
 				59665FD11A0A335A0049F8CD /* CanvasView.m */,
+				59DA68061A0BB9F700612F33 /* OSAlertView.h */,
+				59DA68071A0BBA2F00612F33 /* OSAlertView.m */,
+				59DA68101A0BD2DF00612F33 /* AudioRecorderAlertView.h */,
+				59DA68111A0BD2F500612F33 /* AudioRecorderAlertView.m */,
 			);
 			name = Classes;
 			path = OutSystems/Classes;
@@ -1503,6 +1517,7 @@
 				CF9C2DE718F5869A000C5E68 /* ApplicationTileCell.m in Sources */,
 				CF9C2DEA18F5869A000C5E68 /* ApplicationViewController.m in Sources */,
 				5962EF05191BE4D1001A8F57 /* PXRImageSizeUtil.m in Sources */,
+				59DA68121A0BD2F500612F33 /* AudioRecorderAlertView.m in Sources */,
 				CF9C2DEC18F5869A000C5E68 /* HubAppViewController.m in Sources */,
 				599C2DC01988067600BFF05D /* CDVFile.m in Sources */,
 				CF9C2DE918F5869A000C5E68 /* ApplicationTileListController.m in Sources */,
@@ -1512,6 +1527,7 @@
 				CF9C2DEF18F5869A000C5E68 /* main.m in Sources */,
 				767DCF5D20714090A2682D21 /* CDVDevice.m in Sources */,
 				599927511A0277580068B246 /* MobileECT.m in Sources */,
+				59DA68081A0BBA2F00612F33 /* OSAlertView.m in Sources */,
 				59665FD21A0A335A0049F8CD /* CanvasView.m in Sources */,
 				599C2DC51988067D00BFF05D /* CDVLocalFilesystem.m in Sources */,
 				CF9C2DF118F5869A000C5E68 /* UIInsetTextField.m in Sources */,
@@ -1551,11 +1567,13 @@
 				59BC4909199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */,
 				597A522B195C9A6400F15480 /* PXRImageSizeUtil.m in Sources */,
 				597A522C195C9A6400F15480 /* HubAppViewController.m in Sources */,
+				59DA68131A0BD2F500612F33 /* AudioRecorderAlertView.m in Sources */,
 				597A522D195C9A6400F15480 /* ApplicationTileListController.m in Sources */,
 				597A522E195C9A6400F15480 /* LoginScreenController.m in Sources */,
 				597A522F195C9A6400F15480 /* OutSystemsAppDelegate.m in Sources */,
 				599C2DC41988067C00BFF05D /* CDVLocalFilesystem.m in Sources */,
 				597A5230195C9A6400F15480 /* OutAppData.xcdatamodeld in Sources */,
+				59DA68091A0BBA2F00612F33 /* OSAlertView.m in Sources */,
 				597A5231195C9A6400F15480 /* main.m in Sources */,
 				59EC8A2F19E3FCCC00944672 /* CDVCamera.m in Sources */,
 				599927521A0277580068B246 /* MobileECT.m in Sources */,
@@ -1596,11 +1614,13 @@
 				59E53F731986C1760003BC6B /* PXRImageSizeUtil.m in Sources */,
 				59E53F741986C1760003BC6B /* HubAppViewController.m in Sources */,
 				599C2DC21988067700BFF05D /* CDVFile.m in Sources */,
+				59DA68141A0BD2F500612F33 /* AudioRecorderAlertView.m in Sources */,
 				59E53F751986C1760003BC6B /* ApplicationTileListController.m in Sources */,
 				59E53F761986C1760003BC6B /* LoginScreenController.m in Sources */,
 				59E53F771986C1760003BC6B /* OutSystemsAppDelegate.m in Sources */,
 				59E53F781986C1760003BC6B /* OutAppData.xcdatamodeld in Sources */,
 				59E53F791986C1760003BC6B /* main.m in Sources */,
+				59DA680A1A0BBA2F00612F33 /* OSAlertView.m in Sources */,
 				59E53F7A1986C1760003BC6B /* CDVDevice.m in Sources */,
 				599927531A0277580068B246 /* MobileECT.m in Sources */,
 				599C2DC61988067E00BFF05D /* CDVLocalFilesystem.m in Sources */,

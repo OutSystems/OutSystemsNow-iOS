@@ -603,6 +603,13 @@
                                                     <action selector="onRecordComment:" destination="H6M-OB-jxb" eventType="touchUpInside" id="5IB-ey-Yrt"/>
                                                 </connections>
                                             </button>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRo-Vn-Ayp" userLabel="PlayButton">
+                                                <rect key="frame" x="373" y="12" width="22" height="22"/>
+                                                <state key="normal" title="Play"/>
+                                                <connections>
+                                                    <action selector="onPlayECTAudio:" destination="H6M-OB-jxb" eventType="touchUpInside" id="xJs-FK-XOx"/>
+                                                </connections>
+                                            </button>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k4x-N9-QQo" userLabel="StatusView">
                                                 <rect key="frame" x="0.0" y="0.0" width="768" height="45"/>
                                                 <subviews>
@@ -665,6 +672,7 @@
                                             <constraint firstAttribute="width" secondItem="k4x-N9-QQo" secondAttribute="width" id="9aF-bf-h0R"/>
                                             <constraint firstItem="M30-gB-ZDn" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" constant="15" id="ADz-dN-YkF"/>
                                             <constraint firstAttribute="trailing" secondItem="dOp-K5-DFw" secondAttribute="trailing" constant="55" id="Cr9-WA-e2k"/>
+                                            <constraint firstAttribute="centerY" secondItem="hRo-Vn-Ayp" secondAttribute="centerY" constant="-0.5" id="Ju2-1k-wSr"/>
                                             <constraint firstAttribute="bottom" secondItem="M30-gB-ZDn" secondAttribute="bottom" constant="11" id="MnD-Jz-ZYs"/>
                                             <constraint firstAttribute="bottom" secondItem="clH-Sr-mJL" secondAttribute="bottom" constant="6" id="Nt4-Wh-Dwj"/>
                                             <constraint firstAttribute="bottom" secondItem="h9y-bR-aff" secondAttribute="bottom" constant="9" id="OSd-kH-DcE"/>
@@ -676,6 +684,7 @@
                                             <constraint firstItem="k4x-N9-QQo" firstAttribute="top" secondItem="jOU-TJ-2yq" secondAttribute="top" id="cW7-zU-Zw2"/>
                                             <constraint firstAttribute="centerX" secondItem="dOp-K5-DFw" secondAttribute="centerX" id="dEL-IJ-ly8"/>
                                             <constraint firstAttribute="bottom" secondItem="dOp-K5-DFw" secondAttribute="bottom" constant="6" id="eIJ-IJ-OfW"/>
+                                            <constraint firstAttribute="centerX" secondItem="hRo-Vn-Ayp" secondAttribute="centerX" id="kW8-qD-QER"/>
                                             <constraint firstItem="dOp-K5-DFw" firstAttribute="top" secondItem="jOU-TJ-2yq" secondAttribute="top" constant="6" id="pPe-fV-AoF"/>
                                         </constraints>
                                     </view>
@@ -752,6 +761,7 @@
                         <outlet property="ectHelperImageView" destination="PuU-Yt-kka" id="egn-G5-ddg"/>
                         <outlet property="ectHelperView" destination="n82-lM-s1n" id="lfG-GR-fXy"/>
                         <outlet property="ectMicrophoneButton" destination="h9y-bR-aff" id="kSo-59-vL1"/>
+                        <outlet property="ectPlayAudioButton" destination="hRo-Vn-Ayp" id="dQ0-FM-0Ka"/>
                         <outlet property="ectRetryButton" destination="8Sr-CT-utB" id="kxm-ds-90u"/>
                         <outlet property="ectScreenCaptureView" destination="zAe-Ya-uSv" id="RGE-l9-3jD"/>
                         <outlet property="ectSendFeedbackButton" destination="clH-Sr-mJL" id="eJI-3k-YUc"/>

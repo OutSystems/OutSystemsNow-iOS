@@ -13,6 +13,7 @@
 #import "MobileECT.h"
 #import "CanvasView.h"
 #import "OSNavigationController.h"
+#import "AudioRecorderAlertView.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -66,10 +67,15 @@ float const IPAD_HEIGHT = 768;
 @property (weak, nonatomic) IBOutlet UIButton *ectCancelRetryButton;
 @property (weak, nonatomic) IBOutlet UIButton *ectSendFeedbackButton;
 @property (weak, nonatomic) IBOutlet UIButton *ectMicrophoneButton;
+@property (weak, nonatomic) IBOutlet UIButton *ectPlayAudioButton;
 
 
 @property (strong,nonatomic) NSNumber* previousECTToolbarHeight;
 @property (retain,nonatomic) NSMutableArray* originalToolbarItems;
+
+@property AVAudioRecorder *recorder;
+@property AVAudioPlayer *player;
+@property BOOL hasAudioComments;
 
 @end
 
@@ -171,7 +177,9 @@ float const IPAD_HEIGHT = 768;
     
     self.previousECTToolbarHeight = [NSNumber numberWithFloat:self.ectToolbarHeightConstraint.constant];
     
+    [self initAudioRecorder];
 
+    [self showTextAreaOrPlayButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -441,6 +449,107 @@ float const IPAD_HEIGHT = 768;
 
 }
 
+# pragma mark - ECT Feedback Audio
+- (IBAction)onPlayECTAudio:(id)sender {
+    NSLog(@"onPlayECTAudio");
+    [self playRecordedAudio];
+}
+
+- (void)onAudioRecorderExit:(BOOL)recorded{
+    NSLog(@"onAudioRecorderExit: %hhd", recorded);
+    [self stopRecording];
+    
+    if(recorded){
+        self.hasAudioComments = YES;
+    }
+    else{
+        [self deleteRecording];
+    }
+
+    [self showTextAreaOrPlayButton];
+}
+
+
+
+#pragma mark - Audio Recorder
+
+-(void)initAudioRecorder{
+    // Set the audio file
+    NSArray *pathComponents = [NSArray arrayWithObjects:
+                               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
+                               @"ECTAudioComment.m4a",
+                               nil];
+    NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    
+    // Setup audio session
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    
+    // Define the recorder setting
+    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
+    
+    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
+    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
+    [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
+    
+    // Initiate and prepare the recorder
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:outputFileURL settings:recordSetting error:nil];
+    self.recorder.delegate = self;
+    self.recorder.meteringEnabled = YES;
+    [self.recorder prepareToRecord];
+}
+
+-(void)startRecording{
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    
+    // Start recording
+    [self.recorder record];
+    
+}
+
+-(void)stopRecording{
+    [self.recorder stop];
+    
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setActive:NO error:nil];
+}
+
+
+-(void)playRecordedAudio{
+    if (![self.recorder isRecording]){
+        self.player = [[AVAudioPlayer alloc] initWithContentsOfURL:self.recorder.url error:nil];
+        [self.player setDelegate:self];
+        [self.player play];
+    }
+}
+
+-(void)deleteRecording{
+    if([self.player isPlaying]){
+        [self.player stop];
+    }
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:self.recorder.url.path]) {
+        if (![self.recorder deleteRecording])
+            NSLog(@"Failed to delete %@", self.recorder.url);
+    }
+    
+    self.hasAudioComments = NO;
+}
+
+#pragma mark - AVAudioRecorderDelegate
+
+- (void) audioRecorderDidFinishRecording:(AVAudioRecorder *)avrecorder successfully:(BOOL)flag{
+    NSLog(@"Finish recording...");
+}
+
+#pragma mark - AVAudioPlayerDelegate
+
+- (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+    NSLog(@"Finish playing...");
+}
+
+
 #pragma mark - Mobile ECT Features
 
 - (IBAction)onOpenECT:(id)sender {
@@ -482,10 +591,15 @@ float const IPAD_HEIGHT = 768;
 }
 
 - (IBAction)onRecordComment:(id)sender {
+    [self.view endEditing:YES];
+    
     if(self.ectHelperView.hidden == NO)
         [self onECTHelperTaped:nil];
     
-    // TODO
+    AudioRecorderAlertView *alert = [[AudioRecorderAlertView alloc] initWithParent:self andSelector:@selector(onAudioRecorderExit:)];
+    [alert show];
+    
+    [self startRecording];
 }
 
 
@@ -508,9 +622,7 @@ float const IPAD_HEIGHT = 768;
     [self openECTHelper];
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
-    
-    self.ectHelperView.hidden = NO;    // REMOVE
+   //REMOVE [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
     
     // Show microphone button
     self.ectMicrophoneButton.hidden = NO;
@@ -519,6 +631,8 @@ float const IPAD_HEIGHT = 768;
     // Reset feedback textview
     self.ectTextView.textColor = [UIColor grayColor];
     self.ectTextView.text = @"Type your message here...";
+    
+    [self showTextAreaOrPlayButton];
     
 }
 
@@ -544,8 +658,18 @@ float const IPAD_HEIGHT = 768;
     self.webViewFullScreen.hidden = NO;
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController unlockInterfaceOrientation];
+ //REMOVE   [navController unlockInterfaceOrientation];
     
+    // Clear recorder
+    [self deleteRecording];
+}
+
+
+-(void)showTextAreaOrPlayButton{
+    self.ectTextView.hidden = self.hasAudioComments;
+    self.ectMicrophoneButton.hidden = self.hasAudioComments;
+    self.ectPlayAudioButton.hidden = !self.hasAudioComments;
+    self.ectSendFeedbackButton.hidden = !self.hasAudioComments;
 }
 
 # pragma mark - ECT Feedback Submission
@@ -742,9 +866,7 @@ float const IPAD_HEIGHT = 768;
     
     // Show helper if it's the first time
     MobileECT* mobileECTInfo = [self getOrCreateMobileECTInfo];
-    
-    mobileECTInfo.isFirstLoad = YES ; // REMOVE
-    
+
     if(mobileECTInfo.isFirstLoad){
 
         // Get iOS Version

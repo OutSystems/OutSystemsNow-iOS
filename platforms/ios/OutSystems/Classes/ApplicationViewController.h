@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Application.h"
 #import "Infrastructure.h"
+#import <AVFoundation/AVFoundation.h>
 
 typedef enum {
 	OSAnimateTransitionDefault,
@@ -17,7 +18,7 @@ typedef enum {
 	OSAnimateTransitionFadeOut
 }OSAnimateTransition;
 
-@interface ApplicationViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, UITextViewDelegate>
+@interface ApplicationViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, UITextViewDelegate,AVAudioRecorderDelegate, AVAudioPlayerDelegate>
 
 @property (strong, nonatomic) Application* application;
 @property (strong, nonatomic) Infrastructure* infrastructure;
@@ -27,5 +28,7 @@ typedef enum {
 - (IBAction)navBack:(id)sender;
 - (IBAction)navForward:(id)sender;
 - (IBAction)navAppList:(id)sender;
+
+- (void)onAudioRecorderExit:(BOOL)recorded;
 
 @end
