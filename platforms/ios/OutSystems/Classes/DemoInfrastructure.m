@@ -13,7 +13,7 @@
 + (NSString *) getHostnameForService:(NSString *)servicename; {
     NSString *service;
     
-    service = [NSString stringWithFormat:@"https://%@/OutSystemsNowService/%@.jsf", self.hostname, servicename];
+    service = [NSString stringWithFormat:@"https://%@/OutSystemsNowService/%@.aspx", self.hostname, servicename];
     
     return service;
 }
