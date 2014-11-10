@@ -451,12 +451,10 @@ float const IPAD_HEIGHT = 768;
 
 # pragma mark - ECT Feedback Audio
 - (IBAction)onPlayECTAudio:(id)sender {
-    NSLog(@"onPlayECTAudio");
     [self playRecordedAudio];
 }
 
 - (void)onAudioRecorderExit:(BOOL)recorded{
-    NSLog(@"onAudioRecorderExit: %hhd", recorded);
     [self stopRecording];
     
     if(recorded){
