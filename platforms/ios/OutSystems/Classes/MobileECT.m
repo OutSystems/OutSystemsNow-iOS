@@ -20,17 +20,11 @@
     return self;
 }
 
-- (NSString *) getServiceForInfrastructure:(Infrastructure *)infrastructure{
+- (NSString *) getServiceForInfrastructure:(Infrastructure *)infrastructure andURL:(NSString*)url{
     if(!infrastructure)
         return nil;
     
-    NSString *service;
-    
-    if(infrastructure.isJavaServer) {
-        service = [NSString stringWithFormat:@"https://%@/MobileECT/submitFeedback.jsf", infrastructure.hostname];
-    } else {
-        service = [NSString stringWithFormat:@"https://%@/MobileECT/submitFeedback.aspx", infrastructure.hostname];
-    }
+    NSString *service = [NSString stringWithFormat:@"https://%@%@", infrastructure.hostname,url];
     
     return service;
 }

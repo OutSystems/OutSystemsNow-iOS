@@ -14,6 +14,6 @@
 
 @property BOOL isFirstLoad;
 
-- (NSString *) getServiceForInfrastructure:(Infrastructure *)infrastructure;
+- (NSString *) getServiceForInfrastructure:(Infrastructure *)infrastructure andURL:(NSString*)url;
 
 @end

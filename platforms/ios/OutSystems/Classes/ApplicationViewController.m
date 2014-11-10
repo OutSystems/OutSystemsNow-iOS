@@ -76,6 +76,7 @@ float const IPAD_HEIGHT = 768;
 @property AVAudioRecorder *recorder;
 @property AVAudioPlayer *player;
 @property BOOL hasAudioComments;
+@property BOOL ectSubmissionFailed;
 
 @end
 
@@ -286,8 +287,8 @@ float const IPAD_HEIGHT = 768;
     self.viewFinishedLoad = YES;
     
     // Check if Mobile ECT is enable for the app
-    //TODO
-    [self setToolbarItems:self.originalToolbarItems animated:YES];
+    if([self isECTAvailable])
+        [self setToolbarItems:self.originalToolbarItems animated:YES];
     
 }
 
@@ -475,7 +476,7 @@ float const IPAD_HEIGHT = 768;
     // Set the audio file
     NSArray *pathComponents = [NSArray arrayWithObjects:
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
-                               @"ECTAudioComment.m4a",
+                               @"ECTAudioComment.aac",
                                nil];
     NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
     
@@ -549,6 +550,16 @@ float const IPAD_HEIGHT = 768;
 
 
 #pragma mark - Mobile ECT Features
+
+-(BOOL)isECTAvailable{
+    
+    NSString *expr = @"typeof ECT_JavaScript != 'undefined'";
+    
+    BOOL ectAvailable = [[self.applicationBrowser.webView stringByEvaluatingJavaScriptFromString:expr] boolValue];
+    
+    return ectAvailable;
+    
+}
 
 - (IBAction)onOpenECT:(id)sender {
     [self openECTView];
@@ -635,6 +646,8 @@ float const IPAD_HEIGHT = 768;
 }
 
 -(void)closeECTView{
+    self.ectStatusView.hidden = YES;
+    
     // Close keyboard
     [self.view endEditing:YES];
     
@@ -645,7 +658,6 @@ float const IPAD_HEIGHT = 768;
     self.mobileECTView.hidden = YES;
     
     // Reset ECT contents
-    //TODO
     [self.ectScreenCaptureView clearCanvas];
     self.ectTextView.text = @"";
     self.ectToolbarBottomConstraint.constant = 0;
@@ -660,6 +672,8 @@ float const IPAD_HEIGHT = 768;
     
     // Clear recorder
     [self deleteRecording];
+
+    self.ectSubmissionFailed = NO;
 }
 
 
@@ -671,33 +685,95 @@ float const IPAD_HEIGHT = 768;
 }
 
 # pragma mark - ECT Feedback Submission
+-(NSString*)getECTJSValue:(NSString*)expression{
+    NSString *result = [self.applicationBrowser.webView stringByEvaluatingJavaScriptFromString:expression];
+
+    return result;
+}
 
 -(NSMutableDictionary*) getECTFeedbackDictonary{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
 
-    // Device info
-    NSMutableDictionary *device = [[NSMutableDictionary alloc] init];
+    // Message
+    NSString* messageString = @"";
     
-    NSString* userAgent =[[NSUserDefaults standardUserDefaults] objectForKey:@"UserAgent"];
+    if(![self hasAudioComments])
+        messageString = self.ectTextView.text;
     
-    if([userAgent length] == 0)
-        userAgent = @"ios";
+    [result setObject:messageString forKey:@"Message"];
+    
+    // EnvironmentUID - Available in outsystems.api.requestInfo.getEnvironmentKey()
+    NSString* environmentUID = [self getECTJSValue:@"outsystems.api.requestInfo.getEnvironmentKey()"];
+    [result setObject:environmentUID forKey:@"EnvironmentUID"];
+    
+    // EspaceUID - Available in outsystems.api.requestInfo.getEspaceKey()
+    NSString* espaceUID = [self getECTJSValue:@"outsystems.api.requestInfo.getEspaceKey()"];
+    [result setObject:espaceUID forKey:@"EspaceUID"];
+    
+    // ScreenUID - Available in outsystems.api.requestInfo.getWebScreenKey()
+    NSString* screenUID = [self getECTJSValue:@"outsystems.api.requestInfo.getWebScreenKey()"];
+    [result setObject:screenUID forKey:@"ScreenUID"];
+    
+    // ScreenName - Available in outsystems.api.requestInfo.getWebScreenName()
+    NSString* screenName = [self getECTJSValue:@"outsystems.api.requestInfo.getWebScreenName()"];
+    [result setObject:screenName forKey:@"ScreenName"];
+    
+    // UserId - Available in ECT_JavasScript.userId
+    NSString* userId = [self getECTJSValue:@"ECT_JavasScript.userId"];
+    [result setObject:userId forKey:@"UserId"];
+    
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
+
+    // ViewportWidth
     NSNumber *screenWidth = [NSNumber numberWithDouble:screenBounds.size.width];
+    NSString* viewportWidth = [screenWidth stringValue];
+    [result setObject:viewportWidth forKey:@"ViewportWidth"];
+    
+    // ViewportHeight
     NSNumber *screenHeight = [NSNumber numberWithDouble:screenBounds.size.height];
+    NSString* viewportHeight = [screenHeight stringValue];
+            [result setObject:viewportHeight forKey:@"ViewportHeight"];
     
-    [device setObject:userAgent forKey:@"type"];
-    [device setObject:screenWidth forKey:@"width"];
-    [device setObject:screenHeight forKey:@"height"];
+    // UserAgentHeader - Use this JS navigator.userAgent
+    NSString* userAgentHeader = [self getECTJSValue:@"navigator.userAgent"];
+    [result setObject:userAgentHeader forKey:@"UserAgentHeader"];
     
-    // Image info
-    NSMutableDictionary *image = [[NSMutableDictionary alloc] init];
+    // RequestURL
+    NSString* requestURL = [self getECTJSValue:@"window.location.href"];
+    NSLog(@"startPage: %@",self.applicationBrowser.startPage);
+    [result setObject:requestURL forKey:@"RequestURL"];
+    
+
+    // FeedbackSoundMessageBase64
+    NSString *audioString = @"";
+    
+    if([self hasAudioComments]){
+        
+        NSData *audioData = [NSData dataWithContentsOfURL:self.recorder.url];
+        
+        if(audioData){
+            if ([audioData respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
+                audioString = [audioData base64EncodedStringWithOptions:kNilOptions];  // iOS 7+
+            } else {
+                audioString = [audioData base64Encoding];                              // pre iOS7
+            }
+        }
+    }
+    
+    NSString* feedbackSoundMessageBase64 = audioString;
+    [result setObject:feedbackSoundMessageBase64 forKey:@"FeedbackSoundMessageBase64"];
+    
+    // FeedbackSoundMessageMimeType
+    NSString* feedbackSoundMessageMimeType = @"audio/mp3";
+    [result setObject:feedbackSoundMessageMimeType forKey:@"FeedbackSoundMessageMimeType"];
+    
+    //  FeedbackScreenshotBase64
     UIImage *ectImage = [self.ectScreenCaptureView getCanvasImage];
     NSString *imageString = @"";
     
     if(ectImage){
-        NSData * imageData = UIImagePNGRepresentation(ectImage);
+        NSData * imageData = UIImageJPEGRepresentation(ectImage, 0.5);
         
         if(imageData){
             if ([imageData respondsToSelector:@selector(base64EncodedStringWithOptions:)]) {
@@ -708,65 +784,50 @@ float const IPAD_HEIGHT = 768;
         }
     }
     
-    [image setObject:imageString forKey:@"content"];
-    [image setObject:@"PNG" forKey:@"type"];
-    
-    // Sound info
-    // TODO
-    NSMutableDictionary *sound = [[NSMutableDictionary alloc] init];
-    [sound setObject:@"" forKey:@"content"];
-    [sound setObject:@"" forKey:@"type"];
-    
-    // Text info
-    NSMutableDictionary *text = [[NSMutableDictionary alloc] init];
+    NSString* feedbackScreenshotBase64 = imageString;
+    [result setObject:feedbackScreenshotBase64 forKey:@"FeedbackScreenshotBase64"];
 
-    [text setObject:self.ectTextView.text forKey:@"value"];
-    [text setObject:[NSNumber numberWithUnsignedInteger:[self.ectTextView.text length]] forKey:@"length"];
+    // FeedbackScreenshotMimeType
+    NSString* feedbackScreenshotMimeType = @"image/jpeg";
+    [result setObject:feedbackScreenshotMimeType forKey:@"FeedbackScreenshotMimeType"];
 
-    // ECT Feedback
-    [result setObject:device forKey:@"device"];
-    [result setObject:image forKey:@"image"];
-    [result setObject:sound forKey:@"sound"];
-    [result setObject:text forKey:@"text"];
-    [result setObject:self.infrastructure.username forKey:@"username"];
+    return result;
+}
+
+-(NSString*) getECTFeedbackPostURL{
     
+    NSMutableDictionary *ectFeedback = [self getECTFeedbackDictonary];
+    NSString* result = @"";
+ 
+    NSArray*keys=[ectFeedback allKeys];
+    
+    for(int i=0; i < [keys count]; i++){
+        NSString *key = keys[i];
+        NSString *value = [ectFeedback valueForKey:key];
+        result = [result stringByAppendingString:[NSString stringWithFormat:@"%@=%@",key,value]];
+        if(i+1 < [keys count]){
+            result = [result stringByAppendingString:@"&"];
+        }
+    }
     
     return result;
 }
 
--(NSString*) getECTFeedbackJSON{
-    
-    // Create the dictionary for JSON
-    NSMutableDictionary *ectFeedback = [self getECTFeedbackDictonary];
-    
-    // Generate JSON
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:ectFeedback
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-                                                         error:&error];
-    
-    if (! jsonData) {
-        NSLog(@"Got an error: %@", error);
-        return nil;
-    } else {
-        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        jsonString = [jsonString stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
-        NSLog(@"Result: %@",jsonString);
-        return jsonString;
-    }
-
-}
-
 -(void)sendECTFeedback{
+    
+    self.ectSubmissionFailed = NO;
     
     int timeoutInSeconds = 30;
     
     MobileECT *mobileECT = [self getOrCreateMobileECTInfo];
     
+    NSString* ectURL = [self getECTJSValue:@"ECT_JavaScript.supportedApiVersions[0].URL"];
     
-    NSURL *serviceURL = [NSURL URLWithString:[mobileECT getServiceForInfrastructure:self.infrastructure]];
+    NSURL *serviceURL = [NSURL URLWithString:[mobileECT getServiceForInfrastructure:self.infrastructure andURL:ectURL]];
     
-    NSString *post = [NSString stringWithFormat:@"feedback=%@", [self getECTFeedbackJSON]];
+    NSString *post = [self getECTFeedbackPostURL];
+    
+    post = [post stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
     
     NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
     NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
@@ -784,17 +845,8 @@ float const IPAD_HEIGHT = 768;
     
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*) response;
-    NSInteger errorCode = httpResponse.statusCode;
-    NSString *fileMIMEType = [[httpResponse MIMEType] lowercaseString];
-    NSLog(@"response is %ld, %@", (long)errorCode, fileMIMEType);
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    // inform the user
-    NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    
+-(void)showECTFailMessage{
+    self.ectSubmissionFailed = YES;
     self.ectStatusView.hidden = NO;
     self.ectActivityIndicator.hidden = YES;
     self.ectRetryButton.hidden = NO;
@@ -807,15 +859,31 @@ float const IPAD_HEIGHT = 768;
         self.ectStatusMessage.adjustsFontSizeToFitWidth=YES;
         self.ectStatusMessage.minimumScaleFactor=0.5;
     }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*) response;
+    NSInteger errorCode = httpResponse.statusCode;
+    NSString *fileMIMEType = [[httpResponse MIMEType] lowercaseString];
+    NSLog(@"response is %ld, %@", (long)errorCode, fileMIMEType);
+    if(errorCode != 200)
+       [self showECTFailMessage];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // inform the user
+    NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    
+    [self showECTFailMessage];
 
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"connection finished");
 
-    self.ectStatusView.hidden = YES;
-    
-    [self closeECTView];
+    if(!self.ectSubmissionFailed){
+        [self closeECTView];
+    }
 }
 
 
