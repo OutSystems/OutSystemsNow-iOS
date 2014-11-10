@@ -622,7 +622,7 @@ float const IPAD_HEIGHT = 768;
     [self openECTHelper];
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-   //REMOVE [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
     
     // Show microphone button
     self.ectMicrophoneButton.hidden = NO;
@@ -658,7 +658,7 @@ float const IPAD_HEIGHT = 768;
     self.webViewFullScreen.hidden = NO;
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
- //REMOVE   [navController unlockInterfaceOrientation];
+    [navController unlockInterfaceOrientation];
     
     // Clear recorder
     [self deleteRecording];

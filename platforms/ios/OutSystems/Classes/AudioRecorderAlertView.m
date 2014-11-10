@@ -328,6 +328,7 @@ const static int KAudioRecorderDoneAction   = 1; // button index
     if(buttonIndex == KAudioRecorderDoneAction)
         recorded = YES;
 
+    [self.timer invalidate];
     [self close];
     
     NSInvocation *inv = [NSInvocation invocationWithMethodSignature:[self.parent methodSignatureForSelector:self.onExitSelector]];
@@ -337,7 +338,5 @@ const static int KAudioRecorderDoneAction   = 1; // button index
     [inv invoke];
 
 }
-
-
 
 @end

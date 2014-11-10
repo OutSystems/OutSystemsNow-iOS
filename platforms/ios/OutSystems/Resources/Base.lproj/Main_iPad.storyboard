@@ -603,8 +603,8 @@
                                                     <action selector="onRecordComment:" destination="H6M-OB-jxb" eventType="touchUpInside" id="5IB-ey-Yrt"/>
                                                 </connections>
                                             </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRo-Vn-Ayp" userLabel="PlayButton">
-                                                <rect key="frame" x="373" y="12" width="22" height="22"/>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRo-Vn-Ayp" userLabel="PlayButton">
+                                                <rect key="frame" x="367" y="6" width="35" height="34"/>
                                                 <state key="normal" title="Play"/>
                                                 <connections>
                                                     <action selector="onPlayECTAudio:" destination="H6M-OB-jxb" eventType="touchUpInside" id="xJs-FK-XOx"/>
@@ -672,7 +672,7 @@
                                             <constraint firstAttribute="width" secondItem="k4x-N9-QQo" secondAttribute="width" id="9aF-bf-h0R"/>
                                             <constraint firstItem="M30-gB-ZDn" firstAttribute="leading" secondItem="jOU-TJ-2yq" secondAttribute="leading" constant="15" id="ADz-dN-YkF"/>
                                             <constraint firstAttribute="trailing" secondItem="dOp-K5-DFw" secondAttribute="trailing" constant="55" id="Cr9-WA-e2k"/>
-                                            <constraint firstAttribute="centerY" secondItem="hRo-Vn-Ayp" secondAttribute="centerY" constant="-0.5" id="Ju2-1k-wSr"/>
+                                            <constraint firstAttribute="centerY" secondItem="hRo-Vn-Ayp" secondAttribute="centerY" id="Ju2-1k-wSr"/>
                                             <constraint firstAttribute="bottom" secondItem="M30-gB-ZDn" secondAttribute="bottom" constant="11" id="MnD-Jz-ZYs"/>
                                             <constraint firstAttribute="bottom" secondItem="clH-Sr-mJL" secondAttribute="bottom" constant="6" id="Nt4-Wh-Dwj"/>
                                             <constraint firstAttribute="bottom" secondItem="h9y-bR-aff" secondAttribute="bottom" constant="9" id="OSd-kH-DcE"/>
