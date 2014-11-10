@@ -81,6 +81,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     // infrastructure is readonly when the credentials are set on the application settings (bundle)
     if(self.infrastructureReadonly) {
         self.navigationController.navigationBar.hidden = YES;
@@ -110,6 +112,8 @@
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     if([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0 && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
         
         [self.loginButton sendActionsForControlEvents:UIControlEventTouchUpInside];
@@ -118,6 +122,7 @@
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     self.view.hidden = NO;
 }
 

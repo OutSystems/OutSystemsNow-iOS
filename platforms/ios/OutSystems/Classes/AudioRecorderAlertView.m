@@ -13,8 +13,7 @@ const static CGFloat kAudioRecorderAlertViewWidth   = 250;
 const static CGFloat kAudioRecorderAlertViewHeight  = 100;
 const static CGFloat kAudioRecorderAlertViewTimeout = 30;
 
-const static int KAudioRecorderCancelAction = 0;
-const static int KAudioRecorderDoneAction   = 1;
+const static int KAudioRecorderDoneAction   = 1; // button index
 
 
 @interface AudioRecorderAlertView()

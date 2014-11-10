@@ -55,6 +55,7 @@
 static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.hidden = YES;
     self.navigationController.toolbar.hidden = YES;
@@ -183,7 +184,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 
 
 - (void)viewDidLoad {
-
+    [super viewDidLoad];
+    
     self.accessYourAppLabel.font = [UIFont fontWithName:@"OpenSans" size:self.accessYourAppLabel.font.pointSize];
     self.explainURLLabel.font = [UIFont fontWithName:@"OpenSans" size:self.explainURLLabel.font.pointSize];
     self.howItWorksLabel.font = [UIFont fontWithName:@"OpenSans" size:self.howItWorksLabel.font.pointSize];

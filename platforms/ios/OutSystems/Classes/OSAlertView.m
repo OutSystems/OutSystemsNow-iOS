@@ -37,6 +37,7 @@ CGFloat buttonSpacerHeight = 0;
         useMotionEffects = false;
         buttonTitles = @[@"Cancel"];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
     return self;
 }
@@ -46,6 +47,7 @@ CGFloat buttonSpacerHeight = 0;
     
     // Set view dimensions
     [self setTranslatesAutoresizingMaskIntoConstraints:NO];
+    self.autoresizesSubviews = YES;
     UIView *mainView = (UIView*)[[[UIApplication sharedApplication] windows] firstObject];
     [mainView addSubview:self];
     
@@ -90,12 +92,23 @@ CGFloat buttonSpacerHeight = 0;
 // Create the dialog view, and animate opening the dialog
 - (void)show
 {
+    float iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+
+    // Fix autolayout for iOS7 or earlier
+    if(iOSVersion < 8)
+        [self rotateToInterfaceOrientation:NO];
+    
     if (containerView == NULL) {
         containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 100)];
     }
     
     // Create dialog view
     [self createDialogView];
+    
+    CGRect frame = self.dialogView.frame;
+    NSLog(@"dialog: x:%f,y:%f - w:%f,h:%f",frame.origin.x
+          ,frame.origin.y
+          ,frame.size.width,frame.size.height);
     
     // Add the custom container if there is any
     [dialogView addSubview:containerView];
@@ -134,7 +147,7 @@ CGFloat buttonSpacerHeight = 0;
     dialogView.layer.transform = CATransform3DMakeScale(1.3f, 1.3f, 1.0);
     
     self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-    
+
     [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
@@ -221,18 +234,25 @@ CGFloat buttonSpacerHeight = 0;
     [self addSubview:dialogView];
     
     // Define width
-    [dialogContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
-                                     [NSString stringWithFormat:@"H:[dialogContainer(==%f)]", dialogSize.width]
-                                                                            options:0
-                                                                            metrics:nil
-                                                                              views:NSDictionaryOfVariableBindings(dialogContainer)]];
+    [dialogContainer addConstraint:[NSLayoutConstraint constraintWithItem:dialogContainer
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:0
+                                                    multiplier:1.0
+                                                      constant:dialogSize.width]];
+    
     
     // Define height
-    [dialogContainer addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
-                                     [NSString stringWithFormat:@"V:[dialogContainer(==%f)]", dialogSize.height]
-                                                                            options:0
-                                                                            metrics:nil
-                                                                              views:NSDictionaryOfVariableBindings(dialogContainer)]];
+    [dialogContainer addConstraint:[NSLayoutConstraint constraintWithItem:dialogContainer
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:0
+                                                               multiplier:1.0
+                                                                 constant:dialogSize.height]];
+    
+    
     
     // Center horizontally
     [self addConstraint:[NSLayoutConstraint constraintWithItem:dialogContainer
@@ -284,11 +304,14 @@ CGFloat buttonSpacerHeight = 0;
     
     
     // Define height
-    [lineView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
-                              [NSString stringWithFormat:@"V:[lineView(==%f)]", buttonSpacerHeight]
-                                                                     options:0
-                                                                     metrics:nil
-                                                                       views:NSDictionaryOfVariableBindings(lineView)]];
+    [lineView addConstraint:[NSLayoutConstraint constraintWithItem:lineView
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:0
+                                                               multiplier:1.0
+                                                                 constant:buttonSpacerHeight]];
+    
     
     // Leading space to dialog
     [dialogContainer addConstraint:[NSLayoutConstraint constraintWithItem:lineView
@@ -334,18 +357,23 @@ CGFloat buttonSpacerHeight = 0;
         [dialogContainer addSubview:closeButton];
         
         // Define width
-        [closeButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
-                                     [NSString stringWithFormat:@"H:[closeButton(==%f)]", buttonWidth]
-                                                                            options:0
-                                                                            metrics:nil
-                                                                              views:NSDictionaryOfVariableBindings(closeButton)]];
+        [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                    attribute:NSLayoutAttributeWidth
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:0
+                                                                   multiplier:1.0
+                                                                     constant:buttonWidth]];
+        
         
         // Define height
-        [closeButton addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:
-                                     [NSString stringWithFormat:@"V:[closeButton(==%f)]", buttonHeight]
-                                                                            options:0
-                                                                            metrics:nil
-                                                                              views:NSDictionaryOfVariableBindings(closeButton)]];
+        [closeButton addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:0
+                                                               multiplier:1.0
+                                                                 constant:buttonHeight]];
         
         // Leading space to dialog
         [dialogContainer addConstraint:[NSLayoutConstraint constraintWithItem:closeButton
@@ -438,5 +466,98 @@ CGFloat buttonSpacerHeight = 0;
 }
 #endif
 
+
+-(void)updateConstraints{
+    [super updateConstraints];
+    
+    if(self.dialogView)
+        [self.dialogView updateConstraints];
+
+    if(self.containerView)
+        [self.containerView updateConstraints];
+}
+
+-(void)rotateToInterfaceOrientation:(BOOL)animate{
+    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+   
+    if(animate){
+        
+        
+        CGFloat startRotation = [[self valueForKeyPath:@"layer.transform.rotation.z"] floatValue];
+        CGAffineTransform rotation;
+        
+        switch (interfaceOrientation) {
+            case UIInterfaceOrientationLandscapeLeft:
+                rotation = CGAffineTransformMakeRotation(-startRotation + M_PI * 270.0 / 180.0);
+                break;
+                
+            case UIInterfaceOrientationLandscapeRight:
+                rotation = CGAffineTransformMakeRotation(-startRotation + M_PI * 90.0 / 180.0);
+                break;
+                
+            case UIInterfaceOrientationPortraitUpsideDown:
+                rotation = CGAffineTransformMakeRotation(-startRotation + M_PI * 180.0 / 180.0);
+                break;
+                
+            default:
+                rotation = CGAffineTransformMakeRotation(-startRotation + 0.0);
+                break;
+        }
+        
+        [UIView animateWithDuration:0.2f delay:0.0 options:UIViewAnimationOptionTransitionNone
+                         animations:^{
+                             dialogView.transform = rotation;
+                         }
+                         completion:^(BOOL finished){
+                             // fix errors caused by being rotated one too many times
+                             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5f * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+                                 UIInterfaceOrientation endInterfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+                                 if (interfaceOrientation != endInterfaceOrientation) {
+                                     // TODO user moved phone again before than animation ended: rotation animation can introduce errors here
+                                 }
+                             });
+                         }
+         ];
+    }
+    
+    else{
+        
+        switch (interfaceOrientation) {
+            case UIInterfaceOrientationLandscapeLeft:
+                self.transform = CGAffineTransformMakeRotation(M_PI * 270.0 / 180.0);
+                break;
+                
+            case UIInterfaceOrientationLandscapeRight:
+                self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180.0);
+                break;
+                
+            case UIInterfaceOrientationPortraitUpsideDown:
+                self.transform = CGAffineTransformMakeRotation(M_PI * 180.0 / 180.0);
+                break;
+                
+            default:
+                break;
+        }
+        
+        
+    }
+    
+}
+
+// Handle device orientation changes
+- (void)deviceOrientationDidChange: (NSNotification *)notification{
+
+    float iOSVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    // Fix autolayout for iOS7 or earlier
+    if(iOSVersion < 8)
+        [self rotateToInterfaceOrientation:YES];
+    
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+}
 
 @end

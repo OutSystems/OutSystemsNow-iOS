@@ -153,6 +153,8 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     self.navigationController.navigationBar.hidden = NO;
     self.navigationController.toolbar.hidden = YES;
     
@@ -161,6 +163,8 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     if(self.isDemoEnvironment && self.applicationList.count == 0) {
         [self reloadApplicationList];
     } else {
