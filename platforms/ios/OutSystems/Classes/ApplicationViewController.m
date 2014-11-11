@@ -14,6 +14,7 @@
 #import "CanvasView.h"
 #import "OSNavigationController.h"
 #import "AudioRecorderAlertView.h"
+#import "ECTApi.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -27,6 +28,7 @@ float const IPAD_HEIGHT = 768;
 NSString* const kECTFeedbackMessage = @"Message";
 NSString* const kECTFeedbackEnvironmentUID = @"EnvironmentUID";
 NSString* const kECTFeedbackEspaceUID = @"EspaceUID";
+NSString* const kECTFeedbackApplicationUID = @"ApplicationUID";
 NSString* const kECTFeedbackScreenUID = @"ScreenUID";
 NSString* const kECTFeedbackScreenName = @"ScreenName";
 NSString* const kECTFeedbackUserId = @"UserId";
@@ -42,11 +44,12 @@ NSString* const kECTFeedbackScreenshotMimeType = @"FeedbackScreenshotMimeType";
 // JavaScript API
 NSString* const kECTJSEnvironmentUID = @"outsystems.api.requestInfo.getEnvironmentKey()";
 NSString* const kECTJSEspaceUID = @"outsystems.api.requestInfo.getEspaceKey()";
+NSString* const kECTJSApplicationUID = @"outsystems.api.requestInfo.getApplicationKey()";
 NSString* const kECTJSScreenUID = @"outsystems.api.requestInfo.getWebScreenKey()";
 NSString* const kECTJSScreenName = @"outsystems.api.requestInfo.getWebScreenName()";
 NSString* const kECTJSUserId = @"ECT_JavasScript.userId";
 NSString* const kECTJSUserAgentHeader = @"navigator.userAgent";
-NSString* const kECTJSSaveFeedbackURL = @"ECT_JavaScript.supportedApiVersions[0].URL";
+NSString* const kECTJSSupportedApiVersions = @"ECT_JavaScript.supportedApiVersions";
 
 // Mobile ECT Types
 NSString* const kECTAudioMimeType = @"audio/mp3";
@@ -54,6 +57,8 @@ NSString* const kECTImageMimeType = @"image/jpeg";
 
 NSString* const kECTStatusSending = @"Sending your feedback...";
 NSString* const kECTStatusFailed = @"Failed to send your feedback.";
+
+NSString* const kECTSupportedApiVersion = @"1.0.0";
 
 
 @interface ApplicationViewController ()
@@ -104,11 +109,13 @@ NSString* const kECTStatusFailed = @"Failed to send your feedback.";
 
 @property (strong,nonatomic) NSNumber* previousECTToolbarHeight;
 @property (retain,nonatomic) NSMutableArray* originalToolbarItems;
+@property (retain, nonatomic) NSMutableArray *ectSupportedApiVersions;
 
 @property AVAudioRecorder *recorder;
 @property AVAudioPlayer *player;
 @property BOOL hasAudioComments;
 @property BOOL ectSubmissionFailed;
+@property BOOL ectAvailabilityChecked;
 
 @end
 
@@ -202,6 +209,9 @@ NSString* const kECTStatusFailed = @"Failed to send your feedback.";
     [self initAudioRecorder];
 
     [self showTextAreaOrPlayButton];
+    
+    self.ectSupportedApiVersions = [[NSMutableArray alloc]init];
+    self.ectAvailabilityChecked = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -309,7 +319,7 @@ NSString* const kECTStatusFailed = @"Failed to send your feedback.";
     self.viewFinishedLoad = YES;
     
     // Check if Mobile ECT is enable for the app
-    if([self isECTAvailable])
+    if(self.ectAvailabilityChecked == NO && [self isECTAvailable])
         [self setToolbarItems:self.originalToolbarItems animated:YES];
     
 }
@@ -574,13 +584,84 @@ NSString* const kECTStatusFailed = @"Failed to send your feedback.";
 #pragma mark - Mobile ECT Features
 
 -(BOOL)isECTAvailable{
+    self.ectAvailabilityChecked = YES;
     
     NSString *expr = @"typeof ECT_JavaScript != 'undefined'";
     
     BOOL ectAvailable = [[self.applicationBrowser.webView stringByEvaluatingJavaScriptFromString:expr] boolValue];
     
+    if(ectAvailable && [self getECTApiInfo]){
+        // check compatibility with OSNow - Mobile ECT
+        ectAvailable = [self checkECTCompatibility];
+    }
+    
     return ectAvailable;
     
+}
+
+-(BOOL)getECTApiInfo{
+    [self.ectSupportedApiVersions removeAllObjects];
+    
+    int numOfAPIs = [[self getECTJSValue:[NSString stringWithFormat:@"%@.length",kECTJSSupportedApiVersions]] intValue];
+    
+    for(int i = 0; i<numOfAPIs; i++){
+        NSString *accessor = [NSString stringWithFormat:@"%@[%i]",kECTJSSupportedApiVersions,i];
+        NSString *apiVersion = [self getECTJSValue: [accessor stringByAppendingString:@".ApiVersion"] ];
+        NSString *apiURL = [self getECTJSValue: [accessor stringByAppendingString:@".URL"] ];
+        BOOL apiCurrentVersion = [[self getECTJSValue: [accessor stringByAppendingString:@".IsCurrentVersion"] ] boolValue];
+        
+        ECTApi *api = [[ECTApi alloc] initWithVersion:apiVersion url:apiURL current:apiCurrentVersion];
+        [self.ectSupportedApiVersions addObject:api];
+        
+        NSLog(@"ECTApi: %@",api);
+    }
+    
+    /* REMOVE: Just for development */
+    for(int i = 1; i<3; i++){
+        
+        NSString *apiVersion;
+        if(i%2 == 0)
+            apiVersion = [NSString stringWithFormat:@"1.%d.0",i ];
+        else
+            apiVersion = [NSString stringWithFormat:@"1.1%d.0",i ];
+        
+        NSString *apiURL = [NSString stringWithFormat:@"URL_Tests%d",i ];
+        BOOL apiCurrentVersion = NO;
+        
+        ECTApi *api = [[ECTApi alloc] initWithVersion:apiVersion url:apiURL current:apiCurrentVersion];
+        [self.ectSupportedApiVersions addObject:api];
+        
+
+    }
+    // --------------
+    
+    NSArray *sortedArray = [self.ectSupportedApiVersions sortedArrayUsingComparator:^NSComparisonResult(ECTApi *e1, ECTApi *e2){
+        return [e1 compare:e2];
+    }];
+    
+    self.ectSupportedApiVersions = [NSMutableArray arrayWithArray:sortedArray];
+    
+    
+    return numOfAPIs > 0;
+}
+
+-(BOOL)checkECTCompatibility{
+
+    NSMutableArray * supportedVersions = [[NSMutableArray alloc] init];
+    
+    for(int i=0; i< [self.ectSupportedApiVersions count]; i++){
+        ECTApi* api = self.ectSupportedApiVersions[i];
+        BOOL compatible = [api isCompatibleWithVersion:kECTSupportedApiVersion];
+        if(compatible){
+            [supportedVersions addObject:api];
+            break;
+        }
+    }
+    
+    [self.ectSupportedApiVersions removeAllObjects];
+    self.ectSupportedApiVersions = supportedVersions;
+    
+    return [self.ectSupportedApiVersions count] > 0;
 }
 
 - (IBAction)onOpenECT:(id)sender {
@@ -732,6 +813,10 @@ NSString* const kECTStatusFailed = @"Failed to send your feedback.";
     NSString* espaceUID = [self getECTJSValue:kECTJSEspaceUID];
     [result setObject:espaceUID forKey:kECTFeedbackEspaceUID];
     
+    // ApplicationUID - Available in outsystems.api.requestInfo.getApplicationKey()
+    NSString* applicationUID = [self getECTJSValue:kECTJSApplicationUID];
+    [result setObject:applicationUID forKey:kECTFeedbackApplicationUID];
+    
     // ScreenUID - Available in outsystems.api.requestInfo.getWebScreenKey()
     NSString* screenUID = [self getECTJSValue:kECTJSScreenUID];
     [result setObject:screenUID forKey:kECTFeedbackScreenUID];
@@ -842,7 +927,7 @@ NSString* const kECTStatusFailed = @"Failed to send your feedback.";
     
     MobileECT *mobileECT = [self getOrCreateMobileECTInfo];
     
-    NSString* ectURL = [self getECTJSValue:kECTJSSaveFeedbackURL];
+    NSString* ectURL = ((ECTApi*)[self.ectSupportedApiVersions firstObject]).url;
     
     NSURL *serviceURL = [NSURL URLWithString:[mobileECT getServiceForInfrastructure:self.infrastructure andURL:ectURL]];
     

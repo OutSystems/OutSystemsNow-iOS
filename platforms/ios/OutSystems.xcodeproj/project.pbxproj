@@ -108,6 +108,9 @@
 		597239E21994FCF600CAA629 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DA1992879000CAA629 /* OpenSans-Light.ttf */; };
 		597239E31994FCF900CAA629 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DB1992879000CAA629 /* OpenSans.ttf */; };
 		597239E41994FCFA00CAA629 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DB1992879000CAA629 /* OpenSans.ttf */; };
+		5972D8031A122EE500C573EE /* ECTApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972D8021A122EE500C573EE /* ECTApi.m */; };
+		5972D8041A122EE500C573EE /* ECTApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972D8021A122EE500C573EE /* ECTApi.m */; };
+		5972D8051A122EE500C573EE /* ECTApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972D8021A122EE500C573EE /* ECTApi.m */; };
 		597902E219EC200D00440628 /* DeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 597902E119EC200D00440628 /* DeepLink.m */; };
 		597902E419EC2C1700440628 /* DeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 597902E119EC200D00440628 /* DeepLink.m */; };
 		597902E519EC2C1700440628 /* DeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 597902E119EC200D00440628 /* DeepLink.m */; };
@@ -513,6 +516,8 @@
 		597239D91992879000CAA629 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		597239DA1992879000CAA629 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		597239DB1992879000CAA629 /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSans.ttf; sourceTree = "<group>"; };
+		5972D8011A122EE500C573EE /* ECTApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECTApi.h; path = OutSystems/Classes/ECTApi.h; sourceTree = "<group>"; };
+		5972D8021A122EE500C573EE /* ECTApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECTApi.m; path = OutSystems/Classes/ECTApi.m; sourceTree = "<group>"; };
 		597902E019EC1DCF00440628 /* DeepLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeepLink.h; path = OutSystems/Classes/DeepLink.h; sourceTree = "<group>"; };
 		597902E119EC200D00440628 /* DeepLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeepLink.m; path = OutSystems/Classes/DeepLink.m; sourceTree = "<group>"; };
 		597902E619ED53C800440628 /* DeepLinkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLinkController.h; sourceTree = "<group>"; };
@@ -962,6 +967,8 @@
 				590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */,
 				597902E019EC1DCF00440628 /* DeepLink.h */,
 				597902E119EC200D00440628 /* DeepLink.m */,
+				5972D8011A122EE500C573EE /* ECTApi.h */,
+				5972D8021A122EE500C573EE /* ECTApi.m */,
 				5999274F1A0277580068B246 /* MobileECT.h */,
 				599927501A0277580068B246 /* MobileECT.m */,
 				5919DC491A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel */,
@@ -1552,6 +1559,7 @@
 				59BA8DB51938EEFC005019A0 /* NoAnimationSegue.m in Sources */,
 				5919DC4A1A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel in Sources */,
 				59665FCD1A0937D00049F8CD /* OSNavigationController.m in Sources */,
+				5972D8031A122EE500C573EE /* ECTApi.m in Sources */,
 				112806CB074B4EA8BB54F95A /* Calendar.m in Sources */,
 				59BC4908199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */,
 			);
@@ -1583,6 +1591,7 @@
 				599C2DC11988067700BFF05D /* CDVFile.m in Sources */,
 				597A5234195C9A6400F15480 /* Infrastructure.m in Sources */,
 				597902E419EC2C1700440628 /* DeepLink.m in Sources */,
+				5972D8041A122EE500C573EE /* ECTApi.m in Sources */,
 				597A5235195C9A6400F15480 /* CDVLogger.m in Sources */,
 				59665FCE1A0937D00049F8CD /* OSNavigationController.m in Sources */,
 				597A5236195C9A6400F15480 /* CDVContacts.m in Sources */,
@@ -1630,6 +1639,7 @@
 				59E53F7E1986C1760003BC6B /* CDVContacts.m in Sources */,
 				599C2DC71988068300BFF05D /* CDVAssetLibraryFilesystem.m in Sources */,
 				59EC8A3019E3FCCD00944672 /* CDVCamera.m in Sources */,
+				5972D8051A122EE500C573EE /* ECTApi.m in Sources */,
 				59E53F7F1986C1760003BC6B /* CDVContact.m in Sources */,
 				59665FCF1A0937D00049F8CD /* OSNavigationController.m in Sources */,
 				59E53F801986C1760003BC6B /* CDVNotification.m in Sources */,

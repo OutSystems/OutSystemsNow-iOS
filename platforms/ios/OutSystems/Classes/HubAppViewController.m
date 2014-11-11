@@ -12,6 +12,7 @@
 #import "ApplicationTileListController.h"
 #import "OutSystemsAppDelegate.h"
 #import "OSNavigationController.h"
+#import "DemoInfrastructure.h"
 
 @interface HubAppViewController ()
 
@@ -584,6 +585,16 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     if ([[segue identifier] isEqualToString:@"tryDemoSegue"]) {
         self.navigationController.navigationBar.hidden = NO;
+        
+        
+        NSString *UDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        
+        // set the url to register the device push notifications token (in case it is received later)
+        [OutSystemsAppDelegate setURLForPushNotificationTokenRegistration:[NSString stringWithFormat:@"%@?&deviceHwId=%@&device=",
+                                                                           [DemoInfrastructure getHostnameForService:@"registertoken"],
+                                                                           UDID]];
+        
+        [OutSystemsAppDelegate registerPushToken]; // send the push token to the server
         
         ApplicationTileListController *appViewController = [segue destinationViewController];
         appViewController.isDemoEnvironment = YES;
