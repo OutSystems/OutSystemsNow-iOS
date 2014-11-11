@@ -21,8 +21,40 @@ float const ECT_TOOLBAR_HEIGHT = 45;
 
 float const IPHONE5_HEIGHT = 568;
 float const IPHONE6_HEIGHT = 667;
-
 float const IPAD_HEIGHT = 768;
+
+// Mobile ECT POST fields
+NSString* const kECTFeedbackMessage = @"Message";
+NSString* const kECTFeedbackEnvironmentUID = @"EnvironmentUID";
+NSString* const kECTFeedbackEspaceUID = @"EspaceUID";
+NSString* const kECTFeedbackScreenUID = @"ScreenUID";
+NSString* const kECTFeedbackScreenName = @"ScreenName";
+NSString* const kECTFeedbackUserId = @"UserId";
+NSString* const kECTFeedbackViewportWidth = @"ViewportWidth";
+NSString* const kECTFeedbackViewportHeight = @"ViewportHeight";
+NSString* const kECTFeedbackUserAgentHeader = @"UserAgentHeader";
+NSString* const kECTFeedbackRequestURL = @"RequestURL";
+NSString* const kECTFeedbackSoundMessageBase64 = @"FeedbackSoundMessageBase64";
+NSString* const kECTFeedbackSoundMessageMimeType = @"FeedbackSoundMessageMimeType";
+NSString* const kECTFeedbackScreenshotBase64 = @"FeedbackScreenshotBase64";
+NSString* const kECTFeedbackScreenshotMimeType = @"FeedbackScreenshotMimeType";
+
+// JavaScript API
+NSString* const kECTJSEnvironmentUID = @"outsystems.api.requestInfo.getEnvironmentKey()";
+NSString* const kECTJSEspaceUID = @"outsystems.api.requestInfo.getEspaceKey()";
+NSString* const kECTJSScreenUID = @"outsystems.api.requestInfo.getWebScreenKey()";
+NSString* const kECTJSScreenName = @"outsystems.api.requestInfo.getWebScreenName()";
+NSString* const kECTJSUserId = @"ECT_JavasScript.userId";
+NSString* const kECTJSUserAgentHeader = @"navigator.userAgent";
+NSString* const kECTJSSaveFeedbackURL = @"ECT_JavaScript.supportedApiVersions[0].URL";
+
+// Mobile ECT Types
+NSString* const kECTAudioMimeType = @"audio/mp3";
+NSString* const kECTImageMimeType = @"image/jpeg";
+
+NSString* const kECTStatusSending = @"Sending your feedback...";
+NSString* const kECTStatusFailed = @"Failed to send your feedback.";
+
 
 @interface ApplicationViewController ()
 @property (strong, nonatomic) CDVViewController *applicationBrowser;
@@ -80,7 +112,6 @@ float const IPAD_HEIGHT = 768;
 
 @end
 
-
 @implementation ApplicationViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -135,16 +166,6 @@ float const IPAD_HEIGHT = 768;
     // remove bounce effect
     self.applicationBrowser.webView.scrollView.bounces = NO;
     
-    /*
-    // Remove Mobile ECT toolbar button if feedback its now allowed for the application
-    if(!_application.feedbackActive){
-        NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
-        
-        [toolbarButtons removeObject:self.openMobileECTButton];
-        [self setToolbarItems:toolbarButtons animated:YES];
-    }
-    
-    */
     // Hide Mobile ECT button
     self.originalToolbarItems = [self.toolbarItems mutableCopy];
     NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
@@ -244,6 +265,7 @@ float const IPAD_HEIGHT = 768;
     self.loadingProgressView.hidden = NO;
 }
 
+# pragma mark - Web View
 
 // This is not working as CDVWebViewDelegate is receiving this events
 -(void)webViewDidStartLoad:(NSNotification *) notification {
@@ -574,7 +596,7 @@ float const IPAD_HEIGHT = 768;
 - (IBAction)onSendECT:(id)sender {
     
     self.ectActivityIndicator.hidden = NO;
-    self.ectStatusMessage.text = @"Sending your feedback...";
+    self.ectStatusMessage.text = kECTStatusSending;
     self.ectRetryButton.hidden = YES;
     self.ectCancelRetryButton.hidden = YES;
     self.ectStatusView.hidden = NO;
@@ -700,27 +722,27 @@ float const IPAD_HEIGHT = 768;
     if(![self hasAudioComments])
         messageString = self.ectTextView.text;
     
-    [result setObject:messageString forKey:@"Message"];
+    [result setObject:messageString forKey:kECTFeedbackMessage];
     
     // EnvironmentUID - Available in outsystems.api.requestInfo.getEnvironmentKey()
-    NSString* environmentUID = [self getECTJSValue:@"outsystems.api.requestInfo.getEnvironmentKey()"];
-    [result setObject:environmentUID forKey:@"EnvironmentUID"];
+    NSString* environmentUID = [self getECTJSValue:kECTJSEnvironmentUID];
+    [result setObject:environmentUID forKey:kECTFeedbackEnvironmentUID];
     
     // EspaceUID - Available in outsystems.api.requestInfo.getEspaceKey()
-    NSString* espaceUID = [self getECTJSValue:@"outsystems.api.requestInfo.getEspaceKey()"];
-    [result setObject:espaceUID forKey:@"EspaceUID"];
+    NSString* espaceUID = [self getECTJSValue:kECTJSEspaceUID];
+    [result setObject:espaceUID forKey:kECTFeedbackEspaceUID];
     
     // ScreenUID - Available in outsystems.api.requestInfo.getWebScreenKey()
-    NSString* screenUID = [self getECTJSValue:@"outsystems.api.requestInfo.getWebScreenKey()"];
-    [result setObject:screenUID forKey:@"ScreenUID"];
+    NSString* screenUID = [self getECTJSValue:kECTJSScreenUID];
+    [result setObject:screenUID forKey:kECTFeedbackScreenUID];
     
     // ScreenName - Available in outsystems.api.requestInfo.getWebScreenName()
-    NSString* screenName = [self getECTJSValue:@"outsystems.api.requestInfo.getWebScreenName()"];
-    [result setObject:screenName forKey:@"ScreenName"];
+    NSString* screenName = [self getECTJSValue:kECTJSScreenName];
+    [result setObject:screenName forKey:kECTFeedbackScreenName];
     
     // UserId - Available in ECT_JavasScript.userId
-    NSString* userId = [self getECTJSValue:@"ECT_JavasScript.userId"];
-    [result setObject:userId forKey:@"UserId"];
+    NSString* userId = [self getECTJSValue:kECTJSUserId];
+    [result setObject:userId forKey:kECTFeedbackUserId];
     
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
@@ -728,21 +750,20 @@ float const IPAD_HEIGHT = 768;
     // ViewportWidth
     NSNumber *screenWidth = [NSNumber numberWithDouble:screenBounds.size.width];
     NSString* viewportWidth = [screenWidth stringValue];
-    [result setObject:viewportWidth forKey:@"ViewportWidth"];
+    [result setObject:viewportWidth forKey:kECTFeedbackViewportWidth];
     
     // ViewportHeight
     NSNumber *screenHeight = [NSNumber numberWithDouble:screenBounds.size.height];
     NSString* viewportHeight = [screenHeight stringValue];
-            [result setObject:viewportHeight forKey:@"ViewportHeight"];
+            [result setObject:viewportHeight forKey:kECTFeedbackViewportHeight];
     
     // UserAgentHeader - Use this JS navigator.userAgent
-    NSString* userAgentHeader = [self getECTJSValue:@"navigator.userAgent"];
-    [result setObject:userAgentHeader forKey:@"UserAgentHeader"];
+    NSString* userAgentHeader = [self getECTJSValue:kECTJSUserAgentHeader];
+    [result setObject:userAgentHeader forKey:kECTFeedbackUserAgentHeader];
     
     // RequestURL
-    NSString* requestURL = [self getECTJSValue:@"window.location.href"];
-    NSLog(@"startPage: %@",self.applicationBrowser.startPage);
-    [result setObject:requestURL forKey:@"RequestURL"];
+    NSString* requestURL = self.applicationBrowser.webView.request.URL.absoluteString;
+    [result setObject:requestURL forKey:kECTFeedbackRequestURL];
     
 
     // FeedbackSoundMessageBase64
@@ -762,11 +783,11 @@ float const IPAD_HEIGHT = 768;
     }
     
     NSString* feedbackSoundMessageBase64 = audioString;
-    [result setObject:feedbackSoundMessageBase64 forKey:@"FeedbackSoundMessageBase64"];
+    [result setObject:feedbackSoundMessageBase64 forKey:kECTFeedbackSoundMessageBase64];
     
     // FeedbackSoundMessageMimeType
-    NSString* feedbackSoundMessageMimeType = @"audio/mp3";
-    [result setObject:feedbackSoundMessageMimeType forKey:@"FeedbackSoundMessageMimeType"];
+    NSString* feedbackSoundMessageMimeType = kECTAudioMimeType;
+    [result setObject:feedbackSoundMessageMimeType forKey:kECTFeedbackSoundMessageMimeType];
     
     //  FeedbackScreenshotBase64
     UIImage *ectImage = [self.ectScreenCaptureView getCanvasImage];
@@ -785,11 +806,11 @@ float const IPAD_HEIGHT = 768;
     }
     
     NSString* feedbackScreenshotBase64 = imageString;
-    [result setObject:feedbackScreenshotBase64 forKey:@"FeedbackScreenshotBase64"];
+    [result setObject:feedbackScreenshotBase64 forKey:kECTFeedbackScreenshotBase64];
 
     // FeedbackScreenshotMimeType
-    NSString* feedbackScreenshotMimeType = @"image/jpeg";
-    [result setObject:feedbackScreenshotMimeType forKey:@"FeedbackScreenshotMimeType"];
+    NSString* feedbackScreenshotMimeType = kECTImageMimeType;
+    [result setObject:feedbackScreenshotMimeType forKey:kECTFeedbackScreenshotMimeType];
 
     return result;
 }
@@ -821,7 +842,7 @@ float const IPAD_HEIGHT = 768;
     
     MobileECT *mobileECT = [self getOrCreateMobileECTInfo];
     
-    NSString* ectURL = [self getECTJSValue:@"ECT_JavaScript.supportedApiVersions[0].URL"];
+    NSString* ectURL = [self getECTJSValue:kECTJSSaveFeedbackURL];
     
     NSURL *serviceURL = [NSURL URLWithString:[mobileECT getServiceForInfrastructure:self.infrastructure andURL:ectURL]];
     
@@ -851,7 +872,7 @@ float const IPAD_HEIGHT = 768;
     self.ectActivityIndicator.hidden = YES;
     self.ectRetryButton.hidden = NO;
     self.ectCancelRetryButton.hidden = NO;
-    self.ectStatusMessage.text = @"Failed to send your feedback.";
+    self.ectStatusMessage.text = kECTStatusFailed;
     
     // Check if the device is not an iPad
     if ( UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad )

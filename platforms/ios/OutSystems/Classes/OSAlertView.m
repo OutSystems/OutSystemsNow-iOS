@@ -106,9 +106,6 @@ CGFloat buttonSpacerHeight = 0;
     [self createDialogView];
     
     CGRect frame = self.dialogView.frame;
-    NSLog(@"dialog: x:%f,y:%f - w:%f,h:%f",frame.origin.x
-          ,frame.origin.y
-          ,frame.size.width,frame.size.height);
     
     // Add the custom container if there is any
     [dialogView addSubview:containerView];
