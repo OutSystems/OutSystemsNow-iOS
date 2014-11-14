@@ -22,7 +22,7 @@ float const ECT_TOOLBAR_HEIGHT = 45;
 
 float const IPHONE5_HEIGHT = 568;
 float const IPHONE6_HEIGHT = 667;
-float const IPAD_HEIGHT = 768;
+float const IPAD_HEIGHT = 1024;
 
 // Mobile ECT POST fields
 NSString* const kECTFeedbackMessage = @"Message";
@@ -594,7 +594,6 @@ NSString* const kECTSupportedApiVersion = @"1.0.0";
         // check compatibility with OSNow - Mobile ECT
         ectAvailable = [self checkECTCompatibility];
     }
-    
     return ectAvailable;
     
 }
@@ -615,25 +614,6 @@ NSString* const kECTSupportedApiVersion = @"1.0.0";
         
         NSLog(@"ECTApi: %@",api);
     }
-    
-    /* REMOVE: Just for development */
-    for(int i = 1; i<3; i++){
-        
-        NSString *apiVersion;
-        if(i%2 == 0)
-            apiVersion = [NSString stringWithFormat:@"1.%d.0",i ];
-        else
-            apiVersion = [NSString stringWithFormat:@"1.1%d.0",i ];
-        
-        NSString *apiURL = [NSString stringWithFormat:@"URL_Tests%d",i ];
-        BOOL apiCurrentVersion = NO;
-        
-        ECTApi *api = [[ECTApi alloc] initWithVersion:apiVersion url:apiURL current:apiCurrentVersion];
-        [self.ectSupportedApiVersions addObject:api];
-        
-
-    }
-    // --------------
     
     NSArray *sortedArray = [self.ectSupportedApiVersions sortedArrayUsingComparator:^NSComparisonResult(ECTApi *e1, ECTApi *e2){
         return [e1 compare:e2];
@@ -1148,10 +1128,12 @@ NSString* const kECTSupportedApiVersion = @"1.0.0";
         
     }
     else{
+        
         if(portraitOrientation)
-            self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_6+_portrait.png"];
+            self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPad_portrait"];
         else
-            self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPhone_6+_landscape.png"];
+            self.ectHelperImageView.image = [UIImage imageNamed:@"ECTSketch_iPad_landscape"];
+        
     }
     
     
