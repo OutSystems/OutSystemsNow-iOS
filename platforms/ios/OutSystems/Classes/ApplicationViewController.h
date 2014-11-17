@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "Application.h"
 #import "Infrastructure.h"
-#import <AVFoundation/AVFoundation.h>
 #import <OutSystemsMobileECT/OutSystemsMobileECT.h>
 
 typedef enum {

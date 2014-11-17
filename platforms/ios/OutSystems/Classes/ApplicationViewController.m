@@ -11,10 +11,7 @@
 #import "PXRImageSizeUtil.h"
 #import <Crashlytics/Crashlytics.h>
 #import "MobileECT.h"
-#import "CanvasView.h"
 #import "OSNavigationController.h"
-#import "AudioRecorderAlertView.h"
-#import "ECTApi.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
