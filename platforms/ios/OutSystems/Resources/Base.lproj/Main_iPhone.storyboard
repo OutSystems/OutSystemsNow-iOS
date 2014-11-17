@@ -105,7 +105,7 @@
                                             <action selector="onHelpTouch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9Ri-5X-g1T"/>
                                         </connections>
                                     </button>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnI-HQ-8QE">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnI-HQ-8QE">
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="278" translatesAutoresizingMaskIntoConstraints="NO" id="tdg-Du-hGj">
                                                 <rect key="frame" x="21" y="-22" width="278" height="43"/>
@@ -251,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="poR-HH-ZOn">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="568"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1zO-Fl-YX9" customClass="UIInsetTextField">
                                         <rect key="frame" x="22" y="122" width="277" height="35"/>
@@ -304,10 +304,10 @@
                                         </constraints>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid login, please try again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="271" translatesAutoresizingMaskIntoConstraints="NO" id="3Kj-vk-VI9" customClass="TTTAttributedLabel">
-                                        <rect key="frame" x="25" y="269" width="271" height="87"/>
+                                        <rect key="frame" x="25" y="269" width="271" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="271" id="B2d-6P-Gek"/>
-                                            <constraint firstAttribute="height" constant="87" id="ddQ-oE-JNd"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="ddQ-oE-JNd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -357,9 +357,9 @@
                         <color key="backgroundColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="poR-HH-ZOn" firstAttribute="top" secondItem="A64-RM-rop" secondAttribute="bottom" id="04Z-x5-dp3"/>
-                            <constraint firstAttribute="bottom" secondItem="poR-HH-ZOn" secondAttribute="bottom" id="j5a-l4-7qc"/>
+                            <constraint firstItem="poR-HH-ZOn" firstAttribute="height" secondItem="6dJ-zC-Mup" secondAttribute="height" id="Juk-Ft-f8x"/>
                             <constraint firstItem="poR-HH-ZOn" firstAttribute="leading" secondItem="6dJ-zC-Mup" secondAttribute="leading" id="lf7-h5-RAk"/>
-                            <constraint firstAttribute="trailing" secondItem="poR-HH-ZOn" secondAttribute="trailing" id="z2f-aP-sUL"/>
+                            <constraint firstItem="poR-HH-ZOn" firstAttribute="width" secondItem="6dJ-zC-Mup" secondAttribute="width" id="pon-sl-9Ga"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="641-ZK-wcn">
@@ -668,23 +668,6 @@
             </objects>
             <point key="canvasLocation" x="1741" y="460"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="nKy-ZQ-g2f">
-            <objects>
-                <viewController id="KKY-sm-MV8" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DOf-bz-U8N"/>
-                        <viewControllerLayoutGuide type="bottom" id="Mf7-Zm-g6l"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7Al-ii-kCv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="708-HP-2Vv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="NoAppImage.png" width="64" height="64"/>
@@ -701,7 +684,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6zx-D3-JMY"/>
+        <segue reference="ITW-ug-7u2"/>
         <segue reference="oPM-kh-zcB"/>
     </inferredMetricsTieBreakers>
 </document>

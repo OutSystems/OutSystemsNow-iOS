@@ -99,7 +99,6 @@
 		5966EEAF1A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
 		5966EEB01A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
 		5966EEB11A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
-		5966EEB21A1A15AF00E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
 		5966EEB31A1A15AF00E16AB6 /* OutSystemsMobileECT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		597239DC1992879000CAA629 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239D91992879000CAA629 /* OpenSans-Bold.ttf */; };
 		597239DD1992879000CAA629 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DA1992879000CAA629 /* OpenSans-Light.ttf */; };
@@ -703,7 +702,6 @@
 				597A5252195C9A6400F15480 /* MobileCoreServices.framework in Frameworks */,
 				597A5253195C9A6400F15480 /* Crashlytics.framework in Frameworks */,
 				597A5254195C9A6400F15480 /* CoreLocation.framework in Frameworks */,
-				5966EEB21A1A15AF00E16AB6 /* OutSystemsMobileECT.framework in Frameworks */,
 				597A5255195C9A6400F15480 /* AddressBook.framework in Frameworks */,
 				597A5256195C9A6400F15480 /* AddressBookUI.framework in Frameworks */,
 				597A5257195C9A6400F15480 /* AudioToolbox.framework in Frameworks */,
@@ -1154,7 +1152,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 500;
+				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = X2ZLV852SL;
