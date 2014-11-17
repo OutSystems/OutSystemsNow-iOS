@@ -597,171 +597,8 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pf0-tu-dJN" userLabel="ECTView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6c-lw-xbc" userLabel="ScreenCaptureView" customClass="CanvasView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSb-ae-9fu" userLabel="HelperView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ECTSketch_iPhone_5_portrait.png" translatesAutoresizingMaskIntoConstraints="NO" id="YdZ-Qz-Roc">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="tintColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" secondItem="YdZ-Qz-Roc" secondAttribute="height" id="FnZ-9T-5mk"/>
-                                            <constraint firstItem="YdZ-Qz-Roc" firstAttribute="leading" secondItem="oSb-ae-9fu" secondAttribute="leading" id="VZD-Vr-nZg"/>
-                                            <constraint firstAttribute="width" secondItem="YdZ-Qz-Roc" secondAttribute="width" id="ZQ2-CR-4CZ"/>
-                                            <constraint firstItem="YdZ-Qz-Roc" firstAttribute="top" secondItem="oSb-ae-9fu" secondAttribute="top" id="pmx-5Y-H07"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GML-8C-3hd" userLabel="ECTToolbarView">
-                                        <rect key="frame" x="0.0" y="523" width="320" height="45"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVW-fp-Ged" userLabel="CloseButton">
-                                                <rect key="frame" x="15" y="11" width="22" height="23"/>
-                                                <state key="normal" backgroundImage="icon_cross_white.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onCloseECT:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="VD2-OV-ltV"/>
-                                                </connections>
-                                            </button>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7h-U6-6Ri" userLabel="SendButton">
-                                                <rect key="frame" x="272" y="9" width="40" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="nny-qx-l0P"/>
-                                                </constraints>
-                                                <state key="normal" title="Send">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onSendECT:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="egA-aO-Pi4"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2R-91-hEJ" userLabel="MicrophoneButton">
-                                                <rect key="frame" x="280" y="10" width="25" height="26"/>
-                                                <state key="normal" image="icon_microphone_white.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onRecordComment:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="Mtr-Hn-nNA"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxO-wA-nsv" userLabel="PlayButton">
-                                                <rect key="frame" x="145" y="8" width="30" height="30"/>
-                                                <state key="normal" title="Play">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="onPlayECTAudio:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="FzD-dm-D9M"/>
-                                                </connections>
-                                            </button>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwf-yC-iFa" userLabel="FeedbackText">
-                                                <rect key="frame" x="55" y="6" width="210" height="33"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
-                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rit-pS-uDO" userLabel="StatusView">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjz-Na-LKD" userLabel="CancelButton">
-                                                        <rect key="frame" x="15" y="11" width="22" height="23"/>
-                                                        <state key="normal" backgroundImage="icon_cross_white.png">
-                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="onCancelRetry:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="DXE-JS-rqm"/>
-                                                        </connections>
-                                                    </button>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="U3p-af-Btt" userLabel="ActivityIndicator">
-                                                        <rect key="frame" x="45" y="6" width="33" height="33"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="33" id="46E-Yt-gDX"/>
-                                                            <constraint firstAttribute="width" constant="33" id="fqp-54-q2d"/>
-                                                        </constraints>
-                                                    </activityIndicatorView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sending your feedback..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov0-ca-haH" userLabel="StatusMessage">
-                                                        <rect key="frame" x="60" y="6" width="200" height="33"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="200" id="11c-Bn-jUn"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RP0-Vs-CXq" userLabel="RetryButton">
-                                                        <rect key="frame" x="272" y="6" width="40" height="33"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="40" id="jQF-NB-x2v"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Retry">
-                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="onSendECT:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="DkQ-od-wOb"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="centerX" secondItem="ov0-ca-haH" secondAttribute="centerX" id="Bba-EM-V36"/>
-                                                    <constraint firstItem="Pjz-Na-LKD" firstAttribute="leading" secondItem="rit-pS-uDO" secondAttribute="leading" constant="15" id="CDY-XQ-nk6"/>
-                                                    <constraint firstAttribute="bottom" secondItem="U3p-af-Btt" secondAttribute="bottom" constant="6" id="FGU-ud-Ted"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ov0-ca-haH" secondAttribute="bottom" constant="6" id="XuB-lE-e8H"/>
-                                                    <constraint firstItem="ov0-ca-haH" firstAttribute="top" secondItem="rit-pS-uDO" secondAttribute="top" constant="6" id="dhB-Vf-Exf"/>
-                                                    <constraint firstItem="U3p-af-Btt" firstAttribute="top" secondItem="rit-pS-uDO" secondAttribute="top" constant="6" id="eDY-fo-OUm"/>
-                                                    <constraint firstAttribute="trailing" secondItem="RP0-Vs-CXq" secondAttribute="trailing" constant="8" id="eSJ-On-YZq"/>
-                                                    <constraint firstAttribute="bottom" secondItem="RP0-Vs-CXq" secondAttribute="bottom" constant="6" id="ejv-OZ-uX6"/>
-                                                    <constraint firstItem="U3p-af-Btt" firstAttribute="leading" secondItem="ov0-ca-haH" secondAttribute="leading" constant="-15" id="jOy-5v-jOu"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Pjz-Na-LKD" secondAttribute="bottom" constant="11" id="pKd-lF-GBZ"/>
-                                                    <constraint firstItem="RP0-Vs-CXq" firstAttribute="top" secondItem="rit-pS-uDO" secondAttribute="top" constant="6" id="vX4-TZ-RYE"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="iwf-yC-iFa" secondAttribute="bottom" constant="6" id="1aQ-XR-l3l"/>
-                                            <constraint firstAttribute="bottom" secondItem="d2R-91-hEJ" secondAttribute="bottom" constant="9" id="51T-zh-jsX"/>
-                                            <constraint firstItem="rit-pS-uDO" firstAttribute="top" secondItem="GML-8C-3hd" secondAttribute="top" id="8Wg-Ni-h2z"/>
-                                            <constraint firstItem="rit-pS-uDO" firstAttribute="leading" secondItem="GML-8C-3hd" secondAttribute="leading" id="AXS-uk-uKZ"/>
-                                            <constraint firstAttribute="centerX" secondItem="FxO-wA-nsv" secondAttribute="centerX" id="DME-1q-tEi"/>
-                                            <constraint firstAttribute="trailing" secondItem="v7h-U6-6Ri" secondAttribute="trailing" constant="8" id="Jvl-ni-Ncx"/>
-                                            <constraint firstItem="iwf-yC-iFa" firstAttribute="top" secondItem="GML-8C-3hd" secondAttribute="top" constant="6" id="L0J-GY-ecY"/>
-                                            <constraint firstAttribute="height" secondItem="rit-pS-uDO" secondAttribute="height" id="NbI-Pe-XIz"/>
-                                            <constraint firstAttribute="centerY" secondItem="FxO-wA-nsv" secondAttribute="centerY" id="RPe-kC-FXB"/>
-                                            <constraint firstAttribute="trailing" secondItem="d2R-91-hEJ" secondAttribute="trailing" constant="15" id="XNh-Ql-6js"/>
-                                            <constraint firstAttribute="width" secondItem="rit-pS-uDO" secondAttribute="width" id="YJx-fE-zPN"/>
-                                            <constraint firstAttribute="bottom" secondItem="UVW-fp-Ged" secondAttribute="bottom" constant="11" id="buE-zC-QCK"/>
-                                            <constraint firstItem="UVW-fp-Ged" firstAttribute="leading" secondItem="GML-8C-3hd" secondAttribute="leading" constant="15" id="nsO-O4-IcJ"/>
-                                            <constraint firstItem="iwf-yC-iFa" firstAttribute="leading" secondItem="GML-8C-3hd" secondAttribute="leading" constant="55" id="qWO-k2-JFg"/>
-                                            <constraint firstAttribute="trailing" secondItem="iwf-yC-iFa" secondAttribute="trailing" constant="55" id="qrp-O4-Icr"/>
-                                            <constraint firstAttribute="height" constant="45" id="rtZ-Bj-XkO"/>
-                                            <constraint firstAttribute="centerX" secondItem="iwf-yC-iFa" secondAttribute="centerX" id="urX-YE-nS0"/>
-                                            <constraint firstAttribute="bottom" secondItem="v7h-U6-6Ri" secondAttribute="bottom" constant="6" id="z5m-3q-ltI"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
-                                <constraints>
-                                    <constraint firstItem="I6c-lw-xbc" firstAttribute="leading" secondItem="Pf0-tu-dJN" secondAttribute="leading" id="2go-Aa-lu7"/>
-                                    <constraint firstItem="GML-8C-3hd" firstAttribute="width" secondItem="Pf0-tu-dJN" secondAttribute="width" id="CtV-E8-Sf2"/>
-                                    <constraint firstItem="I6c-lw-xbc" firstAttribute="top" secondItem="Pf0-tu-dJN" secondAttribute="top" id="DVJ-fR-RnL"/>
-                                    <constraint firstItem="GML-8C-3hd" firstAttribute="leading" secondItem="Pf0-tu-dJN" secondAttribute="leading" id="NHb-M1-w2T"/>
-                                    <constraint firstItem="I6c-lw-xbc" firstAttribute="width" secondItem="Pf0-tu-dJN" secondAttribute="width" id="O3U-By-edz"/>
-                                    <constraint firstItem="oSb-ae-9fu" firstAttribute="top" secondItem="Pf0-tu-dJN" secondAttribute="top" id="PGP-hr-kf1"/>
-                                    <constraint firstAttribute="width" secondItem="oSb-ae-9fu" secondAttribute="width" id="WH9-zZ-UZu"/>
-                                    <constraint firstItem="I6c-lw-xbc" firstAttribute="height" secondItem="Pf0-tu-dJN" secondAttribute="height" id="Ybk-gj-q0x"/>
-                                    <constraint firstAttribute="height" secondItem="oSb-ae-9fu" secondAttribute="height" id="gfn-YH-LBe"/>
-                                    <constraint firstAttribute="bottom" secondItem="GML-8C-3hd" secondAttribute="bottom" id="j5A-b7-l3a"/>
-                                    <constraint firstItem="oSb-ae-9fu" firstAttribute="leading" secondItem="Pf0-tu-dJN" secondAttribute="leading" id="oVq-Hm-ppS"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -815,25 +652,10 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationListButton" destination="lfQ-b9-uaA" id="mNe-hC-YSq"/>
-                        <outlet property="ectActivityIndicator" destination="U3p-af-Btt" id="WPY-by-pqz"/>
-                        <outlet property="ectCancelRetryButton" destination="Pjz-Na-LKD" id="pkg-f6-gEZ"/>
-                        <outlet property="ectHelperImageView" destination="YdZ-Qz-Roc" id="DYA-7z-X70"/>
-                        <outlet property="ectHelperView" destination="oSb-ae-9fu" id="slP-2s-HLk"/>
-                        <outlet property="ectMicrophoneButton" destination="d2R-91-hEJ" id="ndk-9b-iJZ"/>
-                        <outlet property="ectPlayAudioButton" destination="FxO-wA-nsv" id="Z48-gd-A3K"/>
-                        <outlet property="ectRetryButton" destination="RP0-Vs-CXq" id="GgW-KP-dCG"/>
-                        <outlet property="ectScreenCaptureView" destination="I6c-lw-xbc" id="sr0-iW-exr"/>
-                        <outlet property="ectSendFeedbackButton" destination="v7h-U6-6Ri" id="DZZ-ca-evk"/>
-                        <outlet property="ectStatusMessage" destination="ov0-ca-haH" id="Nxi-oM-bqB"/>
-                        <outlet property="ectStatusView" destination="rit-pS-uDO" id="RmM-QG-uSm"/>
-                        <outlet property="ectTextView" destination="iwf-yC-iFa" id="wDw-Df-Q3W"/>
-                        <outlet property="ectToolbarBottomConstraint" destination="j5A-b7-l3a" id="2X6-57-4BE"/>
-                        <outlet property="ectToolbarHeightConstraint" destination="rtZ-Bj-XkO" id="D3q-Il-XkT"/>
-                        <outlet property="ectToolbarView" destination="GML-8C-3hd" id="zgN-J1-vzW"/>
                         <outlet property="loadingLabel" destination="Jbn-o9-gsR" id="G17-U6-kwv"/>
                         <outlet property="loadingProgressView" destination="Qze-JK-ulQ" id="uaI-ET-Irf"/>
                         <outlet property="loadingView" destination="8eS-Qi-mAm" id="ZAr-NZ-HbI"/>
-                        <outlet property="mobileECTView" destination="Pf0-tu-dJN" id="srB-DW-yQn"/>
+                        <outlet property="mobileECTView" destination="Pf0-tu-dJN" id="5Id-LH-Uaq"/>
                         <outlet property="navAppList" destination="lfQ-b9-uaA" id="VLK-xa-aGV"/>
                         <outlet property="navBack" destination="GJH-kj-tcb" id="81X-5f-fCn"/>
                         <outlet property="navForward" destination="mBx-Jz-anG" id="my7-bv-Ps2"/>
@@ -865,14 +687,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ECTSketch_iPhone_5_portrait.png" width="640" height="1136"/>
         <image name="NoAppImage.png" width="64" height="64"/>
         <image name="icon-white-help.png" width="45" height="45"/>
         <image name="icon_app-list_red.png" width="23" height="24"/>
         <image name="icon_chevron-left_red.png" width="22" height="23"/>
         <image name="icon_chevron-right_red.png" width="22" height="23"/>
-        <image name="icon_cross_white.png" width="22" height="23"/>
-        <image name="icon_microphone_white.png" width="25" height="26"/>
         <image name="icon_speech-bubble_red.png" width="27" height="26"/>
         <image name="logo_iphone5.png" width="530" height="80"/>
     </resources>

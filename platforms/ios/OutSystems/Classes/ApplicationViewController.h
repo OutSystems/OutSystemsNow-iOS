@@ -10,6 +10,7 @@
 #import "Application.h"
 #import "Infrastructure.h"
 #import <AVFoundation/AVFoundation.h>
+#import <OutSystemsMobileECT/OutSystemsMobileECT.h>
 
 typedef enum {
 	OSAnimateTransitionDefault,
@@ -18,17 +19,16 @@ typedef enum {
 	OSAnimateTransitionFadeOut
 }OSAnimateTransition;
 
-@interface ApplicationViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, UITextViewDelegate,AVAudioRecorderDelegate, AVAudioPlayerDelegate>
+@interface ApplicationViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) Application* application;
 @property (strong, nonatomic) Infrastructure* infrastructure;
+@property (strong, nonatomic) OSMobileECTController *mobileECTController;
 
 @property BOOL isSingleApplication;
 
 - (IBAction)navBack:(id)sender;
 - (IBAction)navForward:(id)sender;
 - (IBAction)navAppList:(id)sender;
-
-- (void)onAudioRecorderExit:(BOOL)recorded;
 
 @end

@@ -99,6 +99,11 @@
 		5966CBD619E3F90100240350 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD74AD651694464AD24DBA0 /* CDVJpegHeaderWriter.m */; };
 		5966CBD719E3F90100240350 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD74AD651694464AD24DBA0 /* CDVJpegHeaderWriter.m */; };
 		5966CBD819E3F90200240350 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD74AD651694464AD24DBA0 /* CDVJpegHeaderWriter.m */; };
+		5966EEAF1A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
+		5966EEB01A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
+		5966EEB11A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
+		5966EEB21A1A15AF00E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
+		5966EEB31A1A15AF00E16AB6 /* OutSystemsMobileECT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		597239DC1992879000CAA629 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239D91992879000CAA629 /* OpenSans-Bold.ttf */; };
 		597239DD1992879000CAA629 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DA1992879000CAA629 /* OpenSans-Light.ttf */; };
 		597239DE1992879000CAA629 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DB1992879000CAA629 /* OpenSans.ttf */; };
@@ -300,6 +305,7 @@
 		59DA68121A0BD2F500612F33 /* AudioRecorderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59DA68111A0BD2F500612F33 /* AudioRecorderAlertView.m */; };
 		59DA68131A0BD2F500612F33 /* AudioRecorderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59DA68111A0BD2F500612F33 /* AudioRecorderAlertView.m */; };
 		59DA68141A0BD2F500612F33 /* AudioRecorderAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59DA68111A0BD2F500612F33 /* AudioRecorderAlertView.m */; };
+		59DB9A9F1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59DB9A9E1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle */; };
 		59E25D3119094E3F000F9DE4 /* CDVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E25D3019094E3F000F9DE4 /* CDVLoader.m */; };
 		59E53F4C1986C1760003BC6B /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
 		59E53F4D1986C1760003BC6B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF9C2DF318F586F0000C5E68 /* Main_iPad.storyboard */; };
@@ -452,6 +458,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		5966EEB41A1A15B000E16AB6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5966EEB31A1A15AF00E16AB6 /* OutSystemsMobileECT.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0BA605C26F4E48AE9D187FFB /* CDVLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVLogger.h; path = org.apache.cordova.console/CDVLogger.h; sourceTree = "<group>"; };
 		0BBCEBEFC56E4793AFAB486C /* AddressBookUI.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -525,6 +545,7 @@
 		59665FD81A0A45C70049F8CD /* icon_cross_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cross_white@3x.png"; sourceTree = "<group>"; };
 		59665FD91A0A45C70049F8CD /* icon_cross_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cross_white@2x.png"; sourceTree = "<group>"; };
 		59665FDA1A0A45C70049F8CD /* icon_cross_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cross_white.png; sourceTree = "<group>"; };
+		5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutSystemsMobileECT.framework; path = ../../../../../OutSystemsMobileFrameworks/Builds/OutSystemsMobileECT.framework; sourceTree = "<group>"; };
 		597239D91992879000CAA629 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		597239DA1992879000CAA629 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		597239DB1992879000CAA629 /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSans.ttf; sourceTree = "<group>"; };
@@ -576,6 +597,7 @@
 		59DA68071A0BBA2F00612F33 /* OSAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSAlertView.m; sourceTree = "<group>"; };
 		59DA68101A0BD2DF00612F33 /* AudioRecorderAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecorderAlertView.h; sourceTree = "<group>"; };
 		59DA68111A0BD2F500612F33 /* AudioRecorderAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecorderAlertView.m; sourceTree = "<group>"; };
+		59DB9A9E1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = OutSystemsMobileECT.bundle; path = ../../../../../OutSystemsMobileFrameworks/Builds/OutSystemsMobileECT.framework/OutSystemsMobileECT.bundle; sourceTree = "<group>"; };
 		59E25D2F19094E3F000F9DE4 /* CDVLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVLoader.h; sourceTree = "<group>"; };
 		59E25D3019094E3F000F9DE4 /* CDVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLoader.m; sourceTree = "<group>"; };
 		59E34EDB1923E119003458AF /* OutAppData (isJavaServer).xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData (isJavaServer).xcdatamodel"; sourceTree = "<group>"; };
@@ -663,6 +685,7 @@
 				CFFC2FE41917F96600264950 /* Security.framework in Frameworks */,
 				CFFC2FE21917F5D300264950 /* Pushwoosh.framework in Frameworks */,
 				CF9C2DFE18F5BB16000C5E68 /* CoreData.framework in Frameworks */,
+				5966EEAF1A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */,
 				CF9C2DFC18F5BADA000C5E68 /* QuartzCore.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
@@ -690,6 +713,7 @@
 				597A524A195C9A6400F15480 /* Security.framework in Frameworks */,
 				597A524B195C9A6400F15480 /* Pushwoosh.framework in Frameworks */,
 				597A524D195C9A6400F15480 /* CoreData.framework in Frameworks */,
+				5966EEB01A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */,
 				597A524E195C9A6400F15480 /* QuartzCore.framework in Frameworks */,
 				597A524F195C9A6400F15480 /* AssetsLibrary.framework in Frameworks */,
 				597A5250195C9A6400F15480 /* libCordova.a in Frameworks */,
@@ -697,6 +721,7 @@
 				597A5252195C9A6400F15480 /* MobileCoreServices.framework in Frameworks */,
 				597A5253195C9A6400F15480 /* Crashlytics.framework in Frameworks */,
 				597A5254195C9A6400F15480 /* CoreLocation.framework in Frameworks */,
+				5966EEB21A1A15AF00E16AB6 /* OutSystemsMobileECT.framework in Frameworks */,
 				597A5255195C9A6400F15480 /* AddressBook.framework in Frameworks */,
 				597A5256195C9A6400F15480 /* AddressBookUI.framework in Frameworks */,
 				597A5257195C9A6400F15480 /* AudioToolbox.framework in Frameworks */,
@@ -717,6 +742,7 @@
 				59E53F8F1986C1760003BC6B /* Security.framework in Frameworks */,
 				59E53F901986C1760003BC6B /* Pushwoosh.framework in Frameworks */,
 				59E53F921986C1760003BC6B /* CoreData.framework in Frameworks */,
+				5966EEB11A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */,
 				59E53F931986C1760003BC6B /* QuartzCore.framework in Frameworks */,
 				59E53F941986C1760003BC6B /* AssetsLibrary.framework in Frameworks */,
 				59E53F951986C1760003BC6B /* libCordova.a in Frameworks */,
@@ -861,6 +887,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59DB9A9E1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle */,
+				5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */,
 				59665FC71A091AEB0049F8CD /* CoreImage.framework */,
 				59BC490B199CB5F100EA87AA /* CoreText.framework */,
 				594C6B79195B35FE004129C8 /* Crashlytics.framework */,
@@ -1116,6 +1144,7 @@
 				597A5227195C9A6400F15480 /* Sources */,
 				597A5248195C9A6400F15480 /* Frameworks */,
 				597A525B195C9A6400F15480 /* ShellScript */,
+				5966EEB41A1A15B000E16AB6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1296,6 +1325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59DB9A9F1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle in Resources */,
 				597A51DE195C9A6400F15480 /* splash_1024x768_@2x.png in Resources */,
 				59DA67A41A0A5FF100612F33 /* icon_cross_red.png in Resources */,
 				597A51DF195C9A6400F15480 /* Main_iPad.storyboard in Resources */,
@@ -1778,6 +1808,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1829,6 +1860,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OutSystems/OutSystems-Prefix.pch";
@@ -1878,6 +1910,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1893,6 +1926,7 @@
 				);
 				INFOPLIST_FILE = "OutSystems copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
@@ -1929,6 +1963,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OutSystems/OutSystems-Prefix.pch";
@@ -1943,6 +1978,7 @@
 				INFOPLIST_FILE = "OutSystems copy-Info.plist";
 				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-weak_framework",
@@ -1978,6 +2014,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2029,6 +2066,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OutSystems/OutSystems-Prefix.pch";
