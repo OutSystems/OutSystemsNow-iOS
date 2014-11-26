@@ -96,10 +96,6 @@
 		5966CBD619E3F90100240350 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD74AD651694464AD24DBA0 /* CDVJpegHeaderWriter.m */; };
 		5966CBD719E3F90100240350 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD74AD651694464AD24DBA0 /* CDVJpegHeaderWriter.m */; };
 		5966CBD819E3F90200240350 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD74AD651694464AD24DBA0 /* CDVJpegHeaderWriter.m */; };
-		5966EEAF1A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
-		5966EEB01A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
-		5966EEB11A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; };
-		5966EEB31A1A15AF00E16AB6 /* OutSystemsMobileECT.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		597239DC1992879000CAA629 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239D91992879000CAA629 /* OpenSans-Bold.ttf */; };
 		597239DD1992879000CAA629 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DA1992879000CAA629 /* OpenSans-Light.ttf */; };
 		597239DE1992879000CAA629 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DB1992879000CAA629 /* OpenSans.ttf */; };
@@ -290,9 +286,14 @@
 		59DA67DD1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */; };
 		59DA67DE1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */; };
 		59DA67DF1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */; };
-		59DB9A9F1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59DB9A9E1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle */; };
 		59DB9AA01A1A55F300FC3E35 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4F4906E8FA483AB2FCD8D3 /* AVFoundation.framework */; };
 		59DB9AA11A1A55FA00FC3E35 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9211FE76DF784E3B89283E55 /* CoreVideo.framework */; };
+		59DCDB9F1A263D5F00016507 /* OutSystemsMobileECT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59DCDB9D1A263D5F00016507 /* OutSystemsMobileECT.bundle */; };
+		59DCDBA01A263D5F00016507 /* OutSystemsMobileECT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59DCDB9D1A263D5F00016507 /* OutSystemsMobileECT.bundle */; };
+		59DCDBA11A263D5F00016507 /* OutSystemsMobileECT.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 59DCDB9D1A263D5F00016507 /* OutSystemsMobileECT.bundle */; };
+		59DCDBA21A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59DCDB9E1A263D5F00016507 /* OutSystemsMobileECT.framework */; };
+		59DCDBA31A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59DCDB9E1A263D5F00016507 /* OutSystemsMobileECT.framework */; };
+		59DCDBA41A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59DCDB9E1A263D5F00016507 /* OutSystemsMobileECT.framework */; };
 		59E25D3119094E3F000F9DE4 /* CDVLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E25D3019094E3F000F9DE4 /* CDVLoader.m */; };
 		59E53F4C1986C1760003BC6B /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
 		59E53F4D1986C1760003BC6B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF9C2DF318F586F0000C5E68 /* Main_iPad.storyboard */; };
@@ -452,7 +453,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				5966EEB31A1A15AF00E16AB6 /* OutSystemsMobileECT.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,7 +530,6 @@
 		59665FD81A0A45C70049F8CD /* icon_cross_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cross_white@3x.png"; sourceTree = "<group>"; };
 		59665FD91A0A45C70049F8CD /* icon_cross_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cross_white@2x.png"; sourceTree = "<group>"; };
 		59665FDA1A0A45C70049F8CD /* icon_cross_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_cross_white.png; sourceTree = "<group>"; };
-		5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutSystemsMobileECT.framework; path = ../../../../../OutSystemsMobileFrameworks/Builds/OutSystemsMobileECT.framework; sourceTree = "<group>"; };
 		597239D91992879000CAA629 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		597239DA1992879000CAA629 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		597239DB1992879000CAA629 /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSans.ttf; sourceTree = "<group>"; };
@@ -576,7 +575,8 @@
 		59DA67981A0A5FF100612F33 /* icon_cross_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_cross_red@2x.png"; sourceTree = "<group>"; };
 		59DA67991A0A5FF100612F33 /* icon_chevron-right_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chevron-right_red@2x.png"; sourceTree = "<group>"; };
 		59DA67DC1A0A701D00612F33 /* icon_chevron-left_red@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chevron-left_red@3x.png"; sourceTree = "<group>"; };
-		59DB9A9E1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = OutSystemsMobileECT.bundle; path = ../../../../../OutSystemsMobileFrameworks/Builds/OutSystemsMobileECT.framework/OutSystemsMobileECT.bundle; sourceTree = "<group>"; };
+		59DCDB9D1A263D5F00016507 /* OutSystemsMobileECT.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = OutSystemsMobileECT.bundle; path = OutSystems/Frameworks/OutSystemsMobileECT.bundle; sourceTree = "<group>"; };
+		59DCDB9E1A263D5F00016507 /* OutSystemsMobileECT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OutSystemsMobileECT.framework; path = OutSystems/Frameworks/OutSystemsMobileECT.framework; sourceTree = "<group>"; };
 		59E25D2F19094E3F000F9DE4 /* CDVLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDVLoader.h; sourceTree = "<group>"; };
 		59E25D3019094E3F000F9DE4 /* CDVLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDVLoader.m; sourceTree = "<group>"; };
 		59E34EDB1923E119003458AF /* OutAppData (isJavaServer).xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData (isJavaServer).xcdatamodel"; sourceTree = "<group>"; };
@@ -585,7 +585,6 @@
 		59F17EE31976C24B00E22193 /* SecurePasswordStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurePasswordStore.h; sourceTree = "<group>"; };
 		59F17EE41976C24B00E22193 /* SecurePasswordStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurePasswordStore.m; sourceTree = "<group>"; };
 		59F17EE61976C75000E22193 /* OutAppData - secure passwords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData - secure passwords.xcdatamodel"; sourceTree = "<group>"; };
-		59F2582E19E444120040A685 /* OutSystems Enterprise copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems Enterprise copy-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/branches/ECT/platforms/ios/OutSystems Enterprise copy-Info.plist"; sourceTree = "<absolute>"; };
 		5AEE5B34173C68D80009041E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7B3A817BEA614C68984019DA /* CDVContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVContacts.m; path = org.apache.cordova.contacts/CDVContacts.m; sourceTree = "<group>"; };
@@ -664,7 +663,7 @@
 				CFFC2FE41917F96600264950 /* Security.framework in Frameworks */,
 				CFFC2FE21917F5D300264950 /* Pushwoosh.framework in Frameworks */,
 				CF9C2DFE18F5BB16000C5E68 /* CoreData.framework in Frameworks */,
-				5966EEAF1A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */,
+				59DCDBA21A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
 				CF9C2DFC18F5BADA000C5E68 /* QuartzCore.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
@@ -692,9 +691,9 @@
 				59BC490D199CB60800EA87AA /* CoreText.framework in Frameworks */,
 				597A5249195C9A6400F15480 /* EventKit.framework in Frameworks */,
 				597A524A195C9A6400F15480 /* Security.framework in Frameworks */,
+				59DCDBA31A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
 				597A524B195C9A6400F15480 /* Pushwoosh.framework in Frameworks */,
 				597A524D195C9A6400F15480 /* CoreData.framework in Frameworks */,
-				5966EEB01A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */,
 				597A524E195C9A6400F15480 /* QuartzCore.framework in Frameworks */,
 				597A524F195C9A6400F15480 /* AssetsLibrary.framework in Frameworks */,
 				597A5250195C9A6400F15480 /* libCordova.a in Frameworks */,
@@ -720,7 +719,7 @@
 				59E53F8F1986C1760003BC6B /* Security.framework in Frameworks */,
 				59E53F901986C1760003BC6B /* Pushwoosh.framework in Frameworks */,
 				59E53F921986C1760003BC6B /* CoreData.framework in Frameworks */,
-				5966EEB11A1A15A100E16AB6 /* OutSystemsMobileECT.framework in Frameworks */,
+				59DCDBA41A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
 				59E53F931986C1760003BC6B /* QuartzCore.framework in Frameworks */,
 				59E53F941986C1760003BC6B /* AssetsLibrary.framework in Frameworks */,
 				59E53F951986C1760003BC6B /* libCordova.a in Frameworks */,
@@ -820,7 +819,6 @@
 				597A5260195C9A6500F15480 /* OutSystems copy-Info.plist */,
 				590FA156198007BF00312C51 /* OutSystems copy2-Info.plist */,
 				59E53FA51986C1780003BC6B /* OutSystems copy3-Info.plist */,
-				59F2582E19E444120040A685 /* OutSystems Enterprise copy-Info.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -859,8 +857,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				59DB9A9E1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle */,
-				5966EEAE1A1A15A100E16AB6 /* OutSystemsMobileECT.framework */,
+				59DCDB9D1A263D5F00016507 /* OutSystemsMobileECT.bundle */,
+				59DCDB9E1A263D5F00016507 /* OutSystemsMobileECT.framework */,
 				59665FC71A091AEB0049F8CD /* CoreImage.framework */,
 				59BC490B199CB5F100EA87AA /* CoreText.framework */,
 				594C6B79195B35FE004129C8 /* Crashlytics.framework */,
@@ -1093,7 +1091,7 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
-				594C6B78195B3593004129C8 /* ShellScript */,
+				594C6B78195B3593004129C8 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -1155,13 +1153,13 @@
 				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = X2ZLV852SL;
+						DevelopmentTeam = S25XN959HW;
 					};
 					597A51D9195C9A6400F15480 = {
 						DevelopmentTeam = EVSWK8BA55;
 					};
 					59E53F471986C1760003BC6B = {
-						DevelopmentTeam = EVSWK8BA55;
+						DevelopmentTeam = X2ZLV852SL;
 					};
 				};
 			};
@@ -1237,6 +1235,7 @@
 				59DA67BB1A0A5FF100612F33 /* icon_speech-bubble.png in Resources */,
 				59DA679A1A0A5FF100612F33 /* icon_speech-bubble_red.png in Resources */,
 				590EA4C318F8283200EB317D /* logo_iphone5.png in Resources */,
+				59DCDB9F1A263D5F00016507 /* OutSystemsMobileECT.bundle in Resources */,
 				59DA67B81A0A5FF100612F33 /* icon_cross_red@3x.png in Resources */,
 				590EA4C418F8283200EB317D /* splash_320x480_iphone.png in Resources */,
 				59665F721A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png in Resources */,
@@ -1295,7 +1294,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59DB9A9F1A1A3FA500FC3E35 /* OutSystemsMobileECT.bundle in Resources */,
 				597A51DE195C9A6400F15480 /* splash_1024x768_@2x.png in Resources */,
 				59DA67A41A0A5FF100612F33 /* icon_cross_red.png in Resources */,
 				597A51DF195C9A6400F15480 /* Main_iPad.storyboard in Resources */,
@@ -1321,6 +1319,7 @@
 				59DA67BC1A0A5FF100612F33 /* icon_speech-bubble.png in Resources */,
 				59DA679B1A0A5FF100612F33 /* icon_speech-bubble_red.png in Resources */,
 				597A51F2195C9A6400F15480 /* icon-apps.png in Resources */,
+				59DCDBA01A263D5F00016507 /* OutSystemsMobileECT.bundle in Resources */,
 				59DA67B91A0A5FF100612F33 /* icon_cross_red@3x.png in Resources */,
 				59665FDC1A0A45C70049F8CD /* icon_microphone_white@3x.png in Resources */,
 				597A51F3195C9A6400F15480 /* logo_iphone5.png in Resources */,
@@ -1404,6 +1403,7 @@
 				59DA67BD1A0A5FF100612F33 /* icon_speech-bubble.png in Resources */,
 				59DA679C1A0A5FF100612F33 /* icon_speech-bubble_red.png in Resources */,
 				59E53F561986C1760003BC6B /* icon-apps.png in Resources */,
+				59DCDBA11A263D5F00016507 /* OutSystemsMobileECT.bundle in Resources */,
 				59DA67BA1A0A5FF100612F33 /* icon_cross_red@3x.png in Resources */,
 				59665FDD1A0A45C70049F8CD /* icon_microphone_white@3x.png in Resources */,
 				59E53F571986C1760003BC6B /* logo_iphone5.png in Resources */,
@@ -1476,13 +1476,14 @@
 			shellScript = "cordova/lib/copy-www-build-step.sh";
 			showEnvVarsInLog = 0;
 		};
-		594C6B78195B3593004129C8 /* ShellScript */ = {
+		594C6B78195B3593004129C8 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1766,7 +1767,9 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/OutSystems/Frameworks",
 					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1782,7 +1785,7 @@
 				);
 				INFOPLIST_FILE = "OutSystems/OutSystems-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -1798,10 +1801,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "CB2AB3B3-F54B-4F4A-8637-A03F6243C59D";
+				PROVISIONING_PROFILE = "c9faca1d-3723-455c-8416-127d24fae861";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
-				"VALID_ARCHS[sdk=*]" = "armv7 armv7s arm64 i386 x86_64";
 			};
 			name = Debug;
 		};
@@ -1812,13 +1813,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/OutSystems/Frameworks",
 					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OutSystems/OutSystems-Prefix.pch";
@@ -1833,7 +1836,7 @@
 				INFOPLIST_FILE = "OutSystems/OutSystems-Info.plist";
 				INFOPLIST_PREPROCESS = NO;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
 					CoreFoundation,
@@ -1849,9 +1852,9 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "CB2AB3B3-F54B-4F4A-8637-A03F6243C59D";
+				PROVISIONING_PROFILE = "309a8a05-92fa-4c02-83b9-9e4dbec58f28";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
+				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1869,6 +1872,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
+					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1922,6 +1927,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
+					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OutSystems/OutSystems-Prefix.pch";
@@ -1966,13 +1973,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
+					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2018,13 +2027,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OUTSYSTEMS - Software em Rede, S.A.";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
+					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OutSystems/OutSystems-Prefix.pch";
