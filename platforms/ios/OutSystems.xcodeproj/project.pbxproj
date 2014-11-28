@@ -1801,7 +1801,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "c9faca1d-3723-455c-8416-127d24fae861";
+				PROVISIONING_PROFILE = "c8c8e2b1-e203-4569-872d-c12cf6b186c8";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;

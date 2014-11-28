@@ -145,6 +145,7 @@
 
 - (IBAction)OnLoginClick:(UIButton *)sender {
     
+    [self.view endEditing:YES];
     [_loginActivityIndicator startAnimating];
     [_errorMessageLabel setHidden:YES];
     [_loginButton setHidden:YES];
