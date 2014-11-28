@@ -328,8 +328,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
-
-    [self.navigationController setToolbarHidden:YES animated:YES];
     
     MobileECT *mobileECTCoreData = [self getOrCreateMobileECTInfo];
     
@@ -337,9 +335,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     [self.mobileECTController skipHelper:skipECTHelper];
 
-    [self.mobileECTView setHidden:NO];
+
     [self.mobileECTController openECTView];
-    
+ 
+    [self.navigationController setToolbarHidden:YES animated:YES];
+    [self.mobileECTView setHidden:NO];   
 }
 
 -(void)onExitECT{
