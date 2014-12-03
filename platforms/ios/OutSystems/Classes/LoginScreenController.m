@@ -338,7 +338,8 @@
         // GoToSingleApplicationSegue
         ApplicationViewController *appViewController =
         [segue destinationViewController];
-        
+
+        appViewController.infrastructure = self.infrastructure;
         appViewController.isSingleApplication = YES;
         
         if ([self.deepLinkController hasValidSettings] && [self.deepLinkController hasApplication]) {

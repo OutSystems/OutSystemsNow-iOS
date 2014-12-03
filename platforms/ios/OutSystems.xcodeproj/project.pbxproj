@@ -45,30 +45,6 @@
 		595646DB190FBE4C00C1D583 /* splash_768x1024_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D7190FBE4C00C1D583 /* splash_768x1024_@2x.png */; };
 		5962EF05191BE4D1001A8F57 /* PXRImageSizeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */; };
 		596479372EAF4EF3A50B22EE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73C8DACE3A64FAA97176CDE /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		59665F631A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5B1A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png */; };
-		59665F641A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5B1A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png */; };
-		59665F651A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5B1A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png */; };
-		59665F661A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5C1A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png */; };
-		59665F671A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5C1A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png */; };
-		59665F681A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5C1A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png */; };
-		59665F691A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5D1A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png */; };
-		59665F6A1A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5D1A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png */; };
-		59665F6B1A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5D1A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png */; };
-		59665F6C1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5E1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png */; };
-		59665F6D1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5E1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png */; };
-		59665F6E1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5E1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png */; };
-		59665F6F1A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5F1A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png */; };
-		59665F701A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5F1A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png */; };
-		59665F711A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F5F1A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png */; };
-		59665F721A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F601A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png */; };
-		59665F731A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F601A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png */; };
-		59665F741A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F601A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png */; };
-		59665F751A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F611A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png */; };
-		59665F761A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F611A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png */; };
-		59665F771A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F611A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png */; };
-		59665F781A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F621A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png */; };
-		59665F791A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F621A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png */; };
-		59665F7A1A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665F621A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png */; };
 		59665FC81A091AEB0049F8CD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59665FC71A091AEB0049F8CD /* CoreImage.framework */; };
 		59665FC91A091AF60049F8CD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59665FC71A091AEB0049F8CD /* CoreImage.framework */; };
 		59665FCA1A091AFD0049F8CD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59665FC71A091AEB0049F8CD /* CoreImage.framework */; };
@@ -112,18 +88,6 @@
 		597902E919ED54C400440628 /* DeepLinkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597902E719ED54B400440628 /* DeepLinkController.m */; };
 		597902EA19ED579B00440628 /* DeepLinkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597902E719ED54B400440628 /* DeepLinkController.m */; };
 		597902EB19FE937100440628 /* SecurePasswordStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F17EE41976C24B00E22193 /* SecurePasswordStore.m */; };
-		597907621A1601F800E13889 /* ECTSketch_iPad_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979075E1A1601F800E13889 /* ECTSketch_iPad_landscape.png */; };
-		597907631A1601F800E13889 /* ECTSketch_iPad_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979075F1A1601F800E13889 /* ECTSketch_iPad_portrait.png */; };
-		597907661A1601FD00E13889 /* ECTSketch_iPad_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979075E1A1601F800E13889 /* ECTSketch_iPad_landscape.png */; };
-		597907671A1601FD00E13889 /* ECTSketch_iPad_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979075F1A1601F800E13889 /* ECTSketch_iPad_portrait.png */; };
-		5979076A1A1601FE00E13889 /* ECTSketch_iPad_landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979075E1A1601F800E13889 /* ECTSketch_iPad_landscape.png */; };
-		5979076B1A1601FE00E13889 /* ECTSketch_iPad_portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979075F1A1601F800E13889 /* ECTSketch_iPad_portrait.png */; };
-		597907701A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979076E1A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png */; };
-		597907711A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979076E1A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png */; };
-		597907721A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979076E1A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png */; };
-		597907731A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979076F1A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png */; };
-		597907741A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979076F1A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png */; };
-		597907751A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5979076F1A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png */; };
 		597A51DE195C9A6400F15480 /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
 		597A51DF195C9A6400F15480 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF9C2DF318F586F0000C5E68 /* Main_iPad.storyboard */; };
 		597A51E0195C9A6400F15480 /* splash_640x960_iphone4.png in Resources */ = {isa = PBXBuildFile; fileRef = 590EA4B918F8283200EB317D /* splash_640x960_iphone4.png */; };
@@ -513,14 +477,6 @@
 		595646D7190FBE4C00C1D583 /* splash_768x1024_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_768x1024_@2x.png"; sourceTree = "<group>"; };
 		5962EF03191BE4D1001A8F57 /* PXRImageSizeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXRImageSizeUtil.h; sourceTree = "<group>"; };
 		5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXRImageSizeUtil.m; sourceTree = "<group>"; };
-		59665F5B1A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ECTSketch_iPhone_6+_landscape.png"; sourceTree = "<group>"; };
-		59665F5C1A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ECTSketch_iPhone_4-4S_landscape.png"; sourceTree = "<group>"; };
-		59665F5D1A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ECTSketch_iPhone_5_landscape.png; sourceTree = "<group>"; };
-		59665F5E1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ECTSketch_iPhone_6_landscape.png; sourceTree = "<group>"; };
-		59665F5F1A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ECTSketch_iPhone_6+_portrait.png"; sourceTree = "<group>"; };
-		59665F601A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ECTSketch_iPhone_4-4S_portrait.png"; sourceTree = "<group>"; };
-		59665F611A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ECTSketch_iPhone_5_portrait.png; sourceTree = "<group>"; };
-		59665F621A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ECTSketch_iPhone_6_portrait.png; sourceTree = "<group>"; };
 		59665FC71A091AEB0049F8CD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		59665FCB1A0937620049F8CD /* OSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNavigationController.h; sourceTree = "<group>"; };
 		59665FCC1A0937D00049F8CD /* OSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNavigationController.m; sourceTree = "<group>"; };
@@ -537,10 +493,6 @@
 		597902E119EC200D00440628 /* DeepLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeepLink.m; path = OutSystems/Classes/DeepLink.m; sourceTree = "<group>"; };
 		597902E619ED53C800440628 /* DeepLinkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLinkController.h; sourceTree = "<group>"; };
 		597902E719ED54B400440628 /* DeepLinkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepLinkController.m; sourceTree = "<group>"; };
-		5979075E1A1601F800E13889 /* ECTSketch_iPad_landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ECTSketch_iPad_landscape.png; sourceTree = "<group>"; };
-		5979075F1A1601F800E13889 /* ECTSketch_iPad_portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ECTSketch_iPad_portrait.png; sourceTree = "<group>"; };
-		5979076E1A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ECTSketch_iPad_landscape@2x.png"; sourceTree = "<group>"; };
-		5979076F1A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ECTSketch_iPad_portrait@2x.png"; sourceTree = "<group>"; };
 		597A525F195C9A6400F15480 /* OutSystems Push Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutSystems Push Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		597A5260195C9A6500F15480 /* OutSystems copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems copy-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/branches/ECT/platforms/ios/OutSystems copy-Info.plist"; sourceTree = "<absolute>"; };
 		5999274F1A0277580068B246 /* MobileECT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileECT.h; path = OutSystems/Classes/MobileECT.h; sourceTree = "<group>"; };
@@ -991,20 +943,8 @@
 		CF9C2E0318F5C577000C5E68 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				5979076E1A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png */,
-				5979076F1A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png */,
 				590EA4B118F8283200EB317D /* bg-red_1024x768_@2x_ipad-retina.png */,
 				590EA4B218F8283200EB317D /* bg-red_1024x768_ipad.png */,
-				5979075E1A1601F800E13889 /* ECTSketch_iPad_landscape.png */,
-				5979075F1A1601F800E13889 /* ECTSketch_iPad_portrait.png */,
-				59665F5C1A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png */,
-				59665F601A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png */,
-				59665F5D1A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png */,
-				59665F611A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png */,
-				59665F5E1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png */,
-				59665F621A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png */,
-				59665F5B1A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png */,
-				59665F5F1A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png */,
 				59DA678A1A0A5FF100612F33 /* icon_app-list_red.png */,
 				59DA67971A0A5FF100612F33 /* icon_app-list_red@2x.png */,
 				59DA67951A0A5FF100612F33 /* icon_app-list_red@3x.png */,
@@ -1210,17 +1150,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59665F6F1A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png in Resources */,
 				59DA67A31A0A5FF100612F33 /* icon_cross_red.png in Resources */,
 				595646D8190FBE4C00C1D583 /* splash_1024x768_@2x.png in Resources */,
-				597907621A1601F800E13889 /* ECTSketch_iPad_landscape.png in Resources */,
 				CF9C2DF718F586F0000C5E68 /* Main_iPad.storyboard in Resources */,
 				590EA4C518F8283200EB317D /* splash_640x960_iphone4.png in Resources */,
 				59DA67BE1A0A5FF100612F33 /* icon_speech-bubble_red@2x.png in Resources */,
 				59DA67B21A0A5FF100612F33 /* icon_chevron-right-inactive@2x.png in Resources */,
 				592FA95D190014D900458A51 /* icon-cog@2x.png in Resources */,
 				CF9C2DF818F586F0000C5E68 /* Main_iPhone.storyboard in Resources */,
-				597907731A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png in Resources */,
 				595646DA190FBE4C00C1D583 /* splash_1024x768.png in Resources */,
 				59DA67AF1A0A5FF100612F33 /* icon_chevron-left_red@2x.png in Resources */,
 				59DA67A91A0A5FF100612F33 /* icon_chevron-left_red.png in Resources */,
@@ -1238,15 +1175,11 @@
 				59DCDB9F1A263D5F00016507 /* OutSystemsMobileECT.bundle in Resources */,
 				59DA67B81A0A5FF100612F33 /* icon_cross_red@3x.png in Resources */,
 				590EA4C418F8283200EB317D /* splash_320x480_iphone.png in Resources */,
-				59665F721A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png in Resources */,
 				59DA67A61A0A5FF100612F33 /* icon_chevron-right_red.png in Resources */,
 				CF9C2E4D18F69905000C5E68 /* Images.xcassets in Resources */,
 				597239DC1992879000CAA629 /* OpenSans-Bold.ttf in Resources */,
-				59665F691A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png in Resources */,
-				59665F631A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png in Resources */,
 				CF9C2E4A18F69882000C5E68 /* icon-white-close.png in Resources */,
 				597239DD1992879000CAA629 /* OpenSans-Light.ttf in Resources */,
-				59665F751A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png in Resources */,
 				592FA96619001EBF00458A51 /* icon-chevron-forth.png in Resources */,
 				59DA67D31A0A5FF100612F33 /* icon_app-list_red@2x.png in Resources */,
 				590EA4BE18F8283200EB317D /* bg-red_1024x768_ipad.png in Resources */,
@@ -1255,25 +1188,20 @@
 				59DA679D1A0A5FF100612F33 /* icon_microphone_red.png in Resources */,
 				592FA96A1900209B00458A51 /* icon-cog.png in Resources */,
 				592FA96519001EBF00458A51 /* icon-chevron-back.png in Resources */,
-				597907631A1601F800E13889 /* ECTSketch_iPad_portrait.png in Resources */,
 				59665FE71A0A45C70049F8CD /* icon_cross_white@2x.png in Resources */,
 				592FA957190014D900458A51 /* icon-chevron-back@2x.png in Resources */,
 				30A0434814DC770100060A13 /* Localizable.strings in Resources */,
-				59665F781A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png in Resources */,
 				592FA95E190014D900458A51 /* icon-settings_2x.png in Resources */,
 				CF9C2E4B18F69882000C5E68 /* icon-white-help.png in Resources */,
 				59665FE41A0A45C70049F8CD /* icon_cross_white@3x.png in Resources */,
 				59DA67C11A0A5FF100612F33 /* icon_speech-bubble_red@3x.png in Resources */,
 				59DA67CA1A0A5FF100612F33 /* icon_chevron-right-inactive@3x.png in Resources */,
-				597907701A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png in Resources */,
 				590EA4C618F8283200EB317D /* splash_640x1136_iphone5.png in Resources */,
-				59665F6C1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png in Resources */,
 				59DA67A01A0A5FF100612F33 /* icon_chevron-right-inactive.png in Resources */,
 				59DA67D61A0A5FF100612F33 /* icon_cross_red@2x.png in Resources */,
 				59665FE11A0A45C70049F8CD /* icon_microphone_white@2x.png in Resources */,
 				59DA67D91A0A5FF100612F33 /* icon_chevron-right_red@2x.png in Resources */,
 				59DA67B51A0A5FF100612F33 /* icon_microphone_red@2x.png in Resources */,
-				59665F661A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png in Resources */,
 				590EA49418F6FF6500EB317D /* ipad_bg-red.jpg in Resources */,
 				592FA95B190014D900458A51 /* icon-chevron-forth@2x.png in Resources */,
 				59665FEA1A0A45C70049F8CD /* icon_cross_white.png in Resources */,
@@ -1297,14 +1225,11 @@
 				597A51DE195C9A6400F15480 /* splash_1024x768_@2x.png in Resources */,
 				59DA67A41A0A5FF100612F33 /* icon_cross_red.png in Resources */,
 				597A51DF195C9A6400F15480 /* Main_iPad.storyboard in Resources */,
-				597907661A1601FD00E13889 /* ECTSketch_iPad_landscape.png in Resources */,
-				59665F761A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png in Resources */,
 				597A51E0195C9A6400F15480 /* splash_640x960_iphone4.png in Resources */,
 				59DA67BF1A0A5FF100612F33 /* icon_speech-bubble_red@2x.png in Resources */,
 				59DA67B31A0A5FF100612F33 /* icon_chevron-right-inactive@2x.png in Resources */,
 				597A51E2195C9A6400F15480 /* icon-cog@2x.png in Resources */,
 				597A51EA195C9A6400F15480 /* Main_iPhone.storyboard in Resources */,
-				597907741A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png in Resources */,
 				59665FE81A0A45C70049F8CD /* icon_cross_white@2x.png in Resources */,
 				59DA67B01A0A5FF100612F33 /* icon_chevron-left_red@2x.png in Resources */,
 				59DA67AA1A0A5FF100612F33 /* icon_chevron-left_red.png in Resources */,
@@ -1325,31 +1250,24 @@
 				597A51F3195C9A6400F15480 /* logo_iphone5.png in Resources */,
 				59DA67A71A0A5FF100612F33 /* icon_chevron-right_red.png in Resources */,
 				597A51F4195C9A6400F15480 /* splash_320x480_iphone.png in Resources */,
-				59665F701A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png in Resources */,
 				59665FE21A0A45C70049F8CD /* icon_microphone_white@2x.png in Resources */,
 				597A51F5195C9A6400F15480 /* Images.xcassets in Resources */,
 				597239DF1994FCF200CAA629 /* OpenSans-Bold.ttf in Resources */,
-				59665F6D1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png in Resources */,
 				59665FEB1A0A45C70049F8CD /* icon_cross_white.png in Resources */,
 				597A51F6195C9A6400F15480 /* icon-white-close.png in Resources */,
 				59DA67D41A0A5FF100612F33 /* icon_app-list_red@2x.png in Resources */,
 				597239E11994FCF600CAA629 /* OpenSans-Light.ttf in Resources */,
-				59665F791A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png in Resources */,
 				59DA67C81A0A5FF100612F33 /* icon_chevron-right_red@3x.png in Resources */,
 				59DA679E1A0A5FF100612F33 /* icon_microphone_red.png in Resources */,
 				59665FDF1A0A45C70049F8CD /* icon_microphone_white.png in Resources */,
 				597A51F8195C9A6400F15480 /* icon-chevron-forth.png in Resources */,
-				597907671A1601FD00E13889 /* ECTSketch_iPad_portrait.png in Resources */,
-				59665F6A1A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png in Resources */,
 				597A51FB195C9A6400F15480 /* bg-red_1024x768_ipad.png in Resources */,
 				597A51FC195C9A6400F15480 /* Localizable.strings in Resources */,
 				597A51FE195C9A6400F15480 /* icon-cog.png in Resources */,
-				59665F731A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png in Resources */,
 				597A5200195C9A6400F15480 /* icon-chevron-back.png in Resources */,
 				597A5202195C9A6400F15480 /* icon-chevron-back@2x.png in Resources */,
 				59DA67C21A0A5FF100612F33 /* icon_speech-bubble_red@3x.png in Resources */,
 				59DA67CB1A0A5FF100612F33 /* icon_chevron-right-inactive@3x.png in Resources */,
-				597907711A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png in Resources */,
 				597A5206195C9A6400F15480 /* Localizable.strings in Resources */,
 				597A5209195C9A6400F15480 /* icon-settings_2x.png in Resources */,
 				59DA67A11A0A5FF100612F33 /* icon_chevron-right-inactive.png in Resources */,
@@ -1362,11 +1280,9 @@
 				597A5216195C9A6400F15480 /* icon-chevron-forth@2x.png in Resources */,
 				597A5217195C9A6400F15480 /* NoAppImage.png in Resources */,
 				597A521B195C9A6400F15480 /* OShub_bg-red.jpg in Resources */,
-				59665F641A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png in Resources */,
 				597A521D195C9A6400F15480 /* splash_768x1024.png in Resources */,
 				59DA67DE1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */,
 				59DA67D11A0A5FF100612F33 /* icon_app-list.png in Resources */,
-				59665F671A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png in Resources */,
 				597A521E195C9A6400F15480 /* ipad_bg-red_@2x.jpg in Resources */,
 				597A5225195C9A6400F15480 /* CDVNotification.bundle in Resources */,
 				59665FE51A0A45C70049F8CD /* icon_cross_white@3x.png in Resources */,
@@ -1381,14 +1297,11 @@
 				59E53F4C1986C1760003BC6B /* splash_1024x768_@2x.png in Resources */,
 				59DA67A51A0A5FF100612F33 /* icon_cross_red.png in Resources */,
 				59E53F4D1986C1760003BC6B /* Main_iPad.storyboard in Resources */,
-				5979076A1A1601FE00E13889 /* ECTSketch_iPad_landscape.png in Resources */,
-				59665F771A08E4790049F8CD /* ECTSketch_iPhone_5_portrait.png in Resources */,
 				59E53F4E1986C1760003BC6B /* splash_640x960_iphone4.png in Resources */,
 				59DA67C01A0A5FF100612F33 /* icon_speech-bubble_red@2x.png in Resources */,
 				59DA67B41A0A5FF100612F33 /* icon_chevron-right-inactive@2x.png in Resources */,
 				59E53F4F1986C1760003BC6B /* icon-cog@2x.png in Resources */,
 				59E53F501986C1760003BC6B /* Main_iPhone.storyboard in Resources */,
-				597907751A1605E100E13889 /* ECTSketch_iPad_portrait@2x.png in Resources */,
 				59665FE91A0A45C70049F8CD /* icon_cross_white@2x.png in Resources */,
 				59DA67B11A0A5FF100612F33 /* icon_chevron-left_red@2x.png in Resources */,
 				59DA67AB1A0A5FF100612F33 /* icon_chevron-left_red.png in Resources */,
@@ -1409,31 +1322,24 @@
 				59E53F571986C1760003BC6B /* logo_iphone5.png in Resources */,
 				59DA67A81A0A5FF100612F33 /* icon_chevron-right_red.png in Resources */,
 				59E53F581986C1760003BC6B /* splash_320x480_iphone.png in Resources */,
-				59665F711A08E4790049F8CD /* ECTSketch_iPhone_6+_portrait.png in Resources */,
 				59665FE31A0A45C70049F8CD /* icon_microphone_white@2x.png in Resources */,
 				59E53F591986C1760003BC6B /* Images.xcassets in Resources */,
 				597239E01994FCF300CAA629 /* OpenSans-Bold.ttf in Resources */,
-				59665F6E1A08E4790049F8CD /* ECTSketch_iPhone_6_landscape.png in Resources */,
 				59665FEC1A0A45C70049F8CD /* icon_cross_white.png in Resources */,
 				59E53F5A1986C1760003BC6B /* icon-white-close.png in Resources */,
 				59DA67D51A0A5FF100612F33 /* icon_app-list_red@2x.png in Resources */,
 				597239E21994FCF600CAA629 /* OpenSans-Light.ttf in Resources */,
-				59665F7A1A08E4790049F8CD /* ECTSketch_iPhone_6_portrait.png in Resources */,
 				59DA67C91A0A5FF100612F33 /* icon_chevron-right_red@3x.png in Resources */,
 				59DA679F1A0A5FF100612F33 /* icon_microphone_red.png in Resources */,
 				59665FE01A0A45C70049F8CD /* icon_microphone_white.png in Resources */,
 				59E53F5B1986C1760003BC6B /* icon-chevron-forth.png in Resources */,
-				5979076B1A1601FE00E13889 /* ECTSketch_iPad_portrait.png in Resources */,
-				59665F6B1A08E4790049F8CD /* ECTSketch_iPhone_5_landscape.png in Resources */,
 				59E53F5C1986C1760003BC6B /* bg-red_1024x768_ipad.png in Resources */,
 				59E53F5D1986C1760003BC6B /* Localizable.strings in Resources */,
 				59E53F5F1986C1760003BC6B /* icon-cog.png in Resources */,
-				59665F741A08E4790049F8CD /* ECTSketch_iPhone_4-4S_portrait.png in Resources */,
 				59E53F601986C1760003BC6B /* icon-chevron-back.png in Resources */,
 				59E53F611986C1760003BC6B /* icon-chevron-back@2x.png in Resources */,
 				59DA67C31A0A5FF100612F33 /* icon_speech-bubble_red@3x.png in Resources */,
 				59DA67CC1A0A5FF100612F33 /* icon_chevron-right-inactive@3x.png in Resources */,
-				597907721A1605E100E13889 /* ECTSketch_iPad_landscape@2x.png in Resources */,
 				59E53F631986C1760003BC6B /* Localizable.strings in Resources */,
 				59E53F641986C1760003BC6B /* icon-settings_2x.png in Resources */,
 				59DA67A21A0A5FF100612F33 /* icon_chevron-right-inactive.png in Resources */,
@@ -1446,11 +1352,9 @@
 				59E53F681986C1760003BC6B /* icon-chevron-forth@2x.png in Resources */,
 				59E53F691986C1760003BC6B /* NoAppImage.png in Resources */,
 				59E53F6A1986C1760003BC6B /* OShub_bg-red.jpg in Resources */,
-				59665F651A08E4790049F8CD /* ECTSketch_iPhone_6+_landscape.png in Resources */,
 				59E53F6B1986C1760003BC6B /* splash_768x1024.png in Resources */,
 				59DA67DF1A0A701D00612F33 /* icon_chevron-left_red@3x.png in Resources */,
 				59DA67D21A0A5FF100612F33 /* icon_app-list.png in Resources */,
-				59665F681A08E4790049F8CD /* ECTSketch_iPhone_4-4S_landscape.png in Resources */,
 				59E53F6C1986C1760003BC6B /* ipad_bg-red_@2x.jpg in Resources */,
 				59E53F6D1986C1760003BC6B /* CDVNotification.bundle in Resources */,
 				59665FE61A0A45C70049F8CD /* icon_cross_white@3x.png in Resources */,
