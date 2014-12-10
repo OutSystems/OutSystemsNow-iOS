@@ -343,6 +343,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 }
 
 - (IBAction)OnGoClick:(UIButton *)sender {
+    // Dismiss keyboard
+    [self.view endEditing:YES];
     
     [self.connectionActivityIndicator startAnimating];
     [self.errorMessageLabel setHidden:YES];
