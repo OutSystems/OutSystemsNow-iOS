@@ -105,8 +105,16 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.applicationBrowser.webView.scrollView.bounces = NO;
     
     
-    // Hide Mobile ECT button
+    // Hide Nav App List button
+    if(self.isSingleApplication){
+        NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
+        [toolbarButtons removeObject:self.navAppList];
+        [self setToolbarItems:toolbarButtons animated:YES];
+    }
+
     self.originalToolbarItems = [self.toolbarItems mutableCopy];
+    
+    // Hide Mobile ECT button
     NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
     [toolbarButtons removeObject:self.openMobileECTButton];
     [self setToolbarItems:toolbarButtons animated:YES];
