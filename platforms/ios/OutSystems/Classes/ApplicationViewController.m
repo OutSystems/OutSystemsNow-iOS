@@ -246,7 +246,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 }
 
 -(void)transitionPrepareAnimation:(OSAnimateTransition) animateTransition {
-	
+    
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    
     self.loadingProgressView.hidden = YES;
     
     if(self.firstLoad == NO) {
@@ -312,6 +315,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 	// reset to default transition
 	self.selectedTransition = OSAnimateTransitionDefault;
 	
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
 }
 
 
