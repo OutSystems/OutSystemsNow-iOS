@@ -290,10 +290,12 @@
         if(self.view.window != nil) {
             // check if only one app
             if([self.applicationList count] == 1){
-                [self performSegueWithIdentifier:@"GoToSingleApplicationSegue" sender:self];
+                if(self.navigationController.visibleViewController == self)
+                    [self performSegueWithIdentifier:@"GoToSingleApplicationSegue" sender:self];
             }
             else {
-                [self performSegueWithIdentifier:@"GoToAppListSegue" sender:self];
+                if(self.navigationController.visibleViewController == self)
+                    [self performSegueWithIdentifier:@"GoToAppListSegue" sender:self];
             }
         }
 
