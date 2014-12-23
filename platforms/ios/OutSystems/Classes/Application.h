@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * appDescription;
 @property (nonatomic, retain) NSString * path;
 @property (nonatomic, retain) NSNumber * imageId;
+@property BOOL feedbackActive;
 
 + (Application *) initWithJSON:(NSDictionary *) appJsonData forHost:(NSString *) hostname;
 

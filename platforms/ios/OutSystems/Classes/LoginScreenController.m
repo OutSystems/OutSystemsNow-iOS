@@ -11,6 +11,7 @@
 #import "UIInsetTextField.h"
 #import "OutSystemsAppDelegate.h"
 #import "ApplicationViewController.h"
+#import "OSNavigationController.h"
 
 @interface LoginScreenController ()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginActivityIndicator;
@@ -74,10 +75,14 @@
         self.usernameInput.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
         self.passwordInput.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
     }
+    
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     // infrastructure is readonly when the credentials are set on the application settings (bundle)
     if(self.infrastructureReadonly) {
         self.navigationController.navigationBar.hidden = YES;
@@ -94,16 +99,30 @@
     
     
     self.navigationController.toolbar.hidden = YES;
+    
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    
+    if(iPhoneDevice){
+        // Lock screen to Portrait orientation
+        [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
+
+        OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+        [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    }
 }
 
 - (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     if([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0 && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
         
         [self.loginButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     }
+
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     self.view.hidden = NO;
 }
 
@@ -126,6 +145,7 @@
 
 - (IBAction)OnLoginClick:(UIButton *)sender {
     
+    [self.view endEditing:YES];
     [_loginActivityIndicator startAnimating];
     [_errorMessageLabel setHidden:YES];
     [_loginButton setHidden:YES];
@@ -173,14 +193,13 @@
     
     [NSURLConnection connectionWithRequest:myRequest delegate:self];
     
-    NSString *UDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
     
     [OutSystemsAppDelegate setAutoLoginPerformed]; // setting the flag to true, even if it's a normal login so the app won't try to auto login the user again (in this app session)
     
     // set the url to register the device push notifications token (in case it is received later)
     [OutSystemsAppDelegate setURLForPushNotificationTokenRegistration:[NSString stringWithFormat:@"%@?&deviceHwId=%@&device=",
                                                   [_infrastructure getHostnameForService:@"registertoken"],
-                                                  UDID]];
+                                                  deviceUDID]];
 
 }
 
@@ -319,7 +338,8 @@
         // GoToSingleApplicationSegue
         ApplicationViewController *appViewController =
         [segue destinationViewController];
-        
+
+        appViewController.infrastructure = self.infrastructure;
         appViewController.isSingleApplication = YES;
         
         if ([self.deepLinkController hasValidSettings] && [self.deepLinkController hasApplication]) {

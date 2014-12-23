@@ -16,6 +16,7 @@
 @dynamic appDescription;
 @dynamic path;
 @dynamic imageId;
+@dynamic feedbackActive;
 
 + (Application *) initWithJSON:(NSDictionary *) appJsonData forHost:(NSString *) hostname {
 
@@ -33,6 +34,19 @@
     
     app.path = appPath;
     app.imageId = [appJsonData objectForKey:@"imageId"];
+    
+
+    NSObject* feedback = [appJsonData objectForKey:@"feedbackActive"];
+    
+    if([feedback isKindOfClass:[NSNumber class]]){
+        NSNumber* temp = (NSNumber*)feedback;
+        app.feedbackActive = [temp intValue] > 0;
+        
+    }
+    else{
+        app.feedbackActive = NO;
+    }
+    
     
     return app;
 }

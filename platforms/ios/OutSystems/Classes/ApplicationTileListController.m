@@ -12,6 +12,7 @@
 #import "ApplicationViewController.h"
 #import "DemoInfrastructure.h"
 #import "TTTAttributedLabel.h"
+#import "OSNavigationController.h"
 
 @interface ApplicationTileListController ()
 
@@ -152,12 +153,18 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
     self.navigationController.navigationBar.hidden = NO;
     self.navigationController.toolbar.hidden = YES;
     
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
 }
 
 -(void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     if(self.isDemoEnvironment && self.applicationList.count == 0) {
         [self reloadApplicationList];
     } else {
@@ -341,6 +348,7 @@
         long row = [myIndexPath[0] row];
             
         appViewController.application = [Application initWithJSON:[self.applicationList objectAtIndex:row] forHost:applicationHostname];
+        appViewController.infrastructure = self.infrastructure;
     }
 }
 

@@ -101,16 +101,14 @@ NSString * const kDLUrlParameter = @"url";
     }
     
     
-    NSArray *list = [parameter componentsSeparatedByString:@"="];
-    
-    if ([list count] < 2){
+    NSRange separator = [parameter rangeOfString:@"="];
+
+    if( separator.location == NSNotFound)
         return;
-    }
     
-    NSString *key = [list objectAtIndex:0];
-    NSString *value = [list objectAtIndex:1];
-    
+    NSString *key = [parameter substringToIndex:separator.location];
     key = [key lowercaseString];
+    NSString *value = [parameter substringFromIndex:separator.location+1];
     
     if ([key rangeOfString:@"password"].location != NSNotFound){
         NSLog(@"DeepLink - Parameter: %@ - ******",key); // Just to ensure that password value was passed

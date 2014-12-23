@@ -10,6 +10,8 @@
 #import "CDVViewController.h"
 #import "PXRImageSizeUtil.h"
 #import <Crashlytics/Crashlytics.h>
+#import "MobileECT.h"
+#import "OSNavigationController.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -39,6 +41,12 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
 @property BOOL viewFinishedLoad;
 @property (weak, nonatomic) IBOutlet UIView *loadingProgressView;
+
+// Mobile ECT
+@property (weak, nonatomic) IBOutlet UIView *mobileECTView;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* openMobileECTButton;
+@property (strong, nonatomic) NSMutableArray *originalToolbarItems;
 
 @end
 
@@ -87,6 +95,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
                                                object:nil];
     
     self.firstLoad = YES;
+    
     self.applicationBrowser.view.frame = self.webViewFullScreen.frame;
     
     [self addChildViewController:self.applicationBrowser];
@@ -94,6 +103,35 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // remove bounce effect
     self.applicationBrowser.webView.scrollView.bounces = NO;
+    
+    
+    // Hide Nav App List button
+    if(self.isSingleApplication){
+        NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
+        [toolbarButtons removeObject:self.navAppList];
+        [self setToolbarItems:toolbarButtons animated:YES];
+    }
+
+    self.originalToolbarItems = [self.toolbarItems mutableCopy];
+    
+    // Hide Mobile ECT button
+    NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
+    [toolbarButtons removeObject:self.openMobileECTButton];
+    [self setToolbarItems:toolbarButtons animated:YES];
+    
+    [self.mobileECTView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.mobileECTView setHidden:YES];
+    
+    // Mobile ECT Configuration
+    self.mobileECTController = [[OSMobileECTController alloc] initWithSuperView:self.mobileECTView
+                                                                     andWebView:self.applicationBrowser.webView
+                                                                    forHostname:self.infrastructure.hostname ];
+    
+    [self.mobileECTController addOnExitEvent:self withSelector:@selector(onExitECT)];
+    
+    [self.mobileECTController prepareForViewDidLoad];
+
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -107,6 +145,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.lastContentOffset = 0;
     
     self.loadingView.hidden = YES;
+    
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
+
+    [self.mobileECTController prepareForViewWillAppear];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -151,6 +194,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.loadingProgressView.hidden = NO;
 }
 
+# pragma mark - Web View
 
 // This is not working as CDVWebViewDelegate is receiving this events
 -(void)webViewDidStartLoad:(NSNotification *) notification {
@@ -193,21 +237,23 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     self.viewFinishedLoad = YES;
     
+    // Check if Mobile ECT is enable for the app
+    BOOL isECTAvailable = [self.mobileECTController isECTFeatureAvailable];
+    
+    if(isECTAvailable)
+        [self setToolbarItems:self.originalToolbarItems animated:YES];
+    
 }
 
 -(void)transitionPrepareAnimation:(OSAnimateTransition) animateTransition {
-	
+    
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    
     self.loadingProgressView.hidden = YES;
     
     if(self.firstLoad == NO) {
-        // Capture the current page in an image and render it on the view
-        // that will sit over the webview
-        UIGraphicsBeginImageContextWithOptions(self.applicationBrowser.view.bounds.size,
-                                               self.applicationBrowser.view.opaque,
-                                               0.0);
-        [self.applicationBrowser.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
+        UIImage *viewImage = [self captureCurrentWebPage];
         self.webViewImageLoading.image = viewImage;
 	
         // If we will be sliding, get the snapshot for the fixed section (e.g. menu) visible
@@ -232,7 +278,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 	self.loadingView.hidden = NO;
     
 }
-
 
 
 -(void)transitionToNewPage {
@@ -270,6 +315,96 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 	// reset to default transition
 	self.selectedTransition = OSAnimateTransitionDefault;
 	
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
 }
+
+
+-(UIImage*)captureCurrentWebPage{
+    // Capture the current page in an image and render it on the view
+    // that will sit over the webview
+    UIGraphicsBeginImageContextWithOptions(self.applicationBrowser.view.bounds.size,
+                                           self.applicationBrowser.view.opaque,
+                                           0.0);
+    [self.applicationBrowser.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return viewImage;
+}
+
+
+# pragma mark - Mobile ECT
+
+- (IBAction)onOpenECT:(id)sender {
+
+    
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    
+    MobileECT *mobileECTCoreData = [self getOrCreateMobileECTInfo];
+    
+    BOOL skipECTHelper = (mobileECTCoreData && !mobileECTCoreData.isFirstLoad);
+    
+    [self.mobileECTController skipHelper:skipECTHelper];
+
+
+    [self.mobileECTController openECTView];
+ 
+    [self.navigationController setToolbarHidden:YES animated:YES];
+    [self.mobileECTView setHidden:NO];   
+}
+
+-(void)onExitECT{
+
+    MobileECT *mobileECTCoreData = [self getOrCreateMobileECTInfo];
+    mobileECTCoreData.isFirstLoad = NO;
+    
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
+    
+    [self.mobileECTView setHidden:YES];
+    [self.navigationController setToolbarHidden:NO animated:YES];
+}
+
+
+#pragma mark - Core Data for ECT
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    NSManagedObjectContext *context = nil;
+    id delegate = [[UIApplication sharedApplication] delegate];
+    if ([delegate performSelector:@selector(managedObjectContext)]) {
+        context = [delegate managedObjectContext];
+    }
+    return context;
+}
+
+
+
+- (MobileECT*) getOrCreateMobileECTInfo {
+    MobileECT *mobileECT;
+    
+    NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"MobileECT"];
+    NSMutableArray *results = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    
+    if([results count] > 0) {
+        mobileECT = [results objectAtIndex:0];
+        
+    } else {
+        mobileECT = [NSEntityDescription insertNewObjectForEntityForName:@"MobileECT" inManagedObjectContext:[self managedObjectContext]];
+        mobileECT.isFirstLoad = YES;
+    }
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    if (![[self managedObjectContext] save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
+    
+    return mobileECT;
+}
+
 
 @end
