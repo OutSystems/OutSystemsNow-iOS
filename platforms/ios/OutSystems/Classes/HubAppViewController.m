@@ -342,6 +342,39 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     [self OnGoClick:_goButton];
 }
 
+-(NSString*)checkEnvironmentURL:(NSString*)url{
+
+    NSArray* words = [url componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString* noSpaceString = [words componentsJoinedByString:@""];
+    
+    NSURL *hubUrl = [NSURL URLWithString:noSpaceString];
+   
+    if (hubUrl && hubUrl.host) {
+        return hubUrl.host;
+    }
+    else{
+        NSString *http = @"http://";
+        NSString *https = @"https://";
+        
+        if ([noSpaceString hasPrefix:http]) {
+            return [noSpaceString substringFromIndex:[http length]];
+        }
+        else{
+            if ([noSpaceString hasPrefix:https]) {
+                return [noSpaceString substringFromIndex:[https length]];
+            }
+            else{
+                NSRange slash = [noSpaceString rangeOfString:@"/"];
+                if(slash.location != NSNotFound){
+                    return  [noSpaceString substringToIndex:slash.location];
+                }
+            }
+        }
+        
+    }
+    return noSpaceString;
+}
+
 - (IBAction)OnGoClick:(UIButton *)sender {
     // Dismiss keyboard
     [self.view endEditing:YES];
@@ -357,6 +390,13 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     if(self.environmentHostname.text.length > 0) {
         NSString *hostname = self.environmentHostname.text;
+        
+        NSString *hubURL = [self checkEnvironmentURL:hostname];
+        
+        if(hostname != hubURL){
+            hostname = hubURL;
+            [self.environmentHostname setText: hostname];
+        }
         
         self.infrastructure = [self getOrCreateInfrastructure:hostname];
         
