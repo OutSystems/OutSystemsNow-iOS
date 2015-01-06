@@ -213,8 +213,6 @@ static NSString *stripFragment(NSString* url)
         
         if ([request.URL.absoluteString hasPrefix:external])
         {
-            NSLog(@"hacked link");
-            // JS-hacked URl is a target=_blank url - manually open the browser.
             NSURL *url = [NSURL URLWithString:[request.URL.absoluteString substringFromIndex:external.length]];
             [[UIApplication sharedApplication] openURL:url];
             return YES;
