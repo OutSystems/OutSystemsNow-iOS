@@ -181,6 +181,8 @@
 		59BC490D199CB60800EA87AA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BC490B199CB5F100EA87AA /* CoreText.framework */; };
 		59BC490E199CB60D00EA87AA /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BC490B199CB5F100EA87AA /* CoreText.framework */; };
 		59CAF109192DF98A0051E8CD /* NoAppImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 59CAF108192DF98A0051E8CD /* NoAppImage.png */; };
+		59D18C2B1A6FB09100A3E502 /* offline.png in Resources */ = {isa = PBXBuildFile; fileRef = 59D18C291A6FB09100A3E502 /* offline.png */; };
+		59D18C2C1A6FB09100A3E502 /* offline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59D18C2A1A6FB09100A3E502 /* offline@2x.png */; };
 		59DA679A1A0A5FF100612F33 /* icon_speech-bubble_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67841A0A5FF100612F33 /* icon_speech-bubble_red.png */; };
 		59DA679B1A0A5FF100612F33 /* icon_speech-bubble_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67841A0A5FF100612F33 /* icon_speech-bubble_red.png */; };
 		59DA679C1A0A5FF100612F33 /* icon_speech-bubble_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67841A0A5FF100612F33 /* icon_speech-bubble_red.png */; };
@@ -494,7 +496,6 @@
 		597902E619ED53C800440628 /* DeepLinkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLinkController.h; sourceTree = "<group>"; };
 		597902E719ED54B400440628 /* DeepLinkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepLinkController.m; sourceTree = "<group>"; };
 		597A525F195C9A6400F15480 /* OutSystems Push Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutSystems Push Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		597A5260195C9A6500F15480 /* OutSystems copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems copy-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/branches/ECT/platforms/ios/OutSystems copy-Info.plist"; sourceTree = "<absolute>"; };
 		5999274F1A0277580068B246 /* MobileECT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileECT.h; path = OutSystems/Classes/MobileECT.h; sourceTree = "<group>"; };
 		599927501A0277580068B246 /* MobileECT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileECT.m; path = OutSystems/Classes/MobileECT.m; sourceTree = "<group>"; };
 		59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
@@ -504,6 +505,8 @@
 		59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		59BC490B199CB5F100EA87AA /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		59CAF108192DF98A0051E8CD /* NoAppImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoAppImage.png; sourceTree = "<group>"; };
+		59D18C291A6FB09100A3E502 /* offline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = offline.png; sourceTree = "<group>"; };
+		59D18C2A1A6FB09100A3E502 /* offline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "offline@2x.png"; sourceTree = "<group>"; };
 		59DA67841A0A5FF100612F33 /* icon_speech-bubble_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_speech-bubble_red.png"; sourceTree = "<group>"; };
 		59DA67851A0A5FF100612F33 /* icon_microphone_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_microphone_red.png; sourceTree = "<group>"; };
 		59DA67861A0A5FF100612F33 /* icon_chevron-right-inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chevron-right-inactive.png"; sourceTree = "<group>"; };
@@ -942,6 +945,8 @@
 		CF9C2E0318F5C577000C5E68 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				59D18C291A6FB09100A3E502 /* offline.png */,
+				59D18C2A1A6FB09100A3E502 /* offline@2x.png */,
 				590EA4B118F8283200EB317D /* bg-red_1024x768_@2x_ipad-retina.png */,
 				590EA4B218F8283200EB317D /* bg-red_1024x768_ipad.png */,
 				59DA678A1A0A5FF100612F33 /* icon_app-list_red.png */,
@@ -1159,6 +1164,7 @@
 				CF9C2DF818F586F0000C5E68 /* Main_iPhone.storyboard in Resources */,
 				595646DA190FBE4C00C1D583 /* splash_1024x768.png in Resources */,
 				59DA67AF1A0A5FF100612F33 /* icon_chevron-left_red@2x.png in Resources */,
+				59D18C2C1A6FB09100A3E502 /* offline@2x.png in Resources */,
 				59DA67A91A0A5FF100612F33 /* icon_chevron-left_red.png in Resources */,
 				59DA67CD1A0A5FF100612F33 /* icon_app-list_red@3x.png in Resources */,
 				592FA955190014D900458A51 /* icon-apps@2x.png in Resources */,
@@ -1190,6 +1196,7 @@
 				59665FE71A0A45C70049F8CD /* icon_cross_white@2x.png in Resources */,
 				592FA957190014D900458A51 /* icon-chevron-back@2x.png in Resources */,
 				30A0434814DC770100060A13 /* Localizable.strings in Resources */,
+				59D18C2B1A6FB09100A3E502 /* offline.png in Resources */,
 				592FA95E190014D900458A51 /* icon-settings_2x.png in Resources */,
 				CF9C2E4B18F69882000C5E68 /* icon-white-help.png in Resources */,
 				59665FE41A0A45C70049F8CD /* icon_cross_white@3x.png in Resources */,

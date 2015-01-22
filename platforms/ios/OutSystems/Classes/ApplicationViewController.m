@@ -48,6 +48,16 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem* openMobileECTButton;
 @property (strong, nonatomic) NSMutableArray *originalToolbarItems;
 
+// Offline Support
+@property (weak, nonatomic) IBOutlet UIView *networkErrorView;
+@property (weak, nonatomic) IBOutlet UIImageView *errorImage;
+@property (weak, nonatomic) IBOutlet UITextField *errorTitleMessage;
+@property (weak, nonatomic) IBOutlet UITextField *errorBodyMessage;
+@property (weak, nonatomic) IBOutlet UIButton *errorRetryButton;
+@property (weak, nonatomic) IBOutlet UIButton *errorBackToAppsButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *errorActivityIndicator;
+@property (strong, nonatomic) NSString *failedURL;
+
 @end
 
 @implementation ApplicationViewController
@@ -79,10 +89,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
     
     // Do any additional setup after loading the view.
-    self.applicationBrowser = [CDVViewController new];
+    _applicationBrowser = [CDVViewController new];
   
-    self.applicationBrowser.startPage = _application.path;
-    self.applicationBrowser.wwwFolderName = @"";
+    _applicationBrowser.startPage = @"";
+    _applicationBrowser.wwwFolderName = @"";
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(webViewDidStartLoad:)
@@ -92,6 +102,12 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(webViewDidFinishLoad:)
                                                  name:@"CDVPageDidLoadNotification"
+                                               object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(webViewdidFailLoadWithError:)
+                                                 name:@"CDVPageDidFailLoadNotification"
                                                object:nil];
     
     self.firstLoad = YES;
@@ -132,6 +148,34 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self.mobileECTController prepareForViewDidLoad];
 
     
+    // WebView Request
+    
+    // Choose a long cached URL.
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10];
+    
+    [_applicationBrowser.webView loadRequest:request];
+    
+    // Check the cache.
+    NSCachedURLResponse *cachedResponse = [[NSURLCache sharedURLCache] cachedResponseForRequest:request];
+    NSLog(cachedResponse ? @"Cached response found!" : @"No cached response found.");
+    
+    
+    // Offline Support
+    self.errorRetryButton.titleLabel.font = [UIFont fontWithName:@"OpenSans-Bold" size:self.errorRetryButton.titleLabel.font.pointSize];
+
+    [self.errorRetryButton.layer setBorderWidth:0.5];
+    [self.errorRetryButton.layer setBorderColor:[UIColor whiteColor].CGColor];
+
+    self.errorRetryButton.layer.cornerRadius = 5;
+    
+    [self.errorActivityIndicator stopAnimating];
+    
+    [self showNetworkErrorView:NO];
+    
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
+    _failedURL = nil;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -140,15 +184,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.navigationController.navigationBar.hidden = YES;
     
     self.applicationBrowser.webView.scalesPageToFit = YES;
-    [self.applicationBrowser setStartPage:_application.path];
     
     self.lastContentOffset = 0;
     
     self.loadingView.hidden = YES;
     
-    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController unlockInterfaceOrientation];
-
     [self.mobileECTController prepareForViewWillAppear];
 }
 
@@ -210,7 +250,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self transitionPrepareAnimation: animateTransition];
     
     [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(loadingTimer) userInfo:nil repeats:NO];
-    
+
 }
 
 
@@ -243,6 +283,44 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     if(isECTAvailable)
         [self setToolbarItems:self.originalToolbarItems animated:YES];
     
+    [self showNetworkErrorView:NO];
+    
+}
+
+
+-(void)webViewdidFailLoadWithError:(NSNotification *) notification {
+
+    UIWebView *webView = [notification object];
+    NSURLRequest *request = [webView request];
+    
+    NSDictionary *userInfo = [notification userInfo];
+    NSError *error = [userInfo valueForKey:@"error"];
+    
+    
+    switch([error code]){
+        case NSURLErrorTimedOut:
+        case NSURLErrorUnsupportedURL:
+        case NSURLErrorCannotFindHost:
+        case NSURLErrorCannotConnectToHost:
+        case NSURLErrorNetworkConnectionLost:
+        case NSURLErrorDNSLookupFailed:
+        case NSURLErrorResourceUnavailable:
+        case NSURLErrorNotConnectedToInternet:{
+
+            _failedURL = [error.userInfo objectForKey:@"NSErrorFailingURLStringKey"];
+            NSLog(@"webViewdidFailLoadWithError: %@", _failedURL);
+        
+            [self showNetworkErrorView:YES];
+            
+            break;
+        }
+        default:
+            // do nothing
+            break;
+    }
+        
+    
+        
 }
 
 -(void)transitionPrepareAnimation:(OSAnimateTransition) animateTransition {
@@ -406,5 +484,58 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     return mobileECT;
 }
 
+
+# pragma mark - Offline Support
+-(void)showNetworkErrorView:(BOOL)show{
+    
+    if(!_networkErrorView.hidden && show){
+        [self errorRetryActionFailed];
+    }
+    else{
+        [_errorActivityIndicator stopAnimating];
+        [_errorRetryButton setHidden:NO];
+        [_networkErrorView setHidden:!show];
+    }
+    
+}
+
+-(void)errorRetryActionFailed{
+    // shake on error
+    CAKeyframeAnimation * anim = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
+    anim.values = @[ [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(-5.0f, 0.0f, 0.0f) ], [ NSValue valueWithCATransform3D:CATransform3DMakeTranslation(5.0f, 0.0f, 0.0f) ] ] ;
+    anim.autoreverses = YES ;
+    anim.repeatCount = 2.0f ;
+    anim.duration = 0.07f ;
+    
+    [self.view.layer addAnimation:anim forKey:nil ] ;
+    
+    [_errorActivityIndicator stopAnimating];
+    [_errorRetryButton setHidden:NO];
+}
+
+- (IBAction)errorRetryAction:(id)sender {
+    [_errorActivityIndicator startAnimating];
+    [_errorRetryButton setHidden:YES];
+    
+    NSURL *url = [[_applicationBrowser.webView request] URL];
+    
+    if(_failedURL != nil){
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_failedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
+        [_applicationBrowser.webView loadRequest:request];
+    }
+    else {
+        if(url != nil && url.absoluteString.length > 0){
+            [_applicationBrowser.webView reload];
+        }
+        else{
+            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
+            [_applicationBrowser.webView loadRequest:request];
+        }
+    }
+}
+
+- (IBAction)backToApplicationsAction:(id)sender {
+    [self navAppList:sender];
+}
 
 @end

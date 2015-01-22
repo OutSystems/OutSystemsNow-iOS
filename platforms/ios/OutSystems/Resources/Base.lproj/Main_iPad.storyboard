@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--SelectEnvironment Controller-->
@@ -494,7 +494,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
@@ -538,9 +538,84 @@
                                     <constraint firstItem="Mi7-wB-GYf" firstAttribute="top" secondItem="dUP-l7-ati" secondAttribute="top" id="ZA6-9u-qLD"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xq-Af-ykr" userLabel="ErrorView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Oops" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tUr-IU-f50" userLabel="ErrorTitle">
+                                        <rect key="frame" x="234" y="100" width="300" height="29"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="YmA-oQ-IXg"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offline.png" translatesAutoresizingMaskIntoConstraints="NO" id="gPV-b6-fPn" userLabel="ErrorImage">
+                                        <rect key="frame" x="252" y="204" width="265" height="195"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" text="The connection to the server was lost" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AtX-mU-4Nw" userLabel="ErrorMessage">
+                                        <rect key="frame" x="134" y="474" width="500" height="100"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Tmp-7F-Pqh"/>
+                                            <constraint firstAttribute="width" constant="500" id="YuI-i6-JBM"/>
+                                        </constraints>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUV-j9-J6G" userLabel="ErrorRetryButton">
+                                        <rect key="frame" x="209" y="806" width="350" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="350" id="fN5-l5-kck"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="24"/>
+                                        <state key="normal" title="RETRY">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="errorRetryAction:" destination="H6M-OB-jxb" eventType="touchUpInside" id="ish-oV-7DR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-2k-Wk1" userLabel="ErrorBackToAppsButton">
+                                        <rect key="frame" x="234" y="895" width="300" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="KRL-Gz-rbs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                        <state key="normal" title="Back to Applications">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backToApplicationsAction:" destination="H6M-OB-jxb" eventType="touchUpInside" id="bhM-h5-tmg"/>
+                                        </connections>
+                                    </button>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Jln-X1-PAK" userLabel="ErrorActivityIndicator">
+                                        <rect key="frame" x="374" y="816" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.80000007149999997" green="0.1176470667" blue="0.1294117719" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstItem="zUV-j9-J6G" firstAttribute="centerX" secondItem="DBG-2k-Wk1" secondAttribute="centerX" id="08h-s1-5Uh"/>
+                                    <constraint firstItem="tUr-IU-f50" firstAttribute="top" secondItem="3xq-Af-ykr" secondAttribute="top" constant="100" id="30y-H0-Yhk"/>
+                                    <constraint firstItem="DBG-2k-Wk1" firstAttribute="top" secondItem="zUV-j9-J6G" secondAttribute="bottom" constant="50" id="5NQ-To-bcR"/>
+                                    <constraint firstItem="gPV-b6-fPn" firstAttribute="centerX" secondItem="AtX-mU-4Nw" secondAttribute="centerX" id="8Sa-eY-Mtf"/>
+                                    <constraint firstAttribute="centerX" secondItem="gPV-b6-fPn" secondAttribute="centerX" id="CkA-dJ-GO4"/>
+                                    <constraint firstAttribute="centerX" secondItem="tUr-IU-f50" secondAttribute="centerX" id="ExM-i9-bZZ"/>
+                                    <constraint firstItem="AtX-mU-4Nw" firstAttribute="centerX" secondItem="zUV-j9-J6G" secondAttribute="centerX" id="JZE-4L-3T7"/>
+                                    <constraint firstItem="gPV-b6-fPn" firstAttribute="top" secondItem="tUr-IU-f50" secondAttribute="bottom" constant="75" id="LrG-cK-4g1"/>
+                                    <constraint firstItem="AtX-mU-4Nw" firstAttribute="top" secondItem="gPV-b6-fPn" secondAttribute="bottom" constant="75" id="MQB-UJ-OAB"/>
+                                    <constraint firstItem="zUV-j9-J6G" firstAttribute="centerY" secondItem="Jln-X1-PAK" secondAttribute="centerY" id="WFq-jj-D6B"/>
+                                    <constraint firstItem="zUV-j9-J6G" firstAttribute="centerX" secondItem="Jln-X1-PAK" secondAttribute="centerX" id="spI-2W-aDo"/>
+                                    <constraint firstAttribute="bottom" secondItem="DBG-2k-Wk1" secondAttribute="bottom" constant="100" id="vFd-iE-lfG"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.7154131400809487" green="0.78148915816326525" blue="0.6455606012859112" alpha="1" colorSpace="calibratedRGB"/>
@@ -548,11 +623,15 @@
                             <constraint firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="3Rw-uj-eUe"/>
                             <constraint firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" id="5op-MR-n2u"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="height" secondItem="ZLX-7u-1G8" secondAttribute="height" id="Hzo-ej-TKz"/>
+                            <constraint firstItem="jzQ-QF-CNx" firstAttribute="width" secondItem="3xq-Af-ykr" secondAttribute="width" id="LEf-so-Ocm"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="width" secondItem="ZLX-7u-1G8" secondAttribute="width" id="Smp-6y-dj7"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="height" secondItem="ZLX-7u-1G8" secondAttribute="height" id="W3r-ni-9qn"/>
+                            <constraint firstItem="jzQ-QF-CNx" firstAttribute="leading" secondItem="3xq-Af-ykr" secondAttribute="leading" id="XgR-pb-W1R"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="top" secondItem="ZLX-7u-1G8" secondAttribute="top" id="aHx-6Y-hBD"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="leading" secondItem="ZLX-7u-1G8" secondAttribute="leading" id="cgl-fn-wqZ"/>
                             <constraint firstAttribute="centerX" secondItem="jzQ-QF-CNx" secondAttribute="centerX" id="l2Y-ng-kN9"/>
+                            <constraint firstItem="jzQ-QF-CNx" firstAttribute="top" secondItem="3xq-Af-ykr" secondAttribute="top" id="qLk-ow-m0E"/>
+                            <constraint firstItem="jzQ-QF-CNx" firstAttribute="height" secondItem="3xq-Af-ykr" secondAttribute="height" id="rAr-BQ-UW1"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="top" secondItem="YM9-Ld-fga" secondAttribute="bottom" id="rku-7J-gVw"/>
                             <constraint firstAttribute="centerY" secondItem="jzQ-QF-CNx" secondAttribute="centerY" id="ufx-zi-eoP"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="width" secondItem="ZLX-7u-1G8" secondAttribute="width" id="vsV-58-Mb6"/>
@@ -594,12 +673,19 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationListButton" destination="tN4-Sy-Oof" id="S7g-dL-mUS"/>
+                        <outlet property="errorActivityIndicator" destination="Jln-X1-PAK" id="3tx-8Q-7pn"/>
+                        <outlet property="errorBackToAppsButton" destination="DBG-2k-Wk1" id="xan-Tg-VyT"/>
+                        <outlet property="errorBodyMessage" destination="AtX-mU-4Nw" id="e5x-gj-etd"/>
+                        <outlet property="errorImage" destination="gPV-b6-fPn" id="yei-wC-DLN"/>
+                        <outlet property="errorRetryButton" destination="zUV-j9-J6G" id="sBF-Ro-nxf"/>
+                        <outlet property="errorTitleMessage" destination="tUr-IU-f50" id="ABj-QC-LuB"/>
                         <outlet property="loadingProgressView" destination="BsK-MR-qhr" id="zY1-kQ-WnZ"/>
                         <outlet property="loadingView" destination="dUP-l7-ati" id="9z8-Gm-CD6"/>
                         <outlet property="mobileECTView" destination="jzQ-QF-CNx" id="hCk-kA-gpV"/>
                         <outlet property="navAppList" destination="tN4-Sy-Oof" id="JTM-G7-s34"/>
                         <outlet property="navBack" destination="JdK-ad-F0w" id="rbo-wH-khw"/>
                         <outlet property="navForward" destination="irt-mN-HoB" id="aUp-E2-raQ"/>
+                        <outlet property="networkErrorView" destination="3xq-Af-ykr" id="wgU-oY-c9l"/>
                         <outlet property="openMobileECTButton" destination="cYP-G3-9f5" id="kas-9k-o8W"/>
                         <outlet property="webViewFullScreen" destination="S2A-bT-JVZ" id="RX3-rF-FPz"/>
                         <outlet property="webViewImageLoading" destination="Mi7-wB-GYf" id="gGb-xe-b9l"/>
@@ -646,6 +732,7 @@
         <image name="icon_chevron-right_red.png" width="22" height="23"/>
         <image name="icon_speech-bubble_red.png" width="27" height="26"/>
         <image name="logo_iphone5.png" width="530" height="80"/>
+        <image name="offline.png" width="265" height="195"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

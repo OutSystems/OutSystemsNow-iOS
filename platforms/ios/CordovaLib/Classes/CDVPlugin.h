@@ -30,6 +30,9 @@ extern NSString* const CDVLocalNotification;
 extern NSString* const CDVRemoteNotification;
 extern NSString* const CDVRemoteNotificationError;
 
+// OutSystems - Offline Support
+extern NSString* const CDVPageDidFailLoadNotification;
+
 @interface CDVPlugin : NSObject {}
 
 @property (nonatomic, weak) UIWebView* webView;

@@ -14,11 +14,11 @@
 		<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MobileApp/OutSystems/trunk/platforms/ios/OutSystems.xcodeproj</string>
+	<string>MobileApp/OutSystems/branches/OfflineSupport/platforms/ios/OutSystems.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>17138862-0172-114e-a870-43eb0320d916++6215</key>
-		<string>../../../../../../..</string>
+		<string>../../../../../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
@@ -26,7 +26,7 @@
 		<string>https://srvptsvn/svn/docs</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects/MobileApp/OutSystems/trunk/platforms/ios/OutSystems.xcodeproj</string>
+	<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects/MobileApp/OutSystems/branches/OfflineSupport/platforms/ios/OutSystems.xcodeproj</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

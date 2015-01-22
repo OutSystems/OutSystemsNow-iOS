@@ -26,6 +26,10 @@ NSString* const CDVLocalNotification = @"CDVLocalNotification";
 NSString* const CDVRemoteNotification = @"CDVRemoteNotification";
 NSString* const CDVRemoteNotificationError = @"CDVRemoteNotificationError";
 
+// OutSystems - Offline Support
+NSString* const CDVPageDidFailLoadNotification = @"CDVPageDidFailLoadNotification";
+
+
 @interface CDVPlugin ()
 
 @property (readwrite, assign) BOOL hasPendingOperation;

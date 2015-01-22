@@ -85,6 +85,14 @@ static DeepLink *deepLinkSettings;
          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
     
+    // Setup application cache
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:16 * 1024 * 1024 diskCapacity:256 * 1024 * 1024 diskPath:@"osurlcache"];
+    
+    [NSURLCache setSharedURLCache:URLCache];
+    
+    // Enable persistent cache
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"WebKitStoreWebDataForBackup"];
+    
     // Override point for customization after application launch.
     return YES;
 }
