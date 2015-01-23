@@ -81,6 +81,13 @@
 		597239E21994FCF600CAA629 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DA1992879000CAA629 /* OpenSans-Light.ttf */; };
 		597239E31994FCF900CAA629 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DB1992879000CAA629 /* OpenSans.ttf */; };
 		597239E41994FCFA00CAA629 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DB1992879000CAA629 /* OpenSans.ttf */; };
+		597839561A714575006CA4E5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 597839551A714575006CA4E5 /* Reachability.m */; };
+		597839571A714575006CA4E5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 597839551A714575006CA4E5 /* Reachability.m */; };
+		597839591A714613006CA4E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597839581A714612006CA4E5 /* SystemConfiguration.framework */; };
+		5978395C1A71467E006CA4E5 /* OfflineSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5978395B1A71467E006CA4E5 /* OfflineSupportController.m */; };
+		5978395D1A71467E006CA4E5 /* OfflineSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5978395B1A71467E006CA4E5 /* OfflineSupportController.m */; };
+		59783A961A7146D9006CA4E5 /* LoginApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 59783A951A7146D9006CA4E5 /* LoginApplication.m */; };
+		59783A971A7146D9006CA4E5 /* LoginApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 59783A951A7146D9006CA4E5 /* LoginApplication.m */; };
 		597902E219EC200D00440628 /* DeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 597902E119EC200D00440628 /* DeepLink.m */; };
 		597902E419EC2C1700440628 /* DeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 597902E119EC200D00440628 /* DeepLink.m */; };
 		597902E519EC2C1700440628 /* DeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 597902E119EC200D00440628 /* DeepLink.m */; };
@@ -491,6 +498,13 @@
 		597239D91992879000CAA629 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		597239DA1992879000CAA629 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		597239DB1992879000CAA629 /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSans.ttf; sourceTree = "<group>"; };
+		597839541A714575006CA4E5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		597839551A714575006CA4E5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		597839581A714612006CA4E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5978395A1A71467E006CA4E5 /* OfflineSupportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OfflineSupportController.h; sourceTree = "<group>"; };
+		5978395B1A71467E006CA4E5 /* OfflineSupportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OfflineSupportController.m; sourceTree = "<group>"; };
+		59783A941A7146D9006CA4E5 /* LoginApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginApplication.h; path = OutSystems/Classes/LoginApplication.h; sourceTree = "<group>"; };
+		59783A951A7146D9006CA4E5 /* LoginApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginApplication.m; path = OutSystems/Classes/LoginApplication.m; sourceTree = "<group>"; };
 		597902E019EC1DCF00440628 /* DeepLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DeepLink.h; path = OutSystems/Classes/DeepLink.h; sourceTree = "<group>"; };
 		597902E119EC200D00440628 /* DeepLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeepLink.m; path = OutSystems/Classes/DeepLink.m; sourceTree = "<group>"; };
 		597902E619ED53C800440628 /* DeepLinkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLinkController.h; sourceTree = "<group>"; };
@@ -540,6 +554,7 @@
 		59F17EE31976C24B00E22193 /* SecurePasswordStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecurePasswordStore.h; sourceTree = "<group>"; };
 		59F17EE41976C24B00E22193 /* SecurePasswordStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecurePasswordStore.m; sourceTree = "<group>"; };
 		59F17EE61976C75000E22193 /* OutAppData - secure passwords.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData - secure passwords.xcdatamodel"; sourceTree = "<group>"; };
+		59F4A33A1A716E8700470480 /* OutAppData - Offline Support.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData - Offline Support.xcdatamodel"; sourceTree = "<group>"; };
 		5AEE5B34173C68D80009041E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		7B3A817BEA614C68984019DA /* CDVContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVContacts.m; path = org.apache.cordova.contacts/CDVContacts.m; sourceTree = "<group>"; };
@@ -611,6 +626,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				597839591A714613006CA4E5 /* SystemConfiguration.framework in Frameworks */,
 				59665FC91A091AF60049F8CD /* CoreImage.framework in Frameworks */,
 				59EC8A3319E3FD6800944672 /* ImageIO.framework in Frameworks */,
 				59BC490E199CB60D00EA87AA /* CoreText.framework in Frameworks */,
@@ -697,6 +713,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5978395A1A71467E006CA4E5 /* OfflineSupportController.h */,
+				5978395B1A71467E006CA4E5 /* OfflineSupportController.m */,
+				597839541A714575006CA4E5 /* Reachability.h */,
+				597839551A714575006CA4E5 /* Reachability.m */,
 				CF9C2DCF18F5869A000C5E68 /* ApplicationTileCell.h */,
 				CF9C2DD018F5869A000C5E68 /* ApplicationTileCell.m */,
 				CF9C2DD118F5869A000C5E68 /* ApplicationTileList.h */,
@@ -811,6 +831,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				597839581A714612006CA4E5 /* SystemConfiguration.framework */,
 				59DCDB9D1A263D5F00016507 /* OutSystemsMobileECT.bundle */,
 				59DCDB9E1A263D5F00016507 /* OutSystemsMobileECT.framework */,
 				59665FC71A091AEB0049F8CD /* CoreImage.framework */,
@@ -935,6 +956,8 @@
 				590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */,
 				597902E019EC1DCF00440628 /* DeepLink.h */,
 				597902E119EC200D00440628 /* DeepLink.m */,
+				59783A941A7146D9006CA4E5 /* LoginApplication.h */,
+				59783A951A7146D9006CA4E5 /* LoginApplication.m */,
 				5999274F1A0277580068B246 /* MobileECT.h */,
 				599927501A0277580068B246 /* MobileECT.m */,
 				5919DC491A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel */,
@@ -1476,9 +1499,11 @@
 				CF9C2DEF18F5869A000C5E68 /* main.m in Sources */,
 				767DCF5D20714090A2682D21 /* CDVDevice.m in Sources */,
 				599927511A0277580068B246 /* MobileECT.m in Sources */,
+				597839561A714575006CA4E5 /* Reachability.m in Sources */,
 				599C2DC51988067D00BFF05D /* CDVLocalFilesystem.m in Sources */,
 				CF9C2DF118F5869A000C5E68 /* UIInsetTextField.m in Sources */,
 				CF9C2DED18F5869A000C5E68 /* Infrastructure.m in Sources */,
+				59783A961A7146D9006CA4E5 /* LoginApplication.m in Sources */,
 				35BA012C35E64503809FA2A7 /* CDVLogger.m in Sources */,
 				0460CF4C692A4B60BE40E2EE /* CDVContacts.m in Sources */,
 				599C2DC91988068400BFF05D /* CDVAssetLibraryFilesystem.m in Sources */,
@@ -1487,6 +1512,7 @@
 				F5535B205A25433A9DA95D07 /* CDVNotification.m in Sources */,
 				CF9C2DE818F5869A000C5E68 /* ApplicationTileList.m in Sources */,
 				597902E819ED54B400440628 /* DeepLinkController.m in Sources */,
+				5978395C1A71467E006CA4E5 /* OfflineSupportController.m in Sources */,
 				590EA4CF18FC32DC00EB317D /* DemoInfrastructure.m in Sources */,
 				59F17EE51976C24C00E22193 /* SecurePasswordStore.m in Sources */,
 				5966CBD619E3F90100240350 /* CDVJpegHeaderWriter.m in Sources */,
@@ -1562,6 +1588,7 @@
 				59E53F761986C1760003BC6B /* LoginScreenController.m in Sources */,
 				59E53F771986C1760003BC6B /* OutSystemsAppDelegate.m in Sources */,
 				59E53F781986C1760003BC6B /* OutAppData.xcdatamodeld in Sources */,
+				597839571A714575006CA4E5 /* Reachability.m in Sources */,
 				59E53F791986C1760003BC6B /* main.m in Sources */,
 				59E53F7A1986C1760003BC6B /* CDVDevice.m in Sources */,
 				599927531A0277580068B246 /* MobileECT.m in Sources */,
@@ -1572,6 +1599,7 @@
 				59E53F7E1986C1760003BC6B /* CDVContacts.m in Sources */,
 				599C2DC71988068300BFF05D /* CDVAssetLibraryFilesystem.m in Sources */,
 				59EC8A3019E3FCCD00944672 /* CDVCamera.m in Sources */,
+				5978395D1A71467E006CA4E5 /* OfflineSupportController.m in Sources */,
 				59E53F7F1986C1760003BC6B /* CDVContact.m in Sources */,
 				59665FCF1A0937D00049F8CD /* OSNavigationController.m in Sources */,
 				59E53F801986C1760003BC6B /* CDVNotification.m in Sources */,
@@ -1584,6 +1612,7 @@
 				597902E519EC2C1700440628 /* DeepLink.m in Sources */,
 				59EC8A3D19E3FF4500944672 /* CDVLocation.m in Sources */,
 				59E53F881986C1760003BC6B /* CDVBarcodeScanner.mm in Sources */,
+				59783A971A7146D9006CA4E5 /* LoginApplication.m in Sources */,
 				59E53F891986C1760003BC6B /* CDVLoader.m in Sources */,
 				59E53F8A1986C1760003BC6B /* zxing-all-in-one.cpp in Sources */,
 				59E53F8B1986C1760003BC6B /* NoAnimationSegue.m in Sources */,
@@ -2127,11 +2156,12 @@
 			isa = XCVersionGroup;
 			children = (
 				5919DC4B1A02B34F00D47B72 /* OutAppData - Mobile ECT.xcdatamodel */,
+				59F4A33A1A716E8700470480 /* OutAppData - Offline Support.xcdatamodel */,
 				59E34EDB1923E119003458AF /* OutAppData (isJavaServer).xcdatamodel */,
 				59F17EE61976C75000E22193 /* OutAppData - secure passwords.xcdatamodel */,
 				CF9C2E0118F5BE72000C5E68 /* OutAppData.xcdatamodel */,
 			);
-			currentVersion = 5919DC4B1A02B34F00D47B72 /* OutAppData - Mobile ECT.xcdatamodel */;
+			currentVersion = 59F4A33A1A716E8700470480 /* OutAppData - Offline Support.xcdatamodel */;
 			name = OutAppData.xcdatamodeld;
 			path = OutSystems/OutAppData.xcdatamodeld;
 			sourceTree = "<group>";

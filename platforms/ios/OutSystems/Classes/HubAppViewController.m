@@ -13,6 +13,7 @@
 #import "OutSystemsAppDelegate.h"
 #import "OSNavigationController.h"
 #import "DemoInfrastructure.h"
+#import "OfflineSupportController.h"
 
 @interface HubAppViewController ()
 
@@ -76,21 +77,22 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     targetViewControler.infrastructureReadonly = self.infrastructureReadonly;
     targetViewControler.loginReadonly = self.loginReadonly;
     
-    
+
     // check if deep link is valid
     if([self.deepLinkController hasValidSettings]){
+    
         // proceed according to the deep link operation
-       [self.deepLinkController resolveOperation:self];
-
+        [self.deepLinkController resolveOperation:self];
+            
     }
     else{
         // check if we have the login and password for that infrastructure or we're using a default infrastructure
-        if(([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0) || [_defaultEnvironment length] > 0) {
-
+        if(([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0) ||[_defaultEnvironment length] > 0) {
+            
             // execute the login automatically if not done yet
             if( [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
                 UINavigationController *navControler = self.navigationController;
-
+                    
                 if(navControler) {
                     targetViewControler.infrastructure = self.infrastructure;
                     targetViewControler.deepLinkController = self.deepLinkController;
@@ -99,6 +101,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
             }
         }
     }
+    
     
     bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
     
@@ -112,6 +115,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 - (void)getInfrastructureSettings{
     self.infrastructureReadonly = NO;
     self.loginReadonly = NO;
+    
     
     // MDM specific settings
     if(_defaultEnvironment && [_defaultEnvironment length] > 0) {

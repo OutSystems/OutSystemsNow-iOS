@@ -12,6 +12,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "MobileECT.h"
 #import "OSNavigationController.h"
+#import "OfflineSupportController.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -150,8 +151,17 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // WebView Request
     
-    // Choose a long cached URL.
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10];
+    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
+
+    NSURLRequest *request = nil;
+    
+    if (networkAvailable){
+        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+    }
+    else{
+        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10];
+    }
+    
     
     [_applicationBrowser.webView loadRequest:request];
     
@@ -517,21 +527,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [_errorActivityIndicator startAnimating];
     [_errorRetryButton setHidden:YES];
     
-    NSURL *url = [[_applicationBrowser.webView request] URL];
-    
-    if(_failedURL != nil){
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_failedURL] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
-        [_applicationBrowser.webView loadRequest:request];
-    }
-    else {
-        if(url != nil && url.absoluteString.length > 0){
-            [_applicationBrowser.webView reload];
-        }
-        else{
-            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:10];
-            [_applicationBrowser.webView loadRequest:request];
-        }
-    }
+    [OfflineSupportController retryWebViewAction:_applicationBrowser.webView failedURL:_failedURL forApplication:_application andInfrastructure:_infrastructure];
+ 
 }
 
 - (IBAction)backToApplicationsAction:(id)sender {
