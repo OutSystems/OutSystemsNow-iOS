@@ -125,12 +125,16 @@ static NSData * _loginResponseData;
     }
     
     [previousSession setObject:infrastructure.hostname forKey:@"hostname"];
-    [previousSession setObject:infrastructure.username forKey:@"username"];
     [previousSession setObject:infrastructure.name forKey:@"name"];
-    [previousSession setObject:infrastructure.password forKey:@"password"];
+
     [previousSession setObject:[NSNumber numberWithBool:infrastructure.isJavaServer] forKey:@"isJavaServer"];
     [previousSession setObject:infrastructure.lastUsed forKey:@"lastUsed"];
     
+    if(infrastructure.username)
+        [previousSession setObject:infrastructure.username forKey:@"username"];
+
+    if(infrastructure.password)
+        [previousSession setObject:infrastructure.password forKey:@"password"];
 }
 
 
