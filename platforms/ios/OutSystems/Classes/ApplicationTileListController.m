@@ -13,6 +13,7 @@
 #import "DemoInfrastructure.h"
 #import "TTTAttributedLabel.h"
 #import "OSNavigationController.h"
+#import "OSNavigationBarAlert.h"
 
 @interface ApplicationTileListController ()
 
@@ -23,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) NSData *responseData;
 
+@property (strong,nonatomic) OSNavigationBarAlert *navBarAlert;
+@property (strong, nonatomic) IBOutlet UIView *applicationListView;
 
 @end
 
@@ -42,6 +45,20 @@
     [super viewDidLoad];
     
     self.applicationsTileList.hidden = YES;
+    
+    _navBarAlert = [[OSNavigationBarAlert alloc] init];
+
+    [self.navigationController.view addSubview:_navBarAlert];
+
+    [_navBarAlert createView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    
+    
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [_navBarAlert removeFromSuperview];
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -160,6 +177,7 @@
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController unlockInterfaceOrientation];
+
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -184,6 +202,14 @@
         // proceed according to the deep link operation
         [self.deepLinkController resolveOperation:self];
     }
+    
+    
+    [NSTimer scheduledTimerWithTimeInterval:3.0
+                                     target:self
+                                   selector:@selector(showOfflineMessage)
+                                   userInfo:nil
+                                    repeats:NO];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -354,6 +380,38 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{    
     [self performSegueWithIdentifier:@"OpenApplicationSegue" sender:self];
+}
+
+
+#pragma mark - Navigation Bar Alert
+-(void)showNavigationBarAlert:(NSString*)message{
+    [_navBarAlert showAlert:message];
+}
+
+-(void)hideNavigationBarAlert{
+    [_navBarAlert hideAlert];
+}
+
+
+#pragma mark - Offline Support
+-(void)showOfflineMessage{
+    [self showNavigationBarAlert:@"Working Offline"];
+    
+    [NSTimer scheduledTimerWithTimeInterval:5.0
+                                     target:self
+                                   selector:@selector(hideOfflineMessage)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+-(void)hideOfflineMessage{
+    [self hideNavigationBarAlert];
+}
+
+
+// Handle device orientation changes
+- (void)deviceOrientationDidChange: (NSNotification *)notification{
+    [_navBarAlert navigationBarHeightChange:self.navigationController.navigationBar.frame.size.height];
 }
 
 @end
