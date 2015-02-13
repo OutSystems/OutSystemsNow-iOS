@@ -115,14 +115,23 @@ static NSData * _loginResponseData;
 
     NSMutableArray *environments = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
-    Infrastructure *infrastructure  = [environments firstObject];
-    
     if(!previousSession){
         previousSession = [NSMutableDictionary new];
     }
     else{
         [previousSession removeAllObjects];
     }
+    
+
+    Infrastructure *infrastructure  = nil;
+    if([environments count] > 1){
+        // the first object belongs to the current session
+        infrastructure = [environments objectAtIndex:1];
+    }
+    else{
+        return;
+    }
+    
     
     [previousSession setObject:infrastructure.hostname forKey:@"hostname"];
     [previousSession setObject:infrastructure.name forKey:@"name"];
