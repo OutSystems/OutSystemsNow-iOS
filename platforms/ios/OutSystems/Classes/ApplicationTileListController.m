@@ -14,6 +14,8 @@
 #import "TTTAttributedLabel.h"
 #import "OSNavigationController.h"
 #import "OSNavigationBarAlert.h"
+#import "OfflineSupportController.h"
+#import "Reachability.h"
 
 @interface ApplicationTileListController ()
 
@@ -27,6 +29,8 @@
 @property (strong,nonatomic) OSNavigationBarAlert *navBarAlert;
 @property (strong, nonatomic) IBOutlet UIView *applicationListView;
 
+@property (strong, nonatomic) Reachability *reachability;
+@property BOOL isViewVisible;
 @end
 
 @implementation ApplicationTileListController
@@ -46,19 +50,31 @@
     
     self.applicationsTileList.hidden = YES;
     
-    _navBarAlert = [[OSNavigationBarAlert alloc] init];
-
-    [self.navigationController.view addSubview:_navBarAlert];
-
-    [_navBarAlert createView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+     
+     [[NSNotificationCenter defaultCenter] addObserver:self
+     selector:@selector(handleNetworkChange:)
+     name:kReachabilityChangedNotification object:nil];
+     
+    _navBarAlert = [[OSNavigationBarAlert alloc] init];
     
+    [self.navigationController.view addSubview:_navBarAlert];
     
+    [_navBarAlert createView];
+    
+    _reachability = [Reachability reachabilityForInternetConnection];
+    [_reachability startNotifier];
+    
+    _isViewVisible = NO;
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [_navBarAlert hideAlert:NO];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    [_navBarAlert removeFromSuperview];
+    _isViewVisible = NO;
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -178,10 +194,19 @@
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController unlockInterfaceOrientation];
 
+    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
+    if(networkAvailable){
+        [self hideOfflineMessage:NO];
+    }
+    else{
+        [self showOfflineMessage:NO];
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    _isViewVisible = YES;
     
     if(self.isDemoEnvironment && self.applicationList.count == 0) {
         [self reloadApplicationList];
@@ -202,14 +227,7 @@
         // proceed according to the deep link operation
         [self.deepLinkController resolveOperation:self];
     }
-    
-    
-    [NSTimer scheduledTimerWithTimeInterval:3.0
-                                     target:self
-                                   selector:@selector(showOfflineMessage)
-                                   userInfo:nil
-                                    repeats:NO];
-    
+        
 }
 
 - (void)didReceiveMemoryWarning
@@ -384,28 +402,40 @@
 
 
 #pragma mark - Navigation Bar Alert
--(void)showNavigationBarAlert:(NSString*)message{
-    [_navBarAlert showAlert:message];
+-(void)showNavigationBarAlert:(NSString*)message animated:(BOOL)animated{
+    [_navBarAlert showAlert:message animated:animated];
 }
 
--(void)hideNavigationBarAlert{
-    [_navBarAlert hideAlert];
+-(void)hideNavigationBarAlert:(BOOL)animated{
+    [_navBarAlert hideAlert:animated];
 }
 
 
 #pragma mark - Offline Support
--(void)showOfflineMessage{
-    [self showNavigationBarAlert:@"Working Offline"];
+
+- (void)handleNetworkChange:(NSNotification *)notice{
+    NetworkStatus status = [_reachability currentReachabilityStatus];
     
-    [NSTimer scheduledTimerWithTimeInterval:5.0
-                                     target:self
-                                   selector:@selector(hideOfflineMessage)
-                                   userInfo:nil
-                                    repeats:NO];
+        if (status == NotReachable) {
+            NSLog(@"Network status: Offline");
+            if(_isViewVisible)
+                [self showOfflineMessage:YES];
+            
+        } else {
+            NSLog(@"Network status: Online");
+            if(_isViewVisible)
+                [self hideOfflineMessage:YES];
+        }
+    
 }
 
--(void)hideOfflineMessage{
-    [self hideNavigationBarAlert];
+-(void)showOfflineMessage:(BOOL)animated{
+    [self showNavigationBarAlert:@"Working Offline" animated:animated];
+
+}
+
+-(void)hideOfflineMessage:(BOOL)animated{
+    [self hideNavigationBarAlert:animated];
 }
 
 

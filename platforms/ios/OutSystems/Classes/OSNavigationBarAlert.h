@@ -14,8 +14,8 @@
 
 
 -(void)createView;
--(void)showAlert:(NSString*)message;
--(void)hideAlert;
+-(void)showAlert:(NSString*)message animated:(BOOL)animated;
+-(void)hideAlert:(BOOL)animated;
 
 -(void)navigationBarHeightChange:(float)height;
 

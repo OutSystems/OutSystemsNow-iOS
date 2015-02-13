@@ -129,40 +129,55 @@ float const kOSNavigationBarSlideTiming = 0.5;
     [self layoutIfNeeded];
 }
 
--(void)hideAlert{
+-(void)hideAlert:(BOOL)animated{
     
-    [UIView animateWithDuration:kOSNavigationBarSlideTiming
+    if(animated){
+        [UIView animateWithDuration:kOSNavigationBarSlideTiming
                               delay:0
                             options: UIViewAnimationOptionCurveEaseOut
                          animations:^{
-                             _navbarTopSpaceConstraint.constant -= kOSNavigationBarHeight;
+                             _navbarTopSpaceConstraint.constant = -kOSNavigationBarHeight;
                              [self layoutIfNeeded];
                          }
                          completion:^(BOOL finished){
                              [self setHidden:YES];
                          }];
-    
+    }
+    else{
+        _navbarTopSpaceConstraint.constant = -kOSNavigationBarHeight;
+        [self layoutIfNeeded];
+        [self setHidden:YES];
+    }
+
 }
 
--(void)showAlert:(NSString*)message{
-    
+-(void)showAlert:(NSString*)message animated:(BOOL)animated;{
+
     if([message length] > 0)
         _messageLabel.text = message;
     else
         _messageLabel.text = @"OutSystems Now";
-
-    [self setHidden:NO];
     
-    [UIView animateWithDuration:kOSNavigationBarSlideTiming
+    [self setHidden:NO];
+
+    
+    if (animated){
+        [UIView animateWithDuration:kOSNavigationBarSlideTiming
                               delay:0
                             options: UIViewAnimationOptionCurveEaseIn
                          animations:^{
-                             _navbarTopSpaceConstraint.constant += kOSNavigationBarHeight;
+                             _navbarTopSpaceConstraint.constant = 0;
                              [self layoutIfNeeded];
                          }
                          completion:^(BOOL finished){
-
+                             
                          }];
+        
+    }else{
+        _navbarTopSpaceConstraint.constant = 0;
+        [self layoutIfNeeded];
+    }
+
     
 }
 
