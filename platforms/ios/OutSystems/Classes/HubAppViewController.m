@@ -14,6 +14,7 @@
 #import "OSNavigationController.h"
 #import "DemoInfrastructure.h"
 #import "OfflineSupportController.h"
+#import "ApplicationViewController.h"
 
 @interface HubAppViewController ()
 
@@ -64,16 +65,66 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     
     UIStoryboard *storyboard = self.storyboard;
-    LoginScreenController *targetViewControler = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];
     
     // Disable iOS 7 back gesture
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
-   
+    
+    
     // Get Infrastructure settings
     [self getInfrastructureSettings];
     
+    // Offline Support
+    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
+    if(!networkAvailable && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO){
+        // redirect to Applications List
+        NSArray *applicationList = [OfflineSupportController getLoginApplications:_infrastructure];
+        
+        NSMutableArray *appsList = [[NSMutableArray alloc] init];
+        
+        for(Application *app in applicationList){
+            NSDictionary *dict = [app toDictionary];
+            [appsList addObject:dict];
+        }
+        
+        
+        [OutSystemsAppDelegate setAutoLoginPerformed];
+        
+            
+            UINavigationController *navControler = self.navigationController;
+            
+            // check if only one app
+            if([appsList count] == 1){
+                ApplicationViewController *appVC = [storyboard instantiateViewControllerWithIdentifier:@"ApplicationViewController"];
+                appVC.infrastructure = _infrastructure;
+                appVC.isSingleApplication = YES;
+                appVC.application = [Application initWithJSON: appsList[0] forHost:_infrastructure.hostname];
+                
+                if(navControler) {
+                    [navControler pushViewController:appVC animated:NO];
+                }
+                
+            }
+            else {
+                ApplicationTileListController *appList = [storyboard instantiateViewControllerWithIdentifier:@"ApplicationTileList"];
+                appList.infrastructure= _infrastructure;
+                appList.isDemoEnvironment = NO;
+                appList.applicationList = appsList;
+                
+                if(navControler) {
+                    [navControler pushViewController:appList animated:NO];
+                }
+            }
+            
+            return;
+        
+        
+    }
+    
+    
+
+    LoginScreenController *targetViewControler = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];    
     targetViewControler.infrastructureReadonly = self.infrastructureReadonly;
     targetViewControler.loginReadonly = self.loginReadonly;
     

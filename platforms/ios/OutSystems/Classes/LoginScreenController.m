@@ -147,100 +147,66 @@
 - (IBAction)OnLoginClick:(UIButton *)sender {
     
     [self.view endEditing:YES];
-
     
     // Offline Support
-    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
-    if(!networkAvailable && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO){
-        // redirect to Applications List
-        NSArray *applicationList = [OfflineSupportController getLoginApplications:_infrastructure];
-        
-        NSMutableArray *appsList = [[NSMutableArray alloc] init];
-        
-        for(Application *app in applicationList){
-            NSDictionary *dict = [app toDictionary];
-            [appsList addObject:dict];
-        }
-        
-        self.applicationList = appsList;
-        
-        [OutSystemsAppDelegate setAutoLoginPerformed];
-        
-        //check if the view is still active - user could have pressed back
-        if(self.view.window != nil) {
-            // check if only one app
-            if([self.applicationList count] == 1){
-                if(self.navigationController.visibleViewController == self)
-                    [self performSegueWithIdentifier:@"GoToSingleApplicationSegue" sender:self];
-            }
-            else {
-                if(self.navigationController.visibleViewController == self)
-                    [self performSegueWithIdentifier:@"GoToAppListSegue" sender:self];
-            }
-        }
-        
-    }
-    else{
-        
-        // Offline Support
-        [OfflineSupportController prepareForLogin];    
+    [OfflineSupportController prepareForLogin];
     
-        [_loginActivityIndicator startAnimating];
-        [_errorMessageLabel setHidden:YES];
-        [_loginButton setHidden:YES];
-        
-        _infrastructure.username = _usernameInput.text;
-        _infrastructure.password = _passwordInput.text;
-        
-        // get the device dimensions
-        CGRect screenBounds = [[UIScreen mainScreen] bounds];
-        
-        NSError *error = nil;
-        // Save the object to persistent store
-        
-        if (![_infrastructure.managedObjectContext save:&error]) {
-            NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
-        }
-        
-        int timeoutInSeconds = 30;
-        
-        NSURL *myURL = [NSURL URLWithString:[_infrastructure getHostnameForService:@"login"]];
-        
-        _loginResponseData = nil;
-        
-        NSString *deviceUDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
-        
-        NSString *post = [NSString stringWithFormat:@"username=%@&password=%@&devicetype=%@&screenWidth=%d&screenHeight=%d&deviceHwId=%@",
-                          [_usernameInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                          [_passwordInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                          @"ios",
-                          (int)screenBounds.size.width,
-                          (int)screenBounds.size.height,
-                          deviceUDID]; // hardware unique idenfifier
-        
-        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-        NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
-        
-        NSMutableURLRequest *myRequest = [NSMutableURLRequest requestWithURL:myURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:timeoutInSeconds];
-        
-        [myRequest setHTTPMethod:@"POST"];
-        [myRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
-        [myRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        [myRequest setHTTPBody:postData];
-        
-        NSLog(@"Logging in: %@", myURL);
-        
-        [NSURLConnection connectionWithRequest:myRequest delegate:self];
-        
-        
-        [OutSystemsAppDelegate setAutoLoginPerformed]; // setting the flag to true, even if it's a normal login so the app won't try to auto login the user again (in this app session)
-        
-        // set the url to register the device push notifications token (in case it is received later)
-        [OutSystemsAppDelegate setURLForPushNotificationTokenRegistration:[NSString stringWithFormat:@"%@?&deviceHwId=%@&device=",
-                                                                           [_infrastructure getHostnameForService:@"registertoken"],
-                                                                           deviceUDID]];
+    [_loginActivityIndicator startAnimating];
+    [_errorMessageLabel setHidden:YES];
+    [_loginButton setHidden:YES];
     
+    _infrastructure.username = _usernameInput.text;
+    _infrastructure.password = _passwordInput.text;
+    
+    // get the device dimensions
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    
+    if (![_infrastructure.managedObjectContext save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     }
+    
+    int timeoutInSeconds = 30;
+    
+    NSURL *myURL = [NSURL URLWithString:[_infrastructure getHostnameForService:@"login"]];
+    
+    _loginResponseData = nil;
+    
+    NSString *deviceUDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
+    NSString *post = [NSString stringWithFormat:@"username=%@&password=%@&devicetype=%@&screenWidth=%d&screenHeight=%d&deviceHwId=%@",
+                      [_usernameInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                      [_passwordInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                      @"ios",
+                      (int)screenBounds.size.width,
+                      (int)screenBounds.size.height,
+                      deviceUDID]; // hardware unique idenfifier
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+    
+    NSMutableURLRequest *myRequest = [NSMutableURLRequest requestWithURL:myURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:timeoutInSeconds];
+    
+    [myRequest setHTTPMethod:@"POST"];
+    [myRequest setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [myRequest setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [myRequest setHTTPBody:postData];
+    
+    NSLog(@"Logging in: %@", myURL);
+    
+    [NSURLConnection connectionWithRequest:myRequest delegate:self];
+    
+    
+    [OutSystemsAppDelegate setAutoLoginPerformed]; // setting the flag to true, even if it's a normal login so the app won't try to auto login the user again (in this app session)
+    
+    // set the url to register the device push notifications token (in case it is received later)
+    [OutSystemsAppDelegate setURLForPushNotificationTokenRegistration:[NSString stringWithFormat:@"%@?&deviceHwId=%@&device=",
+                                                                       [_infrastructure getHostnameForService:@"registertoken"],
+                                                                       deviceUDID]];
+    
+
 }
 
 
