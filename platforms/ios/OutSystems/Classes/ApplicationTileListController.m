@@ -67,6 +67,9 @@
     [_reachability startNotifier];
     
     _isViewVisible = NO;
+    
+    _imageCache = [[NSCache alloc] init];
+    [_imageCache setName:@"imageCache"];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -219,8 +222,6 @@
             self.noApplicationsAvailable.hidden = YES;
         }
     }
-    
-    self.imageCache = [[NSCache alloc] init];
     
     // check if deep link is valid
     if(self.deepLinkController && [self.deepLinkController hasValidSettings]){
