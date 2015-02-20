@@ -297,8 +297,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // Check if Mobile ECT is enable for the app
     BOOL isECTAvailable = [self.mobileECTController isECTFeatureAvailable];
+
+    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
     
-    if(isECTAvailable)
+    if(isECTAvailable && networkAvailable)
         [self setToolbarItems:self.originalToolbarItems animated:YES];
     
     [self showNetworkErrorView:NO];
