@@ -81,6 +81,9 @@
 		597239E21994FCF600CAA629 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DA1992879000CAA629 /* OpenSans-Light.ttf */; };
 		597239E31994FCF900CAA629 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DB1992879000CAA629 /* OpenSans.ttf */; };
 		597239E41994FCFA00CAA629 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 597239DB1992879000CAA629 /* OpenSans.ttf */; };
+		5974C7E31A9638CE006553D2 /* OSNavigationBarAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 5974C7E21A9638CE006553D2 /* OSNavigationBarAlert.m */; };
+		5974C7E41A9638CE006553D2 /* OSNavigationBarAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 5974C7E21A9638CE006553D2 /* OSNavigationBarAlert.m */; };
+		5974C7E51A9638CE006553D2 /* OSNavigationBarAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 5974C7E21A9638CE006553D2 /* OSNavigationBarAlert.m */; };
 		597839561A714575006CA4E5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 597839551A714575006CA4E5 /* Reachability.m */; };
 		597839571A714575006CA4E5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 597839551A714575006CA4E5 /* Reachability.m */; };
 		597839591A714613006CA4E5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597839581A714612006CA4E5 /* SystemConfiguration.framework */; };
@@ -498,6 +501,8 @@
 		597239D91992879000CAA629 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		597239DA1992879000CAA629 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		597239DB1992879000CAA629 /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSans.ttf; sourceTree = "<group>"; };
+		5974C7E11A9638CE006553D2 /* OSNavigationBarAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNavigationBarAlert.h; sourceTree = "<group>"; };
+		5974C7E21A9638CE006553D2 /* OSNavigationBarAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNavigationBarAlert.m; sourceTree = "<group>"; };
 		597839541A714575006CA4E5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		597839551A714575006CA4E5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		597839581A714612006CA4E5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -713,6 +718,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5974C7E11A9638CE006553D2 /* OSNavigationBarAlert.h */,
+				5974C7E21A9638CE006553D2 /* OSNavigationBarAlert.m */,
 				5978395A1A71467E006CA4E5 /* OfflineSupportController.h */,
 				5978395B1A71467E006CA4E5 /* OfflineSupportController.m */,
 				597839541A714575006CA4E5 /* Reachability.h */,
@@ -1516,6 +1523,7 @@
 				590EA4CF18FC32DC00EB317D /* DemoInfrastructure.m in Sources */,
 				59F17EE51976C24C00E22193 /* SecurePasswordStore.m in Sources */,
 				5966CBD619E3F90100240350 /* CDVJpegHeaderWriter.m in Sources */,
+				5974C7E31A9638CE006553D2 /* OSNavigationBarAlert.m in Sources */,
 				1DB685CEC7A1475C8B5F8CC6 /* CDVBattery.m in Sources */,
 				597902E219EC200D00440628 /* DeepLink.m in Sources */,
 				59EC8A3B19E3FF4400944672 /* CDVLocation.m in Sources */,
@@ -1540,6 +1548,7 @@
 				59BC4909199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */,
 				597A522B195C9A6400F15480 /* PXRImageSizeUtil.m in Sources */,
 				597A522C195C9A6400F15480 /* HubAppViewController.m in Sources */,
+				5974C7E41A9638CE006553D2 /* OSNavigationBarAlert.m in Sources */,
 				597A522D195C9A6400F15480 /* ApplicationTileListController.m in Sources */,
 				597A522E195C9A6400F15480 /* LoginScreenController.m in Sources */,
 				597A522F195C9A6400F15480 /* OutSystemsAppDelegate.m in Sources */,
@@ -1615,6 +1624,7 @@
 				59783A971A7146D9006CA4E5 /* LoginApplication.m in Sources */,
 				59E53F891986C1760003BC6B /* CDVLoader.m in Sources */,
 				59E53F8A1986C1760003BC6B /* zxing-all-in-one.cpp in Sources */,
+				5974C7E51A9638CE006553D2 /* OSNavigationBarAlert.m in Sources */,
 				59E53F8B1986C1760003BC6B /* NoAnimationSegue.m in Sources */,
 				59E53F8C1986C1760003BC6B /* Calendar.m in Sources */,
 				59BC490A199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */,
