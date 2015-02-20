@@ -155,12 +155,17 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
     NSURLRequest *request = nil;
     
-    if (networkAvailable){
+    if ([OfflineSupportController isNewSession]){
+        [_applicationBrowser.webView stringByEvaluatingJavaScriptFromString:@"localStorage.clear();"];
+    }
+    
+    if (networkAvailable || [OfflineSupportController isNewSession]){
         request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
     }
     else{
         request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10];
     }
+    
     
     
     [_applicationBrowser.webView loadRequest:request];

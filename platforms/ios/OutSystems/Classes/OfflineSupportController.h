@@ -31,6 +31,8 @@
 
 +(void)retryWebViewAction:(UIWebView*)webView failedURL:(NSString *)url forApplication:(Application*)application andInfrastructure:(Infrastructure*)infrastructure;
 
++(BOOL)isNewSession;
+
 @end
 
 

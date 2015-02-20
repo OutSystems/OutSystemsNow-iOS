@@ -78,6 +78,7 @@
 
 -(void)viewDidDisappear:(BOOL)animated{
     _isViewVisible = NO;
+    [_navBarAlert hideAlert:NO];
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -198,7 +199,7 @@
     [navController unlockInterfaceOrientation];
 
     BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
-    if(networkAvailable){
+    if(networkAvailable || self.isDemoEnvironment){
         [self hideOfflineMessage:NO];
     }
     else{

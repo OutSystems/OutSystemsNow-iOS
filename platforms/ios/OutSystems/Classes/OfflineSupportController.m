@@ -129,7 +129,14 @@ static NSData * _loginResponseData;
         infrastructure = [environments objectAtIndex:1];
     }
     else{
-        return;
+        // using the same session
+        if([environments count] == 1){
+            infrastructure = [environments firstObject];
+        }
+        else {
+            previousSession = nil;
+            return;
+        }
     }
     
     
@@ -331,7 +338,7 @@ static NSData * _loginResponseData;
     newSession = YES;
     offlineSession = NO;
     
-    if(previousSession){
+    if(previousSession != nil){
         NSString *previousHostname = [previousSession valueForKey:@"hostname"];
         NSString *previousUsername = [previousSession valueForKey:@"username"];
         
@@ -344,10 +351,15 @@ static NSData * _loginResponseData;
 }
 
 
++(BOOL)isNewSession{
+    return newSession;
+}
+
 # pragma mark - Cache
 +(void) clearCacheIfNeeded
 {
     if (newSession){
+        previousSession = nil;
   
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
         
@@ -375,7 +387,6 @@ static NSData * _loginResponseData;
             }
         }
         
-        
         NSError *error = nil;
         [manager removeItemAtPath:[nsurlDir stringByAppendingString:@"/osurlcache"] error:&error];
         if (error != nil) {
@@ -383,7 +394,6 @@ static NSData * _loginResponseData;
         } else {
             NSLog(@"Dir Cleared");
         }
-  
     }
 }
 
