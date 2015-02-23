@@ -73,11 +73,11 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    _isViewVisible = NO;
     [_navBarAlert hideAlert:NO];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
-    _isViewVisible = NO;
     [_navBarAlert hideAlert:NO];
 }
 

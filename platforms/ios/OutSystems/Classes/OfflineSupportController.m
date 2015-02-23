@@ -360,7 +360,10 @@ static NSData * _loginResponseData;
 {
     if (newSession){
         previousSession = nil;
+        newSession = NO;
   
+        // Clear cache not supported yet 
+        /*
         [[NSURLCache sharedURLCache] removeAllCachedResponses];
         
         NSString *cacheDir=[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -394,6 +397,7 @@ static NSData * _loginResponseData;
         } else {
             NSLog(@"Dir Cleared");
         }
+         */
     }
 }
 
