@@ -10,15 +10,19 @@
 	<string>OutSystems</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>0D6283A18F066733D61A0569FDFCD5E0822F8C75</key>
+		<string>https://github.com/OutSystems/OutSystemsNow-iOS.git</string>
 		<key>17138862-0172-114e-a870-43eb0320d916++6215</key>
 		<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MobileApp/OutSystems/trunk/platforms/ios/OutSystems.xcodeproj</string>
+	<string>platforms/ios/OutSystems.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>0D6283A18F066733D61A0569FDFCD5E0822F8C75</key>
+		<string>../../../..</string>
 		<key>17138862-0172-114e-a870-43eb0320d916++6215</key>
-		<string>../../../../../../..</string>
+		<string>../../../../../svn/Projects</string>
 	</dict>
 	<key>IDESourceControlProjectRepositoryRootDictionary</key>
 	<dict>
@@ -26,13 +30,21 @@
 		<string>https://srvptsvn/svn/docs</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://srvptsvn/svn/docs/trunk/company/Engineering/Projects/MobileApp/OutSystems/trunk/platforms/ios/OutSystems.xcodeproj</string>
+	<string>https://github.com/OutSystems/OutSystemsNow-iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>17138862-0172-114e-a870-43eb0320d916++6215</string>
+	<string>0D6283A18F066733D61A0569FDFCD5E0822F8C75</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0D6283A18F066733D61A0569FDFCD5E0822F8C75</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OutSystemsNow-iOS</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.subversion</string>

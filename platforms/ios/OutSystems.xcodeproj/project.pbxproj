@@ -1650,8 +1650,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1703,8 +1701,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OutSystems/OutSystems-Prefix.pch";
@@ -1754,8 +1750,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1809,8 +1803,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1862,8 +1854,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1916,8 +1906,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
