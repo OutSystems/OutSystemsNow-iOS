@@ -11,6 +11,8 @@
 #import "UIInsetTextField.h"
 #import "ApplicationTileListController.h"
 #import "OutSystemsAppDelegate.h"
+#import "OSNavigationController.h"
+#import "DemoInfrastructure.h"
 
 @interface HubAppViewController ()
 
@@ -54,6 +56,7 @@
 static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.hidden = YES;
     self.navigationController.toolbar.hidden = YES;
@@ -95,6 +98,13 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
                 }
             }
         }
+    }
+    
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    
+    if(iPhoneDevice){
+        OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+        [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
     }
     
 }
@@ -176,7 +186,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 
 
 - (void)viewDidLoad {
-
+    [super viewDidLoad];
+    
     self.accessYourAppLabel.font = [UIFont fontWithName:@"OpenSans" size:self.accessYourAppLabel.font.pointSize];
     self.explainURLLabel.font = [UIFont fontWithName:@"OpenSans" size:self.explainURLLabel.font.pointSize];
     self.howItWorksLabel.font = [UIFont fontWithName:@"OpenSans" size:self.howItWorksLabel.font.pointSize];
@@ -331,7 +342,42 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     [self OnGoClick:_goButton];
 }
 
+-(NSString*)checkEnvironmentURL:(NSString*)url{
+
+    NSArray* words = [url componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString* noSpaceString = [words componentsJoinedByString:@""];
+    
+    NSURL *hubUrl = [NSURL URLWithString:noSpaceString];
+   
+    if (hubUrl && hubUrl.host) {
+        return hubUrl.host;
+    }
+    else{
+        NSString *http = @"http://";
+        NSString *https = @"https://";
+        
+        if ([noSpaceString hasPrefix:http]) {
+            return [noSpaceString substringFromIndex:[http length]];
+        }
+        else{
+            if ([noSpaceString hasPrefix:https]) {
+                return [noSpaceString substringFromIndex:[https length]];
+            }
+            else{
+                NSRange slash = [noSpaceString rangeOfString:@"/"];
+                if(slash.location != NSNotFound){
+                    return  [noSpaceString substringToIndex:slash.location];
+                }
+            }
+        }
+        
+    }
+    return noSpaceString;
+}
+
 - (IBAction)OnGoClick:(UIButton *)sender {
+    // Dismiss keyboard
+    [self.view endEditing:YES];
     
     [self.connectionActivityIndicator startAnimating];
     [self.errorMessageLabel setHidden:YES];
@@ -344,6 +390,13 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     if(self.environmentHostname.text.length > 0) {
         NSString *hostname = self.environmentHostname.text;
+        
+        NSString *hubURL = [self checkEnvironmentURL:hostname];
+        
+        if(hostname != hubURL){
+            hostname = hubURL;
+            [self.environmentHostname setText: hostname];
+        }
         
         self.infrastructure = [self getOrCreateInfrastructure:hostname];
         
@@ -575,6 +628,16 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     if ([[segue identifier] isEqualToString:@"tryDemoSegue"]) {
         self.navigationController.navigationBar.hidden = NO;
+        
+        
+        NSString *UDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        
+        // set the url to register the device push notifications token (in case it is received later)
+        [OutSystemsAppDelegate setURLForPushNotificationTokenRegistration:[NSString stringWithFormat:@"%@?&deviceHwId=%@&device=",
+                                                                           [DemoInfrastructure getHostnameForService:@"registertoken"],
+                                                                           UDID]];
+        
+        [OutSystemsAppDelegate registerPushToken]; // send the push token to the server
         
         ApplicationTileListController *appViewController = [segue destinationViewController];
         appViewController.isDemoEnvironment = YES;

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--SelectEnvironment Controller-->
@@ -485,22 +486,22 @@
                         <viewControllerLayoutGuide type="top" id="YM9-Ld-fga"/>
                         <viewControllerLayoutGuide type="bottom" id="AVt-r2-tJW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZLX-7u-1G8">
-                        <rect key="frame" x="0.0" y="44" width="768" height="980"/>
+                    <view key="view" contentMode="scaleToFill" id="ZLX-7u-1G8" userLabel="ApplicationView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ" userLabel="WebView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
-                                        <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                     </imageView>
                                     <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
-                                        <rect key="frame" x="329" y="434" width="110" height="112"/>
+                                        <rect key="frame" x="329" y="456" width="110" height="112"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-Xz-TGQ">
                                                 <rect key="frame" x="16" y="71" width="77" height="21"/>
@@ -537,36 +538,51 @@
                                     <constraint firstItem="Mi7-wB-GYf" firstAttribute="top" secondItem="dUP-l7-ati" secondAttribute="top" id="ZA6-9u-qLD"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.7154131400809487" green="0.78148915816326525" blue="0.6455606012859112" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="AVt-r2-tJW" firstAttribute="top" secondItem="dUP-l7-ati" secondAttribute="bottom" id="R7S-1g-s1Y"/>
+                            <constraint firstAttribute="width" secondItem="jzQ-QF-CNx" secondAttribute="width" id="3Rw-uj-eUe"/>
+                            <constraint firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" id="5op-MR-n2u"/>
+                            <constraint firstItem="S2A-bT-JVZ" firstAttribute="height" secondItem="ZLX-7u-1G8" secondAttribute="height" id="Hzo-ej-TKz"/>
+                            <constraint firstItem="dUP-l7-ati" firstAttribute="width" secondItem="ZLX-7u-1G8" secondAttribute="width" id="Smp-6y-dj7"/>
+                            <constraint firstItem="dUP-l7-ati" firstAttribute="height" secondItem="ZLX-7u-1G8" secondAttribute="height" id="W3r-ni-9qn"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="top" secondItem="ZLX-7u-1G8" secondAttribute="top" id="aHx-6Y-hBD"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="leading" secondItem="ZLX-7u-1G8" secondAttribute="leading" id="cgl-fn-wqZ"/>
-                            <constraint firstItem="AVt-r2-tJW" firstAttribute="top" secondItem="S2A-bT-JVZ" secondAttribute="bottom" id="gPW-HY-t2s"/>
-                            <constraint firstAttribute="trailing" secondItem="S2A-bT-JVZ" secondAttribute="trailing" id="gcR-wW-C8y"/>
-                            <constraint firstAttribute="trailing" secondItem="dUP-l7-ati" secondAttribute="trailing" id="q3A-nd-iLs"/>
+                            <constraint firstAttribute="centerX" secondItem="jzQ-QF-CNx" secondAttribute="centerX" id="l2Y-ng-kN9"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="top" secondItem="YM9-Ld-fga" secondAttribute="bottom" id="rku-7J-gVw"/>
+                            <constraint firstAttribute="centerY" secondItem="jzQ-QF-CNx" secondAttribute="centerY" id="ufx-zi-eoP"/>
+                            <constraint firstItem="S2A-bT-JVZ" firstAttribute="width" secondItem="ZLX-7u-1G8" secondAttribute="width" id="vsV-58-Mb6"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="leading" secondItem="ZLX-7u-1G8" secondAttribute="leading" id="wWB-0h-U2G"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems>
-                        <barButtonItem image="icon-chevron-back.png" style="plain" id="JdK-ad-F0w">
+                        <barButtonItem image="icon_chevron-left_red.png" style="plain" id="JdK-ad-F0w">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="navBack:" destination="H6M-OB-jxb" id="7Da-gC-UvN"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem width="20" style="plain" systemItem="fixedSpace" id="xKl-oi-jrd"/>
-                        <barButtonItem image="icon-chevron-forth.png" style="plain" id="irt-mN-HoB">
+                        <barButtonItem image="icon_chevron-right_red.png" style="plain" id="irt-mN-HoB">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="navForward:" destination="H6M-OB-jxb" id="YGN-vS-pcD"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="DWA-80-MRE"/>
+                        <barButtonItem image="icon_speech-bubble_red.png" style="plain" id="cYP-G3-9f5" userLabel="ECTButton">
+                            <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <action selector="onOpenECT:" destination="H6M-OB-jxb" id="oc7-ai-PI1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="cdc-o0-5bH"/>
-                        <barButtonItem image="icon-apps.png" style="plain" id="tN4-Sy-Oof">
+                        <barButtonItem image="icon_app-list_red.png" style="plain" id="tN4-Sy-Oof">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="navAppList:" destination="H6M-OB-jxb" id="b2F-Bn-1p5"/>
@@ -574,14 +590,17 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="lhF-Z7-GgZ"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationListButton" destination="tN4-Sy-Oof" id="S7g-dL-mUS"/>
                         <outlet property="loadingProgressView" destination="BsK-MR-qhr" id="zY1-kQ-WnZ"/>
                         <outlet property="loadingView" destination="dUP-l7-ati" id="9z8-Gm-CD6"/>
+                        <outlet property="mobileECTView" destination="jzQ-QF-CNx" id="hCk-kA-gpV"/>
                         <outlet property="navAppList" destination="tN4-Sy-Oof" id="JTM-G7-s34"/>
                         <outlet property="navBack" destination="JdK-ad-F0w" id="rbo-wH-khw"/>
                         <outlet property="navForward" destination="irt-mN-HoB" id="aUp-E2-raQ"/>
+                        <outlet property="openMobileECTButton" destination="cYP-G3-9f5" id="kas-9k-o8W"/>
                         <outlet property="webViewFullScreen" destination="S2A-bT-JVZ" id="RX3-rF-FPz"/>
                         <outlet property="webViewImageLoading" destination="Mi7-wB-GYf" id="gGb-xe-b9l"/>
                     </connections>
@@ -593,7 +612,7 @@
         <!--Navigation Controller-->
         <scene sceneID="FBi-mu-mMy">
             <objects>
-                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" toolbarHidden="NO" id="1fS-mO-TBd" sceneMemberID="viewController">
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" toolbarHidden="NO" id="1fS-mO-TBd" customClass="OSNavigationController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -621,10 +640,11 @@
     </scenes>
     <resources>
         <image name="NoAppImage.png" width="64" height="64"/>
-        <image name="icon-apps.png" width="22" height="22"/>
-        <image name="icon-chevron-back.png" width="22" height="22"/>
-        <image name="icon-chevron-forth.png" width="22" height="22"/>
         <image name="icon-white-help.png" width="45" height="45"/>
+        <image name="icon_app-list_red.png" width="23" height="24"/>
+        <image name="icon_chevron-left_red.png" width="22" height="23"/>
+        <image name="icon_chevron-right_red.png" width="22" height="23"/>
+        <image name="icon_speech-bubble_red.png" width="27" height="26"/>
         <image name="logo_iphone5.png" width="530" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -633,7 +653,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="IGa-Ec-gYf"/>
+        <segue reference="TJB-Dg-c3t"/>
         <segue reference="oGr-Dq-WlH"/>
     </inferredMetricsTieBreakers>
 </document>

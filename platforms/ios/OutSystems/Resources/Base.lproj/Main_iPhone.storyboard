@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="clc-Af-Km2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="clc-Af-Km2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--SelectEnvironment Controller-->
@@ -217,6 +218,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="vdS-me-oxu"/>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="accessYourAppLabel" destination="EiG-EG-f5u" id="FhG-NS-Obe"/>
                         <outlet property="connectionActivityIndicator" destination="qCz-3Z-m7o" id="PYi-Q8-iL3"/>
@@ -249,7 +251,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="poR-HH-ZOn">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="568"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1zO-Fl-YX9" customClass="UIInsetTextField">
                                         <rect key="frame" x="22" y="122" width="277" height="35"/>
@@ -302,10 +304,10 @@
                                         </constraints>
                                     </activityIndicatorView>
                                     <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invalid login, please try again" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="271" translatesAutoresizingMaskIntoConstraints="NO" id="3Kj-vk-VI9" customClass="TTTAttributedLabel">
-                                        <rect key="frame" x="25" y="269" width="271" height="87"/>
+                                        <rect key="frame" x="25" y="269" width="271" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="271" id="B2d-6P-Gek"/>
-                                            <constraint firstAttribute="height" constant="87" id="ddQ-oE-JNd"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="ddQ-oE-JNd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -355,14 +357,15 @@
                         <color key="backgroundColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="poR-HH-ZOn" firstAttribute="top" secondItem="A64-RM-rop" secondAttribute="bottom" id="04Z-x5-dp3"/>
-                            <constraint firstAttribute="bottom" secondItem="poR-HH-ZOn" secondAttribute="bottom" id="j5a-l4-7qc"/>
+                            <constraint firstItem="poR-HH-ZOn" firstAttribute="height" secondItem="6dJ-zC-Mup" secondAttribute="height" id="Juk-Ft-f8x"/>
                             <constraint firstItem="poR-HH-ZOn" firstAttribute="leading" secondItem="6dJ-zC-Mup" secondAttribute="leading" id="lf7-h5-RAk"/>
-                            <constraint firstAttribute="trailing" secondItem="poR-HH-ZOn" secondAttribute="trailing" id="z2f-aP-sUL"/>
+                            <constraint firstItem="poR-HH-ZOn" firstAttribute="width" secondItem="6dJ-zC-Mup" secondAttribute="width" id="pon-sl-9Ga"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="641-ZK-wcn">
                         <barButtonItem key="backBarButtonItem" title="Logout" id="XEb-28-5db"/>
                     </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="applicationsAtLabel" destination="Dql-DN-dyk" id="xVz-ml-y3F"/>
                         <outlet property="errorMessageLabel" destination="3Kj-vk-VI9" id="ZZb-md-Z6Z"/>
@@ -382,7 +385,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Dpb-L3-5Ix">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" toolbarHidden="NO" id="clc-Af-Km2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" toolbarHidden="NO" id="clc-Af-Km2" customClass="OSNavigationController" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -539,12 +542,12 @@
                         <viewControllerLayoutGuide type="top" id="Ed7-84-VzA"/>
                         <viewControllerLayoutGuide type="bottom" id="PMA-9D-CyI"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="693-7L-PAB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                    <view key="view" contentMode="scaleToFill" id="693-7L-PAB" userLabel="ApplicationView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-je-XgP">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-je-XgP" userLabel="WebView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eS-Qi-mAm" userLabel="LoadingView">
@@ -592,39 +595,55 @@
                                     <constraint firstAttribute="trailing" secondItem="1dH-bg-veK" secondAttribute="trailing" id="qQh-0b-b1Z"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pf0-tu-dJN" userLabel="ECTView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Pf0-tu-dJN" firstAttribute="height" secondItem="693-7L-PAB" secondAttribute="height" id="4EB-Sn-PmX"/>
                             <constraint firstItem="kbZ-je-XgP" firstAttribute="top" secondItem="Ed7-84-VzA" secondAttribute="bottom" id="CjC-6i-pfS"/>
-                            <constraint firstItem="PMA-9D-CyI" firstAttribute="top" secondItem="kbZ-je-XgP" secondAttribute="bottom" id="HSP-5D-o08"/>
+                            <constraint firstItem="Pf0-tu-dJN" firstAttribute="top" secondItem="Ed7-84-VzA" secondAttribute="top" id="FdD-d7-1TK"/>
+                            <constraint firstAttribute="height" secondItem="kbZ-je-XgP" secondAttribute="height" id="PZe-mo-RWk"/>
                             <constraint firstItem="PMA-9D-CyI" firstAttribute="top" secondItem="8eS-Qi-mAm" secondAttribute="bottom" id="Rfe-aA-Ahf"/>
+                            <constraint firstAttribute="centerX" secondItem="Pf0-tu-dJN" secondAttribute="centerX" id="Srh-ym-cbv"/>
                             <constraint firstItem="8eS-Qi-mAm" firstAttribute="leading" secondItem="693-7L-PAB" secondAttribute="leading" id="Wxd-q0-IPs"/>
                             <constraint firstItem="kbZ-je-XgP" firstAttribute="leading" secondItem="693-7L-PAB" secondAttribute="leading" id="YFh-0f-Ckz"/>
                             <constraint firstAttribute="trailing" secondItem="8eS-Qi-mAm" secondAttribute="trailing" id="ZFA-Kr-VZl"/>
                             <constraint firstItem="8eS-Qi-mAm" firstAttribute="top" secondItem="Ed7-84-VzA" secondAttribute="bottom" id="rVx-AH-4Xl"/>
+                            <constraint firstItem="Pf0-tu-dJN" firstAttribute="width" secondItem="693-7L-PAB" secondAttribute="width" id="tgr-VR-tMw"/>
                             <constraint firstAttribute="trailing" secondItem="kbZ-je-XgP" secondAttribute="trailing" id="zNu-V5-4WG"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems>
-                        <barButtonItem image="icon-chevron-back.png" style="plain" id="GJH-kj-tcb">
+                        <barButtonItem image="icon_chevron-left_red.png" style="plain" id="GJH-kj-tcb">
                             <color key="tintColor" red="0.80000000000000004" green="0.13333333333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="navBack:" destination="n5F-NC-Ib7" id="nnH-5o-4rp"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem width="10" style="plain" systemItem="fixedSpace" id="LIK-2y-Y96"/>
-                        <barButtonItem image="icon-chevron-forth.png" style="plain" id="mBx-Jz-anG">
+                        <barButtonItem image="icon_chevron-right_red.png" style="plain" id="mBx-Jz-anG">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="navForward:" destination="n5F-NC-Ib7" id="WgL-Wy-qsa"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="xKx-FF-Zcq"/>
+                        <barButtonItem image="icon_speech-bubble_red.png" style="plain" id="SSl-Wo-iJv">
+                            <color key="tintColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <action selector="onOpenECT:" destination="n5F-NC-Ib7" id="un6-ch-m00"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="L2r-SN-fAZ"/>
-                        <barButtonItem image="icon-apps.png" style="plain" id="hic-f4-Uc4">
+                        <barButtonItem image="icon_app-list_red.png" style="plain" id="lfQ-b9-uaA">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
-                                <action selector="navAppList:" destination="n5F-NC-Ib7" id="lWl-KH-as5"/>
+                                <action selector="navAppList:" destination="n5F-NC-Ib7" id="rk6-cu-Wg9"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -632,13 +651,15 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="applicationListButton" destination="hic-f4-Uc4" id="e8o-dn-i8t"/>
+                        <outlet property="applicationListButton" destination="lfQ-b9-uaA" id="mNe-hC-YSq"/>
                         <outlet property="loadingLabel" destination="Jbn-o9-gsR" id="G17-U6-kwv"/>
                         <outlet property="loadingProgressView" destination="Qze-JK-ulQ" id="uaI-ET-Irf"/>
                         <outlet property="loadingView" destination="8eS-Qi-mAm" id="ZAr-NZ-HbI"/>
-                        <outlet property="navAppList" destination="hic-f4-Uc4" id="70K-gf-3qC"/>
+                        <outlet property="mobileECTView" destination="Pf0-tu-dJN" id="5Id-LH-Uaq"/>
+                        <outlet property="navAppList" destination="lfQ-b9-uaA" id="VLK-xa-aGV"/>
                         <outlet property="navBack" destination="GJH-kj-tcb" id="81X-5f-fCn"/>
                         <outlet property="navForward" destination="mBx-Jz-anG" id="my7-bv-Ps2"/>
+                        <outlet property="openMobileECTButton" destination="SSl-Wo-iJv" id="gMx-DF-tOj"/>
                         <outlet property="webViewFullScreen" destination="kbZ-je-XgP" id="ARw-EU-Ac9"/>
                         <outlet property="webViewImageLoading" destination="1dH-bg-veK" id="K4t-su-3dF"/>
                     </connections>
@@ -650,10 +671,11 @@
     </scenes>
     <resources>
         <image name="NoAppImage.png" width="64" height="64"/>
-        <image name="icon-apps.png" width="22" height="22"/>
-        <image name="icon-chevron-back.png" width="22" height="22"/>
-        <image name="icon-chevron-forth.png" width="22" height="22"/>
         <image name="icon-white-help.png" width="45" height="45"/>
+        <image name="icon_app-list_red.png" width="23" height="24"/>
+        <image name="icon_chevron-left_red.png" width="22" height="23"/>
+        <image name="icon_chevron-right_red.png" width="22" height="23"/>
+        <image name="icon_speech-bubble_red.png" width="27" height="26"/>
         <image name="logo_iphone5.png" width="530" height="80"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -662,7 +684,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ITW-ug-7u2"/>
-        <segue reference="Wmc-Al-Qfe"/>
+        <segue reference="6zx-D3-JMY"/>
+        <segue reference="oPM-kh-zcB"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -206,6 +206,21 @@ static NSString *stripFragment(NSString* url)
         shouldLoad = [_delegate webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];
     }
 
+    if(shouldLoad){
+        NSLog(@"Request scheme: %@",[request.URL scheme]);
+        
+        NSString *external = @"external:";
+        
+        if ([request.URL.absoluteString hasPrefix:external])
+        {
+            NSURL *url = [NSURL URLWithString:[request.URL.absoluteString substringFromIndex:external.length]];
+            [[UIApplication sharedApplication] openURL:url];
+            return YES;
+        }
+        
+    }
+    
+    
     VerboseLog(@"webView shouldLoad=%d (before) state=%d loadCount=%d URL=%@", shouldLoad, _state, _loadCount, request.URL);
 
     if (shouldLoad) {

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Application.h"
+#import "Infrastructure.h"
+#import <OutSystemsMobileECT/OutSystemsMobileECT.h>
 
 typedef enum {
 	OSAnimateTransitionDefault,
@@ -19,6 +21,9 @@ typedef enum {
 @interface ApplicationViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) Application* application;
+@property (strong, nonatomic) Infrastructure* infrastructure;
+@property (strong, nonatomic) OSMobileECTController *mobileECTController;
+
 @property BOOL isSingleApplication;
 
 - (IBAction)navBack:(id)sender;
