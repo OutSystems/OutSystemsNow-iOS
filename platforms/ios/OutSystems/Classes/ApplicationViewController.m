@@ -326,7 +326,17 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     UIGraphicsBeginImageContextWithOptions(self.applicationBrowser.view.bounds.size,
                                            self.applicationBrowser.view.opaque,
                                            0.0);
-    [self.applicationBrowser.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    @try {
+        [self.applicationBrowser.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Failed to render webview layer");
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSetRGBFillColor(context,1.0, 1.0, 1.0, 1.0);
+        CGContextFillRect(context,self.applicationBrowser.view.bounds);
+        CGContextSaveGState(context);
+    }
+
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
