@@ -494,7 +494,6 @@
 		597902E619ED53C800440628 /* DeepLinkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLinkController.h; sourceTree = "<group>"; };
 		597902E719ED54B400440628 /* DeepLinkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepLinkController.m; sourceTree = "<group>"; };
 		597A525F195C9A6400F15480 /* OutSystems Push Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutSystems Push Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		597A5260195C9A6500F15480 /* OutSystems copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "OutSystems copy-Info.plist"; path = "/Users/engineering/svn/Projects/MobileApp/OutSystems/branches/ECT/platforms/ios/OutSystems copy-Info.plist"; sourceTree = "<absolute>"; };
 		5999274F1A0277580068B246 /* MobileECT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileECT.h; path = OutSystems/Classes/MobileECT.h; sourceTree = "<group>"; };
 		599927501A0277580068B246 /* MobileECT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileECT.m; path = OutSystems/Classes/MobileECT.m; sourceTree = "<group>"; };
 		59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
@@ -1705,7 +1704,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "c8c8e2b1-e203-4569-872d-c12cf6b186c8";
+				PROVISIONING_PROFILE = "327e0d86-3efc-4b38-ad26-db0a3b34bfe9";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1757,7 +1756,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "309a8a05-92fa-4c02-83b9-9e4dbec58f28";
+				PROVISIONING_PROFILE = "6e5cb2bb-cb36-418c-b4ad-d686b7b4fe91";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
 			};
