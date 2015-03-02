@@ -79,10 +79,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
     
     // Do any additional setup after loading the view.
-    self.applicationBrowser = [CDVViewController new];
-  
-    self.applicationBrowser.startPage = _application.path;
-    self.applicationBrowser.wwwFolderName = @"";
+    _applicationBrowser = [CDVViewController new];
+    
+    _applicationBrowser.startPage = @"";
+    _applicationBrowser.wwwFolderName = @"";
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(webViewDidStartLoad:)
@@ -131,6 +132,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     [self.mobileECTController prepareForViewDidLoad];
 
+    // Load URL
+    NSString *applicationURL = [NSString stringWithFormat:@"%@/",_application.path];
+    NSLog(@"ApplicationPath: %@",applicationURL);
+    NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:applicationURL]];
+    [_applicationBrowser.webView loadRequest:request];
     
 }
 
@@ -140,7 +146,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.navigationController.navigationBar.hidden = YES;
     
     self.applicationBrowser.webView.scalesPageToFit = YES;
-    [self.applicationBrowser setStartPage:_application.path];
     
     self.lastContentOffset = 0;
     
@@ -248,13 +253,14 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 -(void)transitionPrepareAnimation:(OSAnimateTransition) animateTransition {
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    [navController lockCurrentOrientation:YES];
     
     self.loadingProgressView.hidden = YES;
     
-    if(self.firstLoad == NO) {
+    if(!self.firstLoad) {
         UIImage *viewImage = [self captureCurrentWebPage];
         self.webViewImageLoading.image = viewImage;
+        viewImage = nil;
 	
         // If we will be sliding, get the snapshot for the fixed section (e.g. menu) visible
         if(animateTransition != OSAnimateTransitionFadeOut) {
@@ -308,6 +314,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 							 self.loadingView.alpha = 0;
 							 [self.loadingView setFrame:CGRectMake(0.0, 0.0, width, height)];
 							 self.webViewStaticImageLoading.hidden = YES;
+                             self.webViewImageLoading.image = nil;
 						 }];
 		
 	}
@@ -316,25 +323,31 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 	self.selectedTransition = OSAnimateTransitionDefault;
 	
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController unlockInterfaceOrientation];
+    [navController lockCurrentOrientation:NO];
 }
 
 
 -(UIImage*)captureCurrentWebPage{
+    
     // Capture the current page in an image and render it on the view
     // that will sit over the webview
     UIGraphicsBeginImageContextWithOptions(self.applicationBrowser.view.bounds.size,
                                            self.applicationBrowser.view.opaque,
                                            0.0);
-    @try {
-        [self.applicationBrowser.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    if(context){
+        @try {
+            [self.applicationBrowser.view.layer renderInContext:context];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Failed to render webview layer");
+            CGContextSetRGBFillColor(context,1.0, 1.0, 1.0, 1.0);
+            CGContextFillRect(context,self.applicationBrowser.view.bounds);
+            CGContextSaveGState(context);
+        }
     }
-    @catch (NSException *exception) {
-        NSLog(@"Failed to render webview layer");
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetRGBFillColor(context,1.0, 1.0, 1.0, 1.0);
-        CGContextFillRect(context,self.applicationBrowser.view.bounds);
-        CGContextSaveGState(context);
+    else{
+        NSLog(@"UIGraphics Context not available");
     }
 
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -350,7 +363,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    //[navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    [navController lockCurrentOrientation:YES];
     
     MobileECT *mobileECTCoreData = [self getOrCreateMobileECTInfo];
     
@@ -371,7 +385,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     mobileECTCoreData.isFirstLoad = NO;
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController unlockInterfaceOrientation];
+    [navController lockCurrentOrientation:NO];
     
     [self.mobileECTView setHidden:YES];
     [self.navigationController setToolbarHidden:NO animated:YES];
@@ -415,6 +429,5 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     return mobileECT;
 }
-
 
 @end
