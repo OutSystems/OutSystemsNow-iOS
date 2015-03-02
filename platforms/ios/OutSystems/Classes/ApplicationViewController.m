@@ -154,6 +154,14 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController unlockInterfaceOrientation];
 
+    if(!self.mobileECTController){
+        self.mobileECTController = [[OSMobileECTController alloc] initWithSuperView:self.mobileECTView
+                                                                         andWebView:self.applicationBrowser.webView
+                                                                        forHostname:self.infrastructure.hostname ];
+        [self.mobileECTController prepareForViewDidLoad];
+    }
+        
+    
     [self.mobileECTController prepareForViewWillAppear];
 }
 
@@ -169,6 +177,23 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
 - (void) viewWillDisappear:(BOOL)animated {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+    for (CALayer* layer in [self.view.layer sublayers])
+    {
+        [layer removeAllAnimations];
+    }
+    
+    [self.mobileECTController prepareForUnload];
+    self.mobileECTController = nil;
+    
+    self.webViewStaticImageLoading = nil;
+    
+    [super viewWillDisappear:animated];
+}
+
+-(void) viewDidDisappear:(BOOL)animated{
+
+    [super viewDidDisappear:animated];
 }
 
 - (IBAction)navBack:(id)sender {
@@ -295,6 +320,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 		// Fade it out to the new page
 		self.loadingView.alpha = 0;
 		self.webViewStaticImageLoading.hidden = YES;
+        self.webViewStaticImageLoading = nil;
 		
 		[UIView commitAnimations];
 		
@@ -318,7 +344,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 						 }];
 		
 	}
-	
+    
 	// reset to default transition
 	self.selectedTransition = OSAnimateTransitionDefault;
 	
