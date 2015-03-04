@@ -204,13 +204,26 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     self.loadingView.hidden = YES;
     
+    OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+    [navController unlockInterfaceOrientation];
+
+    if(!self.mobileECTController){
+        self.mobileECTController = [[OSMobileECTController alloc] initWithSuperView:self.mobileECTView
+                                                                         andWebView:self.applicationBrowser.webView
+                                                                        forHostname:self.infrastructure.hostname ];
+        [self.mobileECTController prepareForViewDidLoad];
+    }
+        
+    
     [self.mobileECTController prepareForViewWillAppear];
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     if(self.viewFinishedLoad == YES && self.loadingView.hidden==NO){
         self.loadingView.hidden= YES;
     }
+    [super viewDidAppear:animated];
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -220,8 +233,27 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     // To stop all embedded videos that are playing when the view disappears, we need to reset the webview.
-    [_applicationBrowser.webView stringByEvaluatingJavaScriptFromString:@"document.open();document.close()"];
+    // Not working: [_applicationBrowser.webView stringByEvaluatingJavaScriptFromString:@"document.open();document.close()"];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+
+    for (CALayer* layer in [self.view.layer sublayers])
+    {
+        [layer removeAllAnimations];
+    }
+    
+    [self.mobileECTController prepareForUnload];
+    self.mobileECTController = nil;
+    
+    self.webViewStaticImageLoading = nil;
+    self.failedURL = nil;
+    self.originalToolbarItems = nil;
+    
+    [super viewWillDisappear:animated];
+}
+
+-(void) viewDidDisappear:(BOOL)animated{
+
+    [super viewDidDisappear:animated];
 }
 
 - (IBAction)navBack:(id)sender {
@@ -309,9 +341,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
 
 -(void)webViewdidFailLoadWithError:(NSNotification *) notification {
-
-    UIWebView *webView = [notification object];
-    NSURLRequest *request = [webView request];
     
     NSDictionary *userInfo = [notification userInfo];
     NSError *error = [userInfo valueForKey:@"error"];
@@ -346,13 +375,14 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 -(void)transitionPrepareAnimation:(OSAnimateTransition) animateTransition {
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    [navController lockCurrentOrientation:YES];
     
     self.loadingProgressView.hidden = YES;
     
-    if(self.firstLoad == NO) {
+    if(!self.firstLoad) {
         UIImage *viewImage = [self captureCurrentWebPage];
         self.webViewImageLoading.image = viewImage;
+        viewImage = nil;
 	
         // If we will be sliding, get the snapshot for the fixed section (e.g. menu) visible
         if(animateTransition != OSAnimateTransitionFadeOut) {
@@ -387,6 +417,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 		// Fade it out to the new page
 		self.loadingView.alpha = 0;
 		self.webViewStaticImageLoading.hidden = YES;
+        self.webViewStaticImageLoading = nil;
 		
 		[UIView commitAnimations];
 		
@@ -406,25 +437,42 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 							 self.loadingView.alpha = 0;
 							 [self.loadingView setFrame:CGRectMake(0.0, 0.0, width, height)];
 							 self.webViewStaticImageLoading.hidden = YES;
+                             self.webViewImageLoading.image = nil;
 						 }];
 		
 	}
-	
+    
 	// reset to default transition
 	self.selectedTransition = OSAnimateTransitionDefault;
 	
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController unlockInterfaceOrientation];
+    [navController lockCurrentOrientation:NO];
 }
 
 
 -(UIImage*)captureCurrentWebPage{
+    
     // Capture the current page in an image and render it on the view
     // that will sit over the webview
     UIGraphicsBeginImageContextWithOptions(self.applicationBrowser.view.bounds.size,
                                            self.applicationBrowser.view.opaque,
                                            0.0);
-    [self.applicationBrowser.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    if(context){
+        @try {
+            [self.applicationBrowser.view.layer renderInContext:context];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Failed to render webview layer");
+            CGContextSetRGBFillColor(context,1.0, 1.0, 1.0, 1.0);
+            CGContextFillRect(context,self.applicationBrowser.view.bounds);
+            CGContextSaveGState(context);
+        }
+    }
+    else{
+        NSLog(@"UIGraphics Context not available");
+    }
+
     UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -438,7 +486,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    //[navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+    [navController lockCurrentOrientation:YES];
     
     MobileECT *mobileECTCoreData = [self getOrCreateMobileECTInfo];
     
@@ -459,7 +508,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     mobileECTCoreData.isFirstLoad = NO;
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    [navController unlockInterfaceOrientation];
+    [navController lockCurrentOrientation:NO];
     
     [self.mobileECTView setHidden:YES];
     [self.navigationController setToolbarHidden:NO animated:YES];

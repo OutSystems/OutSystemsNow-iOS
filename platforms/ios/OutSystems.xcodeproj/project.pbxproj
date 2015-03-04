@@ -39,6 +39,10 @@
 		592FA9691900209B00458A51 /* icon-apps.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9671900209B00458A51 /* icon-apps.png */; };
 		592FA96A1900209B00458A51 /* icon-cog.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9681900209B00458A51 /* icon-cog.png */; };
 		594C6B7A195B35FE004129C8 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594C6B79195B35FE004129C8 /* Crashlytics.framework */; };
+		5953F9D41AA715C4007282A0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597839581A714612006CA4E5 /* SystemConfiguration.framework */; };
+		5953F9D51AA715CE007282A0 /* OfflineSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5978395B1A71467E006CA4E5 /* OfflineSupportController.m */; };
+		5953F9D61AA715D8007282A0 /* LoginApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 59783A951A7146D9006CA4E5 /* LoginApplication.m */; };
+		5953F9D71AA7163F007282A0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 597839551A714575006CA4E5 /* Reachability.m */; };
 		595646D8190FBE4C00C1D583 /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
 		595646D9190FBE4C00C1D583 /* splash_768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D5190FBE4C00C1D583 /* splash_768x1024.png */; };
 		595646DA190FBE4C00C1D583 /* splash_1024x768.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D6190FBE4C00C1D583 /* splash_1024x768.png */; };
@@ -660,6 +664,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5953F9D41AA715C4007282A0 /* SystemConfiguration.framework in Frameworks */,
 				59DB9AA11A1A55FA00FC3E35 /* CoreVideo.framework in Frameworks */,
 				59DB9AA01A1A55F300FC3E35 /* AVFoundation.framework in Frameworks */,
 				59665FC81A091AEB0049F8CD /* CoreImage.framework in Frameworks */,
@@ -1563,6 +1568,7 @@
 				599C2DC11988067700BFF05D /* CDVFile.m in Sources */,
 				597A5234195C9A6400F15480 /* Infrastructure.m in Sources */,
 				597902E419EC2C1700440628 /* DeepLink.m in Sources */,
+				5953F9D51AA715CE007282A0 /* OfflineSupportController.m in Sources */,
 				597A5235195C9A6400F15480 /* CDVLogger.m in Sources */,
 				59665FCE1A0937D00049F8CD /* OSNavigationController.m in Sources */,
 				597A5236195C9A6400F15480 /* CDVContacts.m in Sources */,
@@ -1575,10 +1581,12 @@
 				597A523C195C9A6400F15480 /* CDVBattery.m in Sources */,
 				597902EA19ED579B00440628 /* DeepLinkController.m in Sources */,
 				597A523F195C9A6400F15480 /* CDVBarcodeScanner.mm in Sources */,
+				5953F9D61AA715D8007282A0 /* LoginApplication.m in Sources */,
 				597A5240195C9A6400F15480 /* CDVLoader.m in Sources */,
 				597A5241195C9A6400F15480 /* zxing-all-in-one.cpp in Sources */,
 				597A5243195C9A6400F15480 /* NoAnimationSegue.m in Sources */,
 				59EC8A3C19E3FF4400944672 /* CDVLocation.m in Sources */,
+				5953F9D71AA7163F007282A0 /* Reachability.m in Sources */,
 				597A5247195C9A6400F15480 /* Calendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1718,8 +1726,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1751,7 +1757,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "c8c8e2b1-e203-4569-872d-c12cf6b186c8";
+				PROVISIONING_PROFILE = "327e0d86-3efc-4b38-ad26-db0a3b34bfe9";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1771,8 +1777,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OutSystems/OutSystems-Prefix.pch";
@@ -1803,7 +1807,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "309a8a05-92fa-4c02-83b9-9e4dbec58f28";
+				PROVISIONING_PROFILE = "6e5cb2bb-cb36-418c-b4ad-d686b7b4fe91";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
 			};
@@ -1822,8 +1826,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1877,8 +1879,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1930,8 +1930,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1984,8 +1982,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					/Users/engineering/svn/Projects/MobileApp/OutSystemsMobileFrameworks/Builds,
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/OutSystemsMobileECT-dmkgtcbgvekzsjbxpvdjllbghhvo/Build/Intermediates/ArchiveIntermediates/OutSystemsMobileECT/IntermediateBuildFilesPath/UninstalledProducts",
 					"$(PROJECT_DIR)/OutSystems/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

@@ -13,12 +13,15 @@
 
 @interface OSNavigationController : UINavigationController
 
+ @property BOOL orientationLocked;
  @property BOOL autorotationEnable;
  @property UIInterfaceOrientation lockedInterfaceOrientation;
 
 -(void)lockInterfaceToOrientation:(UIInterfaceOrientation)toOrientation;
 
 -(void)unlockInterfaceOrientation;
+
+-(void)lockCurrentOrientation:(BOOL)lock;
 
 @end
 

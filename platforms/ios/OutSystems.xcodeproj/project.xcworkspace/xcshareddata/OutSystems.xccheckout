@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A83616B2-46CF-41B7-AE25-AEC39D482F32</string>
+	<string>0836C761-6D6F-4CE0-9468-F0E82D1F7F1B</string>
 	<key>IDESourceControlProjectName</key>
 	<string>OutSystems</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -20,7 +20,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>17138862-0172-114e-a870-43eb0320d916++6215</key>
-		<string>../../../../../../svn/Projects</string>
+		<string>../../../../../svn/Projects</string>
 		<key>C344D03D0188E3AF6E243D1983A9670D2637773F</key>
 		<string>../../../..</string>
 	</dict>

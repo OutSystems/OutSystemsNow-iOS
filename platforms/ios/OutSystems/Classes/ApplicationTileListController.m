@@ -75,10 +75,12 @@
 -(void)viewWillDisappear:(BOOL)animated{
     _isViewVisible = NO;
     [_navBarAlert hideAlert:NO];
+    [super viewWillDisappear:animated];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     [_navBarAlert hideAlert:NO];
+    [super viewDidDisappear:animated];
 }
 
 -(BOOL)prefersStatusBarHidden {
