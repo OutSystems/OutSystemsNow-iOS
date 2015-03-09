@@ -160,10 +160,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     }
     
     if (networkAvailable || [OfflineSupportController isNewSession]){
-        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
     }
     else{
-        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10];
+        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
     }
     
     
@@ -556,14 +556,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
 # pragma mark - Offline Support
 -(void)showNetworkErrorView:(BOOL)show{
+
+    [_networkErrorView setHidden:!show];
     
-    if(!_networkErrorView.hidden && show){
+    if(show){
         [self errorRetryActionFailed];
-    }
-    else{
-        [_errorActivityIndicator stopAnimating];
-        [_errorRetryButton setHidden:NO];
-        [_networkErrorView setHidden:!show];
     }
     
 }
@@ -586,8 +583,12 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [_errorActivityIndicator startAnimating];
     [_errorRetryButton setHidden:YES];
     
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(reloadWebView) userInfo:nil repeats:NO];
+}
+
+-(void)reloadWebView{
+    
     [OfflineSupportController retryWebViewAction:_applicationBrowser.webView failedURL:_failedURL forApplication:_application andInfrastructure:_infrastructure];
- 
 }
 
 - (IBAction)backToApplicationsAction:(id)sender {
