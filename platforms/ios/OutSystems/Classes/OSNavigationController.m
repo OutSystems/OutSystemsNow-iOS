@@ -50,7 +50,7 @@
 #pragma mark - OS Methods
 
 -(void)lockInterfaceToOrientation:(UIInterfaceOrientation)toOrientation{
-    NSLog(@"Lock Interface to Orientation: %d",toOrientation);
+    NSLog(@"Lock Interface to Orientation: %ld",toOrientation);
     self.autorotationEnable = NO;
     self.lockedInterfaceOrientation = toOrientation;
 }

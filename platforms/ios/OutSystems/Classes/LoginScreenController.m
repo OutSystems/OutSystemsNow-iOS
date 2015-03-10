@@ -105,8 +105,6 @@
     
     if(iPhoneDevice){
         // Lock screen to Portrait orientation
-        [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
-
         OSNavigationController *navController = (OSNavigationController*)self.navigationController;
         [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
     }
