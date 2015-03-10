@@ -232,8 +232,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    // To stop all embedded videos that are playing when the view disappears, we need to reset the webview.
-    // Not working: [_applicationBrowser.webView stringByEvaluatingJavaScriptFromString:@"document.open();document.close()"];
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 
     for (CALayer* layer in [self.view.layer sublayers])
@@ -246,7 +245,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     self.webViewStaticImageLoading = nil;
     self.failedURL = nil;
-    self.originalToolbarItems = nil;
     
     [super viewWillDisappear:animated];
 }
