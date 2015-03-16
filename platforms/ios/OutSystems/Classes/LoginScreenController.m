@@ -142,6 +142,12 @@
     [self OnLoginClick:_loginButton];
 }
 
+-(NSString *) addPercentEscapesAndReplaceAmpersand: (NSString *) stringToEncode
+{
+    NSString *encodedString = [stringToEncode stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    return [encodedString stringByReplacingOccurrencesOfString: @"&" withString: @"%26"];
+}
+
 - (IBAction)OnLoginClick:(UIButton *)sender {
     
     [self.view endEditing:YES];
@@ -175,8 +181,8 @@
     NSString *deviceUDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
     
     NSString *post = [NSString stringWithFormat:@"username=%@&password=%@&devicetype=%@&screenWidth=%d&screenHeight=%d&deviceHwId=%@",
-                      [_usernameInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                      [_passwordInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                      [self addPercentEscapesAndReplaceAmpersand:_usernameInput.text],
+                      [self addPercentEscapesAndReplaceAmpersand:_passwordInput.text],
                       @"ios",
                       (int)screenBounds.size.width,
                       (int)screenBounds.size.height,
