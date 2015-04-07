@@ -139,12 +139,21 @@ static NSData * _loginResponseData;
         }
     }
     
+    if(!infrastructure.hostname){
+        previousSession = nil;
+        return;
+    }
     
     [previousSession setObject:infrastructure.hostname forKey:@"hostname"];
-    [previousSession setObject:infrastructure.name forKey:@"name"];
-
     [previousSession setObject:[NSNumber numberWithBool:infrastructure.isJavaServer] forKey:@"isJavaServer"];
-    [previousSession setObject:infrastructure.lastUsed forKey:@"lastUsed"];
+
+    if(infrastructure.name)
+        [previousSession setObject:infrastructure.name forKey:@"name"];
+    else
+        [previousSession setObject:infrastructure.hostname forKey:@"name"];
+    
+    if (infrastructure.lastUsed)
+        [previousSession setObject:infrastructure.lastUsed forKey:@"lastUsed"];
     
     if(infrastructure.username)
         [previousSession setObject:infrastructure.username forKey:@"username"];
