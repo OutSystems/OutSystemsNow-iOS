@@ -448,4 +448,11 @@
     [_navBarAlert navigationBarHeightChange:self.navigationController.navigationBar.frame.size.height];
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+    
+}
+
 @end

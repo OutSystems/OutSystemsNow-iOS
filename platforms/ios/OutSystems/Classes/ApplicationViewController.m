@@ -593,4 +593,18 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [self navAppList:sender];
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                 name:@"CDVPluginResetNotification"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                 name:@"CDVPageDidLoadNotification"
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                 name:@"CDVPageDidFailLoadNotification"
+                                               object:nil];
+}
+
 @end
