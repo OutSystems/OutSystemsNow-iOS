@@ -5,36 +5,36 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>1C5FED38-B9BE-431E-9D0D-6FCB04CBB340</string>
+	<string>7F88A647-EB1B-4A3A-98A4-ABC51846E8FD</string>
 	<key>IDESourceControlProjectName</key>
 	<string>OutSystems</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C344D03D0188E3AF6E243D1983A9670D2637773F</key>
-		<string>https://github.com/OutSystems/private-OutSystemsNow-iOS</string>
+		<key>0D6283A18F066733D61A0569FDFCD5E0822F8C75</key>
+		<string>https://github.com/OutSystems/OutSystemsNow-iOS</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>platforms/ios/OutSystems.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C344D03D0188E3AF6E243D1983A9670D2637773F</key>
+		<key>0D6283A18F066733D61A0569FDFCD5E0822F8C75</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/OutSystems/private-OutSystemsNow-iOS</string>
+	<string>https://github.com/OutSystems/OutSystemsNow-iOS</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C344D03D0188E3AF6E243D1983A9670D2637773F</string>
+	<string>0D6283A18F066733D61A0569FDFCD5E0822F8C75</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C344D03D0188E3AF6E243D1983A9670D2637773F</string>
+			<string>0D6283A18F066733D61A0569FDFCD5E0822F8C75</string>
 			<key>IDESourceControlWCCName</key>
-			<string>OutSystemsNow</string>
+			<string>OutSystemsNow-iOS</string>
 		</dict>
 	</array>
 </dict>
