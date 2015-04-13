@@ -19,7 +19,7 @@
 }
 
 + (NSString *) hostname {
-    return @"apps.outsystems.net";
+    return @"your.demo.server";
 }
 
 @end

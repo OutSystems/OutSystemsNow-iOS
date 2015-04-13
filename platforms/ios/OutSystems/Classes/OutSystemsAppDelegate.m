@@ -7,9 +7,7 @@
 //
 
 #import "OutSystemsAppDelegate.h"
-#import <Crashlytics/Crashlytics.h>
 
-#import <Pushwoosh/PushNotificationManager.h>
 #import "HubAppViewController.h"
 
 @implementation OutSystemsAppDelegate
@@ -65,7 +63,6 @@ static DeepLink *deepLinkSettings;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Crashlytics startWithAPIKey:@"11c9a3fd4b8f4cc2bf2168f52dc782ec2038b337"];
     
     [application setStatusBarHidden:NO];
     [application setStatusBarStyle:UIStatusBarStyleLightContent];

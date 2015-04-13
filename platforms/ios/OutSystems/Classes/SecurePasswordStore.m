@@ -88,13 +88,13 @@
 
 - (id)transformedValue:(id)value {
     if([value isKindOfClass:[NSString class]]){
-        return [self AES256EncryptWithKey:@"ZKZ#sCH#)u#4rUh)C-Iaf#an-WJLQOHx" textToEncrypt:value];
+        return [self AES256EncryptWithKey:@"Jx1ylutILXGld0DDFsgdWeRk7NCLqt1F" textToEncrypt:value];
     }
     return nil;
 }
 
 - (id)reverseTransformedValue:(id)value {
-    return [self AES256DecryptWithKey:@"ZKZ#sCH#)u#4rUh)C-Iaf#an-WJLQOHx" textToDecrypt:value];
+    return [self AES256DecryptWithKey:@"Jx1ylutILXGld0DDFsgdWeRk7NCLqt1F" textToDecrypt:value];
 }
 
 @end

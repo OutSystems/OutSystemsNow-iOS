@@ -56,8 +56,6 @@
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
-	<key>Pushwoosh_APPID</key>
-	<string>FDFED-41E3B</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>

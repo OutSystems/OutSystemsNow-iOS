@@ -32,7 +32,6 @@
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
-	<key>Pushwoosh_APPID</key>
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
