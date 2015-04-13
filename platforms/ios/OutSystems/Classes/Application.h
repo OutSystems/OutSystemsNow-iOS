@@ -19,5 +19,7 @@
 @property BOOL feedbackActive;
 
 + (Application *) initWithJSON:(NSDictionary *) appJsonData forHost:(NSString *) hostname;
++(Application *) initWithDictionary:(NSDictionary *) appData;
 
+-(NSDictionary*) toDictionary;
 @end

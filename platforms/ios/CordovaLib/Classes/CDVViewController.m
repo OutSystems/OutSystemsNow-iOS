@@ -648,6 +648,10 @@
     [CDVUserAgentUtil releaseLock:&_userAgentLockToken];
 
     NSLog(@"Failed to load webpage with error: %@", [error localizedDescription]);
+    
+    // OutSystems - Offline Support
+    NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPageDidFailLoadNotification object:self.webView userInfo:dict]];
 }
 
 - (BOOL)webView:(UIWebView*)theWebView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType

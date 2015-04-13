@@ -12,6 +12,7 @@
 #import "OutSystemsAppDelegate.h"
 #import "ApplicationViewController.h"
 #import "OSNavigationController.h"
+#import "OfflineSupportController.h"
 
 @interface LoginScreenController ()
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginActivityIndicator;
@@ -59,8 +60,6 @@
     self.passwordInput.text = self.infrastructure.password;
     self.infrastructureLabel.text = self.infrastructure.name;
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"OShub_bg-red.jpg"]]];
-    
     self.usernameInput.layer.cornerRadius = 5;
     self.passwordInput.layer.cornerRadius = 5;
     self.loginButton.layer.cornerRadius = 5;
@@ -90,7 +89,7 @@
         self.navigationController.navigationBar.hidden = NO;
     }
     
-    
+
     // check if deep link is valid
     if(self.deepLinkController && [self.deepLinkController hasValidSettings]){
         // proceed according to the deep link operation
@@ -104,8 +103,6 @@
     
     if(iPhoneDevice){
         // Lock screen to Portrait orientation
-        [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
-
         OSNavigationController *navController = (OSNavigationController*)self.navigationController;
         [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
     }
@@ -143,9 +140,19 @@
     [self OnLoginClick:_loginButton];
 }
 
+-(NSString *) addPercentEscapesAndReplaceAmpersand: (NSString *) stringToEncode
+{
+    NSString *encodedString = [stringToEncode stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    return [encodedString stringByReplacingOccurrencesOfString: @"&" withString: @"%26"];
+}
+
 - (IBAction)OnLoginClick:(UIButton *)sender {
     
     [self.view endEditing:YES];
+    
+    // Offline Support
+    [OfflineSupportController prepareForLogin];
+    
     [_loginActivityIndicator startAnimating];
     [_errorMessageLabel setHidden:YES];
     [_loginButton setHidden:YES];
@@ -162,18 +169,18 @@
     if (![_infrastructure.managedObjectContext save:&error]) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     }
-
+    
     int timeoutInSeconds = 30;
     
     NSURL *myURL = [NSURL URLWithString:[_infrastructure getHostnameForService:@"login"]];
-
+    
     _loginResponseData = nil;
     
     NSString *deviceUDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
     
     NSString *post = [NSString stringWithFormat:@"username=%@&password=%@&devicetype=%@&screenWidth=%d&screenHeight=%d&deviceHwId=%@",
-                      [_usernameInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                      [_passwordInput.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                      [self addPercentEscapesAndReplaceAmpersand:_usernameInput.text],
+                      [self addPercentEscapesAndReplaceAmpersand:_passwordInput.text],
                       @"ios",
                       (int)screenBounds.size.width,
                       (int)screenBounds.size.height,
@@ -198,8 +205,9 @@
     
     // set the url to register the device push notifications token (in case it is received later)
     [OutSystemsAppDelegate setURLForPushNotificationTokenRegistration:[NSString stringWithFormat:@"%@?&deviceHwId=%@&device=",
-                                                  [_infrastructure getHostnameForService:@"registertoken"],
-                                                  deviceUDID]];
+                                                                       [_infrastructure getHostnameForService:@"registertoken"],
+                                                                       deviceUDID]];
+    
 
 }
 
@@ -241,11 +249,38 @@
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     
-    _errorMessageLabel.text = error.localizedDescription;
+    BOOL offlineSupport = NO;
     
-    [_loginActivityIndicator stopAnimating];
-    [_errorMessageLabel setHidden:NO];
-    [_loginButton setHidden:NO];
+    if(offlineSupport){
+        // Get Login Applications
+        self.applicationList = [OfflineSupportController getLoginApplications:_infrastructure];
+        
+        // Open Applications
+        
+        //check if the view is still active - user could have pressed back
+        if(self.view.window != nil) {
+            // check if only one app
+            if([self.applicationList count] == 1){
+                if(self.navigationController.visibleViewController == self)
+                    [self performSegueWithIdentifier:@"GoToSingleApplicationSegue" sender:self];
+            }
+            else {
+                if(self.navigationController.visibleViewController == self)
+                    [self performSegueWithIdentifier:@"GoToAppListSegue" sender:self];
+            }
+        }
+        
+    }
+    else{
+
+        _errorMessageLabel.text = error.localizedDescription;
+        
+        [_loginActivityIndicator stopAnimating];
+        [_errorMessageLabel setHidden:NO];
+        [_loginButton setHidden:NO];
+        
+    }
+
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -286,6 +321,17 @@
         // get list of applications
         self.applicationList = [response valueForKey:@"applications"];
         
+        // Store login applications
+        [OfflineSupportController addApplications:_applicationList forInfrastructure:_infrastructure];
+        
+        // Offline Support
+        // Check current session
+        [OfflineSupportController checkCurrentSession:_infrastructure];
+        
+        // Clear cache if needed
+        [OfflineSupportController clearCacheIfNeeded];
+
+        
         //check if the view is still active - user could have pressed back
         if(self.view.window != nil) {
             // check if only one app
@@ -299,6 +345,8 @@
             }
         }
 
+   
+        
     } else {
         [_loginActivityIndicator stopAnimating];
         [_errorMessageLabel setHidden:NO];
@@ -321,6 +369,9 @@
         [self.view.layer addAnimation:anim forKey:nil ] ;
     }
 }
+
+
+
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     

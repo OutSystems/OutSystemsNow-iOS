@@ -20,6 +20,7 @@
 
 -(void)prepareForViewDidLoad;
 -(void)prepareForViewWillAppear;
+-(void)prepareForUnload;
 
 -(BOOL)isECTFeatureAvailable;
 

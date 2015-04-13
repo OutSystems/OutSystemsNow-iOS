@@ -18,6 +18,7 @@
 -(id)init{
     self = [super init];
     if(self){
+        self.orientationLocked = NO;
         self.autorotationEnable = YES;
         self.lockedInterfaceOrientation = UIInterfaceOrientationMaskAll;
     }
@@ -25,7 +26,7 @@
 }
 
 -(BOOL) shouldAutorotate {
-    return self.autorotationEnable;
+    return !self.orientationLocked && self.autorotationEnable;
 }
 
 
@@ -49,13 +50,20 @@
 #pragma mark - OS Methods
 
 -(void)lockInterfaceToOrientation:(UIInterfaceOrientation)toOrientation{
+    NSLog(@"Lock Interface to Orientation: %ld",toOrientation);
     self.autorotationEnable = NO;
     self.lockedInterfaceOrientation = toOrientation;
 }
 
 -(void)unlockInterfaceOrientation{
+    NSLog(@"Unlock Interface Orientation");
     self.autorotationEnable = YES;
     self.lockedInterfaceOrientation = UIInterfaceOrientationMaskAll;
+}
+
+-(void)lockCurrentOrientation:(BOOL)lock{
+    NSLog(@"Lock Interface to Current Orientation: %d",lock);
+    self.orientationLocked = lock;
 }
 
 @end

@@ -13,6 +13,9 @@
 #import "DemoInfrastructure.h"
 #import "TTTAttributedLabel.h"
 #import "OSNavigationController.h"
+#import "OSNavigationBarAlert.h"
+#import "OfflineSupportController.h"
+#import "Reachability.h"
 
 @interface ApplicationTileListController ()
 
@@ -23,7 +26,11 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) NSData *responseData;
 
+@property (strong,nonatomic) OSNavigationBarAlert *navBarAlert;
+@property (strong, nonatomic) IBOutlet UIView *applicationListView;
 
+@property (strong, nonatomic) Reachability *reachability;
+@property BOOL isViewVisible;
 @end
 
 @implementation ApplicationTileListController
@@ -42,6 +49,38 @@
     [super viewDidLoad];
     
     self.applicationsTileList.hidden = YES;
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+     
+     [[NSNotificationCenter defaultCenter] addObserver:self
+     selector:@selector(handleNetworkChange:)
+     name:kReachabilityChangedNotification object:nil];
+     
+    _navBarAlert = [[OSNavigationBarAlert alloc] init];
+    
+    [self.navigationController.view addSubview:_navBarAlert];
+    
+    [_navBarAlert createView];
+    
+    _reachability = [Reachability reachabilityForInternetConnection];
+    [_reachability startNotifier];
+    
+    _isViewVisible = NO;
+    
+    _imageCache = [[NSCache alloc] init];
+    [_imageCache setName:@"imageCache"];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    _isViewVisible = NO;
+    [_navBarAlert hideAlert:NO];
+    [super viewWillDisappear:animated];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [_navBarAlert hideAlert:NO];
+    [super viewDidDisappear:animated];
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -160,10 +199,20 @@
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController unlockInterfaceOrientation];
+
+    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
+    if(networkAvailable || self.isDemoEnvironment){
+        [self hideOfflineMessage:NO];
+    }
+    else{
+        [self showOfflineMessage:NO];
+    }
 }
 
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    _isViewVisible = YES;
     
     if(self.isDemoEnvironment && self.applicationList.count == 0) {
         [self reloadApplicationList];
@@ -177,13 +226,12 @@
         }
     }
     
-    self.imageCache = [[NSCache alloc] init];
-    
     // check if deep link is valid
     if(self.deepLinkController && [self.deepLinkController hasValidSettings]){
         // proceed according to the deep link operation
         [self.deepLinkController resolveOperation:self];
     }
+        
 }
 
 - (void)didReceiveMemoryWarning
@@ -354,6 +402,57 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{    
     [self performSegueWithIdentifier:@"OpenApplicationSegue" sender:self];
+}
+
+
+#pragma mark - Navigation Bar Alert
+-(void)showNavigationBarAlert:(NSString*)message animated:(BOOL)animated{
+    [_navBarAlert showAlert:message animated:animated];
+}
+
+-(void)hideNavigationBarAlert:(BOOL)animated{
+    [_navBarAlert hideAlert:animated];
+}
+
+
+#pragma mark - Offline Support
+
+- (void)handleNetworkChange:(NSNotification *)notice{
+    NetworkStatus status = [_reachability currentReachabilityStatus];
+    
+        if (status == NotReachable) {
+            NSLog(@"Network status: Offline");
+            if(_isViewVisible)
+                [self showOfflineMessage:YES];
+            
+        } else {
+            NSLog(@"Network status: Online");
+            if(_isViewVisible)
+                [self hideOfflineMessage:YES];
+        }
+    
+}
+
+-(void)showOfflineMessage:(BOOL)animated{
+    [self showNavigationBarAlert:@"Working Offline" animated:animated];
+
+}
+
+-(void)hideOfflineMessage:(BOOL)animated{
+    [self hideNavigationBarAlert:animated];
+}
+
+
+// Handle device orientation changes
+- (void)deviceOrientationDidChange: (NSNotification *)notification{
+    [_navBarAlert navigationBarHeightChange:self.navigationController.navigationBar.frame.size.height];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
+    
 }
 
 @end

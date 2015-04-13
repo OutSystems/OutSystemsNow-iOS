@@ -13,6 +13,8 @@
 #import "OutSystemsAppDelegate.h"
 #import "OSNavigationController.h"
 #import "DemoInfrastructure.h"
+#import "OfflineSupportController.h"
+#import "ApplicationViewController.h"
 
 @interface HubAppViewController ()
 
@@ -63,34 +65,86 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     
     UIStoryboard *storyboard = self.storyboard;
-    LoginScreenController *targetViewControler = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];
     
     // Disable iOS 7 back gesture
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
-   
+    
+    
     // Get Infrastructure settings
     [self getInfrastructureSettings];
     
+    // Offline Support
+    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
+    if(!networkAvailable && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO && _infrastructure){
+        
+        // redirect to Applications List
+        NSArray *applicationList = [OfflineSupportController getLoginApplications:_infrastructure];
+        
+        NSMutableArray *appsList = [[NSMutableArray alloc] init];
+        
+        for(Application *app in applicationList){
+            NSDictionary *dict = [app toDictionary];
+            [appsList addObject:dict];
+        }
+        
+        
+        [OutSystemsAppDelegate setAutoLoginPerformed];
+        
+            
+            UINavigationController *navControler = self.navigationController;
+            
+            // check if only one app
+            if([appsList count] == 1){
+                ApplicationViewController *appVC = [storyboard instantiateViewControllerWithIdentifier:@"ApplicationViewController"];
+                appVC.infrastructure = _infrastructure;
+                appVC.isSingleApplication = YES;
+                appVC.application = [Application initWithJSON: appsList[0] forHost:_infrastructure.hostname];
+                
+                if(navControler) {
+                    [navControler pushViewController:appVC animated:NO];
+                }
+                
+            }
+            else {
+                ApplicationTileListController *appList = [storyboard instantiateViewControllerWithIdentifier:@"ApplicationTileList"];
+                appList.infrastructure= _infrastructure;
+                appList.isDemoEnvironment = NO;
+                appList.applicationList = appsList;
+                
+                if(navControler) {
+                    [navControler pushViewController:appList animated:NO];
+                }
+            }
+            
+            return;
+        
+        
+    }
+    
+    
+
+    LoginScreenController *targetViewControler = [storyboard instantiateViewControllerWithIdentifier:@"LoginScreen"];    
     targetViewControler.infrastructureReadonly = self.infrastructureReadonly;
     targetViewControler.loginReadonly = self.loginReadonly;
     
-    
+
     // check if deep link is valid
     if([self.deepLinkController hasValidSettings]){
+    
         // proceed according to the deep link operation
-       [self.deepLinkController resolveOperation:self];
-
+        [self.deepLinkController resolveOperation:self];
+            
     }
     else{
         // check if we have the login and password for that infrastructure or we're using a default infrastructure
-        if(([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0) || [_defaultEnvironment length] > 0) {
-
+        if(([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0) ||[_defaultEnvironment length] > 0) {
+            
             // execute the login automatically if not done yet
             if( [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
                 UINavigationController *navControler = self.navigationController;
-
+                    
                 if(navControler) {
                     targetViewControler.infrastructure = self.infrastructure;
                     targetViewControler.deepLinkController = self.deepLinkController;
@@ -99,6 +153,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
             }
         }
     }
+    
     
     bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
     
@@ -112,6 +167,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 - (void)getInfrastructureSettings{
     self.infrastructureReadonly = NO;
     self.loginReadonly = NO;
+    
     
     // MDM specific settings
     if(_defaultEnvironment && [_defaultEnvironment length] > 0) {
@@ -201,9 +257,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     [self.tryDemoButton.layer setBorderWidth:0.5];
     [self.tryDemoButton.layer setBorderColor:[UIColor whiteColor].CGColor];
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"OShub_bg-red.jpg"]]];
-    
+        
     self.goButton.layer.cornerRadius = 5;
     self.tryDemoButton.layer.cornerRadius = 3;
     self.environmentHostname.layer.cornerRadius = 5;
