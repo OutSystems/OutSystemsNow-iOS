@@ -60,8 +60,6 @@
     self.passwordInput.text = self.infrastructure.password;
     self.infrastructureLabel.text = self.infrastructure.name;
     
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"OShub_bg-red.jpg"]]];
-    
     self.usernameInput.layer.cornerRadius = 5;
     self.passwordInput.layer.cornerRadius = 5;
     self.loginButton.layer.cornerRadius = 5;

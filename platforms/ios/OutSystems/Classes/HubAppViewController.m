@@ -257,9 +257,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     [self.tryDemoButton.layer setBorderWidth:0.5];
     [self.tryDemoButton.layer setBorderColor:[UIColor whiteColor].CGColor];
-    
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"OShub_bg-red.jpg"]]];
-    
+        
     self.goButton.layer.cornerRadius = 5;
     self.tryDemoButton.layer.cornerRadius = 3;
     self.environmentHostname.layer.cornerRadius = 5;
