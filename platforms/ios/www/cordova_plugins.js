@@ -120,17 +120,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/nl.x-services.plugins.calendar/www/Calendar.js",
-        "id": "nl.x-services.plugins.calendar.Calendar",
-        "clobbers": [
-            "Calendar"
-        ]
-    },
-    {
-        "file": "plugins/nl.x-services.plugins.calendar/test/tests.js",
-        "id": "nl.x-services.plugins.calendar.tests"
-    },
-    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -314,6 +303,17 @@ module.exports = [
         "clobbers": [
             "navigator.geolocation"
         ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.calendar/www/Calendar.js",
+        "id": "nl.x-services.plugins.calendar.Calendar",
+        "clobbers": [
+            "Calendar"
+        ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.calendar/test/tests.js",
+        "id": "nl.x-services.plugins.calendar.tests"
     }
 ];
 module.exports.metadata = 
@@ -326,10 +326,10 @@ module.exports.metadata =
     "org.apache.cordova.battery-status": "0.2.7",
     "com.phonegap.plugins.barcodescanner": "2.0.0",
     "com.outsystems.loader": "1.0.0",
-    "nl.x-services.plugins.calendar": "4.2.5",
     "org.apache.cordova.file": "1.1.0",
     "org.apache.cordova.camera": "0.3.4-dev",
-    "org.apache.cordova.geolocation": "0.3.10"
+    "org.apache.cordova.geolocation": "0.3.10",
+    "nl.x-services.plugins.calendar": "4.3.1"
 }
 // BOTTOM OF METADATA
 });
