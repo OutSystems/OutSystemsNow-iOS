@@ -275,6 +275,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
     
     self.errorMessageLabel.linkAttributes = linkAttributes;
+    self.errorMessageLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    self.errorMessageLabel.delegate = self;
     self.errorMessageLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
     
     // Add Notification Center observer to be alerted of any change to NSUserDefaults.
@@ -292,7 +294,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     // hide the keyboard when the user clicks outside the hostname textbox
     // set the tap gesture recognizer
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    
+    singleTap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:singleTap];
     
 }
@@ -640,9 +642,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
             
             // add custom link
             NSRange r = [self.errorMessageLabel.text rangeOfString:@"check here"];
-            [self.errorMessageLabel addLinkToURL:[NSURL URLWithString:@"https://labs.outsystems.net/Native"] withRange:r];
+            [self.errorMessageLabel addLinkToURL:[NSURL URLWithString:@"https://labs.outsystems.net/OutSystemsNowDocs"] withRange:r];
             [self.errorMessageLabel setUserInteractionEnabled:YES];
-            self.errorMessageLabel.delegate = self;
             
             [_errorMessageLabel setHidden:NO];
         }
@@ -666,6 +667,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     [[UIApplication sharedApplication] openURL:url];
 }
+
 
 - (IBAction)gotoOutSystems:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.outsystems.com"]];
