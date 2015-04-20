@@ -53,7 +53,10 @@ static NSData * _loginResponseData;
     NSString *username = infrastructure.username;
     
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"hostname == %@ && username == %@", hostname, username]];
-    NSMutableArray *loginApplications = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    NSMutableArray *loginApplications = nil;
+    
+    if(managedObjectContext)
+        loginApplications = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
     for (LoginApplication *loginApp in loginApplications){
         [managedObjectContext deleteObject:loginApp];
@@ -80,8 +83,10 @@ static NSData * _loginResponseData;
     NSString *username = infrastructure.username;
     
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"hostname == %@ && username == %@", hostname, username]];
-    NSMutableArray *loginApplications = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    NSMutableArray *loginApplications = nil;
     
+    if(managedObjectContext)
+        loginApplications = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
     NSMutableArray *applications = [NSMutableArray array];
     

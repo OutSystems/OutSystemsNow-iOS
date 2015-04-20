@@ -230,12 +230,17 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     // Fetch the environments from persistent data store
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Infrastructure"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastUsed" ascending:NO];;
+    NSMutableArray *environmentsArray = nil;
     
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    if(managedObjectContext){
     
-    NSMutableArray *environmentsArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Infrastructure"];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastUsed" ascending:NO];;
+    
+        [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    
+        environmentsArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    }
     
     return environmentsArray;
 }
@@ -486,7 +491,10 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"hostname == %@", hostname]];
-    NSMutableArray *environments = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    NSMutableArray *environments = nil;
+    
+    if(managedObjectContext)
+        environments = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
     if([environments count] > 0) {
         infrastructure = [environments objectAtIndex:0];
