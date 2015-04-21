@@ -211,7 +211,13 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         self.mobileECTController = [[OSMobileECTController alloc] initWithSuperView:self.mobileECTView
                                                                          andWebView:self.applicationBrowser.webView
                                                                         forHostname:self.infrastructure.hostname ];
+        
+        [self.mobileECTController addOnExitEvent:self withSelector:@selector(onExitECT)];
+        
         [self.mobileECTController prepareForViewDidLoad];
+        
+        [self.mobileECTController isECTFeatureAvailable];
+        
     }
         
     
@@ -484,7 +490,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    //[navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
     [navController lockCurrentOrientation:YES];
     
     MobileECT *mobileECTCoreData = [self getOrCreateMobileECTInfo];
