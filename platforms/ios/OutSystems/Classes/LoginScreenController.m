@@ -24,7 +24,7 @@
 
 @property (weak, nonatomic) NSUserDefaults *userSettings;
 
-@property (weak, nonatomic) NSData *loginResponseData;
+@property (strong, nonatomic) NSData *loginResponseData;
 @property (weak, nonatomic) IBOutlet UILabel *applicationsAtLabel;
 
 @property NSArray* trustedHosts;
@@ -240,7 +240,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 
-    _loginResponseData = data;
+    _loginResponseData = [data copy];
     NSLog(@"received: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
 }
@@ -250,6 +250,7 @@
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     
     BOOL offlineSupport = NO;
+    _loginResponseData = nil;
     
     if(offlineSupport){
         // Get Login Applications
@@ -299,6 +300,8 @@
         if([[response objectForKey:@"success"] isKindOfClass:[NSNumber class]]) {
             success = [[response objectForKey:@"success"] boolValue];
         }
+        
+        _loginResponseData = nil;
     }
     
     // check OutSystemsNowService compatibility
