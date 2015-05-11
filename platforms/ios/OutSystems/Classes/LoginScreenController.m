@@ -104,7 +104,7 @@
     if(iPhoneDevice){
         // Lock screen to Portrait orientation
         OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-        [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+        [navController lockInterfaceToOrientation:UIInterfaceOrientationMaskPortrait];
     }
 }
 

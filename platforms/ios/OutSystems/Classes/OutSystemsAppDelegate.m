@@ -70,6 +70,7 @@ static DeepLink *deepLinkSettings;
     [application setStatusBarHidden:NO];
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    
     //-- Set Notification
     if ([[UIApplication sharedApplication]respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
     {
@@ -93,6 +94,10 @@ static DeepLink *deepLinkSettings;
     // Enable persistent cache
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"WebKitStoreWebDataForBackup"];
     
+    
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+
     // Override point for customization after application launch.
     return YES;
 }

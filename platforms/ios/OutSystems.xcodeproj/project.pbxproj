@@ -20,6 +20,8 @@
 		35BA012C35E64503809FA2A7 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 453857D14EA64F2A93AB3719 /* CDVLogger.m */; };
 		4BA82E6B0F784F78BA94489E /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC16D9FA9BC14839B3149739 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		511C0E45D40E4D0FB33991D1 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD1D8B90184C9F9A0CEECC /* Calendar.m */; };
+		590C2E5A1B00FF7B0018A053 /* OSProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 590C2E591B00FF7B0018A053 /* OSProgressBar.m */; };
+		590C2E5B1B0111BC0018A053 /* OSProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 590C2E591B00FF7B0018A053 /* OSProgressBar.m */; };
 		590EA49318F6FF6500EB317D /* ipad_bg-red_@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 590EA48D18F6FF6500EB317D /* ipad_bg-red_@2x.jpg */; };
 		590EA49418F6FF6500EB317D /* ipad_bg-red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 590EA48E18F6FF6500EB317D /* ipad_bg-red.jpg */; };
 		590EA4BD18F8283200EB317D /* bg-red_1024x768_@2x_ipad-retina.png in Resources */ = {isa = PBXBuildFile; fileRef = 590EA4B118F8283200EB317D /* bg-red_1024x768_@2x_ipad-retina.png */; };
@@ -467,6 +469,9 @@
 		453857D14EA64F2A93AB3719 /* CDVLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVLogger.m; path = org.apache.cordova.console/CDVLogger.m; sourceTree = "<group>"; };
 		465A440594214B8B85AB481C /* zxing-all-in-one.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "zxing-all-in-one.h"; path = "com.phonegap.plugins.barcodescanner/zxing-all-in-one.h"; sourceTree = "<group>"; };
 		4966DF0FBE1344AFB81FA98D /* CDVCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVCamera.h; path = org.apache.cordova.camera/CDVCamera.h; sourceTree = "<group>"; };
+		590C2E561B00BFE30018A053 /* OutAppData - Mobile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "OutAppData - Mobile.xcdatamodel"; sourceTree = "<group>"; };
+		590C2E581B00FF7B0018A053 /* OSProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSProgressBar.h; sourceTree = "<group>"; };
+		590C2E591B00FF7B0018A053 /* OSProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSProgressBar.m; sourceTree = "<group>"; };
 		590EA48D18F6FF6500EB317D /* ipad_bg-red_@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ipad_bg-red_@2x.jpg"; sourceTree = "<group>"; };
 		590EA48E18F6FF6500EB317D /* ipad_bg-red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ipad_bg-red.jpg"; sourceTree = "<group>"; };
 		590EA4B118F8283200EB317D /* bg-red_1024x768_@2x_ipad-retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-red_1024x768_@2x_ipad-retina.png"; sourceTree = "<group>"; };
@@ -762,6 +767,8 @@
 				597902E719ED54B400440628 /* DeepLinkController.m */,
 				59665FCB1A0937620049F8CD /* OSNavigationController.h */,
 				59665FCC1A0937D00049F8CD /* OSNavigationController.m */,
+				590C2E581B00FF7B0018A053 /* OSProgressBar.h */,
+				590C2E591B00FF7B0018A053 /* OSProgressBar.m */,
 			);
 			name = Classes;
 			path = OutSystems/Classes;
@@ -1520,6 +1527,7 @@
 				CF9C2DF118F5869A000C5E68 /* UIInsetTextField.m in Sources */,
 				CF9C2DED18F5869A000C5E68 /* Infrastructure.m in Sources */,
 				59783A961A7146D9006CA4E5 /* LoginApplication.m in Sources */,
+				590C2E5A1B00FF7B0018A053 /* OSProgressBar.m in Sources */,
 				35BA012C35E64503809FA2A7 /* CDVLogger.m in Sources */,
 				0460CF4C692A4B60BE40E2EE /* CDVContacts.m in Sources */,
 				599C2DC91988068400BFF05D /* CDVAssetLibraryFilesystem.m in Sources */,
@@ -1563,6 +1571,7 @@
 				597A522F195C9A6400F15480 /* OutSystemsAppDelegate.m in Sources */,
 				599C2DC41988067C00BFF05D /* CDVLocalFilesystem.m in Sources */,
 				597A5230195C9A6400F15480 /* OutAppData.xcdatamodeld in Sources */,
+				590C2E5B1B0111BC0018A053 /* OSProgressBar.m in Sources */,
 				597A5231195C9A6400F15480 /* main.m in Sources */,
 				59EC8A2F19E3FCCC00944672 /* CDVCamera.m in Sources */,
 				599927521A0277580068B246 /* MobileECT.m in Sources */,
@@ -2165,13 +2174,14 @@
 		CF9C2E0018F5BE72000C5E68 /* OutAppData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				590C2E561B00BFE30018A053 /* OutAppData - Mobile.xcdatamodel */,
 				5919DC4B1A02B34F00D47B72 /* OutAppData - Mobile ECT.xcdatamodel */,
 				59F4A33A1A716E8700470480 /* OutAppData - Offline Support.xcdatamodel */,
 				59E34EDB1923E119003458AF /* OutAppData (isJavaServer).xcdatamodel */,
 				59F17EE61976C75000E22193 /* OutAppData - secure passwords.xcdatamodel */,
 				CF9C2E0118F5BE72000C5E68 /* OutAppData.xcdatamodel */,
 			);
-			currentVersion = 59F4A33A1A716E8700470480 /* OutAppData - Offline Support.xcdatamodel */;
+			currentVersion = 590C2E561B00BFE30018A053 /* OutAppData - Mobile.xcdatamodel */;
 			name = OutAppData.xcdatamodeld;
 			path = OutSystems/OutAppData.xcdatamodeld;
 			sourceTree = "<group>";

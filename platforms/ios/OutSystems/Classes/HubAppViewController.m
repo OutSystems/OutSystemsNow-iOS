@@ -159,7 +159,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     if(iPhoneDevice){
         OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-        [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+        [navController lockInterfaceToOrientation:UIInterfaceOrientationMaskPortrait];
     }
     
 }
