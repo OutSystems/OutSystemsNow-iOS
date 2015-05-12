@@ -202,13 +202,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         _applicationHasPreloader = _application.preloader;
     
     // Progress Bar
-
-    CGRect frame = _webViewFullScreen.bounds;
-    frame.origin.y = self.navigationController.toolbar.frame.origin.y-5;
-    frame.size.height = 5;
-
-    _progressBar = [[OSProgressBar alloc] initWithFrame:frame];
-    [self.view addSubview:_progressBar];
+    _progressBar = [[OSProgressBar alloc] initForView:self.view];
     
 }
 

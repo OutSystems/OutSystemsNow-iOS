@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="clc-Af-Km2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="clc-Af-Km2">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--SelectEnvironment Controller-->
@@ -557,10 +557,10 @@
                         <viewControllerLayoutGuide type="bottom" id="PMA-9D-CyI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="693-7L-PAB" userLabel="ApplicationView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-je-XgP" userLabel="WebView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-je-XgP" userLabel="WebView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -613,12 +613,12 @@
                                     <constraint firstAttribute="trailing" secondItem="1dH-bg-veK" secondAttribute="trailing" id="qQh-0b-b1Z"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pf0-tu-dJN" userLabel="ECTView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pf0-tu-dJN" userLabel="ECTView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPQ-QG-hii" userLabel="ErrorView">
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPQ-QG-hii" userLabel="ErrorView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Oops" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Vh-W7-v6X" userLabel="ErrorTitle">
@@ -649,7 +649,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-lR-OQW" userLabel="ErrorRetryButton">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-lR-OQW" userLabel="ErrorRetryButton">
                                         <rect key="frame" x="35" y="456" width="250" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="iB1-FZ-pbP"/>
@@ -663,7 +663,7 @@
                                             <action selector="errorRetryAction:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="dne-i1-7yu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzD-Hy-srv" userLabel="ErrorBackToAppsButton">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzD-Hy-srv" userLabel="ErrorBackToAppsButton">
                                         <rect key="frame" x="60" y="515" width="200" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="It2-sC-DNA"/>
@@ -677,7 +677,7 @@
                                             <action selector="backToApplicationsAction:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="1kx-ra-8Nb"/>
                                         </connections>
                                     </button>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="gXK-yF-gnl" userLabel="ErrorActivityIndicator">
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="gXK-yF-gnl" userLabel="ErrorActivityIndicator">
                                         <rect key="frame" x="157" y="463" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -718,7 +718,7 @@
                             <constraint firstItem="YPQ-QG-hii" firstAttribute="top" secondItem="kbZ-je-XgP" secondAttribute="top" id="zfi-Dj-Dap"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems>
                         <barButtonItem image="icon_chevron-left_red.png" style="plain" id="GJH-kj-tcb">
                             <color key="tintColor" red="0.80000000000000004" green="0.13333333333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>

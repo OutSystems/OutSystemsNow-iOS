@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--SelectEnvironment Controller-->
@@ -495,26 +495,26 @@
         <!--Application View Controller-->
         <scene sceneID="hLx-nT-zPK">
             <objects>
-                <viewController storyboardIdentifier="ApplicationViewController" id="H6M-OB-jxb" customClass="ApplicationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplicationViewController" automaticallyAdjustsScrollViewInsets="NO" id="H6M-OB-jxb" customClass="ApplicationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YM9-Ld-fga"/>
                         <viewControllerLayoutGuide type="bottom" id="AVt-r2-tJW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZLX-7u-1G8" userLabel="ApplicationView">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ" userLabel="WebView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ" userLabel="WebView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                     </imageView>
-                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
+                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
                                         <rect key="frame" x="329" y="456" width="110" height="112"/>
                                         <subviews>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-Xz-TGQ">
@@ -552,11 +552,11 @@
                                     <constraint firstItem="Mi7-wB-GYf" firstAttribute="top" secondItem="dUP-l7-ati" secondAttribute="top" id="ZA6-9u-qLD"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xq-Af-ykr" userLabel="ErrorView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xq-Af-ykr" userLabel="ErrorView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Oops" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tUr-IU-f50" userLabel="ErrorTitle">
@@ -583,7 +583,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUV-j9-J6G" userLabel="ErrorRetryButton">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUV-j9-J6G" userLabel="ErrorRetryButton">
                                         <rect key="frame" x="209" y="806" width="350" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="350" id="fN5-l5-kck"/>
@@ -597,7 +597,7 @@
                                             <action selector="errorRetryAction:" destination="H6M-OB-jxb" eventType="touchUpInside" id="ish-oV-7DR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-2k-Wk1" userLabel="ErrorBackToAppsButton">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-2k-Wk1" userLabel="ErrorBackToAppsButton">
                                         <rect key="frame" x="234" y="895" width="300" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="KRL-Gz-rbs"/>
@@ -611,7 +611,7 @@
                                             <action selector="backToApplicationsAction:" destination="H6M-OB-jxb" eventType="touchUpInside" id="bhM-h5-tmg"/>
                                         </connections>
                                     </button>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Jln-X1-PAK" userLabel="ErrorActivityIndicator">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Jln-X1-PAK" userLabel="ErrorActivityIndicator">
                                         <rect key="frame" x="374" y="816" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -652,7 +652,7 @@
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="leading" secondItem="ZLX-7u-1G8" secondAttribute="leading" id="wWB-0h-U2G"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems>
                         <barButtonItem image="icon_chevron-left_red.png" style="plain" id="JdK-ad-F0w">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>

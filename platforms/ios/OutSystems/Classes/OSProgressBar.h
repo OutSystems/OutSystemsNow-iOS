@@ -10,7 +10,7 @@
 
 @interface OSProgressBar : UIView
 
--(id)initWithFrame:(CGRect)frame;
+-(id)initForView:(UIView*)view;
 
 -(void)startProgress:(BOOL)animated;
 -(void)cancelProgress:(BOOL)animated;

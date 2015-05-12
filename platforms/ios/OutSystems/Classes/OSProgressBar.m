@@ -10,6 +10,7 @@
 
 float const kBarAnimationDuration = 0.27f;
 float const kFadeAnimationDuration = 0.27f;
+float const kOSProgressBarHeight = 3.0f;
 
 @interface OSProgressBar()
 
@@ -18,23 +19,22 @@ float const kFadeAnimationDuration = 0.27f;
 @property BOOL animationInProgress;
 @property NSTimer *updateTimer;
 @property (nonatomic, strong) UIView *progressBar;
+@property (strong, nonatomic) NSLayoutConstraint* redBarWidthConstriant;
 
 @end
 
 @implementation OSProgressBar
 
--(id)initWithFrame:(CGRect)frame{
-   
-    self = [super initWithFrame:frame];
-    if (self) {
-        
+-(id)initForView:(UIView*)view{
+    self = [super initWithFrame:CGRectMake(0,0, 0, 0)];
+    if(self){
+        [view addSubview:self];
         
         // Initialization code
         [self initialization];
-
+        
     }
     return self;
-
 }
 
 
@@ -43,15 +43,56 @@ float const kFadeAnimationDuration = 0.27f;
     _checkPoint = 5;
     _animationInProgress = NO;
     
+    // White bar
+    
     [self setBackgroundColor:[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.75]];
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.alpha = 0.0;
     
-    CGRect frame = self.bounds;
-    frame.size.width = 0;
-    frame.origin.x -=5;
+    [self setTranslatesAutoresizingMaskIntoConstraints:NO];
     
-    _progressBar = [[UIView alloc] initWithFrame:frame];
+    
+    // Leading space to super view
+    [self.superview addConstraint:[NSLayoutConstraint constraintWithItem:self
+                                                               attribute:NSLayoutAttributeLeading
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.superview
+                                                               attribute:NSLayoutAttributeLeading
+                                                              multiplier:1.0
+                                                                constant:0.0]];
+    // Bottom space to super view
+    [self.superview addConstraint:[NSLayoutConstraint constraintWithItem:self.superview
+                                                               attribute:NSLayoutAttributeBottom
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self
+                                                               attribute:NSLayoutAttributeBottom
+                                                              multiplier:1.0
+                                                                constant: 0]];
+    
+    
+    // Equals width
+    [self.superview addConstraint:[NSLayoutConstraint constraintWithItem:self
+                                                               attribute:NSLayoutAttributeWidth
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self.superview
+                                                               attribute:NSLayoutAttributeWidth
+                                                              multiplier:1.0
+                                                                constant:1.0]];
+    
+    // Progress bar height
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:0
+                                                               multiplier:1.0
+                                                                 constant: kOSProgressBarHeight]];
+    
+    
+    // Red bar
+    
+    
+    _progressBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [_progressBar setBackgroundColor:[UIColor colorWithRed:204.0/255.0 green:30.0/255.0 blue:21.0/255.0 alpha:1.0]];
     _progressBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
@@ -62,16 +103,61 @@ float const kFadeAnimationDuration = 0.27f;
     [_progressBar.layer setShadowColor:[UIColor blackColor].CGColor];
     [_progressBar.layer setShadowOpacity:0.8];
     [_progressBar.layer setShadowRadius:3.0];
-    [_progressBar.layer setShadowOffset:CGSizeMake(-2.0, -2.0)];
+    [_progressBar.layer setShadowOffset:CGSizeMake(-1.0, -1.0)];
+    
+    [_progressBar setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    
+    
+    // Leading space to white bar
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_progressBar
+                                                               attribute:NSLayoutAttributeLeading
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self
+                                                               attribute:NSLayoutAttributeLeading
+                                                              multiplier:1.0
+                                                                constant:0.0]];
+    // Bottom space to white bar
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_progressBar
+                                                               attribute:NSLayoutAttributeBottom
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:self
+                                                               attribute:NSLayoutAttributeBottom
+                                                              multiplier:1.0
+                                                                constant: 0]];
+    
+    // Equals height
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:_progressBar
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeHeight
+                                                    multiplier:1.0
+                                                      constant: 1.0]];
+    
+    
+    // Red bar width
+    
+    _redBarWidthConstriant = [NSLayoutConstraint constraintWithItem:_progressBar
+                                                          attribute:NSLayoutAttributeWidth
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:nil
+                                                          attribute:0
+                                                         multiplier:1.0
+                                                           constant:-kOSProgressBarHeight];
+    
+    [_progressBar addConstraint:_redBarWidthConstriant];
+    
+    
 }
 
 -(void)setProgress:(float)progress animated:(BOOL)animated{
     BOOL isGrowing = progress > 0.0;
 
     [UIView animateWithDuration:(isGrowing && animated) ? kBarAnimationDuration : 0.0 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        CGRect frame = _progressBar.frame;
-        frame.size.width = (progress * self.bounds.size.width) + 5;
-        _progressBar.frame = frame;
+        _redBarWidthConstriant.constant = (progress * self.bounds.size.width) + kOSProgressBarHeight;
+        [self layoutIfNeeded];
+        
     } completion:nil];
     
     if(progress >= 1.0){
@@ -79,9 +165,8 @@ float const kFadeAnimationDuration = 0.27f;
             self.alpha = 0.0;
             
         } completion:^(BOOL completed){
-            CGRect frame = self.frame;
-            frame.size.width = 0;
-            _progressBar.frame = frame;
+            _redBarWidthConstriant.constant =  -kOSProgressBarHeight;
+            [self layoutIfNeeded];
         }];
     }
     else{
@@ -134,11 +219,9 @@ float const kFadeAnimationDuration = 0.27f;
     _animationInProgress = YES;
     _currentValue = 0.0;
     _checkPoint = 5;
-    
-    CGRect frame = self.bounds;
-    frame.size.width = 0;
-    frame.origin.x -=5;
-    _progressBar.frame = frame;
+
+    _redBarWidthConstriant.constant = -kOSProgressBarHeight;
+    [self layoutIfNeeded];
     
     [self updateProgress:animated];
     
@@ -146,13 +229,14 @@ float const kFadeAnimationDuration = 0.27f;
 
 
 -(void)cancelProgress:(BOOL)animated{
-    [_updateTimer invalidate];
+    [self stopProgress:YES];
 }
 
 
 -(void)stopProgress:(BOOL)animated{
     [self setProgress:1.0 animated:animated];
     _animationInProgress = NO;
+    [_updateTimer invalidate];
 }
 
 
@@ -165,5 +249,6 @@ float const kFadeAnimationDuration = 0.27f;
     [_progressBar removeFromSuperview];
     _progressBar = nil;
 }
+
 
 @end
