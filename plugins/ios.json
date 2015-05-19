@@ -9,10 +9,6 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
                             "count": 1
                         },
@@ -54,6 +50,18 @@
                         },
                         {
                             "xml": "<feature name=\"Calendar\"><param name=\"ios-package\" value=\"Calendar\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Sim\"><param name=\"ios-package\" value=\"Sim\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -144,6 +152,18 @@
                             "xml": "false",
                             "count": 1
                         }
+                    ],
+                    "CoreTelephony.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
+                    ],
+                    "SystemConfiguration.framework": [
+                        {
+                            "xml": "true",
+                            "count": 1
+                        }
                     ]
                 }
             },
@@ -160,9 +180,6 @@
         }
     },
     "installed_plugins": {
-        "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.outsystems.outsystems"
-        },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.outsystems.outsystems"
         },
@@ -191,6 +208,15 @@
             "PACKAGE_NAME": "com.outsystems.osapp"
         },
         "nl.x-services.plugins.calendar": {
+            "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
+        },
+        "cordova-plugin-sim": {
+            "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
+        },
+        "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         }
     },
