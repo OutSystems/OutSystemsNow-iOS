@@ -63,6 +63,14 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     self.navigationController.navigationBar.hidden = YES;
     self.navigationController.toolbar.hidden = YES;
     
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    
+    if(iPhoneDevice){
+        // Force orientation to Portrait
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    }
+    
     
     UIStoryboard *storyboard = self.storyboard;
     
@@ -153,13 +161,18 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
             }
         }
     }
-    
-    
+        
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
     bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
     
     if(iPhoneDevice){
+        // Lock screen to Portrait orientation
         OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-        [navController lockInterfaceToOrientation:UIInterfaceOrientationMaskPortrait];
+        [navController lockCurrentOrientation:YES];
     }
     
 }
@@ -728,5 +741,6 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     [self.goButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     
 }
+
 
 @end

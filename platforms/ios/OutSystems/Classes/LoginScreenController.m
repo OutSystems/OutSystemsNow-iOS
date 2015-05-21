@@ -102,9 +102,9 @@
     bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
     
     if(iPhoneDevice){
-        // Lock screen to Portrait orientation
-        OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-        [navController lockInterfaceToOrientation:UIInterfaceOrientationMaskPortrait];
+        // Force orientation to Portrait
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
     }
 }
 
@@ -114,6 +114,15 @@
     if([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0 && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
         
         [self.loginButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
+    
+
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    
+    if(iPhoneDevice){
+        // Lock screen to Portrait orientation
+        OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+        [navController lockCurrentOrientation:YES];
     }
 
 }
@@ -415,5 +424,6 @@
     self.usernameInput.text = user;
     self.passwordInput.text = pass;
 }
+
 
 @end
