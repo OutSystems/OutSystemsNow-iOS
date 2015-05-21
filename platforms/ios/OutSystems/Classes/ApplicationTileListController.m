@@ -350,7 +350,9 @@
     
     UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     
-    if([[UIDevice currentDevice].model hasPrefix:@"iPhone"])
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    
+    if(iPhoneDevice)
     {
         if (currentOrientation == UIInterfaceOrientationLandscapeLeft || currentOrientation == UIInterfaceOrientationLandscapeRight) {
             flowLayout.itemSize = CGSizeMake((self.applicationsTileList.frame.size.width / 4) - 1, 130);
