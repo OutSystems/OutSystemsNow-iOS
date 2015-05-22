@@ -98,12 +98,7 @@ float const kOSProgressBarHeight = 3.0f;
     
     [_progressBar.layer setCornerRadius:2.0f];
     
-    [self addSubview:_progressBar];
-    
-    [_progressBar.layer setShadowColor:[UIColor blackColor].CGColor];
-    [_progressBar.layer setShadowOpacity:0.8];
-    [_progressBar.layer setShadowRadius:3.0];
-    [_progressBar.layer setShadowOffset:CGSizeMake(-1.0, -1.0)];
+    [self addSubview:_progressBar];    
     
     [_progressBar setTranslatesAutoresizingMaskIntoConstraints:NO];
     
