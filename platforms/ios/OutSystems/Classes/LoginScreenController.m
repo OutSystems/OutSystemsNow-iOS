@@ -323,6 +323,8 @@
         [response setValue:@"Incompatible module version in your installation, please contact your system administrator to update the OutSystems Now modules" forKey:@"errorMessage"];
     }
     
+    _infrastructure.isValid = success;
+    
     if(success) {
         [_loginActivityIndicator stopAnimating];
         [_loginButton setHidden:NO];

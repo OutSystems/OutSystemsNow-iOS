@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString * password;
 @property BOOL isJavaServer;
 @property (nonatomic, retain) NSDate * lastUsed;
+@property BOOL isValid;
 
 - (NSString *) getHostnameForService:servicename;
 

@@ -179,6 +179,14 @@ static NSData * _loginResponseData;
     return YES;
 }
 
++(BOOL)isNetworkAvailable{
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+        return NO;
+    }
+    
+    return YES;
+}
+
 
 +(BOOL)hasValidCredentials:(Infrastructure*)infrastructure{
     

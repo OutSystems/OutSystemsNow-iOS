@@ -84,8 +84,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     [self getInfrastructureSettings];
     
     // Offline Support
-    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
-    if(!networkAvailable && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO && _infrastructure){
+    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable];
+    if(!networkAvailable && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO && _infrastructure && _infrastructure.isValid){
         
         // redirect to Applications List
         NSArray *applicationList = [OfflineSupportController getLoginApplications:_infrastructure];
