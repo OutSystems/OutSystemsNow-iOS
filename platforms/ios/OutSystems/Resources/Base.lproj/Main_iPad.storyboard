@@ -96,6 +96,9 @@
                                 <state key="normal" image="icon-white-help.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_help"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="onHelpTouch:" destination="SE1-l9-FYw" eventType="touchUpInside" id="gd3-QV-72t"/>
                                 </connections>
@@ -115,6 +118,9 @@
                                         <state key="normal" title="TRY OUR DEMO">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_demo"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="VcQ-Do-IM9" kind="push" identifier="tryDemoSegue" id="TJB-Dg-c3t"/>
                                         </connections>
@@ -263,6 +269,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="input_username"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didEndOnExitUsername:" destination="7zT-de-Y3R" eventType="editingDidEndOnExit" id="ElT-YK-tOi"/>
                                 </connections>
@@ -277,6 +286,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="input_password"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didEndOnExitPassword:" destination="7zT-de-Y3R" eventType="editingDidEndOnExit" id="omy-OJ-uGh"/>
                                 </connections>
@@ -293,6 +305,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_login"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="OnLoginClick:" destination="7zT-de-Y3R" eventType="touchUpInside" id="b3R-ha-Iyw"/>
                                 </connections>
@@ -332,6 +347,9 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="label_appsOn"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
@@ -755,7 +773,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TJB-Dg-c3t"/>
-        <segue reference="oGr-Dq-WlH"/>
+        <segue reference="826-bw-TDv"/>
+        <segue reference="IGa-Ec-gYf"/>
     </inferredMetricsTieBreakers>
 </document>

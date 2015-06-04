@@ -81,6 +81,9 @@
                                         <state key="normal" title="TRY OUR DEMO">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_demo"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="PlA-66-nNl" kind="push" identifier="tryDemoSegue" id="6zx-D3-JMY"/>
                                         </connections>
@@ -104,6 +107,9 @@
                                         <state key="normal" image="icon-white-help.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_help"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="onHelpTouch:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9Ri-5X-g1T"/>
                                         </connections>
@@ -119,11 +125,17 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <bool key="isElement" value="YES"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="centerY" secondItem="tdg-Du-hGj" secondAttribute="centerY" id="3ei-b5-Alg"/>
                                             <constraint firstAttribute="centerX" secondItem="tdg-Du-hGj" secondAttribute="centerX" id="Ks3-kM-Lof"/>
                                             <constraint firstAttribute="height" id="P2M-ND-xtb"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="text_view_help"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcY-RT-yHV">
                                         <rect key="frame" x="26" y="513" width="268" height="40"/>
@@ -272,6 +284,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="input_username"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="didEndOnExitUsername:" destination="fcJ-lJ-rVs" eventType="editingDidEndOnExit" id="5UD-Jr-pp0"/>
                                         </connections>
@@ -286,6 +301,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="input_password"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="didEndOnExitPassword:" destination="fcJ-lJ-rVs" eventType="editingDidEndOnExit" id="DJ0-YM-BQO"/>
                                         </connections>
@@ -302,6 +320,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_login"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="OnLoginClick:" destination="fcJ-lJ-rVs" eventType="touchUpInside" id="Elh-KH-zBg"/>
                                         </connections>
@@ -342,6 +363,9 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.70000000000000007" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="label_appsOn"/>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -722,6 +746,10 @@
                     <toolbarItems>
                         <barButtonItem image="icon_chevron-left_red.png" style="plain" id="GJH-kj-tcb">
                             <color key="tintColor" red="0.80000000000000004" green="0.13333333333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_back"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isAccessibilityElement" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="navBack:" destination="n5F-NC-Ib7" id="nnH-5o-4rp"/>
                             </connections>
@@ -736,6 +764,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="xKx-FF-Zcq"/>
                         <barButtonItem image="icon_speech-bubble_red.png" style="plain" id="SSl-Wo-iJv">
                             <color key="tintColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_ect"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="onOpenECT:" destination="n5F-NC-Ib7" id="un6-ch-m00"/>
                             </connections>
@@ -743,6 +774,9 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="L2r-SN-fAZ"/>
                         <barButtonItem image="icon_app-list_red.png" style="plain" id="lfQ-b9-uaA">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_applications"/>
+                            </userDefinedRuntimeAttributes>
                             <connections>
                                 <action selector="navAppList:" destination="n5F-NC-Ib7" id="rk6-cu-Wg9"/>
                             </connections>
@@ -794,7 +828,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="oPM-kh-zcB"/>
         <segue reference="ITW-ug-7u2"/>
+        <segue reference="oPM-kh-zcB"/>
     </inferredMetricsTieBreakers>
 </document>

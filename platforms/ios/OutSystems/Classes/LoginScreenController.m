@@ -75,7 +75,16 @@
         self.passwordInput.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
     }
     
+    // hide the keyboard when the user clicks outside the hostname textbox
+    // set the tap gesture recognizer
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    singleTap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:singleTap];
+    
+}
 
+-(void)handleSingleTap:(UITapGestureRecognizer *)sender{
+    [self.view endEditing:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
