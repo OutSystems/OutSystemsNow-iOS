@@ -139,7 +139,7 @@ float const kOSProgressBarHeight = 3.0f;
                                                              toItem:nil
                                                           attribute:0
                                                          multiplier:1.0
-                                                           constant:-kOSProgressBarHeight];
+                                                           constant:kOSProgressBarHeight];
     
     [_progressBar addConstraint:_redBarWidthConstriant];
     
@@ -160,7 +160,7 @@ float const kOSProgressBarHeight = 3.0f;
             self.alpha = 0.0;
             
         } completion:^(BOOL completed){
-            _redBarWidthConstriant.constant =  -kOSProgressBarHeight;
+            _redBarWidthConstriant.constant =  0;
             [self layoutIfNeeded];
         }];
     }
@@ -215,7 +215,7 @@ float const kOSProgressBarHeight = 3.0f;
     _currentValue = 0.0;
     _checkPoint = 5;
 
-    _redBarWidthConstriant.constant = -kOSProgressBarHeight;
+    _redBarWidthConstriant.constant = 0;
     [self layoutIfNeeded];
     
     [self updateProgress:animated];

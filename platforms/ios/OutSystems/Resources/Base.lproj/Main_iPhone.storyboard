@@ -575,16 +575,16 @@
         <!--Application View Controller-->
         <scene sceneID="f0X-1j-Gcm">
             <objects>
-                <viewController storyboardIdentifier="ApplicationViewController" automaticallyAdjustsScrollViewInsets="NO" id="n5F-NC-Ib7" customClass="ApplicationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplicationViewController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="n5F-NC-Ib7" customClass="ApplicationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ed7-84-VzA"/>
                         <viewControllerLayoutGuide type="bottom" id="PMA-9D-CyI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="693-7L-PAB" userLabel="ApplicationView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-je-XgP" userLabel="WebView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbZ-je-XgP" userLabel="WebView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
@@ -595,31 +595,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
-                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qze-JK-ulQ" userLabel="LoadingProgressView">
-                                        <rect key="frame" x="105" y="206" width="110" height="112"/>
-                                        <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jbn-o9-gsR">
-                                                <rect key="frame" x="24" y="77" width="62" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kqj-MM-ZFa">
-                                                <rect key="frame" x="37" y="25" width="37" height="37"/>
-                                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </activityIndicatorView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="2Wk-4a-hjy"/>
-                                            <constraint firstAttribute="height" constant="112" id="9Ek-5j-sJP"/>
-                                            <constraint firstAttribute="width" constant="110" id="UKz-ZV-b4c"/>
-                                            <constraint firstAttribute="centerX" secondItem="Jbn-o9-gsR" secondAttribute="centerX" id="VbF-wm-VeF"/>
-                                            <constraint firstAttribute="centerX" secondItem="kqj-MM-ZFa" secondAttribute="centerX" id="X1r-xU-xng"/>
-                                            <constraint firstItem="kqj-MM-ZFa" firstAttribute="top" secondItem="Qze-JK-ulQ" secondAttribute="top" constant="25" id="dyB-na-O9Z"/>
-                                            <constraint firstItem="Jbn-o9-gsR" firstAttribute="top" secondItem="kqj-MM-ZFa" secondAttribute="bottom" constant="15" id="pSd-yQ-HzV"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="112" id="wOc-W2-oaf"/>
-                                        </constraints>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qze-JK-ulQ" userLabel="LoadingProgressView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
@@ -629,20 +607,20 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="Qze-JK-ulQ" firstAttribute="width" secondItem="8eS-Qi-mAm" secondAttribute="width" id="3e3-MD-sCh"/>
+                                    <constraint firstAttribute="centerX" secondItem="Qze-JK-ulQ" secondAttribute="centerX" id="4bk-aR-dcc"/>
                                     <constraint firstItem="1dH-bg-veK" firstAttribute="leading" secondItem="8eS-Qi-mAm" secondAttribute="leading" id="E5A-y8-S1o"/>
-                                    <constraint firstAttribute="centerX" secondItem="Qze-JK-ulQ" secondAttribute="centerX" id="FMh-4O-dxm"/>
-                                    <constraint firstAttribute="centerY" secondItem="Qze-JK-ulQ" secondAttribute="centerY" id="VDv-pP-Chu"/>
                                     <constraint firstAttribute="bottom" secondItem="1dH-bg-veK" secondAttribute="bottom" id="Wbe-zU-WTK"/>
                                     <constraint firstItem="1dH-bg-veK" firstAttribute="top" secondItem="8eS-Qi-mAm" secondAttribute="top" id="Y97-EM-bdr"/>
                                     <constraint firstAttribute="trailing" secondItem="1dH-bg-veK" secondAttribute="trailing" id="qQh-0b-b1Z"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pf0-tu-dJN" userLabel="ECTView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pf0-tu-dJN" userLabel="ECTView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPQ-QG-hii" userLabel="ErrorView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPQ-QG-hii" userLabel="ErrorView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Oops" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Vh-W7-v6X" userLabel="ErrorTitle">
@@ -673,7 +651,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-lR-OQW" userLabel="ErrorRetryButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR8-lR-OQW" userLabel="ErrorRetryButton">
                                         <rect key="frame" x="35" y="456" width="250" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="iB1-FZ-pbP"/>
@@ -687,7 +665,7 @@
                                             <action selector="errorRetryAction:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="dne-i1-7yu"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzD-Hy-srv" userLabel="ErrorBackToAppsButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzD-Hy-srv" userLabel="ErrorBackToAppsButton">
                                         <rect key="frame" x="60" y="515" width="200" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="It2-sC-DNA"/>
@@ -701,7 +679,7 @@
                                             <action selector="backToApplicationsAction:" destination="n5F-NC-Ib7" eventType="touchUpInside" id="1kx-ra-8Nb"/>
                                         </connections>
                                     </button>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="gXK-yF-gnl" userLabel="ErrorActivityIndicator">
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="gXK-yF-gnl" userLabel="ErrorActivityIndicator">
                                         <rect key="frame" x="157" y="463" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -727,8 +705,10 @@
                             <constraint firstItem="Pf0-tu-dJN" firstAttribute="height" secondItem="693-7L-PAB" secondAttribute="height" id="4EB-Sn-PmX"/>
                             <constraint firstItem="kbZ-je-XgP" firstAttribute="top" secondItem="Ed7-84-VzA" secondAttribute="bottom" id="CjC-6i-pfS"/>
                             <constraint firstItem="Pf0-tu-dJN" firstAttribute="top" secondItem="Ed7-84-VzA" secondAttribute="top" id="FdD-d7-1TK"/>
+                            <constraint firstItem="Qze-JK-ulQ" firstAttribute="top" secondItem="Ed7-84-VzA" secondAttribute="bottom" id="Fkq-wY-wnp"/>
                             <constraint firstAttribute="height" secondItem="kbZ-je-XgP" secondAttribute="height" id="PZe-mo-RWk"/>
                             <constraint firstItem="PMA-9D-CyI" firstAttribute="top" secondItem="8eS-Qi-mAm" secondAttribute="bottom" id="Rfe-aA-Ahf"/>
+                            <constraint firstItem="PMA-9D-CyI" firstAttribute="top" secondItem="Qze-JK-ulQ" secondAttribute="bottom" id="Ry8-Me-Zqi"/>
                             <constraint firstAttribute="centerX" secondItem="Pf0-tu-dJN" secondAttribute="centerX" id="Srh-ym-cbv"/>
                             <constraint firstItem="YPQ-QG-hii" firstAttribute="leading" secondItem="kbZ-je-XgP" secondAttribute="leading" id="VDS-gC-r7n"/>
                             <constraint firstItem="8eS-Qi-mAm" firstAttribute="leading" secondItem="693-7L-PAB" secondAttribute="leading" id="Wxd-q0-IPs"/>
@@ -742,7 +722,7 @@
                             <constraint firstItem="YPQ-QG-hii" firstAttribute="top" secondItem="kbZ-je-XgP" secondAttribute="top" id="zfi-Dj-Dap"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems>
                         <barButtonItem image="icon_chevron-left_red.png" style="plain" id="GJH-kj-tcb">
                             <color key="tintColor" red="0.80000000000000004" green="0.13333333333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
@@ -793,7 +773,6 @@
                         <outlet property="errorImage" destination="u9F-zD-Zsg" id="xBo-45-W7l"/>
                         <outlet property="errorRetryButton" destination="aR8-lR-OQW" id="klo-0q-bL6"/>
                         <outlet property="errorTitleMessage" destination="1Vh-W7-v6X" id="hoD-hi-cOS"/>
-                        <outlet property="loadingLabel" destination="Jbn-o9-gsR" id="G17-U6-kwv"/>
                         <outlet property="loadingProgressView" destination="Qze-JK-ulQ" id="uaI-ET-Irf"/>
                         <outlet property="loadingView" destination="8eS-Qi-mAm" id="ZAr-NZ-HbI"/>
                         <outlet property="mobileECTView" destination="Pf0-tu-dJN" id="5Id-LH-Uaq"/>

@@ -513,46 +513,28 @@
         <!--Application View Controller-->
         <scene sceneID="hLx-nT-zPK">
             <objects>
-                <viewController storyboardIdentifier="ApplicationViewController" automaticallyAdjustsScrollViewInsets="NO" id="H6M-OB-jxb" customClass="ApplicationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplicationViewController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="H6M-OB-jxb" customClass="ApplicationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YM9-Ld-fga"/>
                         <viewControllerLayoutGuide type="bottom" id="AVt-r2-tJW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZLX-7u-1G8" userLabel="ApplicationView">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ" userLabel="WebView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-bT-JVZ" userLabel="WebView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-l7-ati" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                     </imageView>
-                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
-                                        <rect key="frame" x="329" y="456" width="110" height="112"/>
-                                        <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-Xz-TGQ">
-                                                <rect key="frame" x="16" y="71" width="77" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="liF-Aw-iI8">
-                                                <rect key="frame" x="36" y="26" width="37" height="37"/>
-                                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </activityIndicatorView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="5lV-d8-qWs"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="112" id="Qi6-gP-4ZZ"/>
-                                            <constraint firstAttribute="width" constant="110" id="U9I-Ys-nhU"/>
-                                            <constraint firstAttribute="height" constant="112" id="k65-Ek-Sd7"/>
-                                        </constraints>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
@@ -562,19 +544,19 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="BsK-MR-qhr" secondAttribute="centerX" id="3dL-Ik-b5n"/>
                                     <constraint firstAttribute="trailing" secondItem="Mi7-wB-GYf" secondAttribute="trailing" id="CaE-ub-voL"/>
                                     <constraint firstItem="Mi7-wB-GYf" firstAttribute="leading" secondItem="dUP-l7-ati" secondAttribute="leading" id="In6-3F-fi3"/>
-                                    <constraint firstAttribute="centerY" secondItem="BsK-MR-qhr" secondAttribute="centerY" id="SHT-Rl-Y1k"/>
                                     <constraint firstAttribute="bottom" secondItem="Mi7-wB-GYf" secondAttribute="bottom" id="T60-Rt-X3Y"/>
-                                    <constraint firstAttribute="centerX" secondItem="BsK-MR-qhr" secondAttribute="centerX" id="XR6-hX-2dA"/>
                                     <constraint firstItem="Mi7-wB-GYf" firstAttribute="top" secondItem="dUP-l7-ati" secondAttribute="top" id="ZA6-9u-qLD"/>
+                                    <constraint firstAttribute="width" secondItem="BsK-MR-qhr" secondAttribute="width" id="v77-ug-4iC"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3xq-Af-ykr" userLabel="ErrorView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xq-Af-ykr" userLabel="ErrorView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Oops" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tUr-IU-f50" userLabel="ErrorTitle">
@@ -601,7 +583,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUV-j9-J6G" userLabel="ErrorRetryButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUV-j9-J6G" userLabel="ErrorRetryButton">
                                         <rect key="frame" x="209" y="806" width="350" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="350" id="fN5-l5-kck"/>
@@ -615,7 +597,7 @@
                                             <action selector="errorRetryAction:" destination="H6M-OB-jxb" eventType="touchUpInside" id="ish-oV-7DR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-2k-Wk1" userLabel="ErrorBackToAppsButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DBG-2k-Wk1" userLabel="ErrorBackToAppsButton">
                                         <rect key="frame" x="234" y="895" width="300" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="KRL-Gz-rbs"/>
@@ -629,7 +611,7 @@
                                             <action selector="backToApplicationsAction:" destination="H6M-OB-jxb" eventType="touchUpInside" id="bhM-h5-tmg"/>
                                         </connections>
                                     </button>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Jln-X1-PAK" userLabel="ErrorActivityIndicator">
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Jln-X1-PAK" userLabel="ErrorActivityIndicator">
                                         <rect key="frame" x="374" y="816" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
@@ -656,6 +638,7 @@
                             <constraint firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" id="5op-MR-n2u"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="height" secondItem="ZLX-7u-1G8" secondAttribute="height" id="Hzo-ej-TKz"/>
                             <constraint firstItem="jzQ-QF-CNx" firstAttribute="width" secondItem="3xq-Af-ykr" secondAttribute="width" id="LEf-so-Ocm"/>
+                            <constraint firstItem="BsK-MR-qhr" firstAttribute="top" secondItem="YM9-Ld-fga" secondAttribute="bottom" id="SXL-4n-hIc"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="width" secondItem="ZLX-7u-1G8" secondAttribute="width" id="Smp-6y-dj7"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="height" secondItem="ZLX-7u-1G8" secondAttribute="height" id="W3r-ni-9qn"/>
                             <constraint firstItem="jzQ-QF-CNx" firstAttribute="leading" secondItem="3xq-Af-ykr" secondAttribute="leading" id="XgR-pb-W1R"/>
@@ -665,12 +648,13 @@
                             <constraint firstItem="jzQ-QF-CNx" firstAttribute="top" secondItem="3xq-Af-ykr" secondAttribute="top" id="qLk-ow-m0E"/>
                             <constraint firstItem="jzQ-QF-CNx" firstAttribute="height" secondItem="3xq-Af-ykr" secondAttribute="height" id="rAr-BQ-UW1"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="top" secondItem="YM9-Ld-fga" secondAttribute="bottom" id="rku-7J-gVw"/>
+                            <constraint firstItem="AVt-r2-tJW" firstAttribute="top" secondItem="BsK-MR-qhr" secondAttribute="bottom" id="rvP-ON-C7B"/>
                             <constraint firstAttribute="centerY" secondItem="jzQ-QF-CNx" secondAttribute="centerY" id="ufx-zi-eoP"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="width" secondItem="ZLX-7u-1G8" secondAttribute="width" id="vsV-58-Mb6"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="leading" secondItem="ZLX-7u-1G8" secondAttribute="leading" id="wWB-0h-U2G"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems>
                         <barButtonItem image="icon_chevron-left_red.png" style="plain" id="JdK-ad-F0w">
                             <color key="tintColor" red="0.80000000000000004" green="0.1333333333" blue="0.0" alpha="1" colorSpace="deviceRGB"/>

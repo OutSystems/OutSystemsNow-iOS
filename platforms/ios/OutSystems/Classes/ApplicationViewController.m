@@ -202,7 +202,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         _applicationHasPreloader = _application.preloader;
     
     // Progress Bar
-    _progressBar = [[OSProgressBar alloc] initForView:self.view];
+    _progressBar = [[OSProgressBar alloc] initForView:_loadingProgressView];
     
 }
 
@@ -297,9 +297,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     // Dispose of any resources that can be recreated.
 }
 
--(void) loadingTimer{
-    self.loadingProgressView.hidden = NO;
-}
 
 # pragma mark - Web View
 
@@ -411,8 +408,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController lockCurrentOrientation:YES];
-    
-    self.loadingProgressView.hidden = YES;
     
     if(!self.firstLoad) {
         UIImage *viewImage = [self captureCurrentWebPage];
