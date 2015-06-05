@@ -12,6 +12,7 @@
 #import "MobileECT.h"
 #import "OSNavigationController.h"
 #import "OfflineSupportController.h"
+#import "OSProgressBar.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -57,6 +58,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 @property (weak, nonatomic) IBOutlet UIButton *errorBackToAppsButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *errorActivityIndicator;
 @property (strong, nonatomic) NSString *failedURL;
+
+// Mobile Improvements
+@property BOOL applicationHasPreloader;
+@property (strong, nonatomic) OSProgressBar *progressBar;
+
 
 @end
 
@@ -165,8 +171,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
     }
     
-    
-    
     [_applicationBrowser.webView loadRequest:request];
     
     // Check the cache.
@@ -189,7 +193,16 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController unlockInterfaceOrientation];
     _failedURL = nil;
-
+    
+    // Mobile Improvements
+    _applicationHasPreloader = NO;
+    
+    if(_application)
+        _applicationHasPreloader = _application.preloader;
+    
+    // Progress Bar
+    _progressBar = [[OSProgressBar alloc] initForView:_loadingProgressView];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -210,7 +223,13 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         self.mobileECTController = [[OSMobileECTController alloc] initWithSuperView:self.mobileECTView
                                                                          andWebView:self.applicationBrowser.webView
                                                                         forHostname:self.infrastructure.hostname ];
+        
+        [self.mobileECTController addOnExitEvent:self withSelector:@selector(onExitECT)];
+        
         [self.mobileECTController prepareForViewDidLoad];
+        
+        [self.mobileECTController isECTFeatureAvailable];
+        
     }
         
     
@@ -277,14 +296,12 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     // Dispose of any resources that can be recreated.
 }
 
--(void) loadingTimer{
-    self.loadingProgressView.hidden = NO;
-}
 
 # pragma mark - Web View
 
 // This is not working as CDVWebViewDelegate is receiving this events
 -(void)webViewDidStartLoad:(NSNotification *) notification {
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     if(self.firstLoad) {
@@ -296,8 +313,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     OSAnimateTransition animateTransition = self.selectedTransition == OSAnimateTransitionDefault ? OSAnimateTransitionFadeOut : self.selectedTransition;
     [self transitionPrepareAnimation: animateTransition];
     
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(loadingTimer) userInfo:nil repeats:NO];
+    //[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(loadingTimer) userInfo:nil repeats:NO];
 
+    if(!_applicationHasPreloader){
+        [_progressBar startProgress:YES];
+    }
 }
 
 
@@ -334,6 +354,21 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     [self showNetworkErrorView:NO];
     
+    
+    if(_applicationHasPreloader){
+        
+        UIWebView *webview = [notification object];
+       
+        NSString *currentURL = webview.request.URL.absoluteString;
+        NSLog(@"CurrentURL: %@",currentURL);
+
+        NSRange preloader = [currentURL rangeOfString:@"preloader.html"];
+        _applicationHasPreloader = preloader.location != NSNotFound;
+        
+    }else{
+        [_progressBar stopProgress:YES];
+    }
+    
 }
 
 
@@ -355,26 +390,23 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
             _failedURL = [error.userInfo objectForKey:@"NSErrorFailingURLStringKey"];
             NSLog(@"webViewdidFailLoadWithError: %@", _failedURL);
-        
+            [_progressBar stopProgress:YES];
             [self showNetworkErrorView:YES];
-            
+
             break;
         }
         default:
             // do nothing
+            [_progressBar cancelProgress:YES];
             break;
     }
-        
-    
-        
+
 }
 
 -(void)transitionPrepareAnimation:(OSAnimateTransition) animateTransition {
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController lockCurrentOrientation:YES];
-    
-    self.loadingProgressView.hidden = YES;
     
     if(!self.firstLoad) {
         UIImage *viewImage = [self captureCurrentWebPage];
@@ -483,7 +515,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 
     
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-    //[navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
     [navController lockCurrentOrientation:YES];
     
     MobileECT *mobileECTCoreData = [self getOrCreateMobileECTInfo];

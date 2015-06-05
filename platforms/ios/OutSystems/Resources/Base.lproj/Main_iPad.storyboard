@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--SelectEnvironment Controller-->
@@ -96,6 +96,9 @@
                                 <state key="normal" image="icon-white-help.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_help"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="onHelpTouch:" destination="SE1-l9-FYw" eventType="touchUpInside" id="gd3-QV-72t"/>
                                 </connections>
@@ -115,6 +118,9 @@
                                         <state key="normal" title="TRY OUR DEMO">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_demo"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="VcQ-Do-IM9" kind="push" identifier="tryDemoSegue" id="TJB-Dg-c3t"/>
                                         </connections>
@@ -263,6 +269,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="input_username"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didEndOnExitUsername:" destination="7zT-de-Y3R" eventType="editingDidEndOnExit" id="ElT-YK-tOi"/>
                                 </connections>
@@ -277,6 +286,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="input_password"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didEndOnExitPassword:" destination="7zT-de-Y3R" eventType="editingDidEndOnExit" id="omy-OJ-uGh"/>
                                 </connections>
@@ -293,6 +305,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="button_login"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="OnLoginClick:" destination="7zT-de-Y3R" eventType="touchUpInside" id="b3R-ha-Iyw"/>
                                 </connections>
@@ -332,6 +347,9 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="label_appsOn"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
@@ -495,7 +513,7 @@
         <!--Application View Controller-->
         <scene sceneID="hLx-nT-zPK">
             <objects>
-                <viewController storyboardIdentifier="ApplicationViewController" id="H6M-OB-jxb" customClass="ApplicationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ApplicationViewController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="H6M-OB-jxb" customClass="ApplicationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YM9-Ld-fga"/>
                         <viewControllerLayoutGuide type="bottom" id="AVt-r2-tJW"/>
@@ -514,27 +532,9 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mi7-wB-GYf" userLabel="WebImage">
                                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                     </imageView>
-                                    <view opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
-                                        <rect key="frame" x="329" y="456" width="110" height="112"/>
-                                        <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-Xz-TGQ">
-                                                <rect key="frame" x="16" y="71" width="77" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="liF-Aw-iI8">
-                                                <rect key="frame" x="36" y="26" width="37" height="37"/>
-                                                <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </activityIndicatorView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="5lV-d8-qWs"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="112" id="Qi6-gP-4ZZ"/>
-                                            <constraint firstAttribute="width" constant="110" id="U9I-Ys-nhU"/>
-                                            <constraint firstAttribute="height" constant="112" id="k65-Ek-Sd7"/>
-                                        </constraints>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsK-MR-qhr" userLabel="LoadingProgressView">
+                                        <rect key="frame" x="0.0" y="0.0" width="768" height="980"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
@@ -544,12 +544,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="BsK-MR-qhr" secondAttribute="centerX" id="3dL-Ik-b5n"/>
                                     <constraint firstAttribute="trailing" secondItem="Mi7-wB-GYf" secondAttribute="trailing" id="CaE-ub-voL"/>
                                     <constraint firstItem="Mi7-wB-GYf" firstAttribute="leading" secondItem="dUP-l7-ati" secondAttribute="leading" id="In6-3F-fi3"/>
-                                    <constraint firstAttribute="centerY" secondItem="BsK-MR-qhr" secondAttribute="centerY" id="SHT-Rl-Y1k"/>
                                     <constraint firstAttribute="bottom" secondItem="Mi7-wB-GYf" secondAttribute="bottom" id="T60-Rt-X3Y"/>
-                                    <constraint firstAttribute="centerX" secondItem="BsK-MR-qhr" secondAttribute="centerX" id="XR6-hX-2dA"/>
                                     <constraint firstItem="Mi7-wB-GYf" firstAttribute="top" secondItem="dUP-l7-ati" secondAttribute="top" id="ZA6-9u-qLD"/>
+                                    <constraint firstAttribute="width" secondItem="BsK-MR-qhr" secondAttribute="width" id="v77-ug-4iC"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jzQ-QF-CNx" userLabel="ECTView">
@@ -638,6 +638,7 @@
                             <constraint firstAttribute="height" secondItem="jzQ-QF-CNx" secondAttribute="height" id="5op-MR-n2u"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="height" secondItem="ZLX-7u-1G8" secondAttribute="height" id="Hzo-ej-TKz"/>
                             <constraint firstItem="jzQ-QF-CNx" firstAttribute="width" secondItem="3xq-Af-ykr" secondAttribute="width" id="LEf-so-Ocm"/>
+                            <constraint firstItem="BsK-MR-qhr" firstAttribute="top" secondItem="YM9-Ld-fga" secondAttribute="bottom" id="SXL-4n-hIc"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="width" secondItem="ZLX-7u-1G8" secondAttribute="width" id="Smp-6y-dj7"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="height" secondItem="ZLX-7u-1G8" secondAttribute="height" id="W3r-ni-9qn"/>
                             <constraint firstItem="jzQ-QF-CNx" firstAttribute="leading" secondItem="3xq-Af-ykr" secondAttribute="leading" id="XgR-pb-W1R"/>
@@ -647,6 +648,7 @@
                             <constraint firstItem="jzQ-QF-CNx" firstAttribute="top" secondItem="3xq-Af-ykr" secondAttribute="top" id="qLk-ow-m0E"/>
                             <constraint firstItem="jzQ-QF-CNx" firstAttribute="height" secondItem="3xq-Af-ykr" secondAttribute="height" id="rAr-BQ-UW1"/>
                             <constraint firstItem="dUP-l7-ati" firstAttribute="top" secondItem="YM9-Ld-fga" secondAttribute="bottom" id="rku-7J-gVw"/>
+                            <constraint firstItem="AVt-r2-tJW" firstAttribute="top" secondItem="BsK-MR-qhr" secondAttribute="bottom" id="rvP-ON-C7B"/>
                             <constraint firstAttribute="centerY" secondItem="jzQ-QF-CNx" secondAttribute="centerY" id="ufx-zi-eoP"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="width" secondItem="ZLX-7u-1G8" secondAttribute="width" id="vsV-58-Mb6"/>
                             <constraint firstItem="S2A-bT-JVZ" firstAttribute="leading" secondItem="ZLX-7u-1G8" secondAttribute="leading" id="wWB-0h-U2G"/>
@@ -755,7 +757,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="TJB-Dg-c3t"/>
-        <segue reference="oGr-Dq-WlH"/>
+        <segue reference="826-bw-TDv"/>
+        <segue reference="IGa-Ec-gYf"/>
     </inferredMetricsTieBreakers>
 </document>

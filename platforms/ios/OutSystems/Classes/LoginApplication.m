@@ -18,7 +18,7 @@
 @dynamic appPath;
 @dynamic hostname;
 @dynamic username;
-
+@dynamic preloader;
 
 + (LoginApplication *) initWithJSON:(NSDictionary *) appJsonData forInfrastructure:(Infrastructure *) infrastructure{
     
@@ -36,6 +36,17 @@
     loginApp.appDesc = [appJsonData objectForKey:@"description"];
     loginApp.appPath = [appJsonData objectForKey:@"path"];
     loginApp.appImage = [appJsonData objectForKey:@"imageId"];
+    
+    NSObject *preloader = [appJsonData objectForKey:@"preloader"];
+    if([preloader isKindOfClass:[NSNumber class]]){
+        NSNumber* temp = (NSNumber*)preloader;
+        loginApp.preloader = [temp intValue] > 0;
+        
+    }
+    else{
+        loginApp.preloader = NO;
+    }
+    
     
     return loginApp;
 }
@@ -55,6 +66,8 @@
     loginApp.appDesc = application.appDescription;
     loginApp.appImage = application.imageId;
     loginApp.appPath = application.path;
+    
+    loginApp.preloader = application.preloader;
     
     return loginApp;
 }

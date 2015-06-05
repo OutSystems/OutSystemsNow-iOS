@@ -348,9 +348,13 @@
     [super viewWillLayoutSubviews];
     UICollectionViewFlowLayout *flowLayout = (id)self.applicationsTileList.collectionViewLayout;
     
-    if([[UIDevice currentDevice].model hasPrefix:@"iPhone"])
+    UIInterfaceOrientation currentOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    
+    if(iPhoneDevice)
     {
-        if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        if (currentOrientation == UIInterfaceOrientationLandscapeLeft || currentOrientation == UIInterfaceOrientationLandscapeRight) {
             flowLayout.itemSize = CGSizeMake((self.applicationsTileList.frame.size.width / 4) - 1, 130);
         } else {
             flowLayout.itemSize = CGSizeMake((self.applicationsTileList.frame.size.width / 2) - 0.5, 130);
@@ -360,7 +364,7 @@
         flowLayout.minimumLineSpacing = 1;
         
     } else {
-        if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
+        if (currentOrientation == UIInterfaceOrientationLandscapeLeft || currentOrientation == UIInterfaceOrientationLandscapeRight) {
             flowLayout.itemSize = CGSizeMake((self.applicationsTileList.frame.size.width / 3) - 10, 121);
         } else {
             flowLayout.itemSize = CGSizeMake((self.applicationsTileList.frame.size.width / 2) - 10, 121);

@@ -25,6 +25,7 @@
     return self;
 }
 
+
 -(BOOL) shouldAutorotate {
     return !self.orientationLocked && self.autorotationEnable;
 }
@@ -34,23 +35,38 @@
 {
     if(self.autorotationEnable)
         return UIInterfaceOrientationMaskAll;
-    else
-        return self.lockedInterfaceOrientation;
+    else{
+        switch (self.lockedInterfaceOrientation) {
+            case UIInterfaceOrientationPortrait:
+                return UIInterfaceOrientationMaskPortrait;
+            case UIInterfaceOrientationPortraitUpsideDown:
+                return UIInterfaceOrientationMaskPortraitUpsideDown;
+            case UIInterfaceOrientationLandscapeLeft:
+                return UIInterfaceOrientationMaskLandscapeLeft;
+            case UIInterfaceOrientationLandscapeRight:
+                return UIInterfaceOrientationMaskLandscapeRight;
+            case UIInterfaceOrientationUnknown:
+                return UIInterfaceOrientationMaskAll;
+            default:
+                return self.lockedInterfaceOrientation;
+        }
+    }
+
 }
 
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     if(self.autorotationEnable)
-        return UIInterfaceOrientationPortrait;
-    else
-        return self.lockedInterfaceOrientation;
+        return YES;
+    else{
+        return (toInterfaceOrientation == self.lockedInterfaceOrientation);
+    }
 }
-
 
 #pragma mark - OS Methods
 
 -(void)lockInterfaceToOrientation:(UIInterfaceOrientation)toOrientation{
-    NSLog(@"Lock Interface to Orientation: %ld",toOrientation);
+    NSLog(@"Lock Interface to Orientation: %ld",(long)toOrientation);
     self.autorotationEnable = NO;
     self.lockedInterfaceOrientation = toOrientation;
 }
@@ -59,6 +75,7 @@
     NSLog(@"Unlock Interface Orientation");
     self.autorotationEnable = YES;
     self.lockedInterfaceOrientation = UIInterfaceOrientationMaskAll;
+    self.orientationLocked = NO;
 }
 
 -(void)lockCurrentOrientation:(BOOL)lock{

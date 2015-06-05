@@ -20,6 +20,7 @@
 +(NSArray*)getLoginApplications:(Infrastructure*)infrastructure;
 
 +(BOOL)isNetworkAvailable:(Infrastructure*)infrastructure;
++(BOOL)isNetworkAvailable;
 
 +(BOOL)hasValidCredentials:(Infrastructure*)infrastructure;
 
