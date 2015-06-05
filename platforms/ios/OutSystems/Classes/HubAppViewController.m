@@ -63,6 +63,14 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     self.navigationController.navigationBar.hidden = YES;
     self.navigationController.toolbar.hidden = YES;
     
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    
+    if(iPhoneDevice){
+        // Force orientation to Portrait
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
+    }
+    
     
     UIStoryboard *storyboard = self.storyboard;
     
@@ -76,8 +84,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     [self getInfrastructureSettings];
     
     // Offline Support
-    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
-    if(!networkAvailable && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO && _infrastructure){
+    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable];
+    if(!networkAvailable && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO && _infrastructure && _infrastructure.isValid){
         
         // redirect to Applications List
         NSArray *applicationList = [OfflineSupportController getLoginApplications:_infrastructure];
@@ -153,13 +161,18 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
             }
         }
     }
-    
-    
+        
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
     bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
     
     if(iPhoneDevice){
+        // Lock screen to Portrait orientation
         OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-        [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+        [navController lockCurrentOrientation:YES];
     }
     
 }
@@ -230,12 +243,17 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     // Fetch the environments from persistent data store
     NSManagedObjectContext *managedObjectContext = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Infrastructure"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastUsed" ascending:NO];;
+    NSMutableArray *environmentsArray = nil;
     
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    if(managedObjectContext){
     
-    NSMutableArray *environmentsArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Infrastructure"];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastUsed" ascending:NO];;
+    
+        [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+    
+        environmentsArray = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    }
     
     return environmentsArray;
 }
@@ -275,6 +293,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
     
     self.errorMessageLabel.linkAttributes = linkAttributes;
+    self.errorMessageLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    self.errorMessageLabel.delegate = self;
     self.errorMessageLabel.verticalAlignment = TTTAttributedLabelVerticalAlignmentTop;
     
     // Add Notification Center observer to be alerted of any change to NSUserDefaults.
@@ -292,7 +312,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     // hide the keyboard when the user clicks outside the hostname textbox
     // set the tap gesture recognizer
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    
+    singleTap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:singleTap];
     
 }
@@ -484,7 +504,10 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
     [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"hostname == %@", hostname]];
-    NSMutableArray *environments = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    NSMutableArray *environments = nil;
+    
+    if(managedObjectContext)
+        environments = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
     if([environments count] > 0) {
         infrastructure = [environments objectAtIndex:0];
@@ -640,9 +663,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
             
             // add custom link
             NSRange r = [self.errorMessageLabel.text rangeOfString:@"check here"];
-            [self.errorMessageLabel addLinkToURL:[NSURL URLWithString:@"https://labs.outsystems.net/Native"] withRange:r];
+            [self.errorMessageLabel addLinkToURL:[NSURL URLWithString:@"https://labs.outsystems.net/OutSystemsNowDocs"] withRange:r];
             [self.errorMessageLabel setUserInteractionEnabled:YES];
-            self.errorMessageLabel.delegate = self;
             
             [_errorMessageLabel setHidden:NO];
         }
@@ -666,6 +688,7 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     [[UIApplication sharedApplication] openURL:url];
 }
+
 
 - (IBAction)gotoOutSystems:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.outsystems.com"]];
@@ -718,5 +741,6 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     [self.goButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     
 }
+
 
 @end

@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSString * appPath;
 @property (nonatomic, retain) NSString * hostname;
 @property (nonatomic, retain) NSString * username;
+@property BOOL preloader;
 
 + (LoginApplication *) initWithJSON:(NSDictionary *) appJsonData forInfrastructure:(Infrastructure *) infrastructure;
 

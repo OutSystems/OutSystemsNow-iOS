@@ -24,7 +24,7 @@
 
 @property (weak, nonatomic) NSUserDefaults *userSettings;
 
-@property (weak, nonatomic) NSData *loginResponseData;
+@property (strong, nonatomic) NSData *loginResponseData;
 @property (weak, nonatomic) IBOutlet UILabel *applicationsAtLabel;
 
 @property NSArray* trustedHosts;
@@ -75,7 +75,16 @@
         self.passwordInput.backgroundColor = [UIColor colorWithWhite:1 alpha:0.8];
     }
     
+    // hide the keyboard when the user clicks outside the hostname textbox
+    // set the tap gesture recognizer
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    singleTap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:singleTap];
+    
+}
 
+-(void)handleSingleTap:(UITapGestureRecognizer *)sender{
+    [self.view endEditing:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -102,9 +111,9 @@
     bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
     
     if(iPhoneDevice){
-        // Lock screen to Portrait orientation
-        OSNavigationController *navController = (OSNavigationController*)self.navigationController;
-        [navController lockInterfaceToOrientation:UIInterfaceOrientationPortrait];
+        // Force orientation to Portrait
+        NSNumber *value = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
     }
 }
 
@@ -114,6 +123,15 @@
     if([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0 && [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
         
         [self.loginButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
+    
+
+    bool iPhoneDevice = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone;
+    
+    if(iPhoneDevice){
+        // Lock screen to Portrait orientation
+        OSNavigationController *navController = (OSNavigationController*)self.navigationController;
+        [navController lockCurrentOrientation:YES];
     }
 
 }
@@ -240,7 +258,7 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 
-    _loginResponseData = data;
+    _loginResponseData = [data copy];
     NSLog(@"received: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
 }
@@ -250,6 +268,7 @@
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     
     BOOL offlineSupport = NO;
+    _loginResponseData = nil;
     
     if(offlineSupport){
         // Get Login Applications
@@ -299,6 +318,8 @@
         if([[response objectForKey:@"success"] isKindOfClass:[NSNumber class]]) {
             success = [[response objectForKey:@"success"] boolValue];
         }
+        
+        _loginResponseData = nil;
     }
     
     // check OutSystemsNowService compatibility
@@ -310,6 +331,8 @@
         success = NO;
         [response setValue:@"Incompatible module version in your installation, please contact your system administrator to update the OutSystems Now modules" forKey:@"errorMessage"];
     }
+    
+    _infrastructure.isValid = success;
     
     if(success) {
         [_loginActivityIndicator stopAnimating];
@@ -412,5 +435,6 @@
     self.usernameInput.text = user;
     self.passwordInput.text = pass;
 }
+
 
 @end

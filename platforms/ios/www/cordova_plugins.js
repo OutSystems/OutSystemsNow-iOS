@@ -1,13 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/org.apache.cordova.device/www/device.js",
-        "id": "org.apache.cordova.device.device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.console/www/console-via-logger.js",
         "id": "org.apache.cordova.console.console",
         "clobbers": [
@@ -118,17 +111,6 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.barcodeScanner"
         ]
-    },
-    {
-        "file": "plugins/nl.x-services.plugins.calendar/www/Calendar.js",
-        "id": "nl.x-services.plugins.calendar.Calendar",
-        "clobbers": [
-            "Calendar"
-        ]
-    },
-    {
-        "file": "plugins/nl.x-services.plugins.calendar/test/tests.js",
-        "id": "nl.x-services.plugins.calendar.tests"
     },
     {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
@@ -314,22 +296,64 @@ module.exports = [
         "clobbers": [
             "navigator.geolocation"
         ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.calendar/www/Calendar.js",
+        "id": "nl.x-services.plugins.calendar.Calendar",
+        "clobbers": [
+            "Calendar"
+        ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.calendar/test/tests.js",
+        "id": "nl.x-services.plugins.calendar.tests"
+    },
+    {
+        "file": "plugins/cordova-plugin-sim/www/sim.js",
+        "id": "cordova-plugin-sim.Sim",
+        "clobbers": [
+            "window.plugins.sim"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/network.js",
+        "id": "cordova-plugin-network-information.network",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+        "id": "cordova-plugin-network-information.Connection",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.device/www/device.js",
+        "id": "org.apache.cordova.device.device",
+        "clobbers": [
+            "device"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "org.apache.cordova.device": "0.2.8",
     "org.apache.cordova.console": "0.2.7",
     "org.apache.cordova.contacts": "0.2.13",
     "org.apache.cordova.dialogs": "0.2.6",
     "org.apache.cordova.battery-status": "0.2.7",
     "com.phonegap.plugins.barcodescanner": "2.0.0",
     "com.outsystems.loader": "1.0.0",
-    "nl.x-services.plugins.calendar": "4.2.5",
     "org.apache.cordova.file": "1.1.0",
     "org.apache.cordova.camera": "0.3.4-dev",
-    "org.apache.cordova.geolocation": "0.3.10"
+    "org.apache.cordova.geolocation": "0.3.10",
+    "nl.x-services.plugins.calendar": "4.3.1",
+    "cordova-plugin-sim": "1.0.2",
+    "cordova-plugin-network-information": "1.0.1-dev",
+    "org.apache.cordova.device": "0.3.0"
 }
 // BOTTOM OF METADATA
 });

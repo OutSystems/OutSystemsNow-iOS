@@ -17,6 +17,7 @@
 @dynamic path;
 @dynamic imageId;
 @dynamic feedbackActive;
+@dynamic preloader;
 
 + (Application *) initWithJSON:(NSDictionary *) appJsonData forHost:(NSString *) hostname {
     
@@ -48,6 +49,18 @@
     }
     
     
+    NSObject *preloader = [appJsonData objectForKey:@"preloader"];
+    if([preloader isKindOfClass:[NSNumber class]]){
+        NSNumber* temp = (NSNumber*)preloader;
+        app.preloader = [temp intValue] > 0;
+        
+    }
+    else{
+        app.preloader = NO;
+    }
+    
+    
+    
     return app;
 }
 
@@ -76,6 +89,17 @@
         app.feedbackActive = NO;
     }
     
+    NSObject *preloader = [appData objectForKey:@"preloader"];
+    if([preloader isKindOfClass:[NSNumber class]]){
+        NSNumber* temp = (NSNumber*)preloader;
+        app.preloader = [temp intValue] > 0;
+        
+    }
+    else{
+        app.preloader = NO;
+    }
+    
+    
     return app;
 }
 
@@ -89,6 +113,7 @@
     [result setObject:self.imageId forKey:@"imageId"];
     
     [result setObject:[NSNumber numberWithBool:self.feedbackActive] forKey:@"feedbackActive"];
+    [result setObject:[NSNumber numberWithBool:self.preloader] forKey:@"preloader"];
     
 
     return result;

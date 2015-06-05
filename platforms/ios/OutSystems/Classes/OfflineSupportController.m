@@ -53,7 +53,10 @@ static NSData * _loginResponseData;
     NSString *username = infrastructure.username;
     
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"hostname == %@ && username == %@", hostname, username]];
-    NSMutableArray *loginApplications = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    NSMutableArray *loginApplications = nil;
+    
+    if(managedObjectContext)
+        loginApplications = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
     for (LoginApplication *loginApp in loginApplications){
         [managedObjectContext deleteObject:loginApp];
@@ -80,8 +83,10 @@ static NSData * _loginResponseData;
     NSString *username = infrastructure.username;
     
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"hostname == %@ && username == %@", hostname, username]];
-    NSMutableArray *loginApplications = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
+    NSMutableArray *loginApplications = nil;
     
+    if(managedObjectContext)
+        loginApplications = [[managedObjectContext executeFetchRequest:fetchRequest error:nil] mutableCopy];
     
     NSMutableArray *applications = [NSMutableArray array];
     
@@ -168,6 +173,14 @@ static NSData * _loginResponseData;
 +(BOOL)isNetworkAvailable:(Infrastructure*)infrastructure{
     
     if ([[Reachability reachabilityWithHostName:infrastructure.hostname] currentReachabilityStatus] == NotReachable) {
+        return NO;
+    }
+    
+    return YES;
+}
+
++(BOOL)isNetworkAvailable{
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
         return NO;
     }
     

@@ -17,6 +17,7 @@
 @dynamic password;
 @dynamic lastUsed;
 @dynamic isJavaServer;
+@dynamic isValid;
 
 - (NSString *) getHostnameForService:(NSString *)servicename {
     NSString *service;

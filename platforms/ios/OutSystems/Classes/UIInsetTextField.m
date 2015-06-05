@@ -20,11 +20,13 @@
 }
 
 - (CGRect)textRectForBounds:(CGRect)bounds {
-    return CGRectInset( bounds , 10 , 10 );
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(5, 10, 5, 10);
+    return UIEdgeInsetsInsetRect(bounds, contentInsets);
 }
 
 - (CGRect)editingRectForBounds:(CGRect)bounds {
-    return CGRectInset( bounds , 10 , 10 );
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(5, 10, 5, 10);
+    return UIEdgeInsetsInsetRect(bounds, contentInsets);
 }
 
 /*
