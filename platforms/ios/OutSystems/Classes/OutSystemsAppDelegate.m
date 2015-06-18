@@ -65,6 +65,23 @@ static DeepLink *deepLinkSettings;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Release old user defaults
+    NSString *defaultsAppVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppVersion"];
+    
+    NSString *currentAppVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    NSRange versionRange = [defaultsAppVersion rangeOfString:currentAppVersion];
+    
+    if(defaultsAppVersion == nil || versionRange.location == NSNotFound){
+        
+        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:currentAppVersion forKey:@"AppVersion"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+
+    }
+    
     [Crashlytics startWithAPIKey:@"11c9a3fd4b8f4cc2bf2168f52dc782ec2038b337"];
     
     [application setStatusBarHidden:NO];

@@ -14,6 +14,7 @@
 #import "OSNavigationController.h"
 #import "OfflineSupportController.h"
 #import "OSProgressBar.h"
+#import "CDVUserAgentUtil.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -82,6 +83,12 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 {
     [super viewDidLoad];
     
+    NSHTTPCookie *cookie;
+    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    for (cookie in [cookieJar cookies]) {
+        NSLog(@"%@", cookie);
+    }
+
     // set custom user agent
     UIWebView* tempWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
     NSString* userAgent = [tempWebView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
@@ -90,13 +97,17 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     NSString *nativeAppVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     userAgent = [userAgent stringByAppendingString: [NSString stringWithFormat:@" OutSystemsApp v.%@", nativeAppVersion]];
     
-    // Store the full user agent in NSUserDefaults to be used by real web view.
-    NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:userAgent, @"UserAgent", nil];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
-
+    [CDVUserAgentUtil acquireLock:^(NSInteger lockToken) {
+        [CDVUserAgentUtil setUserAgent:userAgent lockToken:lockToken];
+        [CDVUserAgentUtil releaseLock:&lockToken];
+    }];
+    
+    tempWebView = nil;
     
     // Do any additional setup after loading the view.
     _applicationBrowser = [CDVViewController new];
+    
+
   
     _applicationBrowser.startPage = @"";
     _applicationBrowser.wwwFolderName = @"";
