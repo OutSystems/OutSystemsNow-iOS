@@ -82,12 +82,6 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSHTTPCookie *cookie;
-    NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-    for (cookie in [cookieJar cookies]) {
-        NSLog(@"%@", cookie);
-    }
 
     // set custom user agent
     UIWebView* tempWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
@@ -106,9 +100,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // Do any additional setup after loading the view.
     _applicationBrowser = [CDVViewController new];
-    
-
-  
+      
     _applicationBrowser.startPage = @"";
     _applicationBrowser.wwwFolderName = @"";
     
