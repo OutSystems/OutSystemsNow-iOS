@@ -100,7 +100,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // Do any additional setup after loading the view.
     _applicationBrowser = [CDVViewController new];
-      
+    
     _applicationBrowser.startPage = @"";
     _applicationBrowser.wwwFolderName = @"";
     
@@ -168,11 +168,16 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         [_applicationBrowser.webView stringByEvaluatingJavaScriptFromString:@"localStorage.clear();"];
     }
     
+    NSString *appURL = _application.path;
+    if ( !([appURL hasSuffix:@".aspx"] || [appURL hasSuffix:@".jsf"]) ){
+        appURL = [NSString stringWithFormat:@"%@/", _application.path];
+    }
+    
     if (networkAvailable || [OfflineSupportController isNewSession]){
-        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
+        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:appURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
     }
     else{
-        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:appURL] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
     }
     
     [_applicationBrowser.webView loadRequest:request];
