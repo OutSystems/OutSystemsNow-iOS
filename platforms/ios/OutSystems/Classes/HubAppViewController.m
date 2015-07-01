@@ -420,32 +420,19 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 
     NSArray* words = [url componentsSeparatedByCharactersInSet :[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString* noSpaceString = [words componentsJoinedByString:@""];
-    
-    NSURL *hubUrl = [NSURL URLWithString:noSpaceString];
-   
-    if (hubUrl && hubUrl.host) {
-        return hubUrl.host;
+
+    NSString *http = @"http://";
+    NSString *https = @"https://";
+
+    if ([noSpaceString hasPrefix:http]) {
+        noSpaceString = [noSpaceString substringFromIndex:[http length]];
     }
     else{
-        NSString *http = @"http://";
-        NSString *https = @"https://";
-        
-        if ([noSpaceString hasPrefix:http]) {
-            return [noSpaceString substringFromIndex:[http length]];
+        if ([noSpaceString hasPrefix:https]) {
+            noSpaceString = [noSpaceString substringFromIndex:[https length]];
         }
-        else{
-            if ([noSpaceString hasPrefix:https]) {
-                return [noSpaceString substringFromIndex:[https length]];
-            }
-            else{
-                NSRange slash = [noSpaceString rangeOfString:@"/"];
-                if(slash.location != NSNotFound){
-                    return  [noSpaceString substringToIndex:slash.location];
-                }
-            }
-        }
-        
     }
+
     return noSpaceString;
 }
 

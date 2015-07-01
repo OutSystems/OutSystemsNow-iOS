@@ -1314,6 +1314,26 @@
 			productReference = 59E53FA41986C1760003BC6B /* OutSystems.app */;
 			productType = "com.apple.product-type.application";
 		};
+		c037ef4a1d09cee692c68b24 /* OutSystems-cal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = fd5524aea1f4ab32ca4fe4f8 /* Build configuration list for PBXNativeTarget "OutSystems-cal" */;
+			buildPhases = (
+				dcea7e1a28fa560d4758aac1 /* Copy www directory */,
+				ede6dcf3da9ab70336ab4db0 /* Resources */,
+				8908a2a8b9d7ee5d00b0e05a /* Sources */,
+				e99cc1a27d63997d9c157d2c /* Frameworks */,
+				a847b4d97ca6969225bdd102 /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				301BF551109A68C00062928A /* PBXTargetDependency */,
+			);
+			name = "OutSystems-cal";
+			productName = "OutSystems-cal";
+			productReference = 5985C53B1B18B2F30095FFDE /* OutSystems.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1350,6 +1370,7 @@
 				1D6058900D05DD3D006BFB54 /* OutSystems */,
 				597A51D9195C9A6400F15480 /* OutSystems Development */,
 				59E53F471986C1760003BC6B /* OutSystems Enterprise */,
+				c037ef4a1d09cee692c68b24 /* OutSystems-cal */,
 			);
 		};
 /* End PBXProject section */
@@ -1675,19 +1696,6 @@
 			shellScript = "cordova/lib/copy-www-build-step.sh";
 			showEnvVarsInLog = 0;
 		};
-		594C6B78195B3593004129C8 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "";
-		};
 		597A51DC195C9A6400F15480 /* Copy www directory */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1703,18 +1711,6 @@
 			shellScript = "cordova/lib/copy-www-build-step.sh";
 			showEnvVarsInLog = 0;
 		};
-		597A525B195C9A6400F15480 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "";
-		};
 		59E53F4A1986C1760003BC6B /* Copy www directory */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1729,18 +1725,6 @@
 			shellPath = /bin/sh;
 			shellScript = "cordova/lib/copy-www-build-step.sh";
 			showEnvVarsInLog = 0;
-		};
-		59E53FA01986C1760003BC6B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "";
 		};
 		a847b4d97ca6969225bdd102 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2608,7 +2592,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-
+		fd5524aea1f4ab32ca4fe4f8 /* Build configuration list for PBXNativeTarget "OutSystems-cal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7e5ae9ae31c783be9b9fa383 /* Debug */,
+				4bdb5becb51601b1de39561c /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */

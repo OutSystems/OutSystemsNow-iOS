@@ -13,6 +13,7 @@
 #import "OSNavigationController.h"
 #import "OfflineSupportController.h"
 #import "OSProgressBar.h"
+#import "CDVUserAgentUtil.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -80,23 +81,25 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // set custom user agent
     UIWebView* tempWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
     NSString* userAgent = [tempWebView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-    
+
     // Get the native app version and append it to user agent.
-    NSString *nativeAppVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    NSString *nativeAppVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     userAgent = [userAgent stringByAppendingString: [NSString stringWithFormat:@" OutSystemsApp v.%@", nativeAppVersion]];
     
-    // Store the full user agent in NSUserDefaults to be used by real web view.
-    NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:userAgent, @"UserAgent", nil];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
-
+    [CDVUserAgentUtil acquireLock:^(NSInteger lockToken) {
+        [CDVUserAgentUtil setUserAgent:userAgent lockToken:lockToken];
+        [CDVUserAgentUtil releaseLock:&lockToken];
+    }];
+    
+    tempWebView = nil;
     
     // Do any additional setup after loading the view.
     _applicationBrowser = [CDVViewController new];
-  
+    
     _applicationBrowser.startPage = @"";
     _applicationBrowser.wwwFolderName = @"";
     
@@ -164,11 +167,16 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         [_applicationBrowser.webView stringByEvaluatingJavaScriptFromString:@"localStorage.clear();"];
     }
     
+    NSString *appURL = _application.path;
+    if ( !([appURL hasSuffix:@".aspx"] || [appURL hasSuffix:@".jsf"]) ){
+        appURL = [NSString stringWithFormat:@"%@/", _application.path];
+    }
+    
     if (networkAvailable || [OfflineSupportController isNewSession]){
-        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
+        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:appURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
     }
     else{
-        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/", _application.path]] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
+        request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:appURL] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
     }
     
     [_applicationBrowser.webView loadRequest:request];

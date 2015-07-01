@@ -200,7 +200,7 @@
     OSNavigationController *navController = (OSNavigationController*)self.navigationController;
     [navController unlockInterfaceOrientation];
 
-    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable:_infrastructure];
+    BOOL networkAvailable = [OfflineSupportController isNetworkAvailable];
     if(networkAvailable || self.isDemoEnvironment){
         [self hideOfflineMessage:NO];
     }
