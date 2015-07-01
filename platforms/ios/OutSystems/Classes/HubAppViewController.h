@@ -20,4 +20,6 @@
 -(Infrastructure*)getInfrastructure;
 -(void)validateHostname;
 
+- (Infrastructure*) getOrCreateInfrastructure: (NSString*) hostname;
+
 @end

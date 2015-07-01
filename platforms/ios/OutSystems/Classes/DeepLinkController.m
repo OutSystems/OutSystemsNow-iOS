@@ -224,6 +224,10 @@
                             targetViewControler.isSingleApplication = NO;
                             
                             targetViewControler.application = self.destinationApp;
+
+                            HubAppViewController *hubVC = [[HubAppViewController alloc] init];
+                            targetViewControler.infrastructure = [hubVC getOrCreateInfrastructure:self.deepLinkSettings.environment];
+                            hubVC = nil;
                             
                             [navControler pushViewController:targetViewControler animated:NO];
                             

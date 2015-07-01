@@ -1696,19 +1696,6 @@
 			shellScript = "cordova/lib/copy-www-build-step.sh";
 			showEnvVarsInLog = 0;
 		};
-		594C6B78195B3593004129C8 /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "";
-		};
 		597A51DC195C9A6400F15480 /* Copy www directory */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1724,18 +1711,6 @@
 			shellScript = "cordova/lib/copy-www-build-step.sh";
 			showEnvVarsInLog = 0;
 		};
-		597A525B195C9A6400F15480 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "";
-		};
 		59E53F4A1986C1760003BC6B /* Copy www directory */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1750,18 +1725,6 @@
 			shellPath = /bin/sh;
 			shellScript = "cordova/lib/copy-www-build-step.sh";
 			showEnvVarsInLog = 0;
-		};
-		59E53FA01986C1760003BC6B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "";
 		};
 		a847b4d97ca6969225bdd102 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
