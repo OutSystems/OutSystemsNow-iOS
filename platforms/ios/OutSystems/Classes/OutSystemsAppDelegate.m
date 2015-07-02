@@ -45,7 +45,9 @@ static DeepLink *deepLinkSettings;
         NSString *url = [urlRegisterForNotifications stringByAppendingString:[OutSystemsAppDelegate GetDeviceId]];
         NSURL *myURL = [NSURL URLWithString:url];
         
-        NSURLRequest *myRequest = [NSURLRequest requestWithURL:myURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30];
+        NSMutableURLRequest *myRequest = [NSMutableURLRequest requestWithURL:myURL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30];
+        
+        [myRequest setHTTPShouldHandleCookies:NO];
         
         [NSURLConnection connectionWithRequest:myRequest delegate:self];
     }
