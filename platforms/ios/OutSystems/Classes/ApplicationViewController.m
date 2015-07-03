@@ -9,7 +9,6 @@
 #import "ApplicationViewController.h"
 #import "CDVViewController.h"
 #import "PXRImageSizeUtil.h"
-#import <Crashlytics/Crashlytics.h>
 #import "MobileECT.h"
 #import "OSNavigationController.h"
 #import "OfflineSupportController.h"

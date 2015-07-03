@@ -7,6 +7,7 @@
 //
 
 #import "OutSystemsAppDelegate.h"
+#import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
 #import <Pushwoosh/PushNotificationManager.h>
@@ -84,7 +85,7 @@ static DeepLink *deepLinkSettings;
 
     }
     
-    [Crashlytics startWithAPIKey:@"11c9a3fd4b8f4cc2bf2168f52dc782ec2038b337"];
+    [Fabric with:@[CrashlyticsKit]];
     
     [application setStatusBarHidden:NO];
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -116,7 +117,7 @@ static DeepLink *deepLinkSettings;
     
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-
+    
     // Override point for customization after application launch.
     return YES;
 }
