@@ -109,6 +109,18 @@
 		5953F9D51AA715CE007282A0 /* OfflineSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5978395B1A71467E006CA4E5 /* OfflineSupportController.m */; };
 		5953F9D61AA715D8007282A0 /* LoginApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 59783A951A7146D9006CA4E5 /* LoginApplication.m */; };
 		5953F9D71AA7163F007282A0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 597839551A714575006CA4E5 /* Reachability.m */; };
+		595625D01B46D6B40020CABF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CD1B46D6B40020CABF /* libc++.dylib */; };
+		595625D11B46D6B40020CABF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CD1B46D6B40020CABF /* libc++.dylib */; };
+		595625D21B46D6B40020CABF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CD1B46D6B40020CABF /* libc++.dylib */; };
+		595625D31B46D6B40020CABF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CD1B46D6B40020CABF /* libc++.dylib */; };
+		595625D41B46D6B40020CABF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CE1B46D6B40020CABF /* libz.dylib */; };
+		595625D51B46D6B40020CABF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CE1B46D6B40020CABF /* libz.dylib */; };
+		595625D61B46D6B40020CABF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CE1B46D6B40020CABF /* libz.dylib */; };
+		595625D71B46D6B40020CABF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CE1B46D6B40020CABF /* libz.dylib */; };
+		595625D81B46D6B40020CABF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CF1B46D6B40020CABF /* Fabric.framework */; };
+		595625D91B46D6B40020CABF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CF1B46D6B40020CABF /* Fabric.framework */; };
+		595625DA1B46D6B40020CABF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CF1B46D6B40020CABF /* Fabric.framework */; };
+		595625DB1B46D6B40020CABF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CF1B46D6B40020CABF /* Fabric.framework */; };
 		595646D8190FBE4C00C1D583 /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
 		595646D9190FBE4C00C1D583 /* splash_768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D5190FBE4C00C1D583 /* splash_768x1024.png */; };
 		595646DA190FBE4C00C1D583 /* splash_1024x768.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D6190FBE4C00C1D583 /* splash_1024x768.png */; };
@@ -647,6 +659,9 @@
 		592FA9671900209B00458A51 /* icon-apps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-apps.png"; sourceTree = "<group>"; };
 		592FA9681900209B00458A51 /* icon-cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cog.png"; sourceTree = "<group>"; };
 		594C6B79195B35FE004129C8 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		595625CD1B46D6B40020CABF /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		595625CE1B46D6B40020CABF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		595625CF1B46D6B40020CABF /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_1024x768_@2x.png"; sourceTree = "<group>"; };
 		595646D5190FBE4C00C1D583 /* splash_768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_768x1024.png; sourceTree = "<group>"; };
 		595646D6190FBE4C00C1D583 /* splash_1024x768.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_1024x768.png; sourceTree = "<group>"; };
@@ -807,6 +822,8 @@
 				59665FC91A091AF60049F8CD /* CoreImage.framework in Frameworks */,
 				59EC8A3319E3FD6800944672 /* ImageIO.framework in Frameworks */,
 				59BC490E199CB60D00EA87AA /* CoreText.framework in Frameworks */,
+				595625D01B46D6B40020CABF /* libc++.dylib in Frameworks */,
+				595625D81B46D6B40020CABF /* Fabric.framework in Frameworks */,
 				CFFC2FE41917F96600264950 /* Security.framework in Frameworks */,
 				CFFC2FE21917F5D300264950 /* Pushwoosh.framework in Frameworks */,
 				CF9C2DFE18F5BB16000C5E68 /* CoreData.framework in Frameworks */,
@@ -819,6 +836,7 @@
 				594C6B7A195B35FE004129C8 /* Crashlytics.framework in Frameworks */,
 				598EBF091ADD2A8600BA7FF7 /* EventKit.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
+				595625D41B46D6B40020CABF /* libz.dylib in Frameworks */,
 				4BA82E6B0F784F78BA94489E /* AddressBook.framework in Frameworks */,
 				291BD490949648F48F81A283 /* AddressBookUI.framework in Frameworks */,
 				596479372EAF4EF3A50B22EE /* AudioToolbox.framework in Frameworks */,
@@ -838,6 +856,8 @@
 				59DB9AA11A1A55FA00FC3E35 /* CoreVideo.framework in Frameworks */,
 				59DB9AA01A1A55F300FC3E35 /* AVFoundation.framework in Frameworks */,
 				59665FC81A091AEB0049F8CD /* CoreImage.framework in Frameworks */,
+				595625D11B46D6B40020CABF /* libc++.dylib in Frameworks */,
+				595625D91B46D6B40020CABF /* Fabric.framework in Frameworks */,
 				591F0E3C1B0B715200F22741 /* CoreTelephony.framework in Frameworks */,
 				59EC8A3219E3FD5F00944672 /* ImageIO.framework in Frameworks */,
 				59BC490D199CB60800EA87AA /* CoreText.framework in Frameworks */,
@@ -850,6 +870,7 @@
 				597A524F195C9A6400F15480 /* AssetsLibrary.framework in Frameworks */,
 				597A5250195C9A6400F15480 /* libCordova.a in Frameworks */,
 				597A5251195C9A6400F15480 /* CoreGraphics.framework in Frameworks */,
+				595625D51B46D6B40020CABF /* libz.dylib in Frameworks */,
 				598EBF0A1ADD2A8A00BA7FF7 /* EventKit.framework in Frameworks */,
 				597A5252195C9A6400F15480 /* MobileCoreServices.framework in Frameworks */,
 				597A5253195C9A6400F15480 /* Crashlytics.framework in Frameworks */,
@@ -881,12 +902,15 @@
 				59E53F971986C1760003BC6B /* MobileCoreServices.framework in Frameworks */,
 				59E53F981986C1760003BC6B /* Crashlytics.framework in Frameworks */,
 				59E53F991986C1760003BC6B /* CoreLocation.framework in Frameworks */,
+				595625D61B46D6B40020CABF /* libz.dylib in Frameworks */,
 				59E53F9A1986C1760003BC6B /* AddressBook.framework in Frameworks */,
 				59E53F9B1986C1760003BC6B /* AddressBookUI.framework in Frameworks */,
 				598EBF0B1ADD2A8B00BA7FF7 /* EventKit.framework in Frameworks */,
 				59E53F9C1986C1760003BC6B /* AudioToolbox.framework in Frameworks */,
+				595625DA1B46D6B40020CABF /* Fabric.framework in Frameworks */,
 				59E53F9D1986C1760003BC6B /* libiconv.dylib in Frameworks */,
 				59E53F9E1986C1760003BC6B /* AVFoundation.framework in Frameworks */,
+				595625D21B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				59E53F9F1986C1760003BC6B /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -899,10 +923,12 @@
 				7bfb929692701553b254a68b /* CoreImage.framework in Frameworks */,
 				e9c97f6a498dda63fdfa59c3 /* ImageIO.framework in Frameworks */,
 				02e750d6a1369761901ea8de /* CoreText.framework in Frameworks */,
+				595625D31B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				08c44511356e0708cd9a49c6 /* Security.framework in Frameworks */,
 				7ade0c7d89aed07fa5edd173 /* Pushwoosh.framework in Frameworks */,
 				6ea08bf601831c58a5d59270 /* CoreData.framework in Frameworks */,
 				320eb8b1f3048dd7a4caba86 /* OutSystemsMobileECT.framework in Frameworks */,
+				595625D71B46D6B40020CABF /* libz.dylib in Frameworks */,
 				96787378dc147bae95645449 /* QuartzCore.framework in Frameworks */,
 				f8b02d0d7bdd7da3146e9cd2 /* AssetsLibrary.framework in Frameworks */,
 				feb6e5c1c6cb906a6ebd6f1e /* libCordova.a in Frameworks */,
@@ -914,6 +940,7 @@
 				58637485dbfba7d1aa3d9589 /* AddressBook.framework in Frameworks */,
 				ae483f302e39abaac6523305 /* AddressBookUI.framework in Frameworks */,
 				5761023d6ee03ed0c82f7e76 /* AudioToolbox.framework in Frameworks */,
+				595625DB1B46D6B40020CABF /* Fabric.framework in Frameworks */,
 				8bfd8e4768d8142c3f516f29 /* libiconv.dylib in Frameworks */,
 				054c097c02930aeb22631c72 /* AVFoundation.framework in Frameworks */,
 				f2f083c0bcd9cd39c601668d /* CoreVideo.framework in Frameworks */,
@@ -1051,6 +1078,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				595625CD1B46D6B40020CABF /* libc++.dylib */,
+				595625CE1B46D6B40020CABF /* libz.dylib */,
+				595625CF1B46D6B40020CABF /* Fabric.framework */,
 				597839581A714612006CA4E5 /* SystemConfiguration.framework */,
 				59DCDB9D1A263D5F00016507 /* OutSystemsMobileECT.bundle */,
 				59DCDB9E1A263D5F00016507 /* OutSystemsMobileECT.framework */,
