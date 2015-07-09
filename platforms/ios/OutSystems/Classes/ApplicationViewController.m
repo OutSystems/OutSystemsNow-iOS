@@ -168,7 +168,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     }
     
     NSString *appURL = _application.path;
-    if ( !([appURL hasSuffix:@".aspx"] || [appURL hasSuffix:@".jsf"]) ){
+    if ( !([appURL hasSuffix:@"/"] || [appURL hasSuffix:@".aspx"] || [appURL hasSuffix:@".jsf"]) && [appURL rangeOfString:@"?"].location == NSNotFound ){
         appURL = [NSString stringWithFormat:@"%@/", _application.path];
     }
     
