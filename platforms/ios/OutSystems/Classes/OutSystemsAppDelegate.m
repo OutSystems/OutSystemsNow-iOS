@@ -11,7 +11,7 @@
 #import <Crashlytics/Crashlytics.h>
 
 #import <Pushwoosh/PushNotificationManager.h>
-#import "HubAppViewController.h"
+#import "OSNavigationController.h"
 
 @implementation OutSystemsAppDelegate
 
@@ -118,6 +118,10 @@ static DeepLink *deepLinkSettings;
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     
+    // Get navigation controller
+    OSNavigationController *navigationController = (OSNavigationController *)self.window.rootViewController;
+    [navigationController pushRootViewController:nil];
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -212,16 +216,8 @@ static DeepLink *deepLinkSettings;
     [self.deepLinkController createSettingsFromURL:url];
     
     // Get navigation controller
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    UIStoryboard *storyboard = navigationController.storyboard;
-    
-    // Passing the Deep Link settings
-    HubAppViewController *hubAppViewControler = [storyboard instantiateViewControllerWithIdentifier:@"HubScreen"];
-    hubAppViewControler.deepLinkController = self.deepLinkController;
-    
-    // Get back to the first VC
-
-    [navigationController pushViewController:hubAppViewControler animated:NO];
+    OSNavigationController *navigationController = (OSNavigationController *)self.window.rootViewController;
+    [navigationController pushRootViewController:self.deepLinkController];
     
     return YES;
 }

@@ -128,6 +128,10 @@
 		595646D9190FBE4C00C1D583 /* splash_768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D5190FBE4C00C1D583 /* splash_768x1024.png */; };
 		595646DA190FBE4C00C1D583 /* splash_1024x768.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D6190FBE4C00C1D583 /* splash_1024x768.png */; };
 		595646DB190FBE4C00C1D583 /* splash_768x1024_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D7190FBE4C00C1D583 /* splash_768x1024_@2x.png */; };
+		5960688D1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */; };
+		5960688E1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */; };
+		5960688F1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */; };
+		596068901B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */; };
 		5962EF05191BE4D1001A8F57 /* PXRImageSizeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */; };
 		596479372EAF4EF3A50B22EE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73C8DACE3A64FAA97176CDE /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		59665FC81A091AEB0049F8CD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59665FC71A091AEB0049F8CD /* CoreImage.framework */; };
@@ -666,6 +670,8 @@
 		595646D5190FBE4C00C1D583 /* splash_768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_768x1024.png; sourceTree = "<group>"; };
 		595646D6190FBE4C00C1D583 /* splash_1024x768.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_1024x768.png; sourceTree = "<group>"; };
 		595646D7190FBE4C00C1D583 /* splash_768x1024_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_768x1024_@2x.png"; sourceTree = "<group>"; };
+		5960688B1B5E4487000D5DB9 /* ApplicationSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSettingsController.h; sourceTree = "<group>"; };
+		5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSettingsController.m; sourceTree = "<group>"; };
 		5962EF03191BE4D1001A8F57 /* PXRImageSizeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXRImageSizeUtil.h; sourceTree = "<group>"; };
 		5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXRImageSizeUtil.m; sourceTree = "<group>"; };
 		59665FC71A091AEB0049F8CD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -957,42 +963,19 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5974C7E11A9638CE006553D2 /* OSNavigationBarAlert.h */,
-				5974C7E21A9638CE006553D2 /* OSNavigationBarAlert.m */,
-				5978395A1A71467E006CA4E5 /* OfflineSupportController.h */,
-				5978395B1A71467E006CA4E5 /* OfflineSupportController.m */,
-				597839541A714575006CA4E5 /* Reachability.h */,
-				597839551A714575006CA4E5 /* Reachability.m */,
-				CF9C2DCF18F5869A000C5E68 /* ApplicationTileCell.h */,
-				CF9C2DD018F5869A000C5E68 /* ApplicationTileCell.m */,
-				CF9C2DD118F5869A000C5E68 /* ApplicationTileList.h */,
-				CF9C2DD218F5869A000C5E68 /* ApplicationTileList.m */,
+				596068881B5D4209000D5DB9 /* Controllers */,
+				596068871B5D41EA000D5DB9 /* Views */,
+				596068861B5D41D8000D5DB9 /* Utils */,
+				CF9C2DD918F5869A000C5E68 /* HubAppViewController.h */,
+				CF9C2DDA18F5869A000C5E68 /* HubAppViewController.m */,
+				CF9C2DDD18F5869A000C5E68 /* LoginScreenController.h */,
+				CF9C2DDE18F5869A000C5E68 /* LoginScreenController.m */,
 				CF9C2DD318F5869A000C5E68 /* ApplicationTileListController.h */,
 				CF9C2DD418F5869A000C5E68 /* ApplicationTileListController.m */,
 				CF9C2DD518F5869A000C5E68 /* ApplicationViewController.h */,
 				CF9C2DD618F5869A000C5E68 /* ApplicationViewController.m */,
 				CF9C2DD718F5869A000C5E68 /* OutSystemsAppDelegate.h */,
 				CF9C2DD818F5869A000C5E68 /* OutSystemsAppDelegate.m */,
-				CF9C2DD918F5869A000C5E68 /* HubAppViewController.h */,
-				CF9C2DDA18F5869A000C5E68 /* HubAppViewController.m */,
-				CF9C2DDD18F5869A000C5E68 /* LoginScreenController.h */,
-				CF9C2DDE18F5869A000C5E68 /* LoginScreenController.m */,
-				CF9C2DE218F5869A000C5E68 /* UIInsetTextField.h */,
-				CF9C2DE318F5869A000C5E68 /* UIInsetTextField.m */,
-				5962EF03191BE4D1001A8F57 /* PXRImageSizeUtil.h */,
-				5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */,
-				59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */,
-				59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */,
-				59F17EE31976C24B00E22193 /* SecurePasswordStore.h */,
-				59F17EE41976C24B00E22193 /* SecurePasswordStore.m */,
-				59BC4906199CB56D00EA87AA /* TTTAttributedLabel.h */,
-				59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */,
-				597902E619ED53C800440628 /* DeepLinkController.h */,
-				597902E719ED54B400440628 /* DeepLinkController.m */,
-				59665FCB1A0937620049F8CD /* OSNavigationController.h */,
-				59665FCC1A0937D00049F8CD /* OSNavigationController.m */,
-				590C2E581B00FF7B0018A053 /* OSProgressBar.h */,
-				590C2E591B00FF7B0018A053 /* OSProgressBar.m */,
 			);
 			name = Classes;
 			path = OutSystems/Classes;
@@ -1195,6 +1178,74 @@
 			path = se.lproj;
 			sourceTree = "<group>";
 		};
+		596068861B5D41D8000D5DB9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */,
+				59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */,
+				597839541A714575006CA4E5 /* Reachability.h */,
+				597839551A714575006CA4E5 /* Reachability.m */,
+				59F17EE31976C24B00E22193 /* SecurePasswordStore.h */,
+				59F17EE41976C24B00E22193 /* SecurePasswordStore.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		596068871B5D41EA000D5DB9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF9C2DCF18F5869A000C5E68 /* ApplicationTileCell.h */,
+				CF9C2DD018F5869A000C5E68 /* ApplicationTileCell.m */,
+				CF9C2DD118F5869A000C5E68 /* ApplicationTileList.h */,
+				CF9C2DD218F5869A000C5E68 /* ApplicationTileList.m */,
+				5974C7E11A9638CE006553D2 /* OSNavigationBarAlert.h */,
+				5974C7E21A9638CE006553D2 /* OSNavigationBarAlert.m */,
+				590C2E581B00FF7B0018A053 /* OSProgressBar.h */,
+				590C2E591B00FF7B0018A053 /* OSProgressBar.m */,
+				5962EF03191BE4D1001A8F57 /* PXRImageSizeUtil.h */,
+				5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */,
+				59BC4906199CB56D00EA87AA /* TTTAttributedLabel.h */,
+				59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */,
+				CF9C2DE218F5869A000C5E68 /* UIInsetTextField.h */,
+				CF9C2DE318F5869A000C5E68 /* UIInsetTextField.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		596068881B5D4209000D5DB9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				597902E619ED53C800440628 /* DeepLinkController.h */,
+				597902E719ED54B400440628 /* DeepLinkController.m */,
+				5978395A1A71467E006CA4E5 /* OfflineSupportController.h */,
+				5978395B1A71467E006CA4E5 /* OfflineSupportController.m */,
+				59665FCB1A0937620049F8CD /* OSNavigationController.h */,
+				59665FCC1A0937D00049F8CD /* OSNavigationController.m */,
+				5960688B1B5E4487000D5DB9 /* ApplicationSettingsController.h */,
+				5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		596068891B5D4274000D5DB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF9C2DC918F5869A000C5E68 /* Application.h */,
+				CF9C2DCA18F5869A000C5E68 /* Application.m */,
+				597902E019EC1DCF00440628 /* DeepLink.h */,
+				597902E119EC200D00440628 /* DeepLink.m */,
+				590EA4CD18FC32DC00EB317D /* DemoInfrastructure.h */,
+				590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */,
+				CF9C2DDB18F5869A000C5E68 /* Infrastructure.h */,
+				CF9C2DDC18F5869A000C5E68 /* Infrastructure.m */,
+				59783A941A7146D9006CA4E5 /* LoginApplication.h */,
+				59783A951A7146D9006CA4E5 /* LoginApplication.m */,
+				5999274F1A0277580068B246 /* MobileECT.h */,
+				599927501A0277580068B246 /* MobileECT.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		CF9C2DF218F586F0000C5E68 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -1207,19 +1258,8 @@
 		CF9C2DFF18F5BE2A000C5E68 /* Datamodel */ = {
 			isa = PBXGroup;
 			children = (
+				596068891B5D4274000D5DB9 /* Model */,
 				CF9C2E0018F5BE72000C5E68 /* OutAppData.xcdatamodeld */,
-				CF9C2DC918F5869A000C5E68 /* Application.h */,
-				CF9C2DCA18F5869A000C5E68 /* Application.m */,
-				CF9C2DDB18F5869A000C5E68 /* Infrastructure.h */,
-				CF9C2DDC18F5869A000C5E68 /* Infrastructure.m */,
-				590EA4CD18FC32DC00EB317D /* DemoInfrastructure.h */,
-				590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */,
-				597902E019EC1DCF00440628 /* DeepLink.h */,
-				597902E119EC200D00440628 /* DeepLink.m */,
-				59783A941A7146D9006CA4E5 /* LoginApplication.h */,
-				59783A951A7146D9006CA4E5 /* LoginApplication.m */,
-				5999274F1A0277580068B246 /* MobileECT.h */,
-				599927501A0277580068B246 /* MobileECT.m */,
 				5919DC491A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel */,
 			);
 			name = Datamodel;
@@ -1898,6 +1938,7 @@
 				F5535B205A25433A9DA95D07 /* CDVNotification.m in Sources */,
 				CF9C2DE818F5869A000C5E68 /* ApplicationTileList.m in Sources */,
 				591F0E331B0B705800F22741 /* CDVDevice.m in Sources */,
+				5960688D1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */,
 				597902E819ED54B400440628 /* DeepLinkController.m in Sources */,
 				5978395C1A71467E006CA4E5 /* OfflineSupportController.m in Sources */,
 				590EA4CF18FC32DC00EB317D /* DemoInfrastructure.m in Sources */,
@@ -1942,6 +1983,7 @@
 				597A5231195C9A6400F15480 /* main.m in Sources */,
 				59EC8A2F19E3FCCC00944672 /* CDVCamera.m in Sources */,
 				599927521A0277580068B246 /* MobileECT.m in Sources */,
+				5960688E1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */,
 				599C2DCA1988068500BFF05D /* CDVAssetLibraryFilesystem.m in Sources */,
 				597A5233195C9A6400F15480 /* UIInsetTextField.m in Sources */,
 				599C2DC11988067700BFF05D /* CDVFile.m in Sources */,
@@ -1991,6 +2033,7 @@
 				59E53F781986C1760003BC6B /* OutAppData.xcdatamodeld in Sources */,
 				597839571A714575006CA4E5 /* Reachability.m in Sources */,
 				59E53F791986C1760003BC6B /* main.m in Sources */,
+				5960688F1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */,
 				599927531A0277580068B246 /* MobileECT.m in Sources */,
 				599C2DC61988067E00BFF05D /* CDVLocalFilesystem.m in Sources */,
 				59E53F7B1986C1760003BC6B /* UIInsetTextField.m in Sources */,
@@ -2054,6 +2097,7 @@
 				2107c42ea7733a266633d9c5 /* CDVNotification.m in Sources */,
 				ae3dc3c1f4a80bde12c9de0d /* ApplicationTileList.m in Sources */,
 				e0bab71d137d7aa8b3d2edfa /* CDVDevice.m in Sources */,
+				596068901B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */,
 				b3a652bdd3fd4850e91f908f /* DeepLinkController.m in Sources */,
 				d5403f7e73cf10f8762ff40f /* OfflineSupportController.m in Sources */,
 				d8ba138703e4144e3534924b /* DemoInfrastructure.m in Sources */,

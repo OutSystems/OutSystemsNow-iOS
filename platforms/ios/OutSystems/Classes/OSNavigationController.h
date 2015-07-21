@@ -10,6 +10,7 @@
 #define OutSystems_OSNavigationController_h
 
 #import <Foundation/Foundation.h>
+#import "DeepLinkController.h"
 
 @interface OSNavigationController : UINavigationController
 
@@ -22,6 +23,8 @@
 -(void)unlockInterfaceOrientation;
 
 -(void)lockCurrentOrientation:(BOOL)lock;
+
+-(void)pushRootViewController:(DeepLinkController*)deepLinkController;
 
 @end
 

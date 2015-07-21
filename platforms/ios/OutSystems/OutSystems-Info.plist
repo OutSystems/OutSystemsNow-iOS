@@ -2,6 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>OSNowApplicationSettings</key>
+	<dict>
+		<key>SkipNativeLogin</key>
+		<false/>
+		<key>SkipApplicationList</key>
+		<false/>
+		<key>HideNavigationBar</key>
+		<false/>
+		<key>DefaultHostname</key>
+		<string></string>
+		<key>DefaultApplicationURL</key>
+		<string></string>
+		<key>BackgroundColor</key>
+		<string></string>
+		<key>ForegroundColor</key>
+		<string></string>
+		<key>TintColor</key>
+		<string></string>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleDisplayName</key>

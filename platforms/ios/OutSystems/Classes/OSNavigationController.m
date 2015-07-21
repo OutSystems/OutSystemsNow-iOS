@@ -7,6 +7,7 @@
 //
 
 #import "OSNavigationController.h"
+#import "ApplicationSettingsController.h"
 
 @implementation OSNavigationController
 
@@ -82,5 +83,19 @@
     NSLog(@"Lock Interface to Current Orientation: %d",lock);
     self.orientationLocked = lock;
 }
+
+
+
+# pragma mark - Navigation
+-(void)pushRootViewController:(DeepLinkController*)deepLinkController{
+    
+    UIStoryboard *storyboard = self.storyboard;
+    
+    UIViewController *rootViewControler = [ApplicationSettingsController rootViewController:storyboard deepLinkController:deepLinkController];
+    
+    [self pushViewController:rootViewControler animated:NO];
+    
+}
+
 
 @end
