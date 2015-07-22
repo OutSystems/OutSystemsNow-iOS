@@ -221,18 +221,20 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
  
     
     // Application Settings
-    UIColor *tintColor = [ApplicationSettingsController tintColor];
-    if(tintColor){
-        _navBack.tintColor = tintColor;
-        _navForward.tintColor = tintColor;
-        _navAppList.tintColor = tintColor;
-        _openMobileECTButton.tintColor = tintColor;
-       
-        [_progressBar setProgressTintColor:tintColor];
-        
-
+    if([ApplicationSettingsController hideNavigationBar]){
+        [self.navigationController setToolbarHidden:YES animated:NO];
     }
-    
+    else{
+        UIColor *tintColor = [ApplicationSettingsController tintColor];
+        if(tintColor){
+            _navBack.tintColor = tintColor;
+            _navForward.tintColor = tintColor;
+            _navAppList.tintColor = tintColor;
+            _openMobileECTButton.tintColor = tintColor;
+            
+            [_progressBar setProgressTintColor:tintColor];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

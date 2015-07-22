@@ -11,7 +11,7 @@
 		<key>HideNavigationBar</key>
 		<false/>
 		<key>DefaultHostname</key>
-		<string>labsdev.outsystems.net</string>
+		<string></string>
 		<key>DefaultApplicationURL</key>
 		<string></string>
 		<key>BackgroundColor</key>
@@ -19,7 +19,7 @@
 		<key>ForegroundColor</key>
 		<string></string>
 		<key>TintColor</key>
-		<string>#5e35b1</string>
+		<string></string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
