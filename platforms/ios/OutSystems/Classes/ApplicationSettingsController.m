@@ -11,6 +11,7 @@
 #import "LoginScreenController.h"
 #import "ApplicationTileListController.h"
 #import "ApplicationViewController.h"
+#import "OutSystemsAppDelegate.h"
 
 @implementation ApplicationSettingsController
 
@@ -79,34 +80,40 @@
 }
 
 
-+(NSString*)backgroundColor{
++(UIColor*)backgroundColor{
     NSDictionary *settings = [self getApplicationSettings];
-    NSString *result = nil;
+    UIColor *result = nil;
     
     if(settings){
-        result = [settings valueForKey:@"BackgroundColor"];
+        NSString *strColor = [settings valueForKey:@"BackgroundColor"];
+        if([strColor length] == 7)
+            result = [self colorFromHexString:strColor];
     }
     
     return result;
 }
 
-+(NSString*)foregroundColor{
++(UIColor*)foregroundColor{
     NSDictionary *settings = [self getApplicationSettings];
-    NSString *result = nil;
+    UIColor *result = nil;
     
     if(settings){
-        result = [settings valueForKey:@"ForegroundColor"];
+        NSString *strColor = [settings valueForKey:@"ForegroundColor"];
+        if([strColor length] == 7)
+            result = [self colorFromHexString:strColor];
     }
     
     return result;
 }
 
-+(NSString*)tintColor{
++(UIColor*)tintColor{
     NSDictionary *settings = [self getApplicationSettings];
-    NSString *result = nil;
+    UIColor *result = nil;
     
     if(settings){
-        result = [settings valueForKey:@"TintColor"];
+        NSString *strColor = [settings valueForKey:@"TintColor"];
+        if([strColor length] == 7)
+            result = [self colorFromHexString:strColor];
     }
     
     return result;
@@ -161,6 +168,53 @@
 }
 
 
+# pragma mark - Infrastructure
++(void)checkInfrastructure:(Infrastructure*)infrastructure{
+    
+    NSURL *url = [NSURL URLWithString:[infrastructure getHostnameForService:@"infrastructure"]];
+    
+    NSURLRequest *myRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:5];
+    [NSURLConnection connectionWithRequest:myRequest delegate:self];    
+}
+
+
+
++ (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
+    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
+}
+
++ (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    NSArray *trustedHosts = [[NSArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
+    
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        for (NSString *trustedHost in trustedHosts) {
+            
+            // currently trusting all certificates for beta release, remove true condition to validate untrusted certificates with list for trusted servers
+            if(true || [challenge.protectionSpace.host rangeOfString:trustedHost options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - trustedHost.length)) {
+                [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+                break;
+            }
+        }
+    }
+    
+    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
+}
+
+
++ (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // inform the user
+    NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    
+}
+
++ (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"connection finished");
+    
+}
+
+
 # pragma mark - Navigation
 
 +(UIViewController*)rootViewController:(UIStoryboard*)storyboard deepLinkController:(DeepLinkController*)deepLinkController{
@@ -185,6 +239,10 @@
         Infrastructure *infrastructure = [self getOrCreateInfrastructure:defaultHostname];
         
         if(skipNativeLogin){
+            
+            NSString *deviceUDID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+            
+            [OutSystemsAppDelegate setURLForPushNotificationTokenRegistration:[NSString stringWithFormat:@"%@?&deviceHwId=%@&device=",[infrastructure   getHostnameForService:@"registertoken"],deviceUDID]];
             
             if(skipApplicationList){
                 // Push ApplicationViewController
@@ -211,6 +269,8 @@
                     appViewController.application = applicationInfo;
                 
                     appViewController.infrastructure = infrastructure;
+                    
+                    //[self checkInfrastructure:infrastructure];
                     
                     return appViewController;
                 }
@@ -251,8 +311,91 @@
 
 
 +(UIViewController*)nextViewController:(UIViewController*)currentViewController{
+    
+    
+    UINavigationController *navControler = currentViewController.navigationController;
+    UIStoryboard *storyboard = navControler.storyboard;
+
+    BOOL skipNativeLogin = [self skipNativeLogin];
+    BOOL skipApplicationList = [self skipApplicationList];
+    BOOL hideNavigationBar = [self hideNavigationBar];
+    
+    NSString *defaultHostname = [self defaultHostname];
+    NSString *defaultAppURL = [self defaultApplicationURL];
+    
+    NSLog(@"SkipNativeLogin: %d",skipNativeLogin);
+    NSLog(@"SkipApplicationList: %d",skipApplicationList);
+    NSLog(@"HideNavigationBar: %d",hideNavigationBar);
+    
+    NSLog(@"DefaultHostname: %@",defaultHostname);
+    NSLog(@"DefaultApplicationURL: %@",defaultAppURL);
+    
+    // LoginScreenController
+    if([currentViewController isKindOfClass:[LoginScreenController class]]){
+        LoginScreenController *loginVC = (LoginScreenController *)currentViewController;
+        DeepLinkController *deepLinkController = loginVC.deepLinkController;
+        Infrastructure *infrastructure = loginVC.infrastructure;
+        
+        if(skipApplicationList){
+            
+            // To skip the application list a default application url must be provided
+            if([defaultAppURL length] > 0){
+
+                // Go to ApplicationViewController
+                
+                ApplicationViewController *appViewController = [storyboard instantiateViewControllerWithIdentifier:@"ApplicationViewController"];
+                
+                appViewController.isSingleApplication = YES;
+                
+                Application *applicationInfo = nil;
+                
+                if(deepLinkController && [deepLinkController hasValidSettings]){
+                    applicationInfo = deepLinkController.destinationApp;
+                }
+                else{
+                    NSMutableDictionary *applicationDict = [[NSMutableDictionary alloc] init];
+                    [applicationDict setObject:defaultAppURL forKey:@"name"];
+                    [applicationDict setObject:defaultAppURL forKey:@"description"];
+                    [applicationDict setObject:defaultAppURL forKey:@"path"];
+                    
+                    applicationInfo = [Application initWithJSON:applicationDict forHost:defaultHostname];
+                }
+                appViewController.application = applicationInfo;
+                
+                appViewController.infrastructure = infrastructure;
+                
+                return appViewController;
+            }
+        }
+
+        // Otherwise...
+        // Go to ApplicationTileListController
+        
+        ApplicationTileListController *appListViewController = [storyboard instantiateViewControllerWithIdentifier:@"ApplicationTileList"];
+        
+        appListViewController.infrastructure = infrastructure;
+        appListViewController.isDemoEnvironment = NO;
+        appListViewController.deepLinkController = deepLinkController;
+        
+        return appListViewController;
+        
+    }
+    
+    
     return nil;
 }
+
+
+# pragma mark - Colors
+
++ (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
 
 
 @end

@@ -412,8 +412,6 @@
                         <outlet property="loginButton" destination="8GH-pY-BBY" id="ssa-Xi-Tuf"/>
                         <outlet property="passwordInput" destination="BAf-YL-kGw" id="Pi2-Vz-aEP"/>
                         <outlet property="usernameInput" destination="1zO-Fl-YX9" id="Mgu-DS-gAE"/>
-                        <segue destination="PlA-66-nNl" kind="push" identifier="GoToAppListSegue" id="ITW-ug-7u2"/>
-                        <segue destination="n5F-NC-Ib7" kind="push" identifier="GoToSingleApplicationSegue" id="oPM-kh-zcB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b77-eX-teA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -458,13 +456,13 @@
                         <viewControllerLayoutGuide type="bottom" id="8hj-Ne-gmg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6Hh-pq-ZbP">
-                        <rect key="frame" x="0.0" y="44" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6c-EX-xhJ">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6c-EX-xhJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
-                                    <activityIndicatorView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0Nm-rX-jFY">
+                                    <activityIndicatorView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="0Nm-rX-jFY">
                                         <rect key="frame" x="0.0" y="12" width="320" height="524"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="524" id="XRZ-QV-ehx"/>
@@ -479,7 +477,7 @@
                                     <constraint firstAttribute="centerX" secondItem="0Nm-rX-jFY" secondAttribute="centerX" id="IKl-Lb-NJO"/>
                                 </constraints>
                             </view>
-                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fbs-oO-eqj">
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fbs-oO-eqj">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <color key="backgroundColor" red="0.84052136479591844" green="0.84052136479591844" blue="0.84052136479591844" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SR3-cP-Seh">
@@ -556,8 +554,12 @@
                             <constraint firstAttribute="centerY" secondItem="FmP-UV-Qzj" secondAttribute="centerY" id="xuv-0E-wV0"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Logout" id="VCT-J0-ZEY"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="2bV-MK-7Fx"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="applicationsTileList" destination="fbs-oO-eqj" id="yHm-gV-Gj5"/>
                         <outlet property="loadingIndicator" destination="0Nm-rX-jFY" id="Ynd-UR-NxA"/>
@@ -803,8 +805,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="ITW-ug-7u2"/>
-        <segue reference="Wmc-Al-Qfe"/>
-    </inferredMetricsTieBreakers>
 </document>

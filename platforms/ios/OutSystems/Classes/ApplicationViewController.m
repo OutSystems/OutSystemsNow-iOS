@@ -14,6 +14,7 @@
 #import "OfflineSupportController.h"
 #import "OSProgressBar.h"
 #import "CDVUserAgentUtil.h"
+#import "ApplicationSettingsController.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -129,12 +130,18 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     // remove bounce effect
     self.applicationBrowser.webView.scrollView.bounces = NO;
     
+    self.navForward.enabled = NO;
     
     // Hide Nav App List button
     if(self.isSingleApplication){
+        
         NSMutableArray *toolbarButtons = [self.toolbarItems mutableCopy];
         [toolbarButtons removeObject:self.navAppList];
         [self setToolbarItems:toolbarButtons animated:YES];
+        
+        self.navBack.enabled = NO;
+        
+        self.errorBackToAppsButton.hidden = YES;
     }
 
     self.originalToolbarItems = [self.toolbarItems mutableCopy];
@@ -179,6 +186,7 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:appURL] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30];
     }
     
+
     [_applicationBrowser.webView loadRequest:request];
     
     // Check the cache.
@@ -210,6 +218,20 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     
     // Progress Bar
     _progressBar = [[OSProgressBar alloc] initForView:_loadingProgressView];
+ 
+    
+    // Application Settings
+    UIColor *tintColor = [ApplicationSettingsController tintColor];
+    if(tintColor){
+        _navBack.tintColor = tintColor;
+        _navForward.tintColor = tintColor;
+        _navAppList.tintColor = tintColor;
+        _openMobileECTButton.tintColor = tintColor;
+       
+        [_progressBar setProgressTintColor:tintColor];
+        
+
+    }
     
 }
 
@@ -337,6 +359,13 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         self.applicationBrowser.view.hidden = NO;
     }
     
+    if( [self.applicationBrowser.webView canGoBack]){
+        self.navBack.enabled = YES;
+    }
+    else{
+        self.navBack.enabled = !self.isSingleApplication;
+    }
+    
     if ([self.applicationBrowser.webView canGoForward]) {
         self.navForward.enabled = YES;
     } else {
@@ -394,7 +423,9 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         case NSURLErrorNetworkConnectionLost:
         case NSURLErrorDNSLookupFailed:
         case NSURLErrorResourceUnavailable:
-        case NSURLErrorNotConnectedToInternet:{
+        case NSURLErrorNotConnectedToInternet:
+        case NSURLErrorServerCertificateUntrusted:
+        case NSURLErrorServerCertificateNotYetValid:{
 
             _failedURL = [error.userInfo objectForKey:@"NSErrorFailingURLStringKey"];
             NSLog(@"webViewdidFailLoadWithError: %@", _failedURL);

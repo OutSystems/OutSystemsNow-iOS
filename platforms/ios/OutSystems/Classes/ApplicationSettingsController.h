@@ -18,9 +18,9 @@
 +(NSString*)defaultHostname;
 +(NSString*)defaultApplicationURL;
 
-+(NSString*)backgroundColor;
-+(NSString*)foregroundColor;
-+(NSString*)tintColor;
++(UIColor*)backgroundColor;
++(UIColor*)foregroundColor;
++(UIColor*)tintColor;
 
 
 +(UIViewController*)rootViewController:(UIStoryboard*)storyboard deepLinkController:(DeepLinkController*)deepLinkController;

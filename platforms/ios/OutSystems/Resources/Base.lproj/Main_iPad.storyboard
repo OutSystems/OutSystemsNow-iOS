@@ -388,8 +388,6 @@
                         <outlet property="loginButton" destination="ZiZ-Yc-H21" id="M81-FL-3Hr"/>
                         <outlet property="passwordInput" destination="s85-kN-bd1" id="XHx-h4-B2p"/>
                         <outlet property="usernameInput" destination="b51-62-2i5" id="ioQ-Zk-vNC"/>
-                        <segue destination="VcQ-Do-IM9" kind="push" identifier="GoToAppListSegue" id="IGa-Ec-gYf"/>
-                        <segue destination="H6M-OB-jxb" kind="push" identifier="GoToSingleApplicationSegue" id="826-bw-TDv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9at-ij-hwT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -753,8 +751,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="826-bw-TDv"/>
-        <segue reference="IGa-Ec-gYf"/>
-    </inferredMetricsTieBreakers>
 </document>
