@@ -19,4 +19,6 @@
 
 -(void)navigationBarHeightChange:(float)height;
 
+-(void)setTintColor:(UIColor *)tintColor;
+
 @end

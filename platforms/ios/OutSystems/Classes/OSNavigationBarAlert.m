@@ -181,5 +181,10 @@ float const kOSNavigationBarSlideTiming = 0.5;
     
 }
 
+-(void)setTintColor:(UIColor *)tintColor{
+    [super setTintColor:tintColor];
+    [_messageLabel setTextColor:tintColor];
+}
+
 
 @end

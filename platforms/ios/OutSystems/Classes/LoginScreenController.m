@@ -103,6 +103,15 @@
             
         }
         
+        UIColor *foregroundColor = [ApplicationSettingsController foregroundColor];
+        if(foregroundColor){
+            [self.loginButton setTitleColor:foregroundColor forState:UIControlStateNormal];
+            [[self.loginButton layer] setBorderColor:foregroundColor.CGColor];
+            [self.errorMessageLabel setTextColor:foregroundColor];
+            [self.loginActivityIndicator setColor:foregroundColor];
+            
+        }
+        
         UIColor *tintColor = [ApplicationSettingsController tintColor];
         if(tintColor){
             // Navigation Bar tint color

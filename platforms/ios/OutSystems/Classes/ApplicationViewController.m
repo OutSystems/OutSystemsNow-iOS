@@ -221,20 +221,42 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
  
     
     // Application Settings
-    if([ApplicationSettingsController hideNavigationBar]){
-        [self.navigationController setToolbarHidden:YES animated:NO];
-    }
-    else{
-        UIColor *tintColor = [ApplicationSettingsController tintColor];
-        if(tintColor){
-            _navBack.tintColor = tintColor;
-            _navForward.tintColor = tintColor;
-            _navAppList.tintColor = tintColor;
-            _openMobileECTButton.tintColor = tintColor;
-            
-            [_progressBar setProgressTintColor:tintColor];
+    if ([ApplicationSettingsController hasValidSettings]){
+        
+        UIColor *backgroundColor = [ApplicationSettingsController backgroundColor];
+        if(backgroundColor){
+            [_networkErrorView setBackgroundColor:backgroundColor];
         }
+        
+        UIColor *foregroundColor = [ApplicationSettingsController foregroundColor];
+        if(foregroundColor){
+            [_errorRetryButton setTitleColor:foregroundColor forState:UIControlStateNormal];
+            [[_errorRetryButton layer] setBorderColor:foregroundColor.CGColor];
+            [_errorBodyMessage setTextColor:foregroundColor];
+            [_errorTitleMessage setTextColor:foregroundColor];
+            _errorImage.image = [_errorImage.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [_errorImage setTintColor:foregroundColor];
+            [_errorActivityIndicator setColor:foregroundColor];
+            [_errorBackToAppsButton setTitleColor:foregroundColor forState:UIControlStateNormal];
+        }
+        
+        if([ApplicationSettingsController hideNavigationBar]){
+            [self.navigationController setToolbarHidden:YES animated:NO];
+        }
+        else{
+            UIColor *tintColor = [ApplicationSettingsController tintColor];
+            if(tintColor){
+                _navBack.tintColor = tintColor;
+                _navForward.tintColor = tintColor;
+                _navAppList.tintColor = tintColor;
+                _openMobileECTButton.tintColor = tintColor;
+                
+                [_progressBar setProgressTintColor:tintColor];
+            }
+        }
+        
     }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
