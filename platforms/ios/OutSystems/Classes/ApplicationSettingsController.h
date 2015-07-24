@@ -11,6 +11,8 @@
 
 @interface ApplicationSettingsController : NSObject
 
++(BOOL)hasValidSettings;
+
 +(BOOL)skipNativeLogin;
 +(BOOL)skipApplicationList;
 +(BOOL)hideNavigationBar;

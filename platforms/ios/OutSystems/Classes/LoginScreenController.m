@@ -16,6 +16,9 @@
 #import "ApplicationSettingsController.h"
 
 @interface LoginScreenController ()
+@property (strong, nonatomic) IBOutlet UIView *loginScreenMainView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroungImageView;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginActivityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UILabel *errorMessageLabel;
@@ -27,6 +30,7 @@
 
 @property (strong, nonatomic) NSData *loginResponseData;
 @property (weak, nonatomic) IBOutlet UILabel *applicationsAtLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *applicationLogoImageView;
 
 @property NSArray* trustedHosts;
 @property (strong, nonatomic) NSArray *applicationList;
@@ -46,7 +50,7 @@
     [super viewDidLoad];
     
 
-    
+    self.applicationLogoImageView.hidden = YES;
     self.applicationsAtLabel.font = [UIFont fontWithName:@"OpenSans" size:self.applicationsAtLabel.font.pointSize];
     self.infrastructureLabel.font = [UIFont fontWithName:@"OpenSans" size:self.infrastructureLabel.font.pointSize];
     self.loginButton.titleLabel.font = [UIFont fontWithName:@"OpenSans" size:self.loginButton.titleLabel.font.pointSize];
@@ -82,14 +86,36 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     singleTap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:singleTap];
-    
-    
+        
     // Application Settings
-    UIColor *tintColor = [ApplicationSettingsController tintColor];
-    if(tintColor){
-        [[self.navigationController navigationBar] setTintColor:tintColor];
+  
+    if([ApplicationSettingsController hasValidSettings]){
+        self.applicationLogoImageView.hidden = NO;
+        self.applicationsAtLabel.hidden = YES;
+        self.infrastructureLabel.hidden = YES;
+
+        
+        UIColor *backgroundColor = [ApplicationSettingsController backgroundColor];
+        if(backgroundColor){
+            // TODO: not sure if this is the best approach...
+            self.backgroungImageView.image = [self.backgroungImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.backgroungImageView setTintColor:backgroundColor];
+            
+        }
+        
+        UIColor *tintColor = [ApplicationSettingsController tintColor];
+        if(tintColor){
+            // Navigation Bar tint color
+            [[self.navigationController navigationBar] setTintColor:tintColor];
+            
+            // Input texts tint color
+            [self.usernameInput setTintColor:tintColor];
+            [self.passwordInput setTintColor:tintColor];
+        }
+        
     }
 }
+
 
 -(void)handleSingleTap:(UITapGestureRecognizer *)sender{
     [self.view endEditing:YES];

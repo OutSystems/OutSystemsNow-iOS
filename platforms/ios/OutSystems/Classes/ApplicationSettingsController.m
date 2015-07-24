@@ -23,6 +23,11 @@
 
 # pragma mark - Native Settings
 
++(BOOL)hasValidSettings{
+    NSString *hostname = [self defaultHostname];
+    return hostname && [hostname length] > 0;
+}
+
 +(BOOL)skipNativeLogin{
     
     NSDictionary *settings = [self getApplicationSettings];
@@ -166,54 +171,6 @@
     
     return infrastructure;
 }
-
-
-# pragma mark - Infrastructure
-+(void)checkInfrastructure:(Infrastructure*)infrastructure{
-    
-    NSURL *url = [NSURL URLWithString:[infrastructure getHostnameForService:@"infrastructure"]];
-    
-    NSURLRequest *myRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:5];
-    [NSURLConnection connectionWithRequest:myRequest delegate:self];    
-}
-
-
-
-+ (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
-    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
-}
-
-+ (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    NSArray *trustedHosts = [[NSArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
-    
-    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        for (NSString *trustedHost in trustedHosts) {
-            
-            // currently trusting all certificates for beta release, remove true condition to validate untrusted certificates with list for trusted servers
-            if(true || [challenge.protectionSpace.host rangeOfString:trustedHost options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - trustedHost.length)) {
-                [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
-                break;
-            }
-        }
-    }
-    
-    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
-}
-
-
-+ (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    // inform the user
-    NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    
-}
-
-+ (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    // do something with the data
-    // receivedData is declared as a method instance elsewhere
-    NSLog(@"connection finished");
-    
-}
-
 
 # pragma mark - Navigation
 
