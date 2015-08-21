@@ -693,7 +693,7 @@
 		597902E119EC200D00440628 /* DeepLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeepLink.m; path = OutSystems/Classes/DeepLink.m; sourceTree = "<group>"; };
 		597902E619ED53C800440628 /* DeepLinkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLinkController.h; sourceTree = "<group>"; };
 		597902E719ED54B400440628 /* DeepLinkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepLinkController.m; sourceTree = "<group>"; };
-		597A525F195C9A6400F15480 /* OutSystems Push Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutSystems Push Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		597A525F195C9A6400F15480 /* OutSystems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutSystems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5985C53B1B18B2F30095FFDE /* OutSystems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutSystems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5999274F1A0277580068B246 /* MobileECT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileECT.h; path = OutSystems/Classes/MobileECT.h; sourceTree = "<group>"; };
 		599927501A0277580068B246 /* MobileECT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileECT.m; path = OutSystems/Classes/MobileECT.m; sourceTree = "<group>"; };
@@ -1002,7 +1002,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* OutSystems.app */,
-				597A525F195C9A6400F15480 /* OutSystems Push Test.app */,
+				597A525F195C9A6400F15480 /* OutSystems.app */,
 				59E53FA41986C1760003BC6B /* OutSystems.app */,
 				5985C53B1B18B2F30095FFDE /* OutSystems.app */,
 			);
@@ -1348,7 +1348,7 @@
 			);
 			name = "OutSystems Development";
 			productName = OutSystems;
-			productReference = 597A525F195C9A6400F15480 /* OutSystems Push Test.app */;
+			productReference = 597A525F195C9A6400F15480 /* OutSystems.app */;
 			productType = "com.apple.product-type.application";
 		};
 		59E53F471986C1760003BC6B /* OutSystems Enterprise */ = {
@@ -1403,7 +1403,7 @@
 						DevelopmentTeam = S25XN959HW;
 					};
 					597A51D9195C9A6400F15480 = {
-						DevelopmentTeam = EVSWK8BA55;
+						DevelopmentTeam = S25XN959HW;
 					};
 					59E53F471986C1760003BC6B = {
 						DevelopmentTeam = X2ZLV852SL;
@@ -2351,8 +2351,8 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "OutSystems Push Test";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = OutSystems;
+				PROVISIONING_PROFILE = "78a0e64b-c1d6-4f38-b450-76a8594951ba";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
 				"VALID_ARCHS[sdk=*]" = "armv7 armv7s arm64 i386 x86_64";
@@ -2403,8 +2403,8 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "OutSystems Push Test";
-				PROVISIONING_PROFILE = "";
+				PRODUCT_NAME = OutSystems;
+				PROVISIONING_PROFILE = "78a0e64b-c1d6-4f38-b450-76a8594951ba";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
 			};
