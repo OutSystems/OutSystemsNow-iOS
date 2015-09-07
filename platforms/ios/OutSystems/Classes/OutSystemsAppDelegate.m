@@ -60,7 +60,6 @@ static NSDictionary *remoteNotificationInfo;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
   
     if(buttonIndex == alertView.firstOtherButtonIndex){
-        NSLog(@"OK");
         [self openApplicationFromNotification];
     }
 }
@@ -80,9 +79,21 @@ static NSDictionary *remoteNotificationInfo;
             
             NSString *environment = [deeplink substringToIndex:range.location];
             NSString *url = [deeplink substringFromIndex:range.location+1];
+            NSString *protocol = @"OSNow";
+            
+            NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+            NSArray* urlTypes = [infoDict objectForKey:@"CFBundleURLTypes"];
+            if(urlTypes){
+                
+                NSArray* urlSchemes = [urlTypes[0] objectForKey:@"CFBundleURLSchemes"];
+                
+                if([urlSchemes count] > 0){
+                    protocol = urlSchemes[0];
+                }
+            }
             
             // OSNow://labsdev.outsystems.net/openurl/?username=&password=&url=
-            NSURL *appURL = [NSURL URLWithString:[NSString stringWithFormat:@"OSNow://%@/openurl/?url=%@",environment,url]];
+            NSURL *appURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/openurl/?url=%@",protocol,environment,url]];
 
             // Get the settings from the URL
             if(!self.deepLinkController){
@@ -94,6 +105,10 @@ static NSDictionary *remoteNotificationInfo;
             // Get navigation controller
             UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
             UIStoryboard *storyboard = navigationController.storyboard;
+            
+            
+            NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: navigationController.viewControllers];
+            [navigationArray removeAllObjects]; // This is just for remove all view controller from navigation stack.
             
             // Passing the Deep Link settings
             HubAppViewController *hubAppViewControler = [storyboard instantiateViewControllerWithIdentifier:@"HubScreen"];
@@ -126,7 +141,6 @@ static NSDictionary *remoteNotificationInfo;
      @try {
          NSString *jsonString = [userInfo objectForKey:@"u"];
          
-         
          NSError *jsonError;
          NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
          NSDictionary *deeplink = [NSJSONSerialization JSONObjectWithData:objectData
@@ -143,7 +157,7 @@ static NSDictionary *remoteNotificationInfo;
      
      if(application.applicationState == UIApplicationStateActive) {
          
-         NSLog(@"XXXXXX: Active");
+         NSLog(@"Application State: Active");
          NSDictionary *aps = [userInfo objectForKey:@"aps"];
          NSString *message = [aps objectForKey:@"alert"];
          
@@ -154,8 +168,8 @@ static NSDictionary *remoteNotificationInfo;
                                                    otherButtonTitles:@"Ok", nil];
          [alertView show];
          
-         
      } else {
+         NSLog(@"Application State: Inactive/Background");
          [self openApplicationFromNotification];
      }
 }
