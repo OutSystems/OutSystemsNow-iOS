@@ -20,6 +20,8 @@ static BOOL performedAutoLogin = NO;
 static NSData *deviceId;
 static NSString *urlRegisterForNotifications;
 static DeepLink *deepLinkSettings;
+static NSDictionary *remoteNotificationInfo;
+
 
 + (BOOL) hasAutoLoginPerformed {
     return performedAutoLogin;
@@ -52,7 +54,78 @@ static DeepLink *deepLinkSettings;
 }
 
 
-- (void) application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+  
+    if(buttonIndex == alertView.firstOtherButtonIndex){
+        [self openApplicationFromNotification];
+    }
+}
+
+-(void)openApplicationFromNotification{
+    NSLog(@"remoteNotification: %@",remoteNotificationInfo);
+    
+    
+    if(remoteNotificationInfo){
+        NSString *deeplink = [remoteNotificationInfo valueForKey:@"deeplink"];
+        
+        if(deeplink && [deeplink length] > 0){
+            
+            // { "deeplink": "environment/module/Screen?parameters" }
+            
+            NSRange range = [deeplink rangeOfString:@"/"];
+            
+            NSString *environment = [deeplink substringToIndex:range.location];
+            NSString *url = [deeplink substringFromIndex:range.location+1];
+            NSString *protocol = @"OSNow";
+            
+            NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+            NSArray* urlTypes = [infoDict objectForKey:@"CFBundleURLTypes"];
+            if(urlTypes){
+                
+                NSArray* urlSchemes = [urlTypes[0] objectForKey:@"CFBundleURLSchemes"];
+                
+                if([urlSchemes count] > 0){
+                    protocol = urlSchemes[0];
+                }
+            }
+            
+            // OSNow://labsdev.outsystems.net/openurl/?username=&password=&url=
+            NSURL *appURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/openurl/?url=%@",protocol,environment,url]];
+
+            // Get the settings from the URL
+            if(!self.deepLinkController){
+                self.deepLinkController = [[DeepLinkController alloc] init];
+            }
+            
+            [self.deepLinkController createSettingsFromURL:appURL];
+            
+            // Get navigation controller
+            UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+            UIStoryboard *storyboard = navigationController.storyboard;
+            
+            
+            NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: navigationController.viewControllers];
+            [navigationArray removeAllObjects]; // This is just for remove all view controller from navigation stack.
+            
+            // Passing the Deep Link settings
+            HubAppViewController *hubAppViewControler = [storyboard instantiateViewControllerWithIdentifier:@"HubScreen"];
+            hubAppViewControler.deepLinkController = self.deepLinkController;
+            
+            // Get back to the first VC
+            
+            performedAutoLogin = NO;
+            [navigationController pushViewController:hubAppViewControler animated:NO];
+            
+        }
+        
+        remoteNotificationInfo = nil;
+    }
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+ {
+     
     @try {
         if([[userInfo objectForKey:@"aps"] isKindOfClass:[NSDictionary class]] && [[userInfo objectForKey:@"aps"] objectForKey:@"badge"]) {
             application.applicationIconBadgeNumber = [[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] integerValue];
@@ -61,10 +134,46 @@ static DeepLink *deepLinkSettings;
     @catch (NSException *exception) {
         NSLog(@"Error trying to set the application badge from push message");
     }
+    
+     @try {
+         NSString *jsonString = [userInfo objectForKey:@"u"];
+         
+         NSError *jsonError;
+         NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+         NSDictionary *deeplink = [NSJSONSerialization JSONObjectWithData:objectData
+                                                              options:NSJSONReadingMutableContainers
+                                                                error:&jsonError];
+                  
+         remoteNotificationInfo = deeplink;
+         
+     }
+     @catch (NSException *exception) {
+         remoteNotificationInfo = nil;
+     }
+     
+     
+     if(application.applicationState == UIApplicationStateActive) {
+         
+         NSLog(@"Application State: Active");
+         NSDictionary *aps = [userInfo objectForKey:@"aps"];
+         NSString *message = [aps objectForKey:@"alert"];
+         
+         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"OutSystems Now"
+                                                             message:message
+                                                            delegate:self
+                                                   cancelButtonTitle:@"Cancel"
+                                                   otherButtonTitles:@"Ok", nil];
+         [alertView show];
+         
+     } else {
+         NSLog(@"Application State: Inactive/Background");
+         [self openApplicationFromNotification];
+     }
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
     // Release old user defaults
     NSString *defaultsAppVersion = [[NSUserDefaults standardUserDefaults] objectForKey:@"AppVersion"];
     
