@@ -87,6 +87,10 @@ static NSDictionary *remoteNotificationInfo;
                 if([urlSchemes count] > 0){
                     protocol = urlSchemes[0];
                 }
+                
+                if(!protocol){
+                    protocol = @"OSNow";
+                }
             }
             
             // OSNow://labsdev.outsystems.net/openurl/?username=&password=&url=
