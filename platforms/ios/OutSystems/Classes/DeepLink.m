@@ -82,15 +82,33 @@ NSString * const kDLUrlParameter = @"url";
     }
     
     if(parameters){
-        NSArray *paramList = [parameters componentsSeparatedByString:@"&"];
-    
-        NSUInteger count = [paramList count];
-        for (NSUInteger i = 0; i < count; i++) {
-        
-            NSString *parameter = [paramList objectAtIndex: i];
-            [self addParameter:parameter];
-        
+        // Get username parameter
+        NSRange paramRange = [parameters rangeOfString:@"username="];
+        if(paramRange.location != NSNotFound){
+            NSString *userStr = [parameters substringFromIndex:paramRange.location];
+            NSRange endOfParam = [userStr rangeOfString:@"&"];
+            
+            NSString *paramString = [userStr substringToIndex:endOfParam.location];
+            [self addParameter:paramString];
         }
+        
+        // Get password parameter
+        paramRange = [parameters rangeOfString:@"password="];
+        if(paramRange.location != NSNotFound){
+            NSString *pwdStr = [parameters substringFromIndex:paramRange.location];
+            NSRange endOfParam = [pwdStr rangeOfString:@"&"];
+            
+            NSString *paramString = [pwdStr substringToIndex:endOfParam.location];
+            [self addParameter:paramString];
+        }
+        
+        // Get url parameter
+        paramRange = [parameters rangeOfString:@"url="];
+        if(paramRange.location != NSNotFound){
+            NSString *paramString = [parameters substringFromIndex:paramRange.location];
+            [self addParameter:paramString];
+        }
+        
     }
 }
 
