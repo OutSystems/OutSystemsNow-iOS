@@ -11,7 +11,7 @@
 #import <Crashlytics/Crashlytics.h>
 
 #import <Pushwoosh/PushNotificationManager.h>
-#import "HubAppViewController.h"
+#import "OSNavigationController.h"
 
 @implementation OutSystemsAppDelegate
 
@@ -108,20 +108,12 @@ static NSDictionary *remoteNotificationInfo;
             
             // Get navigation controller
             UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-            UIStoryboard *storyboard = navigationController.storyboard;
-            
             
             NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: navigationController.viewControllers];
             [navigationArray removeAllObjects]; // This is just for remove all view controller from navigation stack.
             
             // Passing the Deep Link settings
-            HubAppViewController *hubAppViewControler = [storyboard instantiateViewControllerWithIdentifier:@"HubScreen"];
-            hubAppViewControler.deepLinkController = self.deepLinkController;
-            
-            // Get back to the first VC
-            
-            performedAutoLogin = NO;
-            [navigationController pushViewController:hubAppViewControler animated:NO];
+            [(OSNavigationController *)navigationController pushRootViewController:self.deepLinkController];
             
         }
         
@@ -231,6 +223,10 @@ static NSDictionary *remoteNotificationInfo;
     NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
     
+    // Get navigation controller
+    OSNavigationController *navigationController = (OSNavigationController *)self.window.rootViewController;
+    [navigationController pushRootViewController:nil];
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -325,16 +321,8 @@ static NSDictionary *remoteNotificationInfo;
     [self.deepLinkController createSettingsFromURL:url];
     
     // Get navigation controller
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    UIStoryboard *storyboard = navigationController.storyboard;
-    
-    // Passing the Deep Link settings
-    HubAppViewController *hubAppViewControler = [storyboard instantiateViewControllerWithIdentifier:@"HubScreen"];
-    hubAppViewControler.deepLinkController = self.deepLinkController;
-    
-    // Get back to the first VC
-
-    [navigationController pushViewController:hubAppViewControler animated:NO];
+    OSNavigationController *navigationController = (OSNavigationController *)self.window.rootViewController;
+    [navigationController pushRootViewController:self.deepLinkController];
     
     return YES;
 }

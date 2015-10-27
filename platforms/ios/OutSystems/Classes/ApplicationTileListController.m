@@ -16,6 +16,7 @@
 #import "OSNavigationBarAlert.h"
 #import "OfflineSupportController.h"
 #import "Reachability.h"
+#import "ApplicationSettingsController.h"
 
 @interface ApplicationTileListController ()
 
@@ -70,6 +71,27 @@
     
     _imageCache = [[NSCache alloc] init];
     [_imageCache setName:@"imageCache"];
+    
+    
+    // Application Settings
+    if([ApplicationSettingsController hasValidSettings]){
+    
+        UIColor *backgroundColor = [ApplicationSettingsController backgroundColor];
+        if(backgroundColor){
+            [_navBarAlert setBackgroundColor:backgroundColor];
+        }
+        
+        UIColor *foregroundColor = [ApplicationSettingsController foregroundColor];
+        if(foregroundColor){
+            [_navBarAlert setTintColor:foregroundColor];
+        }
+        
+        UIColor *tintColor = [ApplicationSettingsController tintColor];
+        if(tintColor){
+            [[self.navigationController navigationBar] setTintColor:tintColor];
+        }
+
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
