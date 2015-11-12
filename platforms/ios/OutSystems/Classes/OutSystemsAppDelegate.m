@@ -23,7 +23,7 @@ static BOOL performedAutoLogin = NO;
 static NSData *deviceId;
 static NSString *urlRegisterForNotifications;
 static DeepLink *deepLinkSettings;
-static NSDictionary *remoteNotificationInfo;
+static NSMutableDictionary *remoteNotificationInfo;
 
 
 + (BOOL) hasAutoLoginPerformed {
@@ -106,6 +106,8 @@ static NSDictionary *remoteNotificationInfo;
             
             [self.deepLinkController createSettingsFromURL:appURL];
             
+            performedAutoLogin = NO;
+            
             // Get navigation controller
             UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
             
@@ -115,6 +117,14 @@ static NSDictionary *remoteNotificationInfo;
             // Passing the Deep Link settings
             [(OSNavigationController *)navigationController pushRootViewController:self.deepLinkController];
             
+        }
+        else {
+            NSString *link = [remoteNotificationInfo valueForKey:@"link"];
+            if (link && [link length] > 0){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:link]];
+                });
+            }
         }
         
         remoteNotificationInfo = nil;
@@ -134,20 +144,36 @@ static NSDictionary *remoteNotificationInfo;
         NSLog(@"Error trying to set the application badge from push message");
     }
     
+     remoteNotificationInfo = [NSMutableDictionary new];
+     
      @try {
-         NSString *jsonString = [userInfo objectForKey:@"u"];
+         NSString *link = [userInfo objectForKey:@"l"];
          
-         NSError *jsonError;
-         NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-         NSDictionary *deeplink = [NSJSONSerialization JSONObjectWithData:objectData
-                                                              options:NSJSONReadingMutableContainers
-                                                                error:&jsonError];
-                  
-         remoteNotificationInfo = deeplink;
+         if(link){
+             [remoteNotificationInfo setValue:link forKey:@"link"];
+         }
          
      }
      @catch (NSException *exception) {
-         remoteNotificationInfo = nil;
+         NSLog(@"Failed to parse push notification extra data");
+     }
+     
+     @try {
+         NSString *jsonString = [userInfo objectForKey:@"u"];
+         
+         if(jsonString){
+             NSError *jsonError;
+             NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+             NSDictionary *deeplink = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                      options:NSJSONReadingMutableContainers
+                                                                        error:&jsonError];
+                  
+             [remoteNotificationInfo addEntriesFromDictionary:deeplink];
+         }
+         
+     }
+     @catch (NSException *exception) {
+         NSLog(@"Failed to parse push notification extra data");
      }
      
      
