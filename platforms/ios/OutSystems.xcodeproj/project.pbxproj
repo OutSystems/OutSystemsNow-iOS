@@ -1441,15 +1441,41 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = S25XN959HW;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					597A51D9195C9A6400F15480 = {
 						DevelopmentTeam = S25XN959HW;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					59E53F471986C1760003BC6B = {
 						DevelopmentTeam = X2ZLV852SL;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					c037ef4a1d09cee692c68b24 = {
 						DevelopmentTeam = S25XN959HW;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
