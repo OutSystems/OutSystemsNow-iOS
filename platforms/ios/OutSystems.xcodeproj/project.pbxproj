@@ -112,6 +112,10 @@
 		592FA96619001EBF00458A51 /* icon-chevron-forth.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA96419001EBF00458A51 /* icon-chevron-forth.png */; };
 		592FA9691900209B00458A51 /* icon-apps.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9671900209B00458A51 /* icon-apps.png */; };
 		592FA96A1900209B00458A51 /* icon-cog.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9681900209B00458A51 /* icon-cog.png */; };
+		5947B00C1BF5F97600B96758 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00B1BF5F97600B96758 /* libz.tbd */; };
+		5947B00E1BF5F98A00B96758 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00D1BF5F98A00B96758 /* libstdc++.tbd */; };
+		5947B00F1BF5F99900B96758 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00B1BF5F97600B96758 /* libz.tbd */; };
+		5947B0101BF5F99C00B96758 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00D1BF5F98A00B96758 /* libstdc++.tbd */; };
 		5953F9D41AA715C4007282A0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597839581A714612006CA4E5 /* SystemConfiguration.framework */; };
 		5953F9D51AA715CE007282A0 /* OfflineSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5978395B1A71467E006CA4E5 /* OfflineSupportController.m */; };
 		5953F9D61AA715D8007282A0 /* LoginApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 59783A951A7146D9006CA4E5 /* LoginApplication.m */; };
@@ -664,6 +668,8 @@
 		592FA96419001EBF00458A51 /* icon-chevron-forth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-chevron-forth.png"; sourceTree = "<group>"; };
 		592FA9671900209B00458A51 /* icon-apps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-apps.png"; sourceTree = "<group>"; };
 		592FA9681900209B00458A51 /* icon-cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cog.png"; sourceTree = "<group>"; };
+		5947B00B1BF5F97600B96758 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5947B00D1BF5F98A00B96758 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		595625CD1B46D6B40020CABF /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		595625CE1B46D6B40020CABF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_1024x768_@2x.png"; sourceTree = "<group>"; };
@@ -824,6 +830,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5947B0101BF5F99C00B96758 /* libstdc++.tbd in Frameworks */,
 				597839591A714613006CA4E5 /* SystemConfiguration.framework in Frameworks */,
 				59665FC91A091AF60049F8CD /* CoreImage.framework in Frameworks */,
 				59EC8A3319E3FD6800944672 /* ImageIO.framework in Frameworks */,
@@ -833,6 +840,7 @@
 				CFFC2FE21917F5D300264950 /* Pushwoosh.framework in Frameworks */,
 				CF9C2DFE18F5BB16000C5E68 /* CoreData.framework in Frameworks */,
 				59DCDBA21A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
+				5947B00F1BF5F99900B96758 /* libz.tbd in Frameworks */,
 				CF9C2DFC18F5BADA000C5E68 /* QuartzCore.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
@@ -858,6 +866,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5947B00E1BF5F98A00B96758 /* libstdc++.tbd in Frameworks */,
+				5947B00C1BF5F97600B96758 /* libz.tbd in Frameworks */,
 				5953F9D41AA715C4007282A0 /* SystemConfiguration.framework in Frameworks */,
 				59DB9AA11A1A55FA00FC3E35 /* CoreVideo.framework in Frameworks */,
 				59DB9AA01A1A55F300FC3E35 /* AVFoundation.framework in Frameworks */,
@@ -1061,6 +1071,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5947B00D1BF5F98A00B96758 /* libstdc++.tbd */,
+				5947B00B1BF5F97600B96758 /* libz.tbd */,
 				590A43E11B46DB7900D63DFE /* Fabric.framework */,
 				590A43E21B46DB7900D63DFE /* Crashlytics.framework */,
 				595625CD1B46D6B40020CABF /* libc++.dylib */,

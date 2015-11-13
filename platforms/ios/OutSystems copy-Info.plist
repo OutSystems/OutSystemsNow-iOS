@@ -98,6 +98,10 @@
 	</dict>
 	<key>Pushwoosh_APPID</key>
 	<string>B6190-DEBD7</string>
+	<key>Pushwoosh_DEBUG</key>
+	<true/>
+	<key>Pushwoosh_SHOW_ALERT</key>
+	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>

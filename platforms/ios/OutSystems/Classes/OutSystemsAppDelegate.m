@@ -10,7 +10,6 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
-#import <Pushwoosh/PushNotificationManager.h>
 #import "OSNavigationController.h"
 
 @implementation OutSystemsAppDelegate
@@ -23,8 +22,6 @@ static BOOL performedAutoLogin = NO;
 static NSData *deviceId;
 static NSString *urlRegisterForNotifications;
 static DeepLink *deepLinkSettings;
-static NSMutableDictionary *remoteNotificationInfo;
-
 
 + (BOOL) hasAutoLoginPerformed {
     return performedAutoLogin;
@@ -57,143 +54,8 @@ static NSMutableDictionary *remoteNotificationInfo;
 }
 
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-  
-    if(buttonIndex == alertView.firstOtherButtonIndex){
-        [self openApplicationFromNotification];
-    }
-}
-
--(void)openApplicationFromNotification{
-    NSLog(@"remoteNotification: %@",remoteNotificationInfo);
-    
-    
-    if(remoteNotificationInfo){
-        NSString *deeplink = [remoteNotificationInfo valueForKey:@"deeplink"];
-        
-        if(deeplink && [deeplink length] > 0){
-            
-            // { "deeplink": "environment/module/Screen?parameters" }
-            
-            NSRange range = [deeplink rangeOfString:@"/"];
-            
-            NSString *environment = [deeplink substringToIndex:range.location];
-            NSString *url = [deeplink substringFromIndex:range.location+1];
-            NSString *protocol = @"OSNow";
-            
-            NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
-            NSArray* urlTypes = [infoDict objectForKey:@"CFBundleURLTypes"];
-            if(urlTypes){
-                
-                NSArray* urlSchemes = [urlTypes[0] objectForKey:@"CFBundleURLSchemes"];
-                
-                if([urlSchemes count] > 0){
-                    protocol = urlSchemes[0];
-                }
-                
-                if(!protocol){
-                    protocol = @"OSNow";
-                }
-            }
-            
-            // OSNow://labsdev.outsystems.net/openurl/?username=&password=&url=
-            NSURL *appURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/openurl/?url=%@",protocol,environment,url]];
-
-            // Get the settings from the URL
-            if(!self.deepLinkController){
-                self.deepLinkController = [[DeepLinkController alloc] init];
-            }
-            
-            [self.deepLinkController createSettingsFromURL:appURL];
-            
-            performedAutoLogin = NO;
-            
-            // Get navigation controller
-            UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-            
-            NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: navigationController.viewControllers];
-            [navigationArray removeAllObjects]; // This is just for remove all view controller from navigation stack.
-            
-            // Passing the Deep Link settings
-            [(OSNavigationController *)navigationController pushRootViewController:self.deepLinkController];
-            
-        }
-        else {
-            NSString *link = [remoteNotificationInfo valueForKey:@"link"];
-            if (link && [link length] > 0){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:link]];
-                });
-            }
-        }
-        
-        remoteNotificationInfo = nil;
-    }
-}
-
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
- {
-     
-    @try {
-        if([[userInfo objectForKey:@"aps"] isKindOfClass:[NSDictionary class]] && [[userInfo objectForKey:@"aps"] objectForKey:@"badge"]) {
-            application.applicationIconBadgeNumber = [[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] integerValue];
-        }
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Error trying to set the application badge from push message");
-    }
-    
-     remoteNotificationInfo = [NSMutableDictionary new];
-     
-     @try {
-         NSString *link = [userInfo objectForKey:@"l"];
-         
-         if(link){
-             [remoteNotificationInfo setValue:link forKey:@"link"];
-         }
-         
-     }
-     @catch (NSException *exception) {
-         NSLog(@"Failed to parse push notification extra data");
-     }
-     
-     @try {
-         NSString *jsonString = [userInfo objectForKey:@"u"];
-         
-         if(jsonString){
-             NSError *jsonError;
-             NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-             NSDictionary *deeplink = [NSJSONSerialization JSONObjectWithData:objectData
-                                                                      options:NSJSONReadingMutableContainers
-                                                                        error:&jsonError];
-                  
-             [remoteNotificationInfo addEntriesFromDictionary:deeplink];
-         }
-         
-     }
-     @catch (NSException *exception) {
-         NSLog(@"Failed to parse push notification extra data");
-     }
-     
-     
-     if(application.applicationState == UIApplicationStateActive) {
-         
-         NSLog(@"Application State: Active");
-         NSDictionary *aps = [userInfo objectForKey:@"aps"];
-         NSString *message = [aps objectForKey:@"alert"];
-         
-         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"OutSystems Now"
-                                                             message:message
-                                                            delegate:self
-                                                   cancelButtonTitle:@"Cancel"
-                                                   otherButtonTitles:@"Ok", nil];
-         [alertView show];
-         
-     } else {
-         NSLog(@"Application State: Inactive/Background");
-         [self openApplicationFromNotification];
-     }
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [[PushNotificationManager pushManager] handlePushReceived:userInfo];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -216,11 +78,13 @@ static NSMutableDictionary *remoteNotificationInfo;
 
     }
     
-    [Fabric with:@[CrashlyticsKit]];
-    
     [application setStatusBarHidden:NO];
     [application setStatusBarStyle:UIStatusBarStyleLightContent];
-    
+
+    // Setup Crashlytics
+    [Fabric with:@[CrashlyticsKit]];
+
+    // Setup push notifications
     
     //-- Set Notification
     if ([[UIApplication sharedApplication]respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
@@ -236,6 +100,22 @@ static NSMutableDictionary *remoteNotificationInfo;
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
+    
+    // Setup Pushwoosh
+    
+    // set custom delegate for push handling, in our case - view controller
+    PushNotificationManager * pushManager = [PushNotificationManager pushManager];
+    pushManager.delegate = self;
+    
+    // handling push on app start
+    [[PushNotificationManager pushManager] handlePushReceived:launchOptions];
+    
+    // make sure we count app open in Pushwoosh stats
+    [[PushNotificationManager pushManager] sendAppOpen];
+    
+    // register for push notifications!
+    [[PushNotificationManager pushManager] registerForPushNotifications];
+    
     
     // Setup application cache
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:16 * 1024 * 1024 diskCapacity:256 * 1024 * 1024 diskPath:@"osurlcache"];
@@ -297,12 +177,14 @@ static NSMutableDictionary *remoteNotificationInfo;
 }
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [[PushNotificationManager pushManager] handlePushRegistration:deviceToken];
     
     deviceId = deviceToken;
     
     NSLog(@"My token is: %@", deviceToken);
     
     [OutSystemsAppDelegate registerPushToken]; // send the push token to the OutSystems server, if set
+
 }
 
 +(NSString *)GetDeviceId {
@@ -317,7 +199,87 @@ static NSMutableDictionary *remoteNotificationInfo;
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [[PushNotificationManager pushManager] handlePushRegistrationFailure:error];
     NSLog(@"Failed to get token, error: %@", error);
+}
+
+
+- (void) onPushAccepted:(PushNotificationManager *)pushManager withNotification:(NSDictionary *)pushNotification {
+    NSLog(@"Push notification received");
+    
+    NSMutableDictionary *remoteNotificationInfo = nil;
+    
+    @try {
+        
+        NSString *jsonString = [pushNotification objectForKey:@"u"];
+        
+        if(jsonString){
+            NSError *jsonError;
+            NSData *objectData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+            remoteNotificationInfo = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                     options:NSJSONReadingMutableContainers
+                                                                       error:&jsonError];
+        }
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Failed to parse push notification extra data");
+    }
+    
+    if(remoteNotificationInfo){
+        
+        NSString *deeplink = [remoteNotificationInfo valueForKey:@"deeplink"];
+        
+        if(deeplink && [deeplink length] > 0){
+            
+            // { "deeplink": "environment/module/Screen?parameters" }
+            
+            NSRange range = [deeplink rangeOfString:@"/"];
+            
+            NSString *environment = [deeplink substringToIndex:range.location];
+            NSString *url = [deeplink substringFromIndex:range.location+1];
+            NSString *protocol = @"OSNow";
+            
+            NSDictionary* infoDict = [[NSBundle mainBundle] infoDictionary];
+            NSArray* urlTypes = [infoDict objectForKey:@"CFBundleURLTypes"];
+            if(urlTypes){
+                
+                NSArray* urlSchemes = [urlTypes[0] objectForKey:@"CFBundleURLSchemes"];
+                
+                if([urlSchemes count] > 0){
+                    protocol = urlSchemes[0];
+                }
+                
+                if(!protocol){
+                    protocol = @"OSNow";
+                }
+            }
+            
+            // OSNow://labsdev.outsystems.net/openurl/?username=&password=&url=
+            NSURL *appURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/openurl/?url=%@",protocol,environment,url]];
+            
+            // Get the settings from the URL
+            if(!self.deepLinkController){
+                self.deepLinkController = [[DeepLinkController alloc] init];
+            }
+            
+            [self.deepLinkController createSettingsFromURL:appURL];
+            
+            performedAutoLogin = NO;
+            
+            // Get navigation controller
+            UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+            
+            NSMutableArray *navigationArray = [[NSMutableArray alloc] initWithArray: navigationController.viewControllers];
+            [navigationArray removeAllObjects]; // This is just for remove all view controller from navigation stack.
+            
+            // Passing the Deep Link settings
+            [(OSNavigationController *)navigationController pushRootViewController:self.deepLinkController];
+            
+        }
+        
+    }
+    
 }
 
 - (void)saveContext
@@ -433,5 +395,6 @@ static NSMutableDictionary *remoteNotificationInfo;
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
 
 @end

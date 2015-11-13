@@ -100,6 +100,10 @@
 	</dict>
 	<key>Pushwoosh_APPID</key>
 	<string>32B53-F301A</string>
+	<key>Pushwoosh_DEBUG</key>
+	<false/>
+	<key>Pushwoosh_SHOW_ALERT</key>
+	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
