@@ -210,6 +210,20 @@ static DeepLink *deepLinkSettings;
     NSMutableDictionary *remoteNotificationInfo = nil;
     
     @try {
+        NSString *link = [pushNotification objectForKey:@"l"];
+        
+        if(link){
+            // If a link is defined in the push notification data, the experience ends here :(
+            return;
+        }
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Failed to parse push notification extra data");
+    }
+
+    
+    @try {
         
         NSString *jsonString = [pushNotification objectForKey:@"u"];
         
@@ -227,7 +241,7 @@ static DeepLink *deepLinkSettings;
     }
     
     if(remoteNotificationInfo){
-        
+
         NSString *deeplink = [remoteNotificationInfo valueForKey:@"deeplink"];
         
         if(deeplink && [deeplink length] > 0){
