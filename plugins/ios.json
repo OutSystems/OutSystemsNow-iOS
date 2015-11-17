@@ -63,6 +63,10 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -217,6 +221,9 @@
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
+        },
+        "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         }
     },
