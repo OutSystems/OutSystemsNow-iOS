@@ -320,6 +320,8 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     self.webViewStaticImageLoading = nil;
     self.failedURL = nil;
     
+    [self.applicationBrowser.webView stopLoading];
+    
     [super viewWillDisappear:animated];
 }
 
