@@ -285,6 +285,7 @@
 		599C2DC71988068300BFF05D /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA26AC863145519E86F9CE /* CDVAssetLibraryFilesystem.m */; };
 		599C2DC91988068400BFF05D /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA26AC863145519E86F9CE /* CDVAssetLibraryFilesystem.m */; };
 		599C2DCA1988068500BFF05D /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA26AC863145519E86F9CE /* CDVAssetLibraryFilesystem.m */; };
+		59B4642D1BFDE26E006B4B63 /* OSProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 590C2E591B00FF7B0018A053 /* OSProgressBar.m */; };
 		59BA8DB51938EEFC005019A0 /* NoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */; };
 		59BC4908199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */; };
 		59BC4909199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */; };
@@ -1490,7 +1491,7 @@
 						};
 					};
 					59E53F471986C1760003BC6B = {
-						DevelopmentTeam = X2ZLV852SL;
+						DevelopmentTeam = EVSWK8BA55;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2084,6 +2085,7 @@
 				591F0E371B0B706100F22741 /* Sim.m in Sources */,
 				59E53F731986C1760003BC6B /* PXRImageSizeUtil.m in Sources */,
 				59E53F741986C1760003BC6B /* HubAppViewController.m in Sources */,
+				59B4642D1BFDE26E006B4B63 /* OSProgressBar.m in Sources */,
 				599C2DC21988067700BFF05D /* CDVFile.m in Sources */,
 				59E53F751986C1760003BC6B /* ApplicationTileListController.m in Sources */,
 				59E53F761986C1760003BC6B /* LoginScreenController.m in Sources */,
@@ -2535,7 +2537,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2573,7 +2575,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.osapp;
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "55D3A51D-10D6-4E67-9C95-1A2A95DB02EC";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
 				"VALID_ARCHS[sdk=*]" = "armv7 armv7s arm64 i386 x86_64";
@@ -2588,7 +2590,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OUTSYSTEMS - Software em Rede, S.A.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2625,7 +2627,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.osapp;
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "55D3A51D-10D6-4E67-9C95-1A2A95DB02EC";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
 			};
