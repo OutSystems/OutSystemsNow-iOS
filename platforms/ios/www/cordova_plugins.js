@@ -361,7 +361,7 @@ module.exports.metadata =
     "cordova-plugin-sim": "1.0.2",
     "cordova-plugin-network-information": "1.0.1-dev",
     "org.apache.cordova.device": "0.3.0",
-    "cordova-sqlite-storage": "0.7.13-dev"
+    "cordova-sqlite-storage": "0.7.13"
 }
 // BOTTOM OF METADATA
 });
