@@ -56,11 +56,40 @@
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string></string>
+	<key>OSNowApplicationSettings</key>
+	<dict>
+		<key>BackgroundColor</key>
+		<string></string>
+		<key>DefaultApplicationURL</key>
+		<string></string>
+		<key>DefaultHostname</key>
+		<string></string>
+		<key>ForegroundColor</key>
+		<string></string>
+		<key>HideNavigationBar</key>
+		<false/>
+		<key>SkipApplicationList</key>
+		<false/>
+		<key>SkipNativeLogin</key>
+		<false/>
+		<key>TintColor</key>
+		<string></string>
+	</dict>
+	<key>Pushwoosh_APPID</key>
+	<string></string>
+	<key>Pushwoosh_DEBUG</key>
+	<true/>
+	<key>Pushwoosh_SHOW_ALERT</key>
+	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>
 		<string>OpenSans-Light.ttf</string>
 		<string>OpenSans.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main_iPhone</string>

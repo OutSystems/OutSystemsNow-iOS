@@ -104,14 +104,31 @@
 		592FA96619001EBF00458A51 /* icon-chevron-forth.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA96419001EBF00458A51 /* icon-chevron-forth.png */; };
 		592FA9691900209B00458A51 /* icon-apps.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9671900209B00458A51 /* icon-apps.png */; };
 		592FA96A1900209B00458A51 /* icon-cog.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9681900209B00458A51 /* icon-cog.png */; };
+		5947B00C1BF5F97600B96758 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00B1BF5F97600B96758 /* libz.tbd */; };
+		5947B00E1BF5F98A00B96758 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00D1BF5F98A00B96758 /* libstdc++.tbd */; };
+		5947B00F1BF5F99900B96758 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00B1BF5F97600B96758 /* libz.tbd */; };
+		5947B0101BF5F99C00B96758 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00D1BF5F98A00B96758 /* libstdc++.tbd */; };
+		594D8E841C036B6400077502 /* Pushwoosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594D8E831C036B6400077502 /* Pushwoosh.framework */; };
 		5953F9D41AA715C4007282A0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 597839581A714612006CA4E5 /* SystemConfiguration.framework */; };
 		5953F9D51AA715CE007282A0 /* OfflineSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5978395B1A71467E006CA4E5 /* OfflineSupportController.m */; };
 		5953F9D61AA715D8007282A0 /* LoginApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 59783A951A7146D9006CA4E5 /* LoginApplication.m */; };
 		5953F9D71AA7163F007282A0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 597839551A714575006CA4E5 /* Reachability.m */; };
+		595625D01B46D6B40020CABF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CD1B46D6B40020CABF /* libc++.dylib */; };
+		595625D11B46D6B40020CABF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CD1B46D6B40020CABF /* libc++.dylib */; };
+		595625D21B46D6B40020CABF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CD1B46D6B40020CABF /* libc++.dylib */; };
+		595625D31B46D6B40020CABF /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CD1B46D6B40020CABF /* libc++.dylib */; };
+		595625D41B46D6B40020CABF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CE1B46D6B40020CABF /* libz.dylib */; };
+		595625D51B46D6B40020CABF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CE1B46D6B40020CABF /* libz.dylib */; };
+		595625D61B46D6B40020CABF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CE1B46D6B40020CABF /* libz.dylib */; };
+		595625D71B46D6B40020CABF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 595625CE1B46D6B40020CABF /* libz.dylib */; };
 		595646D8190FBE4C00C1D583 /* splash_1024x768_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */; };
 		595646D9190FBE4C00C1D583 /* splash_768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D5190FBE4C00C1D583 /* splash_768x1024.png */; };
 		595646DA190FBE4C00C1D583 /* splash_1024x768.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D6190FBE4C00C1D583 /* splash_1024x768.png */; };
 		595646DB190FBE4C00C1D583 /* splash_768x1024_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D7190FBE4C00C1D583 /* splash_768x1024_@2x.png */; };
+		5960688D1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */; };
+		5960688E1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */; };
+		5960688F1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */; };
+		596068901B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */; };
 		5962EF05191BE4D1001A8F57 /* PXRImageSizeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */; };
 		596479372EAF4EF3A50B22EE /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73C8DACE3A64FAA97176CDE /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		59665FC81A091AEB0049F8CD /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59665FC71A091AEB0049F8CD /* CoreImage.framework */; };
@@ -538,6 +555,7 @@
 		f7c97ffca6b04f997097275b /* MobileECT.m in Sources */ = {isa = PBXBuildFile; fileRef = 599927501A0277580068B246 /* MobileECT.m */; };
 		f8b02d0d7bdd7da3146e9cd2 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
 		f9050ff3f94b3247d4aa223e /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9C2E4C18F69905000C5E68 /* Images.xcassets */; };
+		f92c2a61e4b8e5c839106ece /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949071be1c94d09db37e70ba /* calabash.framework */; };
 		f95dc954a20afdbc9c3952ae /* icon_cross_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67981A0A5FF100612F33 /* icon_cross_red@2x.png */; };
 		feb6e5c1c6cb906a6ebd6f1e /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 /* End PBXBuildFile section */
@@ -637,10 +655,17 @@
 		592FA96419001EBF00458A51 /* icon-chevron-forth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-chevron-forth.png"; sourceTree = "<group>"; };
 		592FA9671900209B00458A51 /* icon-apps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-apps.png"; sourceTree = "<group>"; };
 		592FA9681900209B00458A51 /* icon-cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cog.png"; sourceTree = "<group>"; };
+		5947B00B1BF5F97600B96758 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5947B00D1BF5F98A00B96758 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		594D8E831C036B6400077502 /* Pushwoosh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pushwoosh.framework; sourceTree = "<group>"; };
+		595625CD1B46D6B40020CABF /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		595625CE1B46D6B40020CABF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		595646D4190FBE4C00C1D583 /* splash_1024x768_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_1024x768_@2x.png"; sourceTree = "<group>"; };
 		595646D5190FBE4C00C1D583 /* splash_768x1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_768x1024.png; sourceTree = "<group>"; };
 		595646D6190FBE4C00C1D583 /* splash_1024x768.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_1024x768.png; sourceTree = "<group>"; };
 		595646D7190FBE4C00C1D583 /* splash_768x1024_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash_768x1024_@2x.png"; sourceTree = "<group>"; };
+		5960688B1B5E4487000D5DB9 /* ApplicationSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationSettingsController.h; sourceTree = "<group>"; };
+		5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplicationSettingsController.m; sourceTree = "<group>"; };
 		5962EF03191BE4D1001A8F57 /* PXRImageSizeUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXRImageSizeUtil.h; sourceTree = "<group>"; };
 		5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXRImageSizeUtil.m; sourceTree = "<group>"; };
 		59665FC71A091AEB0049F8CD /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -668,7 +693,7 @@
 		597902E119EC200D00440628 /* DeepLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeepLink.m; path = OutSystems/Classes/DeepLink.m; sourceTree = "<group>"; };
 		597902E619ED53C800440628 /* DeepLinkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLinkController.h; sourceTree = "<group>"; };
 		597902E719ED54B400440628 /* DeepLinkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepLinkController.m; sourceTree = "<group>"; };
-		597A525F195C9A6400F15480 /* OutSystems Push Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutSystems Push Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		597A525F195C9A6400F15480 /* OutSystems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutSystems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5985C53B1B18B2F30095FFDE /* OutSystems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutSystems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5999274F1A0277580068B246 /* MobileECT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileECT.h; path = OutSystems/Classes/MobileECT.h; sourceTree = "<group>"; };
 		599927501A0277580068B246 /* MobileECT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileECT.m; path = OutSystems/Classes/MobileECT.m; sourceTree = "<group>"; };
@@ -722,6 +747,7 @@
 		856D17EA78A94D56BC87C382 /* CDVLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVLocation.m; path = org.apache.cordova.geolocation/CDVLocation.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* OutSystems-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "OutSystems-Info.plist"; path = "../OutSystems-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9211FE76DF784E3B89283E55 /* CoreVideo.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		949071be1c94d09db37e70ba /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		971382594CBB4990A8D0C9E2 /* CDVNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVNotification.h; path = org.apache.cordova.dialogs/CDVNotification.h; sourceTree = "<group>"; };
 		99D0E44DDED24AE3971681F7 /* CDVBattery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVBattery.m; path = "org.apache.cordova.battery-status/CDVBattery.m"; sourceTree = "<group>"; };
 		9ADD1D8B90184C9F9A0CEECC /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = "nl.x-services.plugins.calendar/Calendar.m"; sourceTree = "<group>"; };
@@ -791,13 +817,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594D8E841C036B6400077502 /* Pushwoosh.framework in Frameworks */,
+				5947B0101BF5F99C00B96758 /* libstdc++.tbd in Frameworks */,
 				597839591A714613006CA4E5 /* SystemConfiguration.framework in Frameworks */,
 				59665FC91A091AF60049F8CD /* CoreImage.framework in Frameworks */,
 				59EC8A3319E3FD6800944672 /* ImageIO.framework in Frameworks */,
 				59BC490E199CB60D00EA87AA /* CoreText.framework in Frameworks */,
+				595625D01B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				CFFC2FE41917F96600264950 /* Security.framework in Frameworks */,
 				CF9C2DFE18F5BB16000C5E68 /* CoreData.framework in Frameworks */,
 				59DCDBA21A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
+				5947B00F1BF5F99900B96758 /* libz.tbd in Frameworks */,
 				CF9C2DFC18F5BADA000C5E68 /* QuartzCore.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
@@ -805,6 +835,7 @@
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				598EBF091ADD2A8600BA7FF7 /* EventKit.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
+				595625D41B46D6B40020CABF /* libz.dylib in Frameworks */,
 				4BA82E6B0F784F78BA94489E /* AddressBook.framework in Frameworks */,
 				291BD490949648F48F81A283 /* AddressBookUI.framework in Frameworks */,
 				596479372EAF4EF3A50B22EE /* AudioToolbox.framework in Frameworks */,
@@ -820,10 +851,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5947B00E1BF5F98A00B96758 /* libstdc++.tbd in Frameworks */,
+				5947B00C1BF5F97600B96758 /* libz.tbd in Frameworks */,
 				5953F9D41AA715C4007282A0 /* SystemConfiguration.framework in Frameworks */,
 				59DB9AA11A1A55FA00FC3E35 /* CoreVideo.framework in Frameworks */,
 				59DB9AA01A1A55F300FC3E35 /* AVFoundation.framework in Frameworks */,
 				59665FC81A091AEB0049F8CD /* CoreImage.framework in Frameworks */,
+				595625D11B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				591F0E3C1B0B715200F22741 /* CoreTelephony.framework in Frameworks */,
 				59EC8A3219E3FD5F00944672 /* ImageIO.framework in Frameworks */,
 				59BC490D199CB60800EA87AA /* CoreText.framework in Frameworks */,
@@ -835,6 +869,7 @@
 				597A524F195C9A6400F15480 /* AssetsLibrary.framework in Frameworks */,
 				597A5250195C9A6400F15480 /* libCordova.a in Frameworks */,
 				597A5251195C9A6400F15480 /* CoreGraphics.framework in Frameworks */,
+				595625D51B46D6B40020CABF /* libz.dylib in Frameworks */,
 				598EBF0A1ADD2A8A00BA7FF7 /* EventKit.framework in Frameworks */,
 				597A5252195C9A6400F15480 /* MobileCoreServices.framework in Frameworks */,
 				597A5254195C9A6400F15480 /* CoreLocation.framework in Frameworks */,
@@ -863,12 +898,14 @@
 				59E53F961986C1760003BC6B /* CoreGraphics.framework in Frameworks */,
 				59E53F971986C1760003BC6B /* MobileCoreServices.framework in Frameworks */,
 				59E53F991986C1760003BC6B /* CoreLocation.framework in Frameworks */,
+				595625D61B46D6B40020CABF /* libz.dylib in Frameworks */,
 				59E53F9A1986C1760003BC6B /* AddressBook.framework in Frameworks */,
 				59E53F9B1986C1760003BC6B /* AddressBookUI.framework in Frameworks */,
 				598EBF0B1ADD2A8B00BA7FF7 /* EventKit.framework in Frameworks */,
 				59E53F9C1986C1760003BC6B /* AudioToolbox.framework in Frameworks */,
 				59E53F9D1986C1760003BC6B /* libiconv.dylib in Frameworks */,
 				59E53F9E1986C1760003BC6B /* AVFoundation.framework in Frameworks */,
+				595625D21B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				59E53F9F1986C1760003BC6B /* CoreVideo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -881,9 +918,11 @@
 				7bfb929692701553b254a68b /* CoreImage.framework in Frameworks */,
 				e9c97f6a498dda63fdfa59c3 /* ImageIO.framework in Frameworks */,
 				02e750d6a1369761901ea8de /* CoreText.framework in Frameworks */,
+				595625D31B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				08c44511356e0708cd9a49c6 /* Security.framework in Frameworks */,
 				6ea08bf601831c58a5d59270 /* CoreData.framework in Frameworks */,
 				320eb8b1f3048dd7a4caba86 /* OutSystemsMobileECT.framework in Frameworks */,
+				595625D71B46D6B40020CABF /* libz.dylib in Frameworks */,
 				96787378dc147bae95645449 /* QuartzCore.framework in Frameworks */,
 				f8b02d0d7bdd7da3146e9cd2 /* AssetsLibrary.framework in Frameworks */,
 				feb6e5c1c6cb906a6ebd6f1e /* libCordova.a in Frameworks */,
@@ -900,6 +939,7 @@
 				e487a8a24b6836df914d80db /* EventKitUI.framework in Frameworks */,
 				b5975adb224ed0f949a2c562 /* CoreTelephony.framework in Frameworks */,
 				8e71ad9d3907448abcab3232 /* CFNetwork.framework in Frameworks */,
+				f92c2a61e4b8e5c839106ece /* calabash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,42 +949,19 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				5974C7E11A9638CE006553D2 /* OSNavigationBarAlert.h */,
-				5974C7E21A9638CE006553D2 /* OSNavigationBarAlert.m */,
-				5978395A1A71467E006CA4E5 /* OfflineSupportController.h */,
-				5978395B1A71467E006CA4E5 /* OfflineSupportController.m */,
-				597839541A714575006CA4E5 /* Reachability.h */,
-				597839551A714575006CA4E5 /* Reachability.m */,
-				CF9C2DCF18F5869A000C5E68 /* ApplicationTileCell.h */,
-				CF9C2DD018F5869A000C5E68 /* ApplicationTileCell.m */,
-				CF9C2DD118F5869A000C5E68 /* ApplicationTileList.h */,
-				CF9C2DD218F5869A000C5E68 /* ApplicationTileList.m */,
+				596068881B5D4209000D5DB9 /* Controllers */,
+				596068871B5D41EA000D5DB9 /* Views */,
+				596068861B5D41D8000D5DB9 /* Utils */,
+				CF9C2DD918F5869A000C5E68 /* HubAppViewController.h */,
+				CF9C2DDA18F5869A000C5E68 /* HubAppViewController.m */,
+				CF9C2DDD18F5869A000C5E68 /* LoginScreenController.h */,
+				CF9C2DDE18F5869A000C5E68 /* LoginScreenController.m */,
 				CF9C2DD318F5869A000C5E68 /* ApplicationTileListController.h */,
 				CF9C2DD418F5869A000C5E68 /* ApplicationTileListController.m */,
 				CF9C2DD518F5869A000C5E68 /* ApplicationViewController.h */,
 				CF9C2DD618F5869A000C5E68 /* ApplicationViewController.m */,
 				CF9C2DD718F5869A000C5E68 /* OutSystemsAppDelegate.h */,
 				CF9C2DD818F5869A000C5E68 /* OutSystemsAppDelegate.m */,
-				CF9C2DD918F5869A000C5E68 /* HubAppViewController.h */,
-				CF9C2DDA18F5869A000C5E68 /* HubAppViewController.m */,
-				CF9C2DDD18F5869A000C5E68 /* LoginScreenController.h */,
-				CF9C2DDE18F5869A000C5E68 /* LoginScreenController.m */,
-				CF9C2DE218F5869A000C5E68 /* UIInsetTextField.h */,
-				CF9C2DE318F5869A000C5E68 /* UIInsetTextField.m */,
-				5962EF03191BE4D1001A8F57 /* PXRImageSizeUtil.h */,
-				5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */,
-				59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */,
-				59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */,
-				59F17EE31976C24B00E22193 /* SecurePasswordStore.h */,
-				59F17EE41976C24B00E22193 /* SecurePasswordStore.m */,
-				59BC4906199CB56D00EA87AA /* TTTAttributedLabel.h */,
-				59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */,
-				597902E619ED53C800440628 /* DeepLinkController.h */,
-				597902E719ED54B400440628 /* DeepLinkController.m */,
-				59665FCB1A0937620049F8CD /* OSNavigationController.h */,
-				59665FCC1A0937D00049F8CD /* OSNavigationController.m */,
-				590C2E581B00FF7B0018A053 /* OSProgressBar.h */,
-				590C2E591B00FF7B0018A053 /* OSProgressBar.m */,
 			);
 			name = Classes;
 			path = OutSystems/Classes;
@@ -954,7 +971,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* OutSystems.app */,
-				597A525F195C9A6400F15480 /* OutSystems Push Test.app */,
+				597A525F195C9A6400F15480 /* OutSystems.app */,
 				59E53FA41986C1760003BC6B /* OutSystems.app */,
 				5985C53B1B18B2F30095FFDE /* OutSystems.app */,
 			);
@@ -1030,6 +1047,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				594D8E831C036B6400077502 /* Pushwoosh.framework */,
+				5947B00D1BF5F98A00B96758 /* libstdc++.tbd */,
+				5947B00B1BF5F97600B96758 /* libz.tbd */,
+				595625CD1B46D6B40020CABF /* libc++.dylib */,
+				595625CE1B46D6B40020CABF /* libz.dylib */,
 				597839581A714612006CA4E5 /* SystemConfiguration.framework */,
 				59DCDB9D1A263D5F00016507 /* OutSystemsMobileECT.bundle */,
 				59DCDB9E1A263D5F00016507 /* OutSystemsMobileECT.framework */,
@@ -1053,6 +1075,7 @@
 				C56D96B7DEB2407E8E1B2248 /* EventKitUI.framework */,
 				F3D939DC042040AFB37D2E0D /* CoreTelephony.framework */,
 				0c1fcbeb20f2d189d0f0da1e /* CFNetwork.framework */,
+				949071be1c94d09db37e70ba /* calabash.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1141,6 +1164,74 @@
 			path = se.lproj;
 			sourceTree = "<group>";
 		};
+		596068861B5D41D8000D5DB9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */,
+				59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */,
+				597839541A714575006CA4E5 /* Reachability.h */,
+				597839551A714575006CA4E5 /* Reachability.m */,
+				59F17EE31976C24B00E22193 /* SecurePasswordStore.h */,
+				59F17EE41976C24B00E22193 /* SecurePasswordStore.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		596068871B5D41EA000D5DB9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF9C2DCF18F5869A000C5E68 /* ApplicationTileCell.h */,
+				CF9C2DD018F5869A000C5E68 /* ApplicationTileCell.m */,
+				CF9C2DD118F5869A000C5E68 /* ApplicationTileList.h */,
+				CF9C2DD218F5869A000C5E68 /* ApplicationTileList.m */,
+				5974C7E11A9638CE006553D2 /* OSNavigationBarAlert.h */,
+				5974C7E21A9638CE006553D2 /* OSNavigationBarAlert.m */,
+				590C2E581B00FF7B0018A053 /* OSProgressBar.h */,
+				590C2E591B00FF7B0018A053 /* OSProgressBar.m */,
+				5962EF03191BE4D1001A8F57 /* PXRImageSizeUtil.h */,
+				5962EF04191BE4D1001A8F57 /* PXRImageSizeUtil.m */,
+				59BC4906199CB56D00EA87AA /* TTTAttributedLabel.h */,
+				59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */,
+				CF9C2DE218F5869A000C5E68 /* UIInsetTextField.h */,
+				CF9C2DE318F5869A000C5E68 /* UIInsetTextField.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		596068881B5D4209000D5DB9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				597902E619ED53C800440628 /* DeepLinkController.h */,
+				597902E719ED54B400440628 /* DeepLinkController.m */,
+				5978395A1A71467E006CA4E5 /* OfflineSupportController.h */,
+				5978395B1A71467E006CA4E5 /* OfflineSupportController.m */,
+				59665FCB1A0937620049F8CD /* OSNavigationController.h */,
+				59665FCC1A0937D00049F8CD /* OSNavigationController.m */,
+				5960688B1B5E4487000D5DB9 /* ApplicationSettingsController.h */,
+				5960688C1B5E4487000D5DB9 /* ApplicationSettingsController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		596068891B5D4274000D5DB9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF9C2DC918F5869A000C5E68 /* Application.h */,
+				CF9C2DCA18F5869A000C5E68 /* Application.m */,
+				597902E019EC1DCF00440628 /* DeepLink.h */,
+				597902E119EC200D00440628 /* DeepLink.m */,
+				590EA4CD18FC32DC00EB317D /* DemoInfrastructure.h */,
+				590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */,
+				CF9C2DDB18F5869A000C5E68 /* Infrastructure.h */,
+				CF9C2DDC18F5869A000C5E68 /* Infrastructure.m */,
+				59783A941A7146D9006CA4E5 /* LoginApplication.h */,
+				59783A951A7146D9006CA4E5 /* LoginApplication.m */,
+				5999274F1A0277580068B246 /* MobileECT.h */,
+				599927501A0277580068B246 /* MobileECT.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		CF9C2DF218F586F0000C5E68 /* Base.lproj */ = {
 			isa = PBXGroup;
 			children = (
@@ -1153,19 +1244,8 @@
 		CF9C2DFF18F5BE2A000C5E68 /* Datamodel */ = {
 			isa = PBXGroup;
 			children = (
+				596068891B5D4274000D5DB9 /* Model */,
 				CF9C2E0018F5BE72000C5E68 /* OutAppData.xcdatamodeld */,
-				CF9C2DC918F5869A000C5E68 /* Application.h */,
-				CF9C2DCA18F5869A000C5E68 /* Application.m */,
-				CF9C2DDB18F5869A000C5E68 /* Infrastructure.h */,
-				CF9C2DDC18F5869A000C5E68 /* Infrastructure.m */,
-				590EA4CD18FC32DC00EB317D /* DemoInfrastructure.h */,
-				590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */,
-				597902E019EC1DCF00440628 /* DeepLink.h */,
-				597902E119EC200D00440628 /* DeepLink.m */,
-				59783A941A7146D9006CA4E5 /* LoginApplication.h */,
-				59783A951A7146D9006CA4E5 /* LoginApplication.m */,
-				5999274F1A0277580068B246 /* MobileECT.h */,
-				599927501A0277580068B246 /* MobileECT.m */,
 				5919DC491A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel */,
 			);
 			name = Datamodel;
@@ -1292,7 +1372,7 @@
 			);
 			name = "OutSystems Development";
 			productName = OutSystems;
-			productReference = 597A525F195C9A6400F15480 /* OutSystems Push Test.app */;
+			productReference = 597A525F195C9A6400F15480 /* OutSystems.app */;
 			productType = "com.apple.product-type.application";
 		};
 		59E53F471986C1760003BC6B /* OutSystems Enterprise */ = {
@@ -1340,7 +1420,44 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 610;
+				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					1D6058900D05DD3D006BFB54 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
+					};
+					597A51D9195C9A6400F15480 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
+					};
+					59E53F471986C1760003BC6B = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					c037ef4a1d09cee692c68b24 = {
+						DevelopmentTeam = S25XN959HW;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "OutSystems" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1787,6 +1904,7 @@
 				F5535B205A25433A9DA95D07 /* CDVNotification.m in Sources */,
 				CF9C2DE818F5869A000C5E68 /* ApplicationTileList.m in Sources */,
 				591F0E331B0B705800F22741 /* CDVDevice.m in Sources */,
+				5960688D1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */,
 				597902E819ED54B400440628 /* DeepLinkController.m in Sources */,
 				5978395C1A71467E006CA4E5 /* OfflineSupportController.m in Sources */,
 				590EA4CF18FC32DC00EB317D /* DemoInfrastructure.m in Sources */,
@@ -1831,6 +1949,7 @@
 				597A5231195C9A6400F15480 /* main.m in Sources */,
 				59EC8A2F19E3FCCC00944672 /* CDVCamera.m in Sources */,
 				599927521A0277580068B246 /* MobileECT.m in Sources */,
+				5960688E1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */,
 				599C2DCA1988068500BFF05D /* CDVAssetLibraryFilesystem.m in Sources */,
 				597A5233195C9A6400F15480 /* UIInsetTextField.m in Sources */,
 				599C2DC11988067700BFF05D /* CDVFile.m in Sources */,
@@ -1880,6 +1999,7 @@
 				59E53F781986C1760003BC6B /* OutAppData.xcdatamodeld in Sources */,
 				597839571A714575006CA4E5 /* Reachability.m in Sources */,
 				59E53F791986C1760003BC6B /* main.m in Sources */,
+				5960688F1B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */,
 				599927531A0277580068B246 /* MobileECT.m in Sources */,
 				599C2DC61988067E00BFF05D /* CDVLocalFilesystem.m in Sources */,
 				59E53F7B1986C1760003BC6B /* UIInsetTextField.m in Sources */,
@@ -1943,6 +2063,7 @@
 				2107c42ea7733a266633d9c5 /* CDVNotification.m in Sources */,
 				ae3dc3c1f4a80bde12c9de0d /* ApplicationTileList.m in Sources */,
 				e0bab71d137d7aa8b3d2edfa /* CDVDevice.m in Sources */,
+				596068901B5E4487000D5DB9 /* ApplicationSettingsController.m in Sources */,
 				b3a652bdd3fd4850e91f908f /* DeepLinkController.m in Sources */,
 				d5403f7e73cf10f8762ff40f /* OfflineSupportController.m in Sources */,
 				d8ba138703e4144e3534924b /* DemoInfrastructure.m in Sources */,
@@ -2099,8 +2220,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = YES;
@@ -2116,6 +2237,7 @@
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"\"$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include\"",
 					"\"$(OBJROOT)/UninstalledProducts/include\"",
 					"\"$(BUILT_PRODUCTS_DIR)\"",
 					"\"$(SRCROOT)/CordovaLib/Classes\"",
@@ -2210,7 +2332,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2248,7 +2370,7 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.app;
-				PRODUCT_NAME = "OutSystems Push Test";
+				PRODUCT_NAME = OutSystems;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
@@ -2264,7 +2386,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2301,7 +2423,7 @@
 					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.app;
-				PRODUCT_NAME = "OutSystems Push Test";
+				PRODUCT_NAME = OutSystems;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
@@ -2354,7 +2476,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.osapp;
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "55D3A51D-10D6-4E67-9C95-1A2A95DB02EC";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
 				"VALID_ARCHS[sdk=*]" = "armv7 armv7s arm64 i386 x86_64";
@@ -2369,7 +2491,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OUTSYSTEMS - Software em Rede, S.A.";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2406,7 +2528,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.osapp;
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "55D3A51D-10D6-4E67-9C95-1A2A95DB02EC";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
 			};
@@ -2478,7 +2600,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: LuÃÅcio FerraÃÉo (8S8334B87T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -2510,7 +2632,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B030FF63-4586-46E5-B28B-EEBB6529AB34";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2528,8 +2650,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: LuÃÅcio FerraÃÉo (8S8334B87T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LuÃÅcio FerraÃÉo (8S8334B87T)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = "";
@@ -2558,7 +2680,7 @@
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
 				);
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8F2DF429-73B8-4275-9D4E-AD638611CEB1";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				USER_HEADER_SEARCH_PATHS = "";

@@ -23,7 +23,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.7</string>
+	<string>1.1.8</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -53,7 +53,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -65,6 +65,31 @@
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>OSNowApplicationSettings</key>
+	<dict>
+		<key>BackgroundColor</key>
+		<string></string>
+		<key>DefaultApplicationURL</key>
+		<string></string>
+		<key>DefaultHostname</key>
+		<string></string>
+		<key>ForegroundColor</key>
+		<string></string>
+		<key>HideNavigationBar</key>
+		<false/>
+		<key>SkipApplicationList</key>
+		<false/>
+		<key>SkipNativeLogin</key>
+		<false/>
+		<key>TintColor</key>
+		<string></string>
+	</dict>
+	<key>Pushwoosh_APPID</key>
+	<string></string>
+	<key>Pushwoosh_DEBUG</key>
+	<false/>
+	<key>Pushwoosh_SHOW_ALERT</key>
+	<true/>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Bold.ttf</string>

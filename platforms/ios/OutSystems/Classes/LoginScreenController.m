@@ -13,8 +13,12 @@
 #import "ApplicationViewController.h"
 #import "OSNavigationController.h"
 #import "OfflineSupportController.h"
+#import "ApplicationSettingsController.h"
 
 @interface LoginScreenController ()
+@property (strong, nonatomic) IBOutlet UIView *loginScreenMainView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroungImageView;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginActivityIndicator;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UILabel *errorMessageLabel;
@@ -26,6 +30,7 @@
 
 @property (strong, nonatomic) NSData *loginResponseData;
 @property (weak, nonatomic) IBOutlet UILabel *applicationsAtLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *applicationLogoImageView;
 
 @property NSArray* trustedHosts;
 @property (strong, nonatomic) NSArray *applicationList;
@@ -44,7 +49,8 @@
 {
     [super viewDidLoad];
     
-    
+
+    self.applicationLogoImageView.hidden = YES;
     self.applicationsAtLabel.font = [UIFont fontWithName:@"OpenSans" size:self.applicationsAtLabel.font.pointSize];
     self.infrastructureLabel.font = [UIFont fontWithName:@"OpenSans" size:self.infrastructureLabel.font.pointSize];
     self.loginButton.titleLabel.font = [UIFont fontWithName:@"OpenSans" size:self.loginButton.titleLabel.font.pointSize];
@@ -80,8 +86,45 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     singleTap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:singleTap];
-    
+        
+    // Application Settings
+  
+    if([ApplicationSettingsController hasValidSettings]){
+        self.applicationLogoImageView.hidden = NO;
+        self.applicationsAtLabel.hidden = YES;
+        self.infrastructureLabel.hidden = YES;
+
+        
+        UIColor *backgroundColor = [ApplicationSettingsController backgroundColor];
+        if(backgroundColor){
+            // TODO: not sure if this is the best approach...
+            self.backgroungImageView.image = [self.backgroungImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.backgroungImageView setTintColor:backgroundColor];
+            
+        }
+        
+        UIColor *foregroundColor = [ApplicationSettingsController foregroundColor];
+        if(foregroundColor){
+            [self.loginButton setTitleColor:foregroundColor forState:UIControlStateNormal];
+            [[self.loginButton layer] setBorderColor:foregroundColor.CGColor];
+            [self.errorMessageLabel setTextColor:foregroundColor];
+            [self.loginActivityIndicator setColor:foregroundColor];
+            
+        }
+        
+        UIColor *tintColor = [ApplicationSettingsController tintColor];
+        if(tintColor){
+            // Navigation Bar tint color
+            [[self.navigationController navigationBar] setTintColor:tintColor];
+            
+            // Input texts tint color
+            [self.usernameInput setTintColor:tintColor];
+            [self.passwordInput setTintColor:tintColor];
+        }
+        
+    }
 }
+
 
 -(void)handleSingleTap:(UITapGestureRecognizer *)sender{
     [self.view endEditing:YES];
@@ -92,7 +135,7 @@
     [super viewWillAppear:animated];
     
     // infrastructure is readonly when the credentials are set on the application settings (bundle)
-    if(self.infrastructureReadonly) {
+    if(self.infrastructureReadonly || ([[ApplicationSettingsController defaultHostname] length] > 0)) {
         self.navigationController.navigationBar.hidden = YES;
     } else {
         self.navigationController.navigationBar.hidden = NO;
@@ -278,6 +321,7 @@
         
         //check if the view is still active - user could have pressed back
         if(self.view.window != nil) {
+            /*
             // check if only one app
             if([self.applicationList count] == 1){
                 if(self.navigationController.visibleViewController == self)
@@ -286,6 +330,10 @@
             else {
                 if(self.navigationController.visibleViewController == self)
                     [self performSegueWithIdentifier:@"GoToAppListSegue" sender:self];
+            }
+             */
+            if(self.navigationController.visibleViewController == self){
+                [self pushNextViewController:([self.applicationList count] == 1)];
             }
         }
         
@@ -357,6 +405,7 @@
         
         //check if the view is still active - user could have pressed back
         if(self.view.window != nil) {
+            /*
             // check if only one app
             if([self.applicationList count] == 1){
                 if(self.navigationController.visibleViewController == self)
@@ -366,8 +415,13 @@
                 if(self.navigationController.visibleViewController == self)
                     [self performSegueWithIdentifier:@"GoToAppListSegue" sender:self];
             }
+            
+            */
+            if(self.navigationController.visibleViewController == self){
+                [self pushNextViewController:([self.applicationList count] == 1)];
+            }
+            
         }
-
    
         
     } else {
@@ -394,8 +448,54 @@
 }
 
 
+-(void)pushNextViewController:(BOOL)singleApp{
+    
+    UINavigationController *navControler = self.navigationController;
+    UIStoryboard *storyboard = navControler.storyboard;
+    UIViewController *targetVC = nil;
+    
+    if(singleApp){
+        // GoToSingleApplicationSegue
+        ApplicationViewController *appViewController = [storyboard instantiateViewControllerWithIdentifier:@"ApplicationViewController"];
+        
+        appViewController.infrastructure = self.infrastructure;
+        appViewController.isSingleApplication = YES;
+        
+        if ([self.deepLinkController hasValidSettings] && [self.deepLinkController hasApplication]) {
+            appViewController.application = self.deepLinkController.destinationApp;
+            
+            [self.deepLinkController.deepLinkSettings invalidate];
+            
+        }else{
+            appViewController.application = [Application initWithJSON: self.applicationList[0] forHost:self.infrastructure.hostname];
+        }
+        
+        targetVC = appViewController;
+    }
+    else{
+        targetVC = [ApplicationSettingsController nextViewController:self];
+    }
+    
+    
+    if(targetVC){
+        
+        if([targetVC isKindOfClass:[ApplicationTileListController class]]){
+            ApplicationTileListController *appListVC = (ApplicationTileListController*)targetVC;
+            
+            // clear previous applications
+            [appListVC.applicationList removeAllObjects];
+            
+            // create new list of applications
+            [appListVC.applicationList addObjectsFromArray:self.applicationList];
+        }
+        
+        
+        [navControler pushViewController:targetVC animated:YES];
+    }
+    
+}
 
-
+/*
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([[segue identifier] isEqualToString:@"GoToAppListSegue"]) {
@@ -428,6 +528,7 @@
         }
     }
 }
+ */
 
 -(void)setUserCredentials:(NSString*)user password: (NSString*)pass{
     self.infrastructure.username = user;

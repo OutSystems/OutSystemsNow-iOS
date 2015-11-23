@@ -10,10 +10,11 @@
 #import <CoreData/CoreData.h>
 #import "Infrastructure.h"
 #import "DeepLinkController.h"
+#import <Pushwoosh/PushNotificationManager.h>
 
 #define OutSystemsNowRequiredVersion  @"1.1"
 
-@interface OutSystemsAppDelegate : UIResponder <UIApplicationDelegate>
+@interface OutSystemsAppDelegate : UIResponder <UIApplicationDelegate, PushNotificationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

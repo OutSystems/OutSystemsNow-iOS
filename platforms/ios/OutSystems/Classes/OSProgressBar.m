@@ -245,5 +245,13 @@ float const kOSProgressBarHeight = 3.0f;
     _progressBar = nil;
 }
 
+-(void)setProgressBackgroundColor:(UIColor *)backgroundColor{
+    [self setBackgroundColor:backgroundColor];
+}
+
+-(void)setProgressTintColor:(UIColor *)tintColor{
+    [_progressBar setBackgroundColor:tintColor];
+}
+
 
 @end

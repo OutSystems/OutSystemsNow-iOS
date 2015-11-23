@@ -16,4 +16,7 @@
 -(void)cancelProgress:(BOOL)animated;
 -(void)stopProgress:(BOOL)animated;
 
+-(void)setProgressBackgroundColor:(UIColor *)backgroundColor;
+-(void)setProgressTintColor:(UIColor *)tintColor;
+
 @end
