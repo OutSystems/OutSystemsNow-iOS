@@ -15,13 +15,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
-        "id": "org.apache.cordova.dialogs.notification",
-        "merges": [
-            "navigator.notification"
-        ]
-    },
-    {
         "file": "plugins/com.phonegap.plugins.barcodescanner/www/barcodescanner.js",
         "id": "com.phonegap.plugins.barcodescanner.BarcodeScanner",
         "clobbers": [
@@ -343,13 +336,19 @@ module.exports = [
         "clobbers": [
             "navigator.battery"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "id": "cordova-plugin-dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "org.apache.cordova.console": "0.2.7",
-    "org.apache.cordova.dialogs": "0.2.6",
     "com.phonegap.plugins.barcodescanner": "2.0.0",
     "com.outsystems.loader": "1.0.0",
     "org.apache.cordova.file": "1.1.0",
@@ -361,7 +360,8 @@ module.exports.metadata =
     "cordova-plugin-camera": "1.2.0",
     "cordova-plugin-sim": "1.1.0",
     "cordova-plugin-device": "1.0.1",
-    "cordova-plugin-battery-status": "1.1.0"
+    "cordova-plugin-battery-status": "1.1.0",
+    "cordova-plugin-dialogs": "1.1.1"
 }
 // BOTTOM OF METADATA
 });
