@@ -165,34 +165,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.camera/www/CameraConstants.js",
-        "id": "org.apache.cordova.camera.Camera",
-        "clobbers": [
-            "Camera"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js",
-        "id": "org.apache.cordova.camera.CameraPopoverOptions",
-        "clobbers": [
-            "CameraPopoverOptions"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.camera/www/Camera.js",
-        "id": "org.apache.cordova.camera.camera",
-        "clobbers": [
-            "navigator.camera"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.camera/www/ios/CameraPopoverHandle.js",
-        "id": "org.apache.cordova.camera.CameraPopoverHandle",
-        "clobbers": [
-            "CameraPopoverHandle"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-sim/www/sim.js",
         "id": "cordova-plugin-sim.Sim",
         "clobbers": [
@@ -343,6 +315,34 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-calendar/test/tests.js",
         "id": "cordova-plugin-calendar.tests"
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+        "id": "cordova-plugin-camera.Camera",
+        "clobbers": [
+            "Camera"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+        "id": "cordova-plugin-camera.CameraPopoverOptions",
+        "clobbers": [
+            "CameraPopoverOptions"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/Camera.js",
+        "id": "cordova-plugin-camera.camera",
+        "clobbers": [
+            "navigator.camera"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
+        "id": "cordova-plugin-camera.CameraPopoverHandle",
+        "clobbers": [
+            "CameraPopoverHandle"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -354,14 +354,14 @@ module.exports.metadata =
     "com.phonegap.plugins.barcodescanner": "2.0.0",
     "com.outsystems.loader": "1.0.0",
     "org.apache.cordova.file": "1.1.0",
-    "org.apache.cordova.camera": "0.3.4-dev",
     "cordova-plugin-sim": "1.0.2",
     "org.apache.cordova.device": "0.3.0",
     "cordova-sqlite-storage": "0.7.13",
     "cordova-plugin-geolocation": "1.0.1",
     "cordova-plugin-network-information": "1.0.1",
     "cordova-plugin-contacts": "1.1.0",
-    "cordova-plugin-calendar": "4.4.4"
+    "cordova-plugin-calendar": "4.4.4",
+    "cordova-plugin-camera": "1.2.0"
 }
 // BOTTOM OF METADATA
 });
