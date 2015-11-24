@@ -112,6 +112,33 @@
 		590EBF831C04A610006F9E8C /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D8925C57414FAFA86AAF0B /* CDVConnection.m */; };
 		590EBF841C04A611006F9E8C /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D8925C57414FAFA86AAF0B /* CDVConnection.m */; };
 		590EBF851C04A611006F9E8C /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D8925C57414FAFA86AAF0B /* CDVConnection.m */; };
+		590EBF861C04A6FF006F9E8C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA259C7174A4CA993DC4F7C /* CoreTelephony.framework */; };
+		590EBF871C04A6FF006F9E8C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA259C7174A4CA993DC4F7C /* CoreTelephony.framework */; };
+		590EBF881C04A700006F9E8C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBA259C7174A4CA993DC4F7C /* CoreTelephony.framework */; };
+		590EBF891C04A703006F9E8C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE1C0B0F6E84B5E9082E2E9 /* CoreLocation.framework */; };
+		590EBF8A1C04A704006F9E8C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE1C0B0F6E84B5E9082E2E9 /* CoreLocation.framework */; };
+		590EBF8B1C04A704006F9E8C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE1C0B0F6E84B5E9082E2E9 /* CoreLocation.framework */; };
+		590EBF8C1C04A708006F9E8C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDEC5988C5D4BC29A0B8B56 /* ImageIO.framework */; };
+		590EBF8D1C04A709006F9E8C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDEC5988C5D4BC29A0B8B56 /* ImageIO.framework */; };
+		590EBF8E1C04A709006F9E8C /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CDEC5988C5D4BC29A0B8B56 /* ImageIO.framework */; };
+		590EBF8F1C04A70C006F9E8C /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AC6B8157946FE8D3106F3 /* EventKitUI.framework */; };
+		590EBF901C04A70C006F9E8C /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AC6B8157946FE8D3106F3 /* EventKitUI.framework */; };
+		590EBF911C04A70D006F9E8C /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AC6B8157946FE8D3106F3 /* EventKitUI.framework */; };
+		590EBF921C04A710006F9E8C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D49D2BA59A245F8A896A0BF /* EventKit.framework */; };
+		590EBF931C04A710006F9E8C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D49D2BA59A245F8A896A0BF /* EventKit.framework */; };
+		590EBF941C04A711006F9E8C /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D49D2BA59A245F8A896A0BF /* EventKit.framework */; };
+		590EBF951C04A713006F9E8C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620B56A5BEFB4E5C955C5C95 /* AddressBookUI.framework */; };
+		590EBF961C04A714006F9E8C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620B56A5BEFB4E5C955C5C95 /* AddressBookUI.framework */; };
+		590EBF971C04A714006F9E8C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620B56A5BEFB4E5C955C5C95 /* AddressBookUI.framework */; };
+		590EBF981C04A71D006F9E8C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BAA4E2F9284AFEAA9BD900 /* SystemConfiguration.framework */; };
+		590EBF991C04A71D006F9E8C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23555DBC6DF44CE599CAAD57 /* AddressBook.framework */; };
+		590EBF9A1C04A71E006F9E8C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BAA4E2F9284AFEAA9BD900 /* SystemConfiguration.framework */; };
+		590EBF9B1C04A71E006F9E8C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23555DBC6DF44CE599CAAD57 /* AddressBook.framework */; };
+		590EBF9C1C04A71E006F9E8C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BAA4E2F9284AFEAA9BD900 /* SystemConfiguration.framework */; };
+		590EBF9D1C04A71E006F9E8C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23555DBC6DF44CE599CAAD57 /* AddressBook.framework */; };
+		590EBF9E1C04A722006F9E8C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0c1fcbeb20f2d189d0f0da1e /* CFNetwork.framework */; };
+		590EBF9F1C04A722006F9E8C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0c1fcbeb20f2d189d0f0da1e /* CFNetwork.framework */; };
+		590EBFA01C04A723006F9E8C /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0c1fcbeb20f2d189d0f0da1e /* CFNetwork.framework */; };
 		5919DC4A1A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5919DC491A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel */; };
 		591F0E331B0B705800F22741 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCB1D725CB4EC3B0A56525 /* CDVDevice.m */; };
 		591F0E341B0B705800F22741 /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCB1D725CB4EC3B0A56525 /* CDVDevice.m */; };
@@ -850,6 +877,7 @@
 				7FF1142BA108470D9F0B67DF /* SystemConfiguration.framework in Frameworks */,
 				155C02B522AD425F89028CA0 /* AddressBook.framework in Frameworks */,
 				4F5B363BC81D4D768F321D91 /* AddressBookUI.framework in Frameworks */,
+				590EBF9E1C04A722006F9E8C /* CFNetwork.framework in Frameworks */,
 				E7598F581FCD49FDB3EC865E /* EventKit.framework in Frameworks */,
 				E612CE519B4E453E8BF344C5 /* EventKitUI.framework in Frameworks */,
 				27EFBBF0E3A84967A8D7EE63 /* ImageIO.framework in Frameworks */,
@@ -867,21 +895,30 @@
 				59DB9AA11A1A55FA00FC3E35 /* CoreVideo.framework in Frameworks */,
 				59DB9AA01A1A55F300FC3E35 /* AVFoundation.framework in Frameworks */,
 				59665FC81A091AEB0049F8CD /* CoreImage.framework in Frameworks */,
+				590EBF891C04A703006F9E8C /* CoreLocation.framework in Frameworks */,
 				595625D11B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				59BC490D199CB60800EA87AA /* CoreText.framework in Frameworks */,
+				590EBF8C1C04A708006F9E8C /* ImageIO.framework in Frameworks */,
 				597A524A195C9A6400F15480 /* Security.framework in Frameworks */,
 				59DCDBA31A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
 				597A524B195C9A6400F15480 /* Pushwoosh.framework in Frameworks */,
+				590EBF991C04A71D006F9E8C /* AddressBook.framework in Frameworks */,
 				597A524D195C9A6400F15480 /* CoreData.framework in Frameworks */,
 				597A524E195C9A6400F15480 /* QuartzCore.framework in Frameworks */,
+				590EBF8F1C04A70C006F9E8C /* EventKitUI.framework in Frameworks */,
 				597A524F195C9A6400F15480 /* AssetsLibrary.framework in Frameworks */,
 				597A5250195C9A6400F15480 /* libCordova.a in Frameworks */,
+				590EBF861C04A6FF006F9E8C /* CoreTelephony.framework in Frameworks */,
+				590EBF921C04A710006F9E8C /* EventKit.framework in Frameworks */,
 				597A5251195C9A6400F15480 /* CoreGraphics.framework in Frameworks */,
 				595625D51B46D6B40020CABF /* libz.dylib in Frameworks */,
 				590A43E81B46DB7900D63DFE /* Crashlytics.framework in Frameworks */,
+				590EBF981C04A71D006F9E8C /* SystemConfiguration.framework in Frameworks */,
+				590EBF9F1C04A722006F9E8C /* CFNetwork.framework in Frameworks */,
 				597A5252195C9A6400F15480 /* MobileCoreServices.framework in Frameworks */,
 				590A43E41B46DB7900D63DFE /* Fabric.framework in Frameworks */,
 				597A5257195C9A6400F15480 /* AudioToolbox.framework in Frameworks */,
+				590EBF951C04A713006F9E8C /* AddressBookUI.framework in Frameworks */,
 				597A5258195C9A6400F15480 /* libiconv.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -892,23 +929,32 @@
 			files = (
 				59665FCA1A091AFD0049F8CD /* CoreImage.framework in Frameworks */,
 				590A43E91B46DB7900D63DFE /* Crashlytics.framework in Frameworks */,
+				590EBFA01C04A723006F9E8C /* CFNetwork.framework in Frameworks */,
 				59BC490C199CB5F200EA87AA /* CoreText.framework in Frameworks */,
 				59E53F8F1986C1760003BC6B /* Security.framework in Frameworks */,
 				59E53F901986C1760003BC6B /* Pushwoosh.framework in Frameworks */,
 				59E53F921986C1760003BC6B /* CoreData.framework in Frameworks */,
+				590EBF901C04A70C006F9E8C /* EventKitUI.framework in Frameworks */,
 				59DCDBA41A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
 				59E53F931986C1760003BC6B /* QuartzCore.framework in Frameworks */,
 				59E53F941986C1760003BC6B /* AssetsLibrary.framework in Frameworks */,
 				59E53F951986C1760003BC6B /* libCordova.a in Frameworks */,
 				59E53F961986C1760003BC6B /* CoreGraphics.framework in Frameworks */,
 				59E53F971986C1760003BC6B /* MobileCoreServices.framework in Frameworks */,
+				590EBF871C04A6FF006F9E8C /* CoreTelephony.framework in Frameworks */,
 				595625D61B46D6B40020CABF /* libz.dylib in Frameworks */,
 				59E53F9C1986C1760003BC6B /* AudioToolbox.framework in Frameworks */,
+				590EBF931C04A710006F9E8C /* EventKit.framework in Frameworks */,
 				59E53F9D1986C1760003BC6B /* libiconv.dylib in Frameworks */,
+				590EBF9B1C04A71E006F9E8C /* AddressBook.framework in Frameworks */,
+				590EBF9A1C04A71E006F9E8C /* SystemConfiguration.framework in Frameworks */,
 				590A43E51B46DB7900D63DFE /* Fabric.framework in Frameworks */,
 				59E53F9E1986C1760003BC6B /* AVFoundation.framework in Frameworks */,
+				590EBF8D1C04A709006F9E8C /* ImageIO.framework in Frameworks */,
+				590EBF8A1C04A704006F9E8C /* CoreLocation.framework in Frameworks */,
 				595625D21B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				59E53F9F1986C1760003BC6B /* CoreVideo.framework in Frameworks */,
+				590EBF961C04A714006F9E8C /* AddressBookUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,21 +967,29 @@
 				595625D31B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				08c44511356e0708cd9a49c6 /* Security.framework in Frameworks */,
 				7ade0c7d89aed07fa5edd173 /* Pushwoosh.framework in Frameworks */,
+				590EBF8B1C04A704006F9E8C /* CoreLocation.framework in Frameworks */,
 				590A43E61B46DB7900D63DFE /* Fabric.framework in Frameworks */,
 				6ea08bf601831c58a5d59270 /* CoreData.framework in Frameworks */,
+				590EBF8E1C04A709006F9E8C /* ImageIO.framework in Frameworks */,
 				320eb8b1f3048dd7a4caba86 /* OutSystemsMobileECT.framework in Frameworks */,
 				595625D71B46D6B40020CABF /* libz.dylib in Frameworks */,
 				96787378dc147bae95645449 /* QuartzCore.framework in Frameworks */,
+				590EBF9D1C04A71E006F9E8C /* AddressBook.framework in Frameworks */,
 				f8b02d0d7bdd7da3146e9cd2 /* AssetsLibrary.framework in Frameworks */,
 				feb6e5c1c6cb906a6ebd6f1e /* libCordova.a in Frameworks */,
+				590EBF911C04A70D006F9E8C /* EventKitUI.framework in Frameworks */,
 				d073848433b5b1d171890c94 /* CoreGraphics.framework in Frameworks */,
 				3c020d38a4f2820b51a87e92 /* MobileCoreServices.framework in Frameworks */,
+				590EBF881C04A700006F9E8C /* CoreTelephony.framework in Frameworks */,
+				590EBF941C04A711006F9E8C /* EventKit.framework in Frameworks */,
 				5761023d6ee03ed0c82f7e76 /* AudioToolbox.framework in Frameworks */,
 				8bfd8e4768d8142c3f516f29 /* libiconv.dylib in Frameworks */,
 				054c097c02930aeb22631c72 /* AVFoundation.framework in Frameworks */,
+				590EBF9C1C04A71E006F9E8C /* SystemConfiguration.framework in Frameworks */,
 				f2f083c0bcd9cd39c601668d /* CoreVideo.framework in Frameworks */,
 				590A43EA1B46DB7900D63DFE /* Crashlytics.framework in Frameworks */,
 				8e71ad9d3907448abcab3232 /* CFNetwork.framework in Frameworks */,
+				590EBF971C04A714006F9E8C /* AddressBookUI.framework in Frameworks */,
 				f92c2a61e4b8e5c839106ece /* calabash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1850,7 +1904,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cordova/lib/copy-www-build-step.sh";
+			shellScript = "NODEJS_PATH=/usr/local/bin; NVM_NODE_PATH=~/.nvm/versions/node/`nvm version 2>/dev/null`/bin; N_NODE_PATH=`find /usr/local/n/versions/node/* -maxdepth 0 -type d 2>/dev/null | tail -1`/bin; XCODE_NODE_PATH=`xcode-select --print-path`/usr/share/xcs/Node/bin; PATH=$NODEJS_PATH:$NVM_NODE_PATH:$N_NODE_PATH:$XCODE_NODE_PATH:$PATH && node cordova/lib/copy-www-build-step.js";
 			showEnvVarsInLog = 0;
 		};
 		597A525B195C9A6400F15480 /* ShellScript */ = {
@@ -1878,7 +1932,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cordova/lib/copy-www-build-step.sh";
+			shellScript = "NODEJS_PATH=/usr/local/bin; NVM_NODE_PATH=~/.nvm/versions/node/`nvm version 2>/dev/null`/bin; N_NODE_PATH=`find /usr/local/n/versions/node/* -maxdepth 0 -type d 2>/dev/null | tail -1`/bin; XCODE_NODE_PATH=`xcode-select --print-path`/usr/share/xcs/Node/bin; PATH=$NODEJS_PATH:$NVM_NODE_PATH:$N_NODE_PATH:$XCODE_NODE_PATH:$PATH && node cordova/lib/copy-www-build-step.js";
 			showEnvVarsInLog = 0;
 		};
 		59E53FA01986C1760003BC6B /* ShellScript */ = {
@@ -1920,7 +1974,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cordova/lib/copy-www-build-step.sh";
+			shellScript = "NODEJS_PATH=/usr/local/bin; NVM_NODE_PATH=~/.nvm/versions/node/`nvm version 2>/dev/null`/bin; N_NODE_PATH=`find /usr/local/n/versions/node/* -maxdepth 0 -type d 2>/dev/null | tail -1`/bin; XCODE_NODE_PATH=`xcode-select --print-path`/usr/share/xcs/Node/bin; PATH=$NODEJS_PATH:$NVM_NODE_PATH:$N_NODE_PATH:$XCODE_NODE_PATH:$PATH && node cordova/lib/copy-www-build-step.js";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
