@@ -193,17 +193,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/nl.x-services.plugins.calendar/www/Calendar.js",
-        "id": "nl.x-services.plugins.calendar.Calendar",
-        "clobbers": [
-            "Calendar"
-        ]
-    },
-    {
-        "file": "plugins/nl.x-services.plugins.calendar/test/tests.js",
-        "id": "nl.x-services.plugins.calendar.tests"
-    },
-    {
         "file": "plugins/cordova-plugin-sim/www/sim.js",
         "id": "cordova-plugin-sim.Sim",
         "clobbers": [
@@ -343,6 +332,17 @@ module.exports = [
         "merges": [
             "Contact"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-calendar/www/Calendar.js",
+        "id": "cordova-plugin-calendar.Calendar",
+        "clobbers": [
+            "Calendar"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-calendar/test/tests.js",
+        "id": "cordova-plugin-calendar.tests"
     }
 ];
 module.exports.metadata = 
@@ -355,13 +355,13 @@ module.exports.metadata =
     "com.outsystems.loader": "1.0.0",
     "org.apache.cordova.file": "1.1.0",
     "org.apache.cordova.camera": "0.3.4-dev",
-    "nl.x-services.plugins.calendar": "4.3.1",
     "cordova-plugin-sim": "1.0.2",
     "org.apache.cordova.device": "0.3.0",
     "cordova-sqlite-storage": "0.7.13",
     "cordova-plugin-geolocation": "1.0.1",
     "cordova-plugin-network-information": "1.0.1",
-    "cordova-plugin-contacts": "1.1.0"
+    "cordova-plugin-contacts": "1.1.0",
+    "cordova-plugin-calendar": "4.4.4"
 }
 // BOTTOM OF METADATA
 });

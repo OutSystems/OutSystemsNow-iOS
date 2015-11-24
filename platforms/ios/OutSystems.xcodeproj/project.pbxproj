@@ -23,7 +23,6 @@
 		218a541c4f2334f61cb8906b /* icon_microphone_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67921A0A5FF100612F33 /* icon_microphone_red@3x.png */; };
 		221d7f536c7bebd3047c204d /* icon_cross_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665FD91A0A45C70049F8CD /* icon_cross_white@2x.png */; };
 		22591cd296cc879ee580b3b0 /* splash_768x1024_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D7190FBE4C00C1D583 /* splash_768x1024_@2x.png */; };
-		2277775EA78C4F9197428DF5 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56D96B7DEB2407E8E1B2248 /* EventKitUI.framework */; };
 		24de7b1638d77a78a1276863 /* icon_speech-bubble.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA678F1A0A5FF100612F33 /* icon_speech-bubble.png */; };
 		27b3571437e92cfeb53845ea /* icon_chevron-right-inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67861A0A5FF100612F33 /* icon_chevron-right-inactive.png */; };
 		283b08aeb41e0449bc3e945e /* ipad_bg-red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 590EA48E18F6FF6500EB317D /* ipad_bg-red.jpg */; };
@@ -55,7 +54,6 @@
 		4d996253d9cd0f894e5ebf42 /* icon_app-list.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67961A0A5FF100612F33 /* icon_app-list.png */; };
 		4e3090d7f8a64aade4bf2cdc /* SecurePasswordStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F17EE41976C24B00E22193 /* SecurePasswordStore.m */; };
 		4ea5118b113cbe20e0a39b47 /* icon_chevron-left_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA678B1A0A5FF100612F33 /* icon_chevron-left_red@2x.png */; };
-		511C0E45D40E4D0FB33991D1 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD1D8B90184C9F9A0CEECC /* Calendar.m */; };
 		55472b3f8e5fcf224a93b290 /* icon_speech-bubble_red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67911A0A5FF100612F33 /* icon_speech-bubble_red@3x.png */; };
 		5761023d6ee03ed0c82f7e76 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73C8DACE3A64FAA97176CDE /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		577b9822484ae18de8585da5 /* icon_chevron-right-inactive@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67941A0A5FF100612F33 /* icon_chevron-right-inactive@3x.png */; };
@@ -243,13 +241,6 @@
 		5989E5341BFDD7E900AD5B0B /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA7DC141DA41B89B0949A7 /* SQLitePlugin.m */; };
 		5989E5351BFDD7EA00AD5B0B /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA7DC141DA41B89B0949A7 /* SQLitePlugin.m */; };
 		5989E5361BFDD7EB00AD5B0B /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA7DC141DA41B89B0949A7 /* SQLitePlugin.m */; };
-		598EBF071ADD2A4D00BA7FF7 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD1D8B90184C9F9A0CEECC /* Calendar.m */; };
-		598EBF081ADD2A4E00BA7FF7 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD1D8B90184C9F9A0CEECC /* Calendar.m */; };
-		598EBF091ADD2A8600BA7FF7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BA8DB819506FF0005019A0 /* EventKit.framework */; };
-		598EBF0A1ADD2A8A00BA7FF7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BA8DB819506FF0005019A0 /* EventKit.framework */; };
-		598EBF0B1ADD2A8B00BA7FF7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BA8DB819506FF0005019A0 /* EventKit.framework */; };
-		598EBF0C1ADD2ACD00BA7FF7 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56D96B7DEB2407E8E1B2248 /* EventKitUI.framework */; };
-		598EBF0D1ADD2ACD00BA7FF7 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56D96B7DEB2407E8E1B2248 /* EventKitUI.framework */; };
 		599927511A0277580068B246 /* MobileECT.m in Sources */ = {isa = PBXBuildFile; fileRef = 599927501A0277580068B246 /* MobileECT.m */; };
 		599927521A0277580068B246 /* MobileECT.m in Sources */ = {isa = PBXBuildFile; fileRef = 599927501A0277580068B246 /* MobileECT.m */; };
 		599927531A0277580068B246 /* MobileECT.m in Sources */ = {isa = PBXBuildFile; fileRef = 599927501A0277580068B246 /* MobileECT.m */; };
@@ -495,7 +486,6 @@
 		ac663fd176e6dfb78e6ba774 /* NoAppImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 59CAF108192DF98A0051E8CD /* NoAppImage.png */; };
 		ae3dc3c1f4a80bde12c9de0d /* ApplicationTileList.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C2DD218F5869A000C5E68 /* ApplicationTileList.m */; };
 		ae469ac22aa8ae81d2054a70 /* bg-red_1024x768_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 590EA4B218F8283200EB317D /* bg-red_1024x768_ipad.png */; };
-		ae8c6f089d327224aa0028ba /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BA8DB819506FF0005019A0 /* EventKit.framework */; };
 		b3a652bdd3fd4850e91f908f /* DeepLinkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597902E719ED54B400440628 /* DeepLinkController.m */; };
 		b5975adb224ed0f949a2c562 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3D939DC042040AFB37D2E0D /* CoreTelephony.framework */; };
 		bb06832daa0cfe85077bfed0 /* icon-settings_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA954190014D900458A51 /* icon-settings_2x.png */; };
@@ -521,7 +511,6 @@
 		d3eedd87ddebf3fcac25263c /* logo_iphone5.png in Resources */ = {isa = PBXBuildFile; fileRef = 590EA4B718F8283200EB317D /* logo_iphone5.png */; };
 		d5403f7e73cf10f8762ff40f /* OfflineSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5978395B1A71467E006CA4E5 /* OfflineSupportController.m */; };
 		d5436adeedfc3f5359e27a8e /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 453857D14EA64F2A93AB3719 /* CDVLogger.m */; };
-		d7c4728b929e9e19b1a1f543 /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ADD1D8B90184C9F9A0CEECC /* Calendar.m */; };
 		d87326652f586565f2a2478e /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 597839551A714575006CA4E5 /* Reachability.m */; };
 		d8ba138703e4144e3534924b /* DemoInfrastructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */; };
 		da65a195588852357392bcb3 /* icon-chevron-forth.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA96419001EBF00458A51 /* icon-chevron-forth.png */; };
@@ -529,7 +518,6 @@
 		df95bb145463bc766009d692 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9C2DDF18F5869A000C5E68 /* main.m */; };
 		e0bab71d137d7aa8b3d2edfa /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FCB1D725CB4EC3B0A56525 /* CDVDevice.m */; };
 		e392ee18198cb00b1a900f0c /* splash_768x1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 595646D5190FBE4C00C1D583 /* splash_768x1024.png */; };
-		e487a8a24b6836df914d80db /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C56D96B7DEB2407E8E1B2248 /* EventKitUI.framework */; };
 		e52e0bf76758a1a311bbd421 /* icon_microphone_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665FD51A0A45C70049F8CD /* icon_microphone_white@3x.png */; };
 		e76a740987cc9d6caf3f3d17 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = EC7056E6EC4C4DF7BB8B49BB /* CDVLocalFilesystem.m */; };
 		e9c97f6a498dda63fdfa59c3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B29FB11B6548E085F073A0 /* ImageIO.framework */; };
@@ -551,6 +539,9 @@
 		69F41885A7A14007806983BA /* CDVContact.m in Sources */ = {isa = PBXBuildFile; fileRef = CDDCC6F4B74144B38AC8B9F5 /* CDVContact.m */; };
 		155C02B522AD425F89028CA0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23555DBC6DF44CE599CAAD57 /* AddressBook.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4F5B363BC81D4D768F321D91 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 620B56A5BEFB4E5C955C5C95 /* AddressBookUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		43D451D4384B4404B0E5BBEF /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = FF23F3F4B8714CFFBBF5DD59 /* Calendar.m */; };
+		E7598F581FCD49FDB3EC865E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D49D2BA59A245F8A896A0BF /* EventKit.framework */; };
+		E612CE519B4E453E8BF344C5 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AC6B8157946FE8D3106F3 /* EventKitUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -599,7 +590,6 @@
 
 /* Begin PBXFileReference section */
 		02E1FD1B73774BBBBB73E434 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sqlite3.h; path = "cordova-sqlite-storage/sqlite3.h"; sourceTree = "<group>"; };
-		0A7F2F17EBDF4524BEB33FB4 /* Calendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Calendar.h; path = "nl.x-services.plugins.calendar/Calendar.h"; sourceTree = "<group>"; };
 		0BA605C26F4E48AE9D187FFB /* CDVLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVLogger.h; path = org.apache.cordova.console/CDVLogger.h; sourceTree = "<group>"; };
 		0CDEEEC30FB44409ABB50234 /* CDVCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVCamera.m; path = org.apache.cordova.camera/CDVCamera.m; sourceTree = "<group>"; };
 		0c1fcbeb20f2d189d0f0da1e /* CFNetwork.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -692,7 +682,6 @@
 		599927501A0277580068B246 /* MobileECT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileECT.m; path = OutSystems/Classes/MobileECT.m; sourceTree = "<group>"; };
 		59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
 		59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoAnimationSegue.m; sourceTree = "<group>"; };
-		59BA8DB819506FF0005019A0 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		59BC4906199CB56D00EA87AA /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		59BC4907199CB56D00EA87AA /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		59BC490B199CB5F100EA87AA /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -740,14 +729,12 @@
 		949071be1c94d09db37e70ba /* calabash.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; path = calabash.framework; sourceTree = "<group>"; };
 		971382594CBB4990A8D0C9E2 /* CDVNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVNotification.h; path = org.apache.cordova.dialogs/CDVNotification.h; sourceTree = "<group>"; };
 		99D0E44DDED24AE3971681F7 /* CDVBattery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVBattery.m; path = "org.apache.cordova.battery-status/CDVBattery.m"; sourceTree = "<group>"; };
-		9ADD1D8B90184C9F9A0CEECC /* Calendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Calendar.m; path = "nl.x-services.plugins.calendar/Calendar.m"; sourceTree = "<group>"; };
 		9BA70336A54B47999194F902 /* libiconv.dylib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		A134D8A56D9241CC80829717 /* CDVLocalFilesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVLocalFilesystem.h; path = org.apache.cordova.file/CDVLocalFilesystem.h; sourceTree = "<group>"; };
 		A43F809C04EB44CDAD60E4C8 /* CDVFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVFile.h; path = org.apache.cordova.file/CDVFile.h; sourceTree = "<group>"; };
 		A6FCB1D725CB4EC3B0A56525 /* CDVDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVDevice.m; path = org.apache.cordova.device/CDVDevice.m; sourceTree = "<group>"; };
 		AB4F4906E8FA483AB2FCD8D3 /* AVFoundation.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BBD74AD651694464AD24DBA0 /* CDVJpegHeaderWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVJpegHeaderWriter.m; path = org.apache.cordova.camera/CDVJpegHeaderWriter.m; sourceTree = "<group>"; };
-		C56D96B7DEB2407E8E1B2248 /* EventKitUI.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
 		CF9C2DC918F5869A000C5E68 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = OutSystems/Classes/Application.h; sourceTree = "<group>"; };
 		CF9C2DCA18F5869A000C5E68 /* Application.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Application.m; path = OutSystems/Classes/Application.m; sourceTree = "<group>"; };
 		CF9C2DCF18F5869A000C5E68 /* ApplicationTileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplicationTileCell.h; sourceTree = "<group>"; };
@@ -809,6 +796,10 @@
 		63F980B6715346FCBBBCE090 /* CDVContact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVContact.h"; path = "cordova-plugin-contacts/CDVContact.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		23555DBC6DF44CE599CAAD57 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AddressBook.framework"; path = "System/Library/Frameworks/AddressBook.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 		620B56A5BEFB4E5C955C5C95 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AddressBookUI.framework"; path = "System/Library/Frameworks/AddressBookUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		FF23F3F4B8714CFFBBF5DD59 /* Calendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Calendar.m"; path = "cordova-plugin-calendar/Calendar.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		518D1C9DB502469F8E833493 /* Calendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Calendar.h"; path = "cordova-plugin-calendar/Calendar.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		4D49D2BA59A245F8A896A0BF /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKit.framework"; path = "System/Library/Frameworks/EventKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		0F7AC6B8157946FE8D3106F3 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKitUI.framework"; path = "System/Library/Frameworks/EventKitUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -831,7 +822,6 @@
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
-				598EBF091ADD2A8600BA7FF7 /* EventKit.framework in Frameworks */,
 				595625D41B46D6B40020CABF /* libz.dylib in Frameworks */,
 				590A43E71B46DB7900D63DFE /* Crashlytics.framework in Frameworks */,
 				596479372EAF4EF3A50B22EE /* AudioToolbox.framework in Frameworks */,
@@ -839,12 +829,13 @@
 				590A43E31B46DB7900D63DFE /* Fabric.framework in Frameworks */,
 				F5CACF01E8364A59AAA944F4 /* AVFoundation.framework in Frameworks */,
 				0DB2DEA301284231A5FE5725 /* CoreVideo.framework in Frameworks */,
-				2277775EA78C4F9197428DF5 /* EventKitUI.framework in Frameworks */,
 				E7AE5B305C3E4F449B142393 /* CoreTelephony.framework in Frameworks */,
 				BA49195BD0F84A57BD1D7563 /* CoreLocation.framework in Frameworks */,
 				7FF1142BA108470D9F0B67DF /* SystemConfiguration.framework in Frameworks */,
 				155C02B522AD425F89028CA0 /* AddressBook.framework in Frameworks */,
 				4F5B363BC81D4D768F321D91 /* AddressBookUI.framework in Frameworks */,
+				E7598F581FCD49FDB3EC865E /* EventKit.framework in Frameworks */,
+				E612CE519B4E453E8BF344C5 /* EventKitUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1067,7 +1058,6 @@
 				59DCDB9E1A263D5F00016507 /* OutSystemsMobileECT.framework */,
 				59665FC71A091AEB0049F8CD /* CoreImage.framework */,
 				59BC490B199CB5F100EA87AA /* CoreText.framework */,
-				59BA8DB819506FF0005019A0 /* EventKit.framework */,
 				CFFC2FE31917F96600264950 /* Security.framework */,
 				CFFC2FE11917F5D300264950 /* Pushwoosh.framework */,
 				CF9C2DFD18F5BB16000C5E68 /* CoreData.framework */,
@@ -1080,7 +1070,6 @@
 				9BA70336A54B47999194F902 /* libiconv.dylib */,
 				AB4F4906E8FA483AB2FCD8D3 /* AVFoundation.framework */,
 				9211FE76DF784E3B89283E55 /* CoreVideo.framework */,
-				C56D96B7DEB2407E8E1B2248 /* EventKitUI.framework */,
 				F3D939DC042040AFB37D2E0D /* CoreTelephony.framework */,
 				0c1fcbeb20f2d189d0f0da1e /* CFNetwork.framework */,
 				949071be1c94d09db37e70ba /* calabash.framework */,
@@ -1088,6 +1077,8 @@
 				45BAA4E2F9284AFEAA9BD900 /* SystemConfiguration.framework */,
 				23555DBC6DF44CE599CAAD57 /* AddressBook.framework */,
 				620B56A5BEFB4E5C955C5C95 /* AddressBookUI.framework */,
+				4D49D2BA59A245F8A896A0BF /* EventKit.framework */,
+				0F7AC6B8157946FE8D3106F3 /* EventKitUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1127,8 +1118,6 @@
 				F4FA26AC863145519E86F9CE /* CDVAssetLibraryFilesystem.m */,
 				59E25D2F19094E3F000F9DE4 /* CDVLoader.h */,
 				59E25D3019094E3F000F9DE4 /* CDVLoader.m */,
-				9ADD1D8B90184C9F9A0CEECC /* Calendar.m */,
-				0A7F2F17EBDF4524BEB33FB4 /* Calendar.h */,
 				797C084F67EA492BBDB73F0A /* Sim.m */,
 				6D507AFA6D8246EF88A502C9 /* Sim.h */,
 				4BDA7DC141DA41B89B0949A7 /* SQLitePlugin.m */,
@@ -1145,6 +1134,8 @@
 				CDDCC6F4B74144B38AC8B9F5 /* CDVContact.m */,
 				F1313151E6284AD5B92F3EAB /* CDVContacts.h */,
 				63F980B6715346FCBBBCE090 /* CDVContact.h */,
+				FF23F3F4B8714CFFBBF5DD59 /* Calendar.m */,
+				518D1C9DB502469F8E833493 /* Calendar.h */,
 			);
 			name = Plugins;
 			path = OutSystems/Plugins;
@@ -1981,7 +1972,6 @@
 				5919DC4A1A02B20E00D47B72 /* MigrateSecurePass.xcmappingmodel in Sources */,
 				59665FCD1A0937D00049F8CD /* OSNavigationController.m in Sources */,
 				59BC4908199CB56E00EA87AA /* TTTAttributedLabel.m in Sources */,
-				511C0E45D40E4D0FB33991D1 /* Calendar.m in Sources */,
 				831334FECEF345418335E8FF /* Sim.m in Sources */,
 				F8ECB889121443E0AAA6E80A /* SQLitePlugin.m in Sources */,
 				44934B890C2A46F0B11FDF78 /* sqlite3.c in Sources */,
@@ -1990,6 +1980,7 @@
 				55F8C586507E4CB9A7E782FE /* CDVReachability.m in Sources */,
 				E6D02E52C9EA4CCC916C590E /* CDVContacts.m in Sources */,
 				69F41885A7A14007806983BA /* CDVContact.m in Sources */,
+				43D451D4384B4404B0E5BBEF /* Calendar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
