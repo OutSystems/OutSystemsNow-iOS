@@ -46,5 +46,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-sim": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-sim"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
