@@ -47,9 +47,6 @@
     <feature name="Sim">
         <param name="ios-package" value="Sim" />
     </feature>
-    <feature name="NetworkStatus">
-        <param name="ios-package" value="CDVConnection" />
-    </feature>
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
@@ -67,5 +64,8 @@
     <access origin="*" />
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
     </feature>
 </widget>

@@ -288,21 +288,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-network-information/www/network.js",
-        "id": "cordova-plugin-network-information.network",
-        "clobbers": [
-            "navigator.connection",
-            "navigator.network.connection"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
-        "id": "cordova-plugin-network-information.Connection",
-        "clobbers": [
-            "Connection"
-        ]
-    },
-    {
         "file": "plugins/org.apache.cordova.device/www/device.js",
         "id": "org.apache.cordova.device.device",
         "clobbers": [
@@ -343,6 +328,21 @@ module.exports = [
         "clobbers": [
             "navigator.geolocation"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/network.js",
+        "id": "cordova-plugin-network-information.network",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+        "id": "cordova-plugin-network-information.Connection",
+        "clobbers": [
+            "Connection"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -358,10 +358,10 @@ module.exports.metadata =
     "org.apache.cordova.camera": "0.3.4-dev",
     "nl.x-services.plugins.calendar": "4.3.1",
     "cordova-plugin-sim": "1.0.2",
-    "cordova-plugin-network-information": "1.0.1-dev",
     "org.apache.cordova.device": "0.3.0",
     "cordova-sqlite-storage": "0.7.13",
-    "cordova-plugin-geolocation": "1.0.1"
+    "cordova-plugin-geolocation": "1.0.1",
+    "cordova-plugin-network-information": "1.0.1"
 }
 // BOTTOM OF METADATA
 });
