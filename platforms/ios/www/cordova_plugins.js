@@ -22,13 +22,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.battery-status/www/battery.js",
-        "id": "org.apache.cordova.battery-status.battery",
-        "clobbers": [
-            "navigator.battery"
-        ]
-    },
-    {
         "file": "plugins/com.phonegap.plugins.barcodescanner/www/barcodescanner.js",
         "id": "com.phonegap.plugins.barcodescanner.BarcodeScanner",
         "clobbers": [
@@ -343,6 +336,13 @@ module.exports = [
         "clobbers": [
             "device"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-battery-status/www/battery.js",
+        "id": "cordova-plugin-battery-status.battery",
+        "clobbers": [
+            "navigator.battery"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -350,7 +350,6 @@ module.exports.metadata =
 {
     "org.apache.cordova.console": "0.2.7",
     "org.apache.cordova.dialogs": "0.2.6",
-    "org.apache.cordova.battery-status": "0.2.7",
     "com.phonegap.plugins.barcodescanner": "2.0.0",
     "com.outsystems.loader": "1.0.0",
     "org.apache.cordova.file": "1.1.0",
@@ -361,7 +360,8 @@ module.exports.metadata =
     "cordova-plugin-calendar": "4.4.4",
     "cordova-plugin-camera": "1.2.0",
     "cordova-plugin-sim": "1.1.0",
-    "cordova-plugin-device": "1.0.1"
+    "cordova-plugin-device": "1.0.1",
+    "cordova-plugin-battery-status": "1.1.0"
 }
 // BOTTOM OF METADATA
 });
