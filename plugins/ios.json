@@ -9,10 +9,6 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
                             "count": 1
                         },
@@ -66,6 +62,10 @@
                         },
                         {
                             "xml": "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -236,9 +236,6 @@
         }
     },
     "installed_plugins": {
-        "org.apache.cordova.console": {
-            "PACKAGE_NAME": "com.outsystems.outsystems"
-        },
         "com.phonegap.plugins.barcodescanner": {
             "PACKAGE_NAME": "com.outsystems.outsystems"
         },
@@ -276,6 +273,9 @@
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         },
         "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
+        },
+        "cordova-plugin-console": {
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         }
     },

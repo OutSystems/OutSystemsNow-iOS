@@ -1,20 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/org.apache.cordova.console/www/console-via-logger.js",
-        "id": "org.apache.cordova.console.console",
-        "clobbers": [
-            "console"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.console/www/logger.js",
-        "id": "org.apache.cordova.console.logger",
-        "clobbers": [
-            "cordova.logger"
-        ]
-    },
-    {
         "file": "plugins/com.phonegap.plugins.barcodescanner/www/barcodescanner.js",
         "id": "com.phonegap.plugins.barcodescanner.BarcodeScanner",
         "clobbers": [
@@ -343,12 +329,25 @@ module.exports = [
         "merges": [
             "navigator.notification"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-console/www/logger.js",
+        "id": "cordova-plugin-console.logger",
+        "clobbers": [
+            "cordova.logger"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
+        "id": "cordova-plugin-console.console",
+        "clobbers": [
+            "console"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "org.apache.cordova.console": "0.2.7",
     "com.phonegap.plugins.barcodescanner": "2.0.0",
     "com.outsystems.loader": "1.0.0",
     "org.apache.cordova.file": "1.1.0",
@@ -361,7 +360,8 @@ module.exports.metadata =
     "cordova-plugin-sim": "1.1.0",
     "cordova-plugin-device": "1.0.1",
     "cordova-plugin-battery-status": "1.1.0",
-    "cordova-plugin-dialogs": "1.1.1"
+    "cordova-plugin-dialogs": "1.1.1",
+    "cordova-plugin-console": "1.0.1"
 }
 // BOTTOM OF METADATA
 });

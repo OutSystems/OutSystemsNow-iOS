@@ -40,3 +40,45 @@
 ### 0.2.7 (Feb 05, 2014)
 * Native console needs to be called DebugConsole to avoid ambiguous reference. This commit requires the 3.4.0 version of the native class factory
 * CB-4718 fixed Console plugin not working on wp
+
+### 0.2.8 (Apr 17, 2014)
+* CB-6460: Update license headers
+* Add NOTICE file
+
+### 0.2.9 (Jun 05, 2014)
+* CB-6848 Add Android quirk, list applicable platforms
+* CB-6796 Add license
+* CB-6491 add CONTRIBUTING.md
+
+### 0.2.10 (Aug 06, 2014)
+* CB-6127 Updated translations for docs
+
+### 0.2.11 (Sep 17, 2014)
+* CB-7249 cordova-plugin-console documentation translation
+
+### 0.2.12 (Dec 02, 2014)
+* CB-7977 Mention `deviceready` in plugin docs
+* CB-7700 cordova-plugin-console documentation translation: cordova-plugin-console
+
+### 0.2.13 (Feb 04, 2015)
+* CB-8351 ios: Use argumentForIndex rather than NSArray extension
+
+### 1.0.0 (Apr 15, 2015)
+* CB-8746 gave plugin major version bump
+* CB-8683 changed plugin-id to pacakge-name
+* CB-8653 updated translated docs to use new id
+* Use TRAVIS_BUILD_DIR, install paramedic by npm
+* docs: renamed Windows8 to Windows
+* CB-8653 Updated Readme
+* CB-8560 Integrate TravisCI
+* CB-8438 cordova-plugin-console documentation translation: cordova-plugin-console
+* CB-8538 Added package.json file
+* CB-8362 Add Windows platform section to Console plugin
+
+### 1.0.1 (Jun 17, 2015)
+* move logger.js and console-via-logger.js to common modules, instead of the numerous repeats that were there.
+* clean up tests, info is below log level so it does not exist by default.
+* add a couple tests
+* CB-9191 Add basic test
+* CB-9128 cordova-plugin-console documentation translation: cordova-plugin-console
+* attempt to fix npm markdown issue
