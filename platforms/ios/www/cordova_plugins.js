@@ -8,13 +8,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-        "id": "cordova-sqlite-storage.SQLitePlugin",
-        "clobbers": [
-            "SQLitePlugin"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
         "id": "cordova-plugin-geolocation.Coordinates",
         "clobbers": [
@@ -360,6 +353,13 @@ module.exports = [
             "cordova"
         ],
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+        "id": "cordova-sqlite-storage.SQLitePlugin",
+        "clobbers": [
+            "SQLitePlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -367,7 +367,6 @@ module.exports.metadata =
 {
     "com.phonegap.plugins.barcodescanner": "2.0.0",
     "com.outsystems.loader": "1.0.0",
-    "cordova-sqlite-storage": "0.7.13",
     "cordova-plugin-geolocation": "1.0.1",
     "cordova-plugin-network-information": "1.0.1",
     "cordova-plugin-contacts": "1.1.0",
@@ -378,7 +377,8 @@ module.exports.metadata =
     "cordova-plugin-battery-status": "1.1.0",
     "cordova-plugin-dialogs": "1.1.1",
     "cordova-plugin-console": "1.0.1",
-    "cordova-plugin-file": "3.0.0"
+    "cordova-plugin-file": "3.0.0",
+    "cordova-sqlite-storage": "0.7.14"
 }
 // BOTTOM OF METADATA
 });
