@@ -19,7 +19,7 @@
 }
 
 + (NSString *) hostname {
-    return @"apps.outsystems.net";
+    return @"apps.outsystems.com";
 }
 
 @end
