@@ -95,7 +95,7 @@ NSString* const kCDVLoaderURLPrefixShortpath = @"/cdvload/";
     NSError *error = nil;
     NSString *urlString = [url path];
     
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"/([\\da-zA-Z\\.-]+)/cdvload/" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(/([\\da-zA-Z\\.-]+))?/cdvload/" options:NSRegularExpressionCaseInsensitive error:&error];
     
     urlString = [regex stringByReplacingMatchesInString:urlString options:0 range:NSMakeRange(0, [urlString length]) withTemplate:@"/www/"];
     

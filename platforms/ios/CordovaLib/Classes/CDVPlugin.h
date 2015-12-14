@@ -41,7 +41,7 @@ extern NSString* const CDVPageDidFailLoadNotification;
 
 @property (readonly, assign) BOOL hasPendingOperation;
 
-- (CDVPlugin*)initWithWebView:(UIWebView*)theWebView;
+- (CDVPlugin*)initWithWebView:(UIWebView*)theWebView CDV_DEPRECATED(3.9.2, "Use pluginInitialize method instead. This will be removed in 4.0.0");
 - (void)pluginInitialize;
 
 - (void)handleOpenURL:(NSNotification*)notification;
@@ -61,9 +61,10 @@ extern NSString* const CDVPageDidFailLoadNotification;
 
 - (id)appDelegate;
 
-// TODO(agrieve): Deprecate these in favour of using CDVCommandDelegate directly.
-- (NSString*)writeJavascript:(NSString*)javascript;
-- (NSString*)success:(CDVPluginResult*)pluginResult callbackId:(NSString*)callbackId;
-- (NSString*)error:(CDVPluginResult*)pluginResult callbackId:(NSString*)callbackId;
+- (NSString*)writeJavascript:(NSString*)javascript CDV_DEPRECATED(3.6, "Use the CDVCommandDelegate equivalent of evalJs:. This will be removed in 4.0.0");
+
+- (NSString*)success:(CDVPluginResult*)pluginResult callbackId:(NSString*)callbackId CDV_DEPRECATED(3.6, "Use the CDVCommandDelegate equivalent of sendPluginResult:callbackId. This will be removed in 4.0.0");
+
+- (NSString*)error:(CDVPluginResult*)pluginResult callbackId:(NSString*)callbackId CDV_DEPRECATED(3.6, "Use the CDVCommandDelegate equivalent of sendPluginResult:callbackId. This will be removed in 4.0.0");
 
 @end
