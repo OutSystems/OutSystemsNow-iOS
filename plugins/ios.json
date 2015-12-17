@@ -243,9 +243,6 @@
         "com.phonegap.plugins.barcodescanner": {
             "PACKAGE_NAME": "com.outsystems.outsystems"
         },
-        "com.outsystems.loader": {
-            "PACKAGE_NAME": "com.outsystems.outsystems"
-        },
         "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         },
@@ -273,13 +270,13 @@
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
-        },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         },
         "cordova-sqlite-storage": {
+            "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
+        },
+        "com.outsystems.loader": {
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         }
     },
