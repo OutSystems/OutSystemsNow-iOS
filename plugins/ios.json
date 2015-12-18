@@ -278,6 +278,9 @@
         },
         "com.outsystems.loader": {
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         }
     },
     "dependent_plugins": {}

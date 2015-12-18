@@ -67,6 +67,10 @@
                         {
                             "xml": "<feature name=\"Loader\"><param name=\"ios-package\" value=\"CDVLoader\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -121,6 +125,9 @@
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         },
         "com.outsystems.loader": {
+            "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
+        },
+        "cordova-plugin-console": {
             "PACKAGE_NAME": "com.outsystems.ordermngnl2014"
         }
     },
@@ -522,6 +529,22 @@
             "clobbers": [
                 "SQLitePlugin"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
+            "id": "cordova-plugin-console.console",
+            "pluginId": "cordova-plugin-console",
+            "clobbers": [
+                "console"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-console/www/logger.js",
+            "id": "cordova-plugin-console.logger",
+            "pluginId": "cordova-plugin-console",
+            "clobbers": [
+                "cordova.logger"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -537,6 +560,7 @@
         "cordova-plugin-dialogs": "1.1.1",
         "cordova-plugin-file": "3.0.0",
         "cordova-sqlite-storage": "0.7.14",
-        "com.outsystems.loader": "1.1.0"
+        "com.outsystems.loader": "1.1.0",
+        "cordova-plugin-console": "1.0.2"
     }
 }

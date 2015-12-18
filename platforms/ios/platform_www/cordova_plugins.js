@@ -396,6 +396,22 @@ module.exports = [
         "clobbers": [
             "SQLitePlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
+        "id": "cordova-plugin-console.console",
+        "pluginId": "cordova-plugin-console",
+        "clobbers": [
+            "console"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-console/www/logger.js",
+        "id": "cordova-plugin-console.logger",
+        "pluginId": "cordova-plugin-console",
+        "clobbers": [
+            "cordova.logger"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -413,7 +429,8 @@ module.exports.metadata =
     "cordova-plugin-dialogs": "1.1.1",
     "cordova-plugin-file": "3.0.0",
     "cordova-sqlite-storage": "0.7.14",
-    "com.outsystems.loader": "1.1.0"
+    "com.outsystems.loader": "1.1.0",
+    "cordova-plugin-console": "1.0.2"
 }
 // BOTTOM OF METADATA
 });

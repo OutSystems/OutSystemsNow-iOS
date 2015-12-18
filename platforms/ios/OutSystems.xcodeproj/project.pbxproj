@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		02e750d6a1369761901ea8de /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BC490B199CB5F100EA87AA /* CoreText.framework */; };
 		054c097c02930aeb22631c72 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4F4906E8FA483AB2FCD8D3 /* AVFoundation.framework */; };
@@ -517,6 +516,7 @@
 		f92c2a61e4b8e5c839106ece /* calabash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949071be1c94d09db37e70ba /* calabash.framework */; };
 		f95dc954a20afdbc9c3952ae /* icon_cross_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67981A0A5FF100612F33 /* icon_cross_red@2x.png */; };
 		feb6e5c1c6cb906a6ebd6f1e /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
+		81E8F9680C884F0981CE9BB7 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C0286A76BB104C508A2370F4 /* CDVLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -775,6 +775,8 @@
 		F03230351E234C849A575D74 /* CDVLocalFilesystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVLocalFilesystem.h; path = "cordova-plugin-file/CDVLocalFilesystem.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = OutSystems/config.xml; sourceTree = "<group>"; };
 		F84B493F84C9487B9EF755FA /* CDVDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVDevice.h; path = "cordova-plugin-device/CDVDevice.h"; sourceTree = "<group>"; };
+		C0286A76BB104C508A2370F4 /* CDVLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVLogger.m"; path = "cordova-plugin-console/CDVLogger.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		11F7B7A2DDE24C68AC23C82D /* CDVLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVLogger.h"; path = "cordova-plugin-console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1119,6 +1121,8 @@
 				3E4A27E472A14B8D83EEF85B /* sqlite3.h */,
 				BD8BF5242ECE43558EB82F02 /* CDVLoader.m */,
 				ADD0A276AB954A9880571DEA /* CDVLoader.h */,
+				C0286A76BB104C508A2370F4 /* CDVLogger.m */,
+				11F7B7A2DDE24C68AC23C82D /* CDVLogger.h */,
 			);
 			name = Plugins;
 			path = OutSystems/Plugins;
@@ -1958,6 +1962,7 @@
 				88C24A24B987479887D5EFD9 /* SQLitePlugin.m in Sources */,
 				8A1C8BC79AD942E1ACF94F8C /* sqlite3.c in Sources */,
 				590E1611B7504D6E8F4FD90E /* CDVLoader.m in Sources */,
+				81E8F9680C884F0981CE9BB7 /* CDVLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
