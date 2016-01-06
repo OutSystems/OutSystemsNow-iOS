@@ -2,8 +2,9 @@
 
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="com.outsystems.loader"
-      version="1.0.0">
+        id="com.outsystems.loader"
+        version="1.1.0">
+        
     <name>Loader</name>
     <description>OutSystems Loader for Cordova</description>
     <license>Apache 2.0</license>
@@ -13,14 +14,17 @@
 
     <!-- ios -->
     <platform name="ios">
+        
         <config-file target="config.xml" parent="/*">
             <feature name="Loader">
                 <param name="ios-package" value="CDVLoader" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
+        
         <header-file src="src/ios/CDVLoader.h" />
-	    <source-file src="src/ios/CDVLOader.m" />
+	    <source-file src="src/ios/CDVLoader.m" />
+        
     </platform>
 
 </plugin>

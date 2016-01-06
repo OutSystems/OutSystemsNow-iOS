@@ -1,0 +1,15 @@
+{
+    "libiconv.dylib": 1,
+    "AVFoundation.framework": 2,
+    "CoreVideo.framework": 1,
+    "QuartzCore.framework": 1,
+    "CoreLocation.framework": 2,
+    "SystemConfiguration.framework": 1,
+    "AddressBook.framework": 1,
+    "AddressBookUI.framework": 1,
+    "EventKit.framework": 1,
+    "EventKitUI.framework": 1,
+    "ImageIO.framework": 1,
+    "CoreTelephony.framework": 1,
+    "AudioToolbox.framework": 1
+}

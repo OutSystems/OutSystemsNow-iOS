@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-network-information",
-  "version": "1.0.1-dev",
+  "version": "1.0.1",
   "description": "Cordova Network Information Plugin",
   "cordova": {
     "id": "cordova-plugin-network-information",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-network-information.git"
+    "url": "https://github.com/apache/cordova-plugin-network-information"
   },
   "keywords": [
     "cordova",
