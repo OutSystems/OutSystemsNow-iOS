@@ -99,7 +99,7 @@
 		<string></string>
 	</dict>
 	<key>Pushwoosh_APPID</key>
-	<string>32B53-F301A</string>
+	<string>FDFED-41E3B</string>
 	<key>Pushwoosh_DEBUG</key>
 	<false/>
 	<key>Pushwoosh_SHOW_ALERT</key>
@@ -124,5 +124,12 @@
 	<true/>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
 </dict>
 </plist>

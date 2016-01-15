@@ -268,7 +268,7 @@
 		59C115E61C285641003A794D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 906D30E5D20A42A8B648424A /* CDVFile.m */; };
 		59C115E71C285644003A794D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 906D30E5D20A42A8B648424A /* CDVFile.m */; };
 		59C115E81C285657003A794D /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 845E0B00F8D8452A8A8CB148 /* CDVBarcodeScanner.mm */; };
-		59C115E91C285658003A794D /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 845E0B00F8D8452A8A8CB148 /* CDVBarcodeScanner.mm */; };
+		59C115E91C285658003A794D /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 845E0B00F8D8452A8A8CB148 /* CDVBarcodeScanner.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		59C115EA1C285659003A794D /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 845E0B00F8D8452A8A8CB148 /* CDVBarcodeScanner.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		59C115EB1C28565D003A794D /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38F66DCC6A324E65AE9F074A /* zxing-all-in-one.cpp */; };
 		59C115EC1C28565E003A794D /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38F66DCC6A324E65AE9F074A /* zxing-all-in-one.cpp */; };
@@ -731,7 +731,7 @@
 		597902E619ED53C800440628 /* DeepLinkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLinkController.h; sourceTree = "<group>"; };
 		597902E719ED54B400440628 /* DeepLinkController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeepLinkController.m; sourceTree = "<group>"; };
 		597A525F195C9A6400F15480 /* OutSystems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutSystems.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5985C53B1B18B2F30095FFDE /* OutSystems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OutSystems.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5985C53B1B18B2F30095FFDE /* OutSystems-cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "OutSystems-cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5999274F1A0277580068B246 /* MobileECT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobileECT.h; path = OutSystems/Classes/MobileECT.h; sourceTree = "<group>"; };
 		599927501A0277580068B246 /* MobileECT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MobileECT.m; path = OutSystems/Classes/MobileECT.m; sourceTree = "<group>"; };
 		59BA8DB31938EEFC005019A0 /* NoAnimationSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoAnimationSegue.h; sourceTree = "<group>"; };
@@ -1026,7 +1026,7 @@
 				1D6058910D05DD3D006BFB54 /* OutSystems.app */,
 				597A525F195C9A6400F15480 /* OutSystems.app */,
 				59E53FA41986C1760003BC6B /* OutSystems.app */,
-				5985C53B1B18B2F30095FFDE /* OutSystems.app */,
+				5985C53B1B18B2F30095FFDE /* OutSystems-cal.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1475,7 +1475,7 @@
 			);
 			name = "OutSystems-cal";
 			productName = "OutSystems-cal";
-			productReference = 5985C53B1B18B2F30095FFDE /* OutSystems.app */;
+			productReference = 5985C53B1B18B2F30095FFDE /* OutSystems-cal.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1517,7 +1517,7 @@
 						};
 					};
 					c037ef4a1d09cee692c68b24 = {
-						DevelopmentTeam = S25XN959HW;
+						DevelopmentTeam = EVSWK8BA55;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -2106,7 +2106,6 @@
 				59C116241C28574B003A794D /* CDVLoader.m in Sources */,
 				59E53F751986C1760003BC6B /* ApplicationTileListController.m in Sources */,
 				59E53F761986C1760003BC6B /* LoginScreenController.m in Sources */,
-				59C115E91C285658003A794D /* CDVBarcodeScanner.mm in Sources */,
 				59E53F771986C1760003BC6B /* OutSystemsAppDelegate.m in Sources */,
 				59C115EF1C285666003A794D /* CDVLocation.m in Sources */,
 				59E53F781986C1760003BC6B /* OutAppData.xcdatamodeld in Sources */,
@@ -2135,6 +2134,7 @@
 				59C1160D1C28571B003A794D /* CDVDevice.m in Sources */,
 				59783A971A7146D9006CA4E5 /* LoginApplication.m in Sources */,
 				59C116101C285724003A794D /* CDVBattery.m in Sources */,
+				59C115E91C285658003A794D /* CDVBarcodeScanner.mm in Sources */,
 				59C116211C285746003A794D /* sqlite3.c in Sources */,
 				5974C7E51A9638CE006553D2 /* OSNavigationBarAlert.m in Sources */,
 				59C115F51C285694003A794D /* CDVReachability.m in Sources */,
@@ -2390,8 +2390,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OutSystems Inc. (S25XN959HW)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: OUTSYSTEMS - Software em Rede, S.A.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: OUTSYSTEMS - Software em Rede, S.A.";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
@@ -2408,6 +2408,7 @@
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"\"$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include\"",
 					"\"$(OBJROOT)/UninstalledProducts/include\"",
 					"\"$(BUILT_PRODUCTS_DIR)\"",
 					"\"$(SRCROOT)/CordovaLib/Classes\"",
@@ -2433,9 +2434,9 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.app;
-				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "80efe77e-09d5-49ed-ba26-e91ab94dcc73";
+				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.osapp;
+				PRODUCT_NAME = "OutSystems-cal";
+				PROVISIONING_PROFILE = "ec705c9a-d256-4349-82c8-15682082c7fe";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				"VALID_ARCHS[sdk=*]" = "arm64 armv7 armv7s";
 			};
@@ -2593,7 +2594,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.osapp;
 				PRODUCT_NAME = OutSystems;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ec705c9a-d256-4349-82c8-15682082c7fe";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
 				"VALID_ARCHS[sdk=*]" = "armv7 armv7s arm64 i386 x86_64";
@@ -2659,7 +2660,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paulo Rosado (MVH2R585LB)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_BITCODE = NO;
@@ -2702,8 +2703,8 @@
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.app;
-				PRODUCT_NAME = OutSystems;
+				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.osapp;
+				PRODUCT_NAME = "OutSystems-cal";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
