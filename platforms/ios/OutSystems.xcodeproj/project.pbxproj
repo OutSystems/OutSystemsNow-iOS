@@ -2430,9 +2430,11 @@
 					"-force_load",
 					"\"$(BUILT_PRODUCTS_DIR)/libCordova.a\"",
 					"-ObjC",
-					"$(inherited)",
+					"-force_load",
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
+					"-weak_framework",
+					CFNetwork,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.osapp;
 				PRODUCT_NAME = "OutSystems-cal";
@@ -2702,6 +2704,8 @@
 					"-force_load",
 					"\"$(SRCROOT)/calabash.framework/calabash\"",
 					"-lstdc++",
+					"-weak_framework",
+					CFNetwork,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.outsystems.osapp;
 				PRODUCT_NAME = "OutSystems-cal";
