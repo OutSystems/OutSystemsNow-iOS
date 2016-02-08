@@ -83,6 +83,12 @@ static NSData * _loginResponseData;
     NSString *username = infrastructure.username;
     
     [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"hostname == %@ && username == %@", hostname, username]];
+    
+    // Get List of Application order by app name
+    NSSortDescriptor *sortDescriptorByAppName = [[NSSortDescriptor alloc] initWithKey:@"appName" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptorByAppName, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
     NSMutableArray *loginApplications = nil;
     
     if(managedObjectContext)
