@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="1fS-mO-TBd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -351,6 +351,13 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="label_appsOn"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_iphone5.png" translatesAutoresizingMaskIntoConstraints="NO" id="uj6-xv-dlq">
+                                <rect key="frame" x="191" y="109" width="387" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="ODV-Gp-Cdm"/>
+                                    <constraint firstAttribute="width" constant="387" id="WsI-C3-soK"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000007149999997" green="0.13333334029999999" blue="0.086274512110000007" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -361,6 +368,7 @@
                             <constraint firstItem="aXA-2K-VIs" firstAttribute="top" secondItem="s85-kN-bd1" secondAttribute="bottom" constant="36" id="HQ2-hg-0nn"/>
                             <constraint firstItem="b51-62-2i5" firstAttribute="top" secondItem="Xaa-2d-9mv" secondAttribute="bottom" constant="90" id="IdZ-Jf-7Ux"/>
                             <constraint firstItem="Rrh-sW-uxL" firstAttribute="top" secondItem="ZiZ-Yc-H21" secondAttribute="bottom" constant="24" id="LlL-4G-xwx"/>
+                            <constraint firstItem="uj6-xv-dlq" firstAttribute="top" secondItem="4uP-NU-lNA" secondAttribute="bottom" constant="89" id="MzM-DR-ojQ"/>
                             <constraint firstItem="s85-kN-bd1" firstAttribute="top" secondItem="b51-62-2i5" secondAttribute="bottom" constant="17" id="Nhw-qq-FYO"/>
                             <constraint firstItem="Rrh-sW-uxL" firstAttribute="top" secondItem="aXA-2K-VIs" secondAttribute="bottom" constant="35" id="S1F-uU-U9O"/>
                             <constraint firstItem="0tR-Nf-WK2" firstAttribute="top" secondItem="4uP-NU-lNA" secondAttribute="bottom" constant="98" id="Xd2-Y1-yug"/>
@@ -372,6 +380,7 @@
                             <constraint firstItem="Gug-wj-t9z" firstAttribute="height" secondItem="wE7-Vc-JhA" secondAttribute="height" id="hi2-Nb-Q7L"/>
                             <constraint firstItem="ZiZ-Yc-H21" firstAttribute="top" secondItem="s85-kN-bd1" secondAttribute="bottom" constant="25" id="iY0-FT-nXq"/>
                             <constraint firstAttribute="centerX" secondItem="s85-kN-bd1" secondAttribute="centerX" id="q1p-8I-PJk"/>
+                            <constraint firstItem="uj6-xv-dlq" firstAttribute="centerX" secondItem="wE7-Vc-JhA" secondAttribute="centerX" id="wJB-eH-anf"/>
                             <constraint firstAttribute="centerX" secondItem="0tR-Nf-WK2" secondAttribute="centerX" id="zf1-kQ-CGm"/>
                         </constraints>
                     </view>
@@ -381,7 +390,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="applicationLogoImageView" destination="uj6-xv-dlq" id="4Gi-Wd-uqT"/>
                         <outlet property="applicationsAtLabel" destination="0tR-Nf-WK2" id="JcR-BV-Loz"/>
+                        <outlet property="backgroungImageView" destination="Gug-wj-t9z" id="eo5-JW-kW3"/>
                         <outlet property="errorMessageLabel" destination="Rrh-sW-uxL" id="d2M-iO-gqC"/>
                         <outlet property="infrastructureLabel" destination="Xaa-2d-9mv" id="Sku-w8-GpQ"/>
                         <outlet property="loginActivityIndicator" destination="aXA-2K-VIs" id="UiB-CK-Oox"/>
