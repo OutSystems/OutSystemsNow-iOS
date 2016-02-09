@@ -30,6 +30,7 @@ static NSString * osFailedURL;
 static UIWebView * osWebView;
 static Application * osApplication;
 static NSData * _loginResponseData;
+static NSArray* trustedHosts;
 
 #pragma mark - Database handler
 
@@ -241,6 +242,8 @@ static NSData * _loginResponseData;
 +(void)loginIfNeeded:(Infrastructure*)infrastructure{
     if(offlineSession){
         
+        trustedHosts = [[NSArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
+        
         _loginResponseData = nil;
         
         int timeoutInSeconds = 30;
@@ -289,6 +292,21 @@ static NSData * _loginResponseData;
 
 + (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
     return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
+}
+
++ (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        for (NSString *trustedHost in trustedHosts) {
+            
+            // currently trusting all certificates for beta release, remove true condition to validate untrusted certificates with list for trusted servers
+            if(true || [challenge.protectionSpace.host rangeOfString:trustedHost options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - trustedHost.length)) {
+                [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+                break;
+            }
+        }
+    }
+    
+    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
 
 

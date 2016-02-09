@@ -453,6 +453,8 @@
             
         } else {
             NSLog(@"Network status: Online");
+            //After recover the internet collection will do login again
+            [OfflineSupportController loginIfNeeded:self.infrastructure];
             if(_isViewVisible)
                 [self hideOfflineMessage:YES];
         }
