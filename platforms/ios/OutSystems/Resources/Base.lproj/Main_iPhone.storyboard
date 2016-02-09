@@ -240,7 +240,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="accessYourAppLabel" destination="EiG-EG-f5u" id="FhG-NS-Obe"/>
+                        <outlet property="backgroundImage" destination="pJC-o1-PHJ" id="etB-bN-2Yn"/>
                         <outlet property="connectionActivityIndicator" destination="qCz-3Z-m7o" id="PYi-Q8-iL3"/>
+                        <outlet property="discoverLabel" destination="sNp-2L-9sy" id="Eta-DF-FgV"/>
                         <outlet property="environmentHostname" destination="20h-pV-eEg" id="ixf-RG-TYQ"/>
                         <outlet property="errorMessageLabel" destination="lNb-PN-Pep" id="lpe-Mh-P9C"/>
                         <outlet property="explainURLButton" destination="9RX-ut-JSB" id="xuO-h3-PGf"/>
@@ -249,6 +251,7 @@
                         <outlet property="helpURLHeightContraint" destination="P2M-ND-xtb" id="EPn-cY-sXt"/>
                         <outlet property="helpView" destination="wnI-HQ-8QE" id="Ycg-K7-8Cx"/>
                         <outlet property="howItWorksLabel" destination="tn7-Ok-Zw0" id="Bjz-AS-Kd1"/>
+                        <outlet property="outsystemsUrlButton" destination="foE-so-k88" id="pGF-Nv-YKF"/>
                         <outlet property="tryDemoButton" destination="dE0-OU-qQ0" id="CGs-rc-jQ6"/>
                         <segue destination="fcJ-lJ-rVs" kind="push" identifier="GoToLoginSegue" id="rYy-ia-bhR"/>
                     </connections>

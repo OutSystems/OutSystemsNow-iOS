@@ -228,7 +228,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="accessYourAppLabel" destination="SyS-jc-QFb" id="V8G-4k-m7h"/>
+                        <outlet property="backgroundImage" destination="lPl-Ec-Gi2" id="kW1-Ac-G6M"/>
                         <outlet property="connectionActivityIndicator" destination="Nj1-gz-Ic8" id="DAI-Cl-Oie"/>
+                        <outlet property="discoverLabel" destination="z6M-6D-cpb" id="7ay-0N-FKr"/>
                         <outlet property="environmentHostname" destination="clP-UK-tiy" id="kL9-2s-Mga"/>
                         <outlet property="errorMessageLabel" destination="ACu-1n-c92" id="iyM-o3-cAv"/>
                         <outlet property="explainURLButton" destination="kQW-Js-7pv" id="YXh-QG-eHU"/>
@@ -237,6 +239,7 @@
                         <outlet property="helpURLHeightContraint" destination="178-pM-RnB" id="tq4-wW-W3S"/>
                         <outlet property="helpView" destination="o92-Ri-TCz" id="3oN-Q1-jaX"/>
                         <outlet property="howItWorksLabel" destination="z60-Vi-vKF" id="ndR-XL-21Y"/>
+                        <outlet property="outsystemsUrlButton" destination="8XI-d6-apS" id="csH-Vu-qE3"/>
                         <outlet property="tryDemoButton" destination="pb2-Lg-6EZ" id="Zbb-pD-Dqi"/>
                         <segue destination="7zT-de-Y3R" kind="push" identifier="GoToLoginSegue" id="njy-Hw-SXe"/>
                     </connections>

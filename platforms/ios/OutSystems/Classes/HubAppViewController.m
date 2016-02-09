@@ -15,6 +15,7 @@
 #import "DemoInfrastructure.h"
 #import "OfflineSupportController.h"
 #import "ApplicationViewController.h"
+#import "ApplicationSettingsController.h"
 
 @interface HubAppViewController ()
 
@@ -25,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *tryDemoButton;
 @property (weak, nonatomic) IBOutlet UIButton *explainURLButton;
 @property (weak, nonatomic) IBOutlet UIInsetTextField *environmentHostname;
+@property (weak, nonatomic) IBOutlet UILabel *discoverLabel;
+@property (weak, nonatomic) IBOutlet UIButton *outsystemsUrlButton;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @property (strong, nonatomic) NSMutableArray *environments;
 
@@ -149,14 +153,28 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
         // check if we have the login and password for that infrastructure or we're using a default infrastructure
         if(([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0) ||[_defaultEnvironment length] > 0) {
             
-            // execute the login automatically if not done yet
-            if( [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
+
+            if([ApplicationSettingsController hasValidSettings] && [ApplicationSettingsController nextViewController:self]) {
+                UIViewController *targetVC = nil;
+                targetVC = [ApplicationSettingsController nextViewController:self];
                 UINavigationController *navControler = self.navigationController;
-                    
                 if(navControler) {
-                    targetViewControler.infrastructure = self.infrastructure;
-                    targetViewControler.deepLinkController = self.deepLinkController;
-                    [navControler pushViewController:targetViewControler animated:NO];
+                   // targetViewControler.infrastructure = self.infrastructure;
+                   // targetViewControler.deepLinkController = self.deepLinkController;
+                    [navControler pushViewController:targetVC animated:NO];
+                }
+            }else{
+            
+            
+                // execute the login automatically if not done yet
+                if( [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
+                    UINavigationController *navControler = self.navigationController;
+                    
+                    if(navControler) {
+                        targetViewControler.infrastructure = self.infrastructure;
+                        targetViewControler.deepLinkController = self.deepLinkController;
+                        [navControler pushViewController:targetViewControler animated:NO];
+                    }
                 }
             }
         }
@@ -314,6 +332,47 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     singleTap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:singleTap];
+    
+    if([ApplicationSettingsController hasValidSettings]){
+        
+        [self.howItWorksLabel setHidden:YES];
+        [self.tryDemoButton setHidden:YES];
+        [self.discoverLabel setHidden:YES];
+        [self.outsystemsUrlButton setHidden:YES];
+        
+        UIColor *backgroundColor = [ApplicationSettingsController backgroundColor];
+        if(backgroundColor){
+            // TODO: not sure if this is the best approach...
+            self.backgroundImage.image = [self.backgroundImage.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.backgroundImage setTintColor:backgroundColor];
+        }
+        
+        UIColor *foregroundColor = [ApplicationSettingsController foregroundColor];
+        if(foregroundColor){
+            [self.errorMessageLabel setTextColor:foregroundColor];
+            [self.accessYourAppLabel setTextColor:foregroundColor];
+            [self.explainURLButton setTintColor:foregroundColor];
+            [self.environmentHostname setBackgroundColor:foregroundColor];
+            
+            [self.goButton setTitleColor:foregroundColor forState:UIControlStateNormal];
+            [[self.goButton layer] setBorderColor:foregroundColor.CGColor];
+            
+            [self.connectionActivityIndicator setColor:foregroundColor];
+            
+        }
+        
+        UIColor *tintColor = [ApplicationSettingsController tintColor];
+        if(tintColor){
+            // Navigation Bar tint color
+            [[self.navigationController navigationBar] setTintColor:tintColor];
+            
+            
+            
+            // Input texts tint color
+            [self.environmentHostname setTintColor:tintColor];
+        }
+        
+    }
     
 }
 
@@ -631,7 +690,19 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
             [_errorMessageLabel setHidden:NO];
         } else {
             [_errorMessageLabel setHidden:YES];
-            [self performSegueWithIdentifier:@"GoToLoginSegue" sender:self];
+            
+            if([ApplicationSettingsController hasValidSettings]) {
+                UIViewController *targetVC = nil;
+                targetVC = [ApplicationSettingsController nextViewController:self];
+                UINavigationController *navControler = self.navigationController;
+                if(navControler && targetVC) {
+                    // targetViewControler.infrastructure = self.infrastructure;
+                    // targetViewControler.deepLinkController = self.deepLinkController;
+                    [navControler pushViewController:targetVC animated:NO];
+                } else
+                    [self performSegueWithIdentifier:@"GoToLoginSegue" sender:self];
+            } else
+                [self performSegueWithIdentifier:@"GoToLoginSegue" sender:self];
         }
         
     } else {
@@ -709,6 +780,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     }
 }
 
+-(void) nextViewController {
+}
 
 
 -(void)resetCredentials{
