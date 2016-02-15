@@ -389,7 +389,10 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         self.navBack.enabled = YES;
     }
     else{
-        self.navBack.enabled = !self.isSingleApplication;
+        if(self.navigationController && [self.navigationController.viewControllers count] > 1) {
+            //self.navBack.enabled = !self.isSingleApplication;
+            self.navBack.enabled = YES;
+        }
     }
     
     if ([self.applicationBrowser.webView canGoForward]) {
