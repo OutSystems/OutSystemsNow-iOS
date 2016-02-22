@@ -278,7 +278,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+    /*if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
         for (NSString *trustedHost in self.trustedHosts) {
             
             // currently trusting all certificates for beta release, remove true condition to validate untrusted certificates with list for trusted servers
@@ -287,7 +287,7 @@
                 break;
             }
         }
-    }
+    }*/
     
     [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
