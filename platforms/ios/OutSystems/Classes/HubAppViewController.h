@@ -11,7 +11,7 @@
 #import "DeepLinkController.h"
 #import "Infrastructure.h"
 
-@interface HubAppViewController : UIViewController <TTTAttributedLabelDelegate>
+@interface HubAppViewController : UIViewController <TTTAttributedLabelDelegate,UIAlertViewDelegate>
 
 @property (strong, nonatomic) DeepLinkController* deepLinkController;
 

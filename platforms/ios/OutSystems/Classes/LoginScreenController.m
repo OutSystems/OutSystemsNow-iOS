@@ -32,7 +32,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *applicationsAtLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *applicationLogoImageView;
 
-@property NSArray* trustedHosts;
 @property (strong, nonatomic) NSArray *applicationList;
 
 @end
@@ -70,7 +69,6 @@
     self.passwordInput.layer.cornerRadius = 5;
     self.loginButton.layer.cornerRadius = 5;
     
-    self.trustedHosts = [[NSArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
     
     // login is readonly when the credentials are set on the application settings (bundle)
     if(self.loginReadonly) {
@@ -278,16 +276,17 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    /*if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        for (NSString *trustedHost in self.trustedHosts) {
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        
+        NSString *hostname = self.infrastructure.hostname;
+        if([OutSystemsAppDelegate trustedHostname:hostname]) {
             
-            // currently trusting all certificates for beta release, remove true condition to validate untrusted certificates with list for trusted servers
-            if(true || [challenge.protectionSpace.host rangeOfString:trustedHost options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - trustedHost.length)) {
+            if([challenge.protectionSpace.host rangeOfString:hostname options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - hostname.length)) {
                 [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
-                break;
+                return;
             }
         }
-    }*/
+    }
     
     [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
@@ -309,6 +308,31 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+ 
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection failed"
+                                                    message:@""
+                                                   delegate:self
+                                          cancelButtonTitle:@"No"
+                                          otherButtonTitles:@"Yes",nil];
+    
+    switch([error code]){
+        case NSURLErrorSecureConnectionFailed:
+        case NSURLErrorServerCertificateHasBadDate:
+        case NSURLErrorServerCertificateUntrusted:
+        case NSURLErrorServerCertificateHasUnknownRoot:
+        case NSURLErrorServerCertificateNotYetValid:
+            
+            [alert setMessage:[NSString stringWithFormat:@"%@ Are you sure you want to continue?",error.localizedDescription]];
+            [alert show];
+            
+            break;
+        default:
+            [self showErrorMessage:error.localizedDescription];
+            break;
+    }
+}
+
+-(void)showErrorMessage:(NSString*)message{
     
     BOOL offlineSupport = NO;
     _loginResponseData = nil;
@@ -322,15 +346,15 @@
         //check if the view is still active - user could have pressed back
         if(self.view.window != nil) {
             /*
-            // check if only one app
-            if([self.applicationList count] == 1){
-                if(self.navigationController.visibleViewController == self)
-                    [self performSegueWithIdentifier:@"GoToSingleApplicationSegue" sender:self];
-            }
-            else {
-                if(self.navigationController.visibleViewController == self)
-                    [self performSegueWithIdentifier:@"GoToAppListSegue" sender:self];
-            }
+             // check if only one app
+             if([self.applicationList count] == 1){
+             if(self.navigationController.visibleViewController == self)
+             [self performSegueWithIdentifier:@"GoToSingleApplicationSegue" sender:self];
+             }
+             else {
+             if(self.navigationController.visibleViewController == self)
+             [self performSegueWithIdentifier:@"GoToAppListSegue" sender:self];
+             }
              */
             if(self.navigationController.visibleViewController == self){
                 [self pushNextViewController:([self.applicationList count] == 1)];
@@ -339,15 +363,14 @@
         
     }
     else{
-
-        _errorMessageLabel.text = error.localizedDescription;
+        
+        _errorMessageLabel.text = message;
         
         [_loginActivityIndicator stopAnimating];
         [_errorMessageLabel setHidden:NO];
         [_loginButton setHidden:NO];
         
     }
-
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -537,5 +560,21 @@
     self.passwordInput.text = pass;
 }
 
+#pragma mark - Security Alert
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // the user clicked No
+    if (buttonIndex == 0) {
+        NSString *errorMessage = [alertView message];
+        NSRange range = [errorMessage rangeOfString:@" Are you sure you want to continue?"];
+        
+        [self showErrorMessage: [errorMessage substringWithRange:NSMakeRange(0,range.location)] ];
+    }
+    else{
+        
+        [OutSystemsAppDelegate addTrustedHostname:self.infrastructure.hostname];
+        [self OnLoginClick:nil];
+    }
+}
 
 @end

@@ -41,7 +41,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *helpURLHeightContraint;
 
 @property (weak, nonatomic) NSData *loginResponseData;
-@property NSArray* trustedHosts;
 @property NSInteger connectionErrorCode;
 @property BOOL tryAnotherStack;
 
@@ -301,8 +300,6 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     // hide the url help text at start
     [self.helpView setFrame:CGRectMake(self.helpView.frame.origin.x, self.helpView.frame.origin.y, self.helpView.frame.size.width, 0)];
     self.helpURLHeightContraint.constant = 0;
-    
-    self.trustedHosts = [[NSArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
     
     UIColor *color = [UIColor whiteColor];
     NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName,(id)kCTUnderlineStyleAttributeName
@@ -594,16 +591,17 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-   /* if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        for (NSString *trustedHost in self.trustedHosts) {
+   if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+       
+       NSString *hostname = self.infrastructure.hostname;
+       if([OutSystemsAppDelegate trustedHostname:hostname]) {
             
-            // currently trusting all certificates for beta release, remove true condition to validate untrusted certificates with list for trusted servers
-            if(true || [challenge.protectionSpace.host rangeOfString:trustedHost options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - trustedHost.length)) {
+            if([challenge.protectionSpace.host rangeOfString:hostname options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - hostname.length)) {
                 [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
-                break;
+                return;
             }
         }
-    }*/
+    }
     
     [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
@@ -626,7 +624,34 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     
-    self.errorMessageLabel.text = error.localizedDescription;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection failed"
+                                                    message:@""
+                                                   delegate:self
+                                          cancelButtonTitle:@"No"
+                                          otherButtonTitles:@"Yes",nil];
+    
+    switch([error code]){
+        case NSURLErrorSecureConnectionFailed:
+        case NSURLErrorServerCertificateHasBadDate:
+        case NSURLErrorServerCertificateUntrusted:
+        case NSURLErrorServerCertificateHasUnknownRoot:
+        case NSURLErrorServerCertificateNotYetValid:
+            
+            [alert setMessage:[NSString stringWithFormat:@"%@ Are you sure you want to continue?",error.localizedDescription]];
+            [alert show];
+            
+            break;
+        default:
+            [self showErrorMessage:error.localizedDescription];
+            break;
+    }
+    
+
+}
+
+-(void)showErrorMessage:(NSString*) errorMessage{
+    
+    self.errorMessageLabel.text = errorMessage;
     
     [_connectionActivityIndicator stopAnimating];
     [_errorMessageLabel setHidden:NO];
@@ -802,5 +827,21 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
 }
 
+#pragma mark - Security Alert
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // the user clicked No
+    if (buttonIndex == 0) {
+        NSString *errorMessage = [alertView message];
+        NSRange range = [errorMessage rangeOfString:@" Are you sure you want to continue?"];
+        
+        [self showErrorMessage: [errorMessage substringWithRange:NSMakeRange(0,range.location)] ];
+    }
+    else{
+
+        [OutSystemsAppDelegate addTrustedHostname:self.infrastructure.hostname];
+        [self OnGoClick:nil];
+    }
+}
 
 @end
