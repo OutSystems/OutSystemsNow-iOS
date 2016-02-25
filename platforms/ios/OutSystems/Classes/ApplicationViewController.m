@@ -15,6 +15,7 @@
 #import "OSProgressBar.h"
 #import "CDVUserAgentUtil.h"
 #import "ApplicationSettingsController.h"
+#import "OutSystemsAppDelegate.h"
 
 // The predefined header height of the OutSystems App. Will be used for animations
 uint const OSAPP_FIXED_MENU_HEIGHT = 0;
@@ -443,6 +444,11 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     NSDictionary *userInfo = [notification userInfo];
     NSError *error = [userInfo valueForKey:@"error"];
     
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection failed"
+                                                    message:@""
+                                                   delegate:self
+                                          cancelButtonTitle:@"No"
+                                          otherButtonTitles:@"Yes",nil];
     
     switch([error code]){
         case NSURLErrorTimedOut:
@@ -452,15 +458,29 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
         case NSURLErrorNetworkConnectionLost:
         case NSURLErrorDNSLookupFailed:
         case NSURLErrorResourceUnavailable:
-        case NSURLErrorNotConnectedToInternet:
-        case NSURLErrorServerCertificateUntrusted:
-        case NSURLErrorServerCertificateNotYetValid:{
+        case NSURLErrorNotConnectedToInternet:{
 
             _failedURL = [error.userInfo objectForKey:@"NSErrorFailingURLStringKey"];
             NSLog(@"webViewdidFailLoadWithError: %@", _failedURL);
             [_progressBar stopProgress:YES];
             [self showNetworkErrorView:YES];
 
+            break;
+        }
+            
+        case NSURLErrorSecureConnectionFailed:
+        case NSURLErrorServerCertificateHasBadDate:
+        case NSURLErrorServerCertificateUntrusted:
+        case NSURLErrorServerCertificateHasUnknownRoot:
+        case NSURLErrorServerCertificateNotYetValid:{
+            
+            _failedURL = [error.userInfo objectForKey:@"NSErrorFailingURLStringKey"];
+            NSLog(@"webViewdidFailLoadWithError: %@", _failedURL);
+            
+            [alert setMessage:[NSString stringWithFormat:@"%@ Are you sure you want to continue?",error.localizedDescription]];
+            [alert show];
+            
+            [_progressBar stopProgress:YES];
             break;
         }
         default:
@@ -703,6 +723,20 @@ uint const OSAPP_FIXED_MENU_HEIGHT = 0;
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                  name:@"CDVPageDidFailLoadNotification"
                                                object:nil];
+}
+
+#pragma mark - Security Alert
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // the user clicked No
+    if (buttonIndex == 0) {
+        [_progressBar stopProgress:YES];
+        [self showNetworkErrorView:YES];
+    }
+    else{
+        [OutSystemsAppDelegate addTrustedHostname:self.infrastructure.hostname];
+        [self reloadWebView];
+    }
 }
 
 @end

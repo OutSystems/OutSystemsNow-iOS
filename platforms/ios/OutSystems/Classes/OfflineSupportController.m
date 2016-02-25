@@ -30,7 +30,6 @@ static NSString * osFailedURL;
 static UIWebView * osWebView;
 static Application * osApplication;
 static NSData * _loginResponseData;
-static NSArray* trustedHosts;
 
 #pragma mark - Database handler
 
@@ -242,8 +241,6 @@ static NSArray* trustedHosts;
 +(void)loginIfNeeded:(Infrastructure*)infrastructure{
     if(offlineSession){
         
-        trustedHosts = [[NSArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
-        
         _loginResponseData = nil;
         
         int timeoutInSeconds = 30;
@@ -295,16 +292,18 @@ static NSArray* trustedHosts;
 }
 
 + (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    /*if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        for (NSString *trustedHost in trustedHosts) {
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        
+        NSURL *baseURL = [NSURL URLWithString:osFailedURL];
+        NSString *hostname = baseURL.host;
+        if([OutSystemsAppDelegate trustedHostname:hostname]) {
             
-            // currently trusting all certificates for beta release, remove true condition to validate untrusted certificates with list for trusted servers
-            if(true || [challenge.protectionSpace.host rangeOfString:trustedHost options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - trustedHost.length)) {
+            if([challenge.protectionSpace.host rangeOfString:hostname options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - hostname.length)) {
                 [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
-                break;
+                return;
             }
         }
-    }*/
+    }
 
     [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
