@@ -9,6 +9,7 @@
 #import "CDVLoader.h"
 
 NSString* const kCDVLoaderURLPrefixShortpathCordova = @"/cdvload/";
+NSString* const kCDVLoaderURLPrefixShortpathCordovaScript = @"/scripts/";
 NSString* const kCDVLoaderURLPrefixShortpathImages = @"/img/";
 NSString* const kCDVLoaderURLPrefixShortpathFonts = @"/fonts/";
 
@@ -45,6 +46,7 @@ NSString* const kCDVLoaderURLSufixSVG = @".svg";
     NSString *path = [[request URL] path];
     
     if(path != nil && ([path rangeOfString:kCDVLoaderURLPrefixShortpathCordova].location != NSNotFound  ||
+                       [path rangeOfString:kCDVLoaderURLPrefixShortpathCordovaScript].location != NSNotFound ||
                        [path rangeOfString:kCDVLoaderURLPrefixShortpathImages].location != NSNotFound ||
                        [path rangeOfString:kCDVLoaderURLPrefixShortpathFonts].location != NSNotFound ||
                        [path.lastPathComponent hasSuffix:kCDVLoaderURLSufixJavaScript] ||
@@ -161,9 +163,10 @@ NSString* const kCDVLoaderURLSufixSVG = @".svg";
     
     NSRegularExpression *regex = nil;
     
-    if([urlString rangeOfString:kCDVLoaderURLPrefixShortpathCordova].location != NSNotFound){
+    if([urlString rangeOfString:kCDVLoaderURLPrefixShortpathCordova].location != NSNotFound ||
+       [urlString rangeOfString:kCDVLoaderURLPrefixShortpathCordovaScript].location != NSNotFound){
         
-        regex = [NSRegularExpression regularExpressionWithPattern:@"(/([\\da-zA-Z\\.-]+))?/cdvload/" options:NSRegularExpressionCaseInsensitive error:&error];
+        regex = [NSRegularExpression regularExpressionWithPattern:@"(/([\\da-zA-Z\\.-]+))?(/cdvload/|/scripts/)" options:NSRegularExpressionCaseInsensitive error:&error];
         urlString = [regex stringByReplacingMatchesInString:urlString options:0 range:NSMakeRange(0, [urlString length]) withTemplate:@"/www/"];
         
     }
@@ -240,14 +243,16 @@ NSString* const kCDVLoaderURLSufixSVG = @".svg";
     }
     
     
-    
     urlString = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:urlString];
+    
     
     NSString *query = [url query];
     
     if(query){
-        
-        if([urlString rangeOfString:@"?"].location == NSNotFound){
+        if([urlString rangeOfString:@"/www/cordova.js"].location != NSNotFound){
+            urlString = [urlString componentsSeparatedByString:@"?"][0];
+        }
+        else if([urlString rangeOfString:@"?"].location == NSNotFound){
             urlString = [NSString stringWithFormat:@"%@?%@",urlString,query];
         }
     }
