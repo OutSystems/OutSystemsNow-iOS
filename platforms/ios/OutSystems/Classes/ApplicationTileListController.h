@@ -10,7 +10,7 @@
 #import "Infrastructure.h"
 #import "DeepLinkController.h"
 
-@interface ApplicationTileListController : UIViewController
+@interface ApplicationTileListController : UIViewController<UIAlertViewDelegate>
 
 @property (strong, nonatomic) Infrastructure* infrastructure;
 @property (nonatomic, assign) BOOL isDemoEnvironment;

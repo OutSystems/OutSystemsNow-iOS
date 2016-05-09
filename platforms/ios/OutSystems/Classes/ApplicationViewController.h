@@ -18,7 +18,7 @@ typedef enum {
 	OSAnimateTransitionFadeOut
 }OSAnimateTransition;
 
-@interface ApplicationViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate>
+@interface ApplicationViewController : UIViewController <UIWebViewDelegate, UIScrollViewDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) Application* application;
 @property (strong, nonatomic) Infrastructure* infrastructure;

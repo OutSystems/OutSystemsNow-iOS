@@ -260,7 +260,7 @@
 		59C115E61C285641003A794D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 906D30E5D20A42A8B648424A /* CDVFile.m */; };
 		59C115E71C285644003A794D /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 906D30E5D20A42A8B648424A /* CDVFile.m */; };
 		59C115E81C285657003A794D /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 845E0B00F8D8452A8A8CB148 /* CDVBarcodeScanner.mm */; };
-		59C115E91C285658003A794D /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 845E0B00F8D8452A8A8CB148 /* CDVBarcodeScanner.mm */; };
+		59C115E91C285658003A794D /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 845E0B00F8D8452A8A8CB148 /* CDVBarcodeScanner.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		59C115EA1C285659003A794D /* CDVBarcodeScanner.mm in Sources */ = {isa = PBXBuildFile; fileRef = 845E0B00F8D8452A8A8CB148 /* CDVBarcodeScanner.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		59C115EB1C28565D003A794D /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38F66DCC6A324E65AE9F074A /* zxing-all-in-one.cpp */; };
 		59C115EC1C28565E003A794D /* zxing-all-in-one.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38F66DCC6A324E65AE9F074A /* zxing-all-in-one.cpp */; };
@@ -2024,7 +2024,6 @@
 				59C116241C28574B003A794D /* CDVLoader.m in Sources */,
 				59E53F751986C1760003BC6B /* ApplicationTileListController.m in Sources */,
 				59E53F761986C1760003BC6B /* LoginScreenController.m in Sources */,
-				59C115E91C285658003A794D /* CDVBarcodeScanner.mm in Sources */,
 				59E53F771986C1760003BC6B /* OutSystemsAppDelegate.m in Sources */,
 				59C115EF1C285666003A794D /* CDVLocation.m in Sources */,
 				59E53F781986C1760003BC6B /* OutAppData.xcdatamodeld in Sources */,
@@ -2053,6 +2052,7 @@
 				59C1160D1C28571B003A794D /* CDVDevice.m in Sources */,
 				59783A971A7146D9006CA4E5 /* LoginApplication.m in Sources */,
 				59C116101C285724003A794D /* CDVBattery.m in Sources */,
+				59C115E91C285658003A794D /* CDVBarcodeScanner.mm in Sources */,
 				59C116211C285746003A794D /* sqlite3.c in Sources */,
 				5974C7E51A9638CE006553D2 /* OSNavigationBarAlert.m in Sources */,
 				59C115F51C285694003A794D /* CDVReachability.m in Sources */,
@@ -2326,6 +2326,7 @@
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = (
 					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"\"$(OBJROOT)/UninstalledProducts/$(PLATFORM_NAME)/include\"",
 					"\"$(OBJROOT)/UninstalledProducts/include\"",
 					"\"$(BUILT_PRODUCTS_DIR)\"",
 					"\"$(SRCROOT)/CordovaLib/Classes\"",

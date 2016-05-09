@@ -22,7 +22,10 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic) DeepLinkController *deepLinkController;
+@property (strong, nonatomic) NSMutableArray *trustedHosts;
 
++ (void) addTrustedHostname:(NSString*) hostname;
++ (BOOL) trustedHostname:(NSString*) hostname;
 + (BOOL) hasAutoLoginPerformed;
 + (void) setAutoLoginPerformed;
 + (void) unsetAutoLoginPerformed;

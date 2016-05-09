@@ -10,7 +10,7 @@
 #import "Infrastructure.h"
 #import "DeepLinkController.h"
 
-@interface LoginScreenController : UIViewController
+@interface LoginScreenController : UIViewController<UIAlertViewDelegate>
 
 @property (strong, nonatomic) Infrastructure* infrastructure;
 @property BOOL loginReadonly;

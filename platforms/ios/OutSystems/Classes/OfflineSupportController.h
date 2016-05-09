@@ -34,6 +34,8 @@
 
 +(BOOL)isNewSession;
 
++(void)loginIfNeeded:(Infrastructure*)infrastructure;
+
 @end
 
 

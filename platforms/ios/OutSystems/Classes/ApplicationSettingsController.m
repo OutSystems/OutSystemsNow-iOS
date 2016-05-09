@@ -25,7 +25,8 @@
 
 +(BOOL)hasValidSettings{
     NSString *hostname = [self defaultHostname];
-    return hostname && [hostname length] > 0;
+    NSString *applicationUrl = [self defaultApplicationURL];
+    return (hostname && [hostname length] > 0) || (applicationUrl && [applicationUrl length] > 0);
 }
 
 +(BOOL)skipNativeLogin{
@@ -315,7 +316,10 @@
                     [applicationDict setObject:defaultAppURL forKey:@"description"];
                     [applicationDict setObject:defaultAppURL forKey:@"path"];
                     
-                    applicationInfo = [Application initWithJSON:applicationDict forHost:defaultHostname];
+                    if([defaultHostname length] > 0)
+                        applicationInfo = [Application initWithJSON:applicationDict forHost:defaultHostname];
+                    else
+                        applicationInfo = [Application initWithJSON:applicationDict forHost:infrastructure.hostname];
                 }
                 appViewController.application = applicationInfo;
                 
@@ -336,9 +340,58 @@
         
         return appListViewController;
         
+    } else {
+        if ([currentViewController isKindOfClass:[HubAppViewController class]]){
+            HubAppViewController *hubVC = (HubAppViewController *)currentViewController;
+            DeepLinkController *deepLinkController = hubVC.deepLinkController;
+            Infrastructure *infrastructure = [hubVC getInfrastructure];
+            
+            if(skipNativeLogin) {
+                if (skipApplicationList) {
+                    if([defaultAppURL length] > 0){
+                        
+                        // Go to ApplicationViewController
+                        
+                        ApplicationViewController *appViewController = [storyboard instantiateViewControllerWithIdentifier:@"ApplicationViewController"];
+                        
+                        appViewController.isSingleApplication = YES;
+                        
+                        Application *applicationInfo = nil;
+                        
+                        if(deepLinkController && [deepLinkController hasValidSettings]){
+                            applicationInfo = deepLinkController.destinationApp;
+                        }
+                        else{
+                            NSMutableDictionary *applicationDict = [[NSMutableDictionary alloc] init];
+                            [applicationDict setObject:defaultAppURL forKey:@"name"];
+                            [applicationDict setObject:defaultAppURL forKey:@"description"];
+                            [applicationDict setObject:defaultAppURL forKey:@"path"];
+                            
+                            if([defaultHostname length] > 0)
+                                applicationInfo = [Application initWithJSON:applicationDict forHost:defaultHostname];
+                            else
+                                applicationInfo = [Application initWithJSON:applicationDict forHost:infrastructure.hostname];
+                        }
+                        appViewController.application = applicationInfo;
+                        
+                        appViewController.infrastructure = infrastructure;
+                        
+                        return appViewController;
+                        
+                    }
+                } else {
+                    ApplicationTileListController *appListViewController = [storyboard instantiateViewControllerWithIdentifier:@"ApplicationTileList"];
+                    
+                    appListViewController.infrastructure = infrastructure;
+                    appListViewController.isDemoEnvironment = NO;
+                    appListViewController.deepLinkController = deepLinkController;
+                    return appListViewController;
+                }
+            
+            }
+        
+        }
     }
-    
-    
     return nil;
 }
 

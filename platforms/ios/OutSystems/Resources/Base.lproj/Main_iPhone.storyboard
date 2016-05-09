@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="clc-Af-Km2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="clc-Af-Km2">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--SelectEnvironment Controller-->
@@ -116,7 +116,7 @@
                                     </button>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnI-HQ-8QE">
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="278" translatesAutoresizingMaskIntoConstraints="NO" id="tdg-Du-hGj">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="278" translatesAutoresizingMaskIntoConstraints="NO" id="tdg-Du-hGj">
                                                 <rect key="frame" x="21" y="-22" width="278" height="43"/>
                                                 <string key="text">Please fill in the location of your OutSystems environment. This is the base URL that you use to access any of your Platform applications.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -240,7 +240,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="accessYourAppLabel" destination="EiG-EG-f5u" id="FhG-NS-Obe"/>
+                        <outlet property="backgroundImage" destination="pJC-o1-PHJ" id="etB-bN-2Yn"/>
                         <outlet property="connectionActivityIndicator" destination="qCz-3Z-m7o" id="PYi-Q8-iL3"/>
+                        <outlet property="discoverLabel" destination="sNp-2L-9sy" id="Eta-DF-FgV"/>
                         <outlet property="environmentHostname" destination="20h-pV-eEg" id="ixf-RG-TYQ"/>
                         <outlet property="errorMessageLabel" destination="lNb-PN-Pep" id="lpe-Mh-P9C"/>
                         <outlet property="explainURLButton" destination="9RX-ut-JSB" id="xuO-h3-PGf"/>
@@ -249,6 +251,7 @@
                         <outlet property="helpURLHeightContraint" destination="P2M-ND-xtb" id="EPn-cY-sXt"/>
                         <outlet property="helpView" destination="wnI-HQ-8QE" id="Ycg-K7-8Cx"/>
                         <outlet property="howItWorksLabel" destination="tn7-Ok-Zw0" id="Bjz-AS-Kd1"/>
+                        <outlet property="outsystemsUrlButton" destination="foE-so-k88" id="pGF-Nv-YKF"/>
                         <outlet property="tryDemoButton" destination="dE0-OU-qQ0" id="CGs-rc-jQ6"/>
                         <segue destination="fcJ-lJ-rVs" kind="push" identifier="GoToLoginSegue" id="rYy-ia-bhR"/>
                     </connections>
@@ -485,7 +488,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8hj-Ne-gmg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6Hh-pq-ZbP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6c-EX-xhJ">
@@ -829,9 +832,4 @@
         <image name="logo_iphone5.png" width="530" height="80"/>
         <image name="offline.png" width="265" height="195"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

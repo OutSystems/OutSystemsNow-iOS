@@ -20,6 +20,29 @@ static BOOL performedAutoLogin = NO;
 static NSData *deviceId;
 static NSString *urlRegisterForNotifications;
 static DeepLink *deepLinkSettings;
+static NSMutableArray *trustedHosts;
+
++ (void) addTrustedHostname:(NSString*) hostname{
+    if(!trustedHosts){
+        trustedHosts = [[NSMutableArray alloc] initWithObjects:@"outsystems.com",
+                                                               @"outsystems.net",
+                                                               @"outsystemscloud.com", nil];
+    }
+    
+    if([hostname length] > 0)
+        [trustedHosts addObject:hostname];
+    
+}
+
++ (BOOL) trustedHostname:(NSString*) hostname{
+
+    for (NSString *trustedHost in trustedHosts) {
+        if([trustedHost isEqualToString:hostname]){
+            return YES;
+        }
+    }
+    return NO;
+}
 
 + (BOOL) hasAutoLoginPerformed {
     return performedAutoLogin;
@@ -128,6 +151,8 @@ static DeepLink *deepLinkSettings;
     // Get navigation controller
     OSNavigationController *navigationController = (OSNavigationController *)self.window.rootViewController;
     [navigationController pushRootViewController:nil];
+    
+    trustedHosts = [[NSMutableArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
     
     // Override point for customization after application launch.
     return YES;

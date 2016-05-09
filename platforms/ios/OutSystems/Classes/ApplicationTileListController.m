@@ -17,6 +17,7 @@
 #import "OfflineSupportController.h"
 #import "Reachability.h"
 #import "ApplicationSettingsController.h"
+#import "OutSystemsAppDelegate.h"
 
 @interface ApplicationTileListController ()
 
@@ -157,8 +158,17 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    // accept invalid certificates for the demo server
-    [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        
+        NSString *hostname = self.infrastructure.hostname;
+        if([OutSystemsAppDelegate trustedHostname:hostname]) {
+            
+            if([challenge.protectionSpace.host rangeOfString:hostname options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - hostname.length)) {
+                [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+                return;
+            }
+        }
+    }
     
     [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
@@ -180,7 +190,30 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
-    [self.loadingIndicator stopAnimating];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection failed"
+                                                    message:@""
+                                                   delegate:self
+                                          cancelButtonTitle:@"No"
+                                          otherButtonTitles:@"Yes",nil];
+    
+    switch([error code]){
+        case NSURLErrorSecureConnectionFailed:
+        case NSURLErrorServerCertificateHasBadDate:
+        case NSURLErrorServerCertificateUntrusted:
+        case NSURLErrorServerCertificateHasUnknownRoot:
+        case NSURLErrorServerCertificateNotYetValid:
+            
+            [alert setMessage:[NSString stringWithFormat:@"%@ Are you sure you want to continue?",error.localizedDescription]];
+            [alert show];
+            
+            break;
+        default:
+            [self.loadingIndicator stopAnimating];
+            break;
+    }
+    
+
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -453,6 +486,8 @@
             
         } else {
             NSLog(@"Network status: Online");
+            //After recover the internet collection will do login again
+            [OfflineSupportController loginIfNeeded:self.infrastructure];
             if(_isViewVisible)
                 [self hideOfflineMessage:YES];
         }
@@ -479,6 +514,19 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
     
+}
+
+#pragma mark - Security Alert
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // the user clicked No
+    if (buttonIndex == 0) {
+        [self.loadingIndicator stopAnimating];
+    }
+    else{
+        [OutSystemsAppDelegate addTrustedHostname:self.infrastructure.hostname];
+        [self reloadApplicationList];
+    }
 }
 
 @end

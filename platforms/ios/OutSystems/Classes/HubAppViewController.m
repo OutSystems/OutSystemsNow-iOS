@@ -15,6 +15,7 @@
 #import "DemoInfrastructure.h"
 #import "OfflineSupportController.h"
 #import "ApplicationViewController.h"
+#import "ApplicationSettingsController.h"
 
 @interface HubAppViewController ()
 
@@ -25,6 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *tryDemoButton;
 @property (weak, nonatomic) IBOutlet UIButton *explainURLButton;
 @property (weak, nonatomic) IBOutlet UIInsetTextField *environmentHostname;
+@property (weak, nonatomic) IBOutlet UILabel *discoverLabel;
+@property (weak, nonatomic) IBOutlet UIButton *outsystemsUrlButton;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @property (strong, nonatomic) NSMutableArray *environments;
 
@@ -37,7 +41,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *helpURLHeightContraint;
 
 @property (weak, nonatomic) NSData *loginResponseData;
-@property NSArray* trustedHosts;
 @property NSInteger connectionErrorCode;
 @property BOOL tryAnotherStack;
 
@@ -149,14 +152,28 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
         // check if we have the login and password for that infrastructure or we're using a default infrastructure
         if(([self.infrastructure.username length] > 0 && [self.infrastructure.password length] > 0) ||[_defaultEnvironment length] > 0) {
             
-            // execute the login automatically if not done yet
-            if( [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
+
+            if([ApplicationSettingsController hasValidSettings] && [ApplicationSettingsController nextViewController:self]) {
+                UIViewController *targetVC = nil;
+                targetVC = [ApplicationSettingsController nextViewController:self];
                 UINavigationController *navControler = self.navigationController;
-                    
                 if(navControler) {
-                    targetViewControler.infrastructure = self.infrastructure;
-                    targetViewControler.deepLinkController = self.deepLinkController;
-                    [navControler pushViewController:targetViewControler animated:NO];
+                   // targetViewControler.infrastructure = self.infrastructure;
+                   // targetViewControler.deepLinkController = self.deepLinkController;
+                    [navControler pushViewController:targetVC animated:NO];
+                }
+            }else{
+            
+            
+                // execute the login automatically if not done yet
+                if( [OutSystemsAppDelegate hasAutoLoginPerformed] == NO) {
+                    UINavigationController *navControler = self.navigationController;
+                    
+                    if(navControler) {
+                        targetViewControler.infrastructure = self.infrastructure;
+                        targetViewControler.deepLinkController = self.deepLinkController;
+                        [navControler pushViewController:targetViewControler animated:NO];
+                    }
                 }
             }
         }
@@ -284,8 +301,6 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     [self.helpView setFrame:CGRectMake(self.helpView.frame.origin.x, self.helpView.frame.origin.y, self.helpView.frame.size.width, 0)];
     self.helpURLHeightContraint.constant = 0;
     
-    self.trustedHosts = [[NSArray alloc] initWithObjects:@"outsystems.com", @"outsystems.net", @"outsystemscloud.com", nil];
-    
     UIColor *color = [UIColor whiteColor];
     NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName,(id)kCTUnderlineStyleAttributeName
                      , nil];
@@ -314,6 +329,47 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     singleTap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:singleTap];
+    
+    if([ApplicationSettingsController hasValidSettings]){
+        
+        [self.howItWorksLabel setHidden:YES];
+        [self.tryDemoButton setHidden:YES];
+        [self.discoverLabel setHidden:YES];
+        [self.outsystemsUrlButton setHidden:YES];
+        
+        UIColor *backgroundColor = [ApplicationSettingsController backgroundColor];
+        if(backgroundColor){
+            // TODO: not sure if this is the best approach...
+            self.backgroundImage.image = [self.backgroundImage.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.backgroundImage setTintColor:backgroundColor];
+        }
+        
+        UIColor *foregroundColor = [ApplicationSettingsController foregroundColor];
+        if(foregroundColor){
+            [self.errorMessageLabel setTextColor:foregroundColor];
+            [self.accessYourAppLabel setTextColor:foregroundColor];
+            [self.explainURLButton setTintColor:foregroundColor];
+            [self.environmentHostname setBackgroundColor:foregroundColor];
+            
+            [self.goButton setTitleColor:foregroundColor forState:UIControlStateNormal];
+            [[self.goButton layer] setBorderColor:foregroundColor.CGColor];
+            
+            [self.connectionActivityIndicator setColor:foregroundColor];
+            
+        }
+        
+        UIColor *tintColor = [ApplicationSettingsController tintColor];
+        if(tintColor){
+            // Navigation Bar tint color
+            [[self.navigationController navigationBar] setTintColor:tintColor];
+            
+            
+            
+            // Input texts tint color
+            [self.environmentHostname setTintColor:tintColor];
+        }
+        
+    }
     
 }
 
@@ -535,13 +591,14 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-        for (NSString *trustedHost in self.trustedHosts) {
+   if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+       
+       NSString *hostname = self.infrastructure.hostname;
+       if([OutSystemsAppDelegate trustedHostname:hostname]) {
             
-            // currently trusting all certificates for beta release, remove true condition to validate untrusted certificates with list for trusted servers
-            if(true || [challenge.protectionSpace.host rangeOfString:trustedHost options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - trustedHost.length)) {
+            if([challenge.protectionSpace.host rangeOfString:hostname options:NSBackwardsSearch].location == (challenge.protectionSpace.host.length - hostname.length)) {
                 [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
-                break;
+                return;
             }
         }
     }
@@ -567,7 +624,34 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
     
-    self.errorMessageLabel.text = error.localizedDescription;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection failed"
+                                                    message:@""
+                                                   delegate:self
+                                          cancelButtonTitle:@"No"
+                                          otherButtonTitles:@"Yes",nil];
+    
+    switch([error code]){
+        case NSURLErrorSecureConnectionFailed:
+        case NSURLErrorServerCertificateHasBadDate:
+        case NSURLErrorServerCertificateUntrusted:
+        case NSURLErrorServerCertificateHasUnknownRoot:
+        case NSURLErrorServerCertificateNotYetValid:
+            
+            [alert setMessage:[NSString stringWithFormat:@"%@ Are you sure you want to continue?",error.localizedDescription]];
+            [alert show];
+            
+            break;
+        default:
+            [self showErrorMessage:error.localizedDescription];
+            break;
+    }
+    
+
+}
+
+-(void)showErrorMessage:(NSString*) errorMessage{
+    
+    self.errorMessageLabel.text = errorMessage;
     
     [_connectionActivityIndicator stopAnimating];
     [_errorMessageLabel setHidden:NO];
@@ -631,7 +715,19 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
             [_errorMessageLabel setHidden:NO];
         } else {
             [_errorMessageLabel setHidden:YES];
-            [self performSegueWithIdentifier:@"GoToLoginSegue" sender:self];
+            
+            if([ApplicationSettingsController hasValidSettings]) {
+                UIViewController *targetVC = nil;
+                targetVC = [ApplicationSettingsController nextViewController:self];
+                UINavigationController *navControler = self.navigationController;
+                if(navControler && targetVC) {
+                    // targetViewControler.infrastructure = self.infrastructure;
+                    // targetViewControler.deepLinkController = self.deepLinkController;
+                    [navControler pushViewController:targetVC animated:NO];
+                } else
+                    [self performSegueWithIdentifier:@"GoToLoginSegue" sender:self];
+            } else
+                [self performSegueWithIdentifier:@"GoToLoginSegue" sender:self];
         }
         
     } else {
@@ -709,6 +805,8 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     }
 }
 
+-(void) nextViewController {
+}
 
 
 -(void)resetCredentials{
@@ -729,5 +827,21 @@ static NSString * const kConfigurationKey = @"com.apple.configuration.managed";
     
 }
 
+#pragma mark - Security Alert
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // the user clicked No
+    if (buttonIndex == 0) {
+        NSString *errorMessage = [alertView message];
+        NSRange range = [errorMessage rangeOfString:@" Are you sure you want to continue?"];
+        
+        [self showErrorMessage: [errorMessage substringWithRange:NSMakeRange(0,range.location)] ];
+    }
+    else{
+
+        [OutSystemsAppDelegate addTrustedHostname:self.infrastructure.hostname];
+        [self OnGoClick:nil];
+    }
+}
 
 @end
