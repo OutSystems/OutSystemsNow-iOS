@@ -164,13 +164,54 @@
         infrastructure.isJavaServer = NO; // set default to NO
     }
     
-    NSError *error = nil;
+    infrastructure = [self getInfrastructureInfo:infrastructure];
+    
+    NSError * error = nil;
+    
     // Save the object to persistent store
     if (![[self managedObjectContext] save:&error]) {
         NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
     }
     
     return infrastructure;
+}
+
++(Infrastructure*)getInfrastructureInfo:(Infrastructure*)infrastructure{
+    Infrastructure *result = infrastructure;
+    
+    NSURL *infrastructureURL = [NSURL URLWithString:[result getHostnameForService:@"infrastructure"]];
+    NSURLRequest * urlRequest = [NSURLRequest requestWithURL:infrastructureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*) response;
+ 
+    
+    if(!httpResponse || httpResponse.statusCode == 404){
+        result.isJavaServer = !result.isJavaServer;
+        
+        infrastructureURL = [NSURL URLWithString:[result getHostnameForService:@"infrastructure"]];
+        urlRequest = [NSURLRequest requestWithURL:infrastructureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:5];
+        response = nil;
+        error = nil;
+        data = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+        
+    }
+ 
+    if(data) {
+        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        BOOL success = NO;
+        if([[jsonData objectForKey:@"Name"] isKindOfClass:[NSString class]]) {
+            success = [(NSString*)[jsonData objectForKey:@"Name"] length] > 0;
+        }
+        
+        if(success){
+            result.name = (NSString*)[jsonData objectForKey:@"Name"];
+        }
+    }
+    
+    
+    return result;
 }
 
 # pragma mark - Navigation
