@@ -118,6 +118,7 @@
 		592FA96619001EBF00458A51 /* icon-chevron-forth.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA96419001EBF00458A51 /* icon-chevron-forth.png */; };
 		592FA9691900209B00458A51 /* icon-apps.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9671900209B00458A51 /* icon-apps.png */; };
 		592FA96A1900209B00458A51 /* icon-cog.png in Resources */ = {isa = PBXBuildFile; fileRef = 592FA9681900209B00458A51 /* icon-cog.png */; };
+		594301CE1DBA811C009F12DB /* Pushwoosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 594301CD1DBA811C009F12DB /* Pushwoosh.framework */; };
 		5947B00C1BF5F97600B96758 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00B1BF5F97600B96758 /* libz.tbd */; };
 		5947B00E1BF5F98A00B96758 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00D1BF5F98A00B96758 /* libstdc++.tbd */; };
 		5947B00F1BF5F99900B96758 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5947B00B1BF5F97600B96758 /* libz.tbd */; };
@@ -237,7 +238,6 @@
 		597A523A195C9A6400F15480 /* DemoInfrastructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 590EA4CE18FC32DC00EB317D /* DemoInfrastructure.m */; };
 		597A5243195C9A6400F15480 /* NoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */; };
 		597A524A195C9A6400F15480 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFC2FE31917F96600264950 /* Security.framework */; };
-		597A524B195C9A6400F15480 /* Pushwoosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFC2FE11917F5D300264950 /* Pushwoosh.framework */; };
 		597A524D195C9A6400F15480 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9C2DFD18F5BB16000C5E68 /* CoreData.framework */; };
 		597A524E195C9A6400F15480 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9C2DFB18F5BADA000C5E68 /* QuartzCore.framework */; };
 		597A524F195C9A6400F15480 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
@@ -449,7 +449,6 @@
 		59E53F841986C1760003BC6B /* SecurePasswordStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F17EE41976C24B00E22193 /* SecurePasswordStore.m */; };
 		59E53F8B1986C1760003BC6B /* NoAnimationSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BA8DB41938EEFC005019A0 /* NoAnimationSegue.m */; };
 		59E53F8F1986C1760003BC6B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFC2FE31917F96600264950 /* Security.framework */; };
-		59E53F901986C1760003BC6B /* Pushwoosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFC2FE11917F5D300264950 /* Pushwoosh.framework */; };
 		59E53F921986C1760003BC6B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9C2DFD18F5BB16000C5E68 /* CoreData.framework */; };
 		59E53F931986C1760003BC6B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9C2DFB18F5BADA000C5E68 /* QuartzCore.framework */; };
 		59E53F941986C1760003BC6B /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */; };
@@ -477,7 +476,6 @@
 		7ED8B684AF4846BAAE91B7A1 /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8973067861A94A62A084EDC0 /* CDVNotification.bundle */; };
 		7FF1142BA108470D9F0B67DF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BAA4E2F9284AFEAA9BD900 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7aa5c4e63dddc9e33257f37b /* icon_chevron-left_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 59DA67891A0A5FF100612F33 /* icon_chevron-left_red.png */; };
-		7ade0c7d89aed07fa5edd173 /* Pushwoosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFC2FE11917F5D300264950 /* Pushwoosh.framework */; };
 		7bfb929692701553b254a68b /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59665FC71A091AEB0049F8CD /* CoreImage.framework */; };
 		7ffb948f355c1a20a4113890 /* icon_cross_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665FD81A0A45C70049F8CD /* icon_cross_white@3x.png */; };
 		808716f26b977fae430eb81a /* icon_microphone_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 59665FD71A0A45C70049F8CD /* icon_microphone_white@2x.png */; };
@@ -523,7 +521,6 @@
 		CF9C2E4A18F69882000C5E68 /* icon-white-close.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9C2E4818F69882000C5E68 /* icon-white-close.png */; };
 		CF9C2E4B18F69882000C5E68 /* icon-white-help.png in Resources */ = {isa = PBXBuildFile; fileRef = CF9C2E4918F69882000C5E68 /* icon-white-help.png */; };
 		CF9C2E4D18F69905000C5E68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF9C2E4C18F69905000C5E68 /* Images.xcassets */; };
-		CFFC2FE21917F5D300264950 /* Pushwoosh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFC2FE11917F5D300264950 /* Pushwoosh.framework */; };
 		CFFC2FE41917F96600264950 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFFC2FE31917F96600264950 /* Security.framework */; };
 		D6F6B6688CFF4B1B846660D9 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BA70336A54B47999194F902 /* libiconv.dylib */; };
 		E612CE519B4E453E8BF344C5 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7AC6B8157946FE8D3106F3 /* EventKitUI.framework */; };
@@ -684,6 +681,7 @@
 		592FA96419001EBF00458A51 /* icon-chevron-forth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-chevron-forth.png"; sourceTree = "<group>"; };
 		592FA9671900209B00458A51 /* icon-apps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-apps.png"; sourceTree = "<group>"; };
 		592FA9681900209B00458A51 /* icon-cog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-cog.png"; sourceTree = "<group>"; };
+		594301CD1DBA811C009F12DB /* Pushwoosh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pushwoosh.framework; sourceTree = "<group>"; };
 		5947B00B1BF5F97600B96758 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5947B00D1BF5F98A00B96758 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		595625CD1B46D6B40020CABF /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -821,7 +819,6 @@
 		CF9C2E4818F69882000C5E68 /* icon-white-close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-white-close.png"; sourceTree = "<group>"; };
 		CF9C2E4918F69882000C5E68 /* icon-white-help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-white-help.png"; sourceTree = "<group>"; };
 		CF9C2E4C18F69905000C5E68 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OutSystems/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		CFFC2FE11917F5D300264950 /* Pushwoosh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pushwoosh.framework; sourceTree = "<group>"; };
 		CFFC2FE31917F96600264950 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D50953D39D934A878231DB5A /* CDVContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVContact.h; path = "cordova-plugin-contacts/CDVContact.h"; sourceTree = "<group>"; };
 		DBA259C7174A4CA993DC4F7C /* CoreTelephony.framework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -846,9 +843,9 @@
 				59BC490E199CB60D00EA87AA /* CoreText.framework in Frameworks */,
 				595625D01B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				CFFC2FE41917F96600264950 /* Security.framework in Frameworks */,
-				CFFC2FE21917F5D300264950 /* Pushwoosh.framework in Frameworks */,
 				CF9C2DFE18F5BB16000C5E68 /* CoreData.framework in Frameworks */,
 				59DCDBA21A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
+				594301CE1DBA811C009F12DB /* Pushwoosh.framework in Frameworks */,
 				5947B00F1BF5F99900B96758 /* libz.tbd in Frameworks */,
 				CF9C2DFC18F5BADA000C5E68 /* QuartzCore.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
@@ -887,7 +884,6 @@
 				590EBF8C1C04A708006F9E8C /* ImageIO.framework in Frameworks */,
 				597A524A195C9A6400F15480 /* Security.framework in Frameworks */,
 				59DCDBA31A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
-				597A524B195C9A6400F15480 /* Pushwoosh.framework in Frameworks */,
 				590EBF991C04A71D006F9E8C /* AddressBook.framework in Frameworks */,
 				597A524D195C9A6400F15480 /* CoreData.framework in Frameworks */,
 				597A524E195C9A6400F15480 /* QuartzCore.framework in Frameworks */,
@@ -916,7 +912,6 @@
 				590EBFA01C04A723006F9E8C /* CFNetwork.framework in Frameworks */,
 				59BC490C199CB5F200EA87AA /* CoreText.framework in Frameworks */,
 				59E53F8F1986C1760003BC6B /* Security.framework in Frameworks */,
-				59E53F901986C1760003BC6B /* Pushwoosh.framework in Frameworks */,
 				59E53F921986C1760003BC6B /* CoreData.framework in Frameworks */,
 				590EBF901C04A70C006F9E8C /* EventKitUI.framework in Frameworks */,
 				59DCDBA41A263D5F00016507 /* OutSystemsMobileECT.framework in Frameworks */,
@@ -951,7 +946,6 @@
 				02e750d6a1369761901ea8de /* CoreText.framework in Frameworks */,
 				595625D31B46D6B40020CABF /* libc++.dylib in Frameworks */,
 				08c44511356e0708cd9a49c6 /* Security.framework in Frameworks */,
-				7ade0c7d89aed07fa5edd173 /* Pushwoosh.framework in Frameworks */,
 				6ea08bf601831c58a5d59270 /* CoreData.framework in Frameworks */,
 				320eb8b1f3048dd7a4caba86 /* OutSystemsMobileECT.framework in Frameworks */,
 				590EBFD71C04B19E006F9E8C /* libz.tbd in Frameworks */,
@@ -1082,6 +1076,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				594301CD1DBA811C009F12DB /* Pushwoosh.framework */,
 				5947B00D1BF5F98A00B96758 /* libstdc++.tbd */,
 				5947B00B1BF5F97600B96758 /* libz.tbd */,
 				595625CD1B46D6B40020CABF /* libc++.dylib */,
@@ -1091,7 +1086,6 @@
 				59665FC71A091AEB0049F8CD /* CoreImage.framework */,
 				59BC490B199CB5F100EA87AA /* CoreText.framework */,
 				CFFC2FE31917F96600264950 /* Security.framework */,
-				CFFC2FE11917F5D300264950 /* Pushwoosh.framework */,
 				CF9C2DFD18F5BB16000C5E68 /* CoreData.framework */,
 				CF9C2DFB18F5BADA000C5E68 /* QuartzCore.framework */,
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
